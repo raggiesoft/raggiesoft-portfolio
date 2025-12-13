@@ -1,186 +1,172 @@
 <?php
 ob_start(); 
-// RaggieSoft Elara Router v4.0 (Aethel Update)
+// MichaelPragsdale.com - Entry Point & Router
+// Powered by RaggieSoft "Elara" Architecture
 
 define('ROOT_PATH', dirname(__DIR__));
 $request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+// Normalize trailing slashes
 if (strlen($request_uri) > 1) {
     $request_uri = rtrim($request_uri, '/');
 }
 
-// --- 1. GLOBAL DEFAULTS ---
-$siteName = 'RaggieSoft'; 
-$projectSlug = 'raggiesoft-corporate'; 
-$cdnBaseUrl = 'https://assets.raggiesoft.com';
-$defaultTheme = 'corporate'; 
-
-$defaults = [
-    'view' => 'errors/404',
-    'title' => $siteName, 
-    'theme' => $defaultTheme,
-    'showSidebar' => false, 
-    'sidebar' => 'sidebar-default',
-    'header' => 'header-default', // NEW: Allows switching headers
-    'site' => $projectSlug,
-    'ogTitle' => 'The Stardust Engine - Official Band Archive',
-    'ogDescription' => "The official archive of the fictional 80s band 'The Stardust Engine.' A narrative universe and AI art project forged in the fires of CPI.",
-    'ogImage' => $cdnBaseUrl . "/stardust-engine/images/stardust-engine-logo-social.jpg",
-    'ogUrl' => "https://thestardustengine.com" . $request_uri
+// --- 1. GLOBAL CONFIGURATION ---
+$siteConfig = [
+    'name'          => 'Michael P. Ragsdale',
+    'slug'          => 'portfolio',           // Default CDN Folder (assets.raggiesoft.com/portfolio/)
+    'cdn_root'      => 'https://assets.raggiesoft.com',
+    'default_theme' => 'corporate',           // Maps to /portfolio/css/bootstrap/root.css
+    'default_logo'  => '',                    // Text-based logo used by default
+    'default_view'  => 'pages/home'
 ];
 
-// --- 2. ROUTE CONFIGURATION ---
+// --- 2. TELEMETRY CONFIGURATION ---
+// "Apple-style" clean loader settings to match your branding.
+$telemetryConfig = [
+    'active'         => true,
+    'bgColor'        => '#ffffff',            // Clean White
+    'primaryColor'   => '#0d6efd',            // Brand Blue
+    'secondaryColor' => '#6c757d',            // Slate Grey
+    'successColor'   => '#198754',            // Success Green
+    'textColor'      => '#212529',            // Dark Body Text
+    'font'           => 'system-ui, -apple-system, sans-serif'
+];
+
+require_once ROOT_PATH . '/includes/utils/data-loader.php';
+
+// Default Page Meta (Fallback)
+$pageConfig = [
+    'title'       => $siteConfig['name'],
+    'site'        => $siteConfig['slug'], 
+    'theme'       => $siteConfig['default_theme'],
+    'logo'        => $siteConfig['default_logo'],
+    'view'        => 'errors/404',
+    'header'      => 'header-default',
+    'sidebar'     => 'sidebar-default',
+    'showSidebar' => false 
+];
+
+// --- 3. ROUTE DEFINITIONS ---
 $routes = [
-
-   // *** THE SILVER GAUNTLET OF AETHEL (HUB) ***
-    '/library/aethel' => [
-        'title' => 'The Silver Gauntlet of Aethel - RaggieSoft Library',
-        'site' => 'aethel',
-        'theme' => null, 
-        'showSidebar' => true,         // FORCE SIDEBAR
-        'sidebar' => 'sidebar-book',   // USE BOOK NAV
-        'header' => 'header-book',     // USE BOOK HEADER
-        'ogDescription' => 'A 1980s Fantasy Adventure. "You cannot extinguish a sun..."',
-        'view' => 'pages/library/aethel/overview',
-    ],
-
-    '/library/aethel/lore' => [
-        'title' => 'Lore: The Cosmology of Aethel',
-        'site' => 'aethel',
-        'theme' => null,
-        'showSidebar' => true,
-        'sidebar' => 'sidebar-book',
-        'header' => 'header-book',
-        'view' => 'pages/library/aethel/lore/overview',
-    ],
     
-    '/library/aethel/lore/characters' => [
-        'title' => 'Figures of Legend - Aethel Lore',
-        'site' => 'aethel',
-        'theme' => null,
-        'showSidebar' => true,
-        'sidebar' => 'sidebar-book',
-        'header' => 'header-book',
-        'view' => 'pages/library/aethel/lore/characters',
+    // -- HOMEPAGE --
+    '/' => [
+        'view'  => 'pages/home',
+        'title' => 'Home - ' . $siteConfig['name']
     ],
+
+    // -- CASE STUDY: THE STARDUST ENGINE --
+    // Demonstrates the Router's ability to switch site context and theme instantly.
+    '/projects/stardust-engine' => [
+        'view'        => 'pages/templates/ad-astra', // Uses the sci-fi template layout
+        'title'       => 'Case Study: The Stardust Engine',
+        
+        // CONTEXT SWITCH: Points asset loader to /stardust-engine/ CDN folder
+        'site'        => 'stardust-engine',
+        
+        // THEME ACTIVATION: Loads /stardust-engine/css/bootstrap/ad-astra/*.css
+        'theme'       => 'ad-astra',
+        
+        // LOGO SWAP: Uses the band's logo instead of text
+        'logo'        => 'https://assets.raggiesoft.com/stardust-engine/images/stardust-engine-logo.png',
+        
+        'showSidebar' => false
+    ]
 ];
 
-// ... [Existing Stardust routes] ...
-
-// ... [Previous config lines] ...
-    
-    // 5. THEME & CONTEXT LOGIC (Refactored)
-    require_once ROOT_PATH . '/includes/utils/nav-logic.php';
-    $navData = getBookNavigation($pageConfig['bookJsonUrl']);
-
-    // MASTER REGISTRY: Define valid themes and their base mode (light/dark)
-    // This acts as both the Whitelist AND the Mode Map.
-    $themeRegistry = [
-        // Dark Themes
-        'gloom'                   => 'dark',
-        'shadowspire'             => 'dark',
-        'sunstead-night'          => 'dark',
-        'sunstead-festival-night' => 'dark',
-        
-        // Light Themes
-        'sunstead'                => 'light',
-        'sunstead-festival-day'   => 'light',
-        'sunstead-winter'         => 'light', // Can change to 'dark' if you want a stark look
-        'forest-morning'          => 'light'
-    ];
-    
-    // Match current context from navigation logic
-    if (!empty($navData['flatList']) && $navData['currentIndex'] > -1) {
-        $currentItem = $navData['flatList'][$navData['currentIndex']];
-        
-        // 1. Identify Requested Theme
-        $requestedTheme = $currentItem['theme'] ?? null;
-        
-        // 2. Validate & Apply
-        // We check if the requested theme exists as a KEY in our registry.
-        if ($requestedTheme && array_key_exists($requestedTheme, $themeRegistry)) {
-            $pageConfig['theme'] = $requestedTheme;
-            $pageConfig['mode']  = $themeRegistry[$requestedTheme];
-        } else {
-            // Fallback: Default Parchment
-            $pageConfig['theme'] = null; 
-            $pageConfig['mode']  = 'light';
-        }
-        
-        // 3. Set Page Metadata
-        $pageConfig['title'] = $currentItem['title'] . ' - Aethel Saga';
-        $pageConfig['currentContext'] = [
-            $currentItem['book_id'], 
-            $currentItem['chapter_id'], 
-            $currentItem['part_id'],
-            $currentItem['scene_id']
-        ];
-    }
-
-// --- 3. SMART ROUTER LOGIC ---
-
-// A. Check for Explicit Configuration
+// --- 4. ROUTING LOGIC ---
 if (isset($routes[$request_uri])) {
-    $pageConfig = array_merge($pageConfig ?? [], $routes[$request_uri]);
-}
-
-// B. Auto-Discovery Logic (Only if view not yet set)
-if (!isset($pageConfig['view'])) {
-    $potentialPath = 'pages' . $request_uri;
-    if (file_exists(ROOT_PATH . '/' . $potentialPath . '.php')) {
-        $pageConfig['view'] = $potentialPath;
-    } elseif (is_dir(ROOT_PATH . '/' . $potentialPath)) {
-        if (file_exists(ROOT_PATH . '/' . $potentialPath . '/overview.php')) {
-            $pageConfig['view'] = $potentialPath . '/overview';
-        } elseif (file_exists(ROOT_PATH . '/' . $potentialPath . '/home.php')) {
-            $pageConfig['view'] = $potentialPath . '/home';
-        }
+    // Explicit Route Match
+    $pageConfig = array_merge($pageConfig, $routes[$request_uri]);
+} else {
+    // Auto-Discovery (Elara Smart Routing)
+    // Checks if /pages/segment.php exists and loads it automatically
+    $potential_path = 'pages' . $request_uri;
+    if (file_exists(ROOT_PATH . '/' . $potential_path . '.php')) {
+        $pageConfig['view'] = $potential_path;
+        $slug = basename($request_uri);
+        $pageConfig['title'] = ucwords(str_replace('-', ' ', $slug)) . ' - ' . $siteConfig['name'];
     }
 }
 
-// --- 4. MERGE & RENDER ---
-$config = array_merge($defaults, $pageConfig ?? []);
+// --- 5. THEME ENGINE ---
 
-if ($config['view'] === 'errors/404' || !file_exists(ROOT_PATH . '/' . $config['view'] . '.php')) {
-    http_response_code(404);
-    $config['view'] = 'errors/404';
-    if (!isset($config['theme'])) { $config['theme'] = 'ad-astra'; }
+// Determine Context
+$currentSite      = $pageConfig['site'];       // e.g. 'portfolio'
+$currentPageTheme = $pageConfig['theme'];      // e.g. 'corporate' or 'ad-astra'
+$defaultTheme     = $siteConfig['default_theme']; // e.g. 'corporate'
+$cdn_root         = $siteConfig['cdn_root'];
+
+// 1. GLOBAL BASE
+// Absolute baseline. Bootstrap 5.3.8 (No RaggieSoft code here).
+$path_bootstrap = $cdn_root . "/common/css/bootstrap.css";
+
+// 2. DETERMINE THEME DIRECTORY
+// Base path: https://assets.raggiesoft.com/{site-name}/css/bootstrap
+$path_site_base = $cdn_root . "/" . $currentSite . "/css/bootstrap";
+
+// Logic:
+// If the requested theme is the Site Default (corporate), we look in the base folder.
+// If it is a Named Theme (ad-astra), we look in a subfolder.
+if ($currentPageTheme === $defaultTheme) {
+    $path_active_theme = $path_site_base;
+} else {
+    $path_active_theme = $path_site_base . "/" . $currentPageTheme;
 }
 
-// Extract variables for View
-$pageTitle = $config['title'];
-$currentPageTheme = $config['theme'];
-$showSidebar = $config['showSidebar'];
-$currentSite = $config['site'];
-$ogTitle = $config['ogTitle'];
-$ogDescription = $config['ogDescription'];
-$ogImage = $config['ogImage'];
-$ogUrl = $config['ogUrl'];
+// 3. BUILD CSS STACK
+// Every theme folder MUST contain these 5 specific overrides.
+$css_files = [
+    $path_bootstrap,                        // 0. Vanilla Framework
+    $path_active_theme . '/root.css',       // 1. Variables, Colors, Fonts
+    $path_active_theme . '/extras.css',     // 2. Theme-specific FX (Glass, Glows)
+    $path_active_theme . '/header.css',     // 3. Navbar Layout & Style
+    $path_active_theme . '/footer.css',     // 4. Footer Layout & Style
+    $path_active_theme . '/safety-net.css'  // 5. Final Layout & WCAG Fixes
+];
 
-// DYNAMIC COMPONENT LOADING
-// This looks at the $config array to decide which file to load
-$currentHeaderMenu = ROOT_PATH . '/includes/components/headers/' . $config['header'] . '.php';
-$currentSidebar = ROOT_PATH . '/includes/components/sidebars/' . $config['sidebar'] . '.php';
+// --- 6. RENDER ---
+
+if (!file_exists(ROOT_PATH . '/' . $pageConfig['view'] . '.php')) {
+    http_response_code(404);
+    $pageConfig['view'] = 'errors/404';
+}
+
+$pageTitle = $pageConfig['title'];
+$showSidebar = $pageConfig['showSidebar'];
+
+// Pass queues to Header for Telemetry
+$load_queue = [];
+foreach($css_files as $css) {
+    $load_queue[] = ['type' => 'css', 'url' => $css, 'name' => 'Styles: ' . basename($css)];
+}
 
 require_once ROOT_PATH . '/includes/header.php';
 
-echo '<div class="container-fluid flex-grow-1 d-flex">';
-echo '  <div class="row flex-grow-1">';
+echo '<div class="container-fluid flex-grow-1 d-flex p-0">';
+echo '  <div class="row flex-grow-1 m-0 w-100">';
 
-if ($showSidebar && file_exists($currentSidebar)) {
-    echo '    <aside class="col-md-3 col-lg-2 d-none d-md-block bg-body-tertiary border-end p-3">';
-    require_once $currentSidebar;
-    echo '    </aside>';
-    echo '    <main id="main-content" class="col-md-9 col-lg-10 p-4">';
+if ($showSidebar) {
+    $sidebarFile = ROOT_PATH . '/includes/components/sidebars/' . $pageConfig['sidebar'] . '.php';
+    if (file_exists($sidebarFile)) {
+        echo '<aside class="col-md-3 col-lg-2 d-none d-md-block bg-body-tertiary border-end p-3">';
+        include $sidebarFile;
+        echo '</aside>';
+        echo '<main id="main-content" class="col-md-9 col-lg-10 p-0">';
+    } else {
+        echo '<main id="main-content" class="col-12 p-0">';
+    }
 } else {
-    echo '    <main id="main-content" class="col-12 p-0">'; 
+    echo '<main id="main-content" class="col-12 p-0">';
 }
 
-require_once ROOT_PATH . '/' . $config['view'] . '.php';
+// Load the actual content view
+require_once ROOT_PATH . '/' . $pageConfig['view'] . '.php';
 
-echo '    </main>'; 
-echo '  </div>'; 
-echo '</div>'; 
+echo '    </main>';
+echo '  </div>';
+echo '</div>';
 
 require_once ROOT_PATH . '/includes/footer.php';
 ob_end_flush();
