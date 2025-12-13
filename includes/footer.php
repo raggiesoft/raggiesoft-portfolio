@@ -1,31 +1,34 @@
-<footer class="bg-body-tertiary text-center text-lg-start mt-auto border-top">
-      <div class="container p-4">
-        <div class="row align-items-center">
-          
-          <div class="col-lg-6 text-lg-start mb-3 mb-lg-0">
-            <h5 class="text-uppercase fw-bold text-primary mb-1"><?php echo htmlspecialchars($siteName); ?></h5>
-            <p class="small text-muted mb-0">
-              Built with <a href="https://raggiesoft.com" target="_blank" class="text-secondary text-decoration-none fw-bold">RaggieSoft Architecture</a>.
-            </p>
-          </div>
+<footer class="mt-auto py-5">
+    <div class="container text-center">
+        
+        <h2 class="h4 fw-bold text-uppercase text-glow-primary">
+            <?php if ($currentSite === 'aethel'): ?>
+                The Silver Gauntlet of Aethel
+            <?php elseif ($currentSite === 'stardust-engine'): ?>
+                The Stardust Engine
+            <?php else: ?>
+                RaggieSoft
+            <?php endif; ?>
+        </h2>
 
-          <div class="col-lg-6 text-lg-end">
-            <a href="https://github.com/raggiesoft" class="text-secondary me-3 fs-5" aria-label="GitHub" target="_blank">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="#" class="text-secondary fs-5 opacity-50" aria-label="LinkedIn (Coming Soon)" title="LinkedIn Coming Soon">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-          </div>
+        <p class="mt-2 text-body-secondary">
+            <?php if ($currentSite === 'aethel'): ?>
+                A restored 1980s fantasy saga by Michael Ragsdale.
+            <?php elseif ($currentSite === 'stardust-engine'): ?>
+                A musical universe created with Gemini, Suno, and DALL-E.
+            <?php else: ?>
+                Narrative Engineering & Full Stack Development.
+            <?php endif; ?>
+        </p>
 
+        <p class="mt-4 small text-body-secondary">
+            Content licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="link-secondary">CC BY-SA 4.0</a>.
+            | Code licensed under <a href="https://opensource.org/licenses/MIT" class="link-secondary">MIT</a>.
+        </p>
+
+        <div class="mt-4 d-flex justify-content-center gap-4">
+            <a href="https://github.com/raggiesoft" class="link-secondary fs-4"><i class="fa-brands fa-github"></i></a>
+            <a href="https://michaelpragsdale.com" class="link-secondary fs-4"><i class="fa-duotone fa-briefcase"></i></a>
         </div>
-      </div>
-      
-      <div class="text-center p-3 small text-muted" style="background-color: rgba(0, 0, 0, 0.05);">
-        &copy; <?php echo date("Y"); ?> Michael P. Ragsdale. All rights reserved.
-      </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
-</html>
+    </div>
+</footer>
