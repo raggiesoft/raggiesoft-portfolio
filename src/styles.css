@@ -414,7 +414,10 @@
 
   /* CSS Grid + Subgrid Card Matrix:
      Ensures card titles, descriptions, metadata, and CTA links align horizontally
-     across adjacent cards in every row. */
+     across adjacent cards in every row.
+     CRITICAL: `grid-template-columns: minmax(0, 1fr)` and `min-inline-size: 0` on
+     direct children prevent long unbreakable tokens or flex headers from expanding
+     the implicit subgrid column wider than the card's border box. */
   .subgrid-card-matrix {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
@@ -423,14 +426,21 @@
 
   .subgrid-card {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     grid-row: span 4;
     grid-template-rows: subgrid;
     gap: 0.85rem;
+    min-inline-size: 0;
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     padding: 1.35rem;
     box-shadow: var(--shadow-card);
+  }
+
+  .subgrid-card > * {
+    min-inline-size: 0;
+    max-inline-size: 100%;
   }
 
   /* Fallback if browser lacks subgrid support */
@@ -672,6 +682,7 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--accent-primary);
+    overflow-wrap: anywhere;
   }
 
   /* Action Buttons (Minimum 44x44px touch target compliance) */
@@ -689,9 +700,13 @@
     gap: 0.5rem;
     padding: 0.65rem 1.1rem;
     min-block-size: 2.75rem; /* 44px WCAG 2.5.5 Target Size */
+    max-inline-size: 100%;
     border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 0.925rem;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: break-word;
     text-decoration: none;
     cursor: pointer;
     border: 1px solid transparent;
@@ -852,9 +867,10 @@
   /* Card Header & Footer Internals */
   .card-header-top {
     display: flex;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
+    gap: 0.5rem 0.75rem;
   }
 
   .domain-badge {
@@ -865,7 +881,8 @@
     background-color: var(--accent-surface);
     padding: 0.2rem 0.55rem;
     border-radius: var(--radius-sm);
-    white-space: nowrap;
+    max-inline-size: 100%;
+    overflow-wrap: anywhere;
   }
 
   .card-body-text {

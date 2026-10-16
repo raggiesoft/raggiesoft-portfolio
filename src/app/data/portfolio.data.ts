@@ -294,19 +294,19 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   {
     id: 'storetrainer',
     name: 'RaggieSoft StoreTrainer',
-    domain: 'raggiesoft.com/products/storetrainer',
-    url: 'https://raggiesoft.com/products/storetrainer/overview',
+    domain: 'storetrainer.raggiesoft.com',
+    url: 'https://raggiesoft.com/raggiesoft-media/projects/storetrainer',
     repoPath: '/ai-staging/StoreTrainer',
     primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS Packaging',
     architecturalPattern: 'Cross-Era Win32 Desktop PC Game & Trainer Directory Manager (Windows 95 through Windows 11)',
     summary:
       'Specialized desktop utility engineered for the retro and modern PC gaming ecosystem to store, index, and manage the filesystem locations and command-line launch switches of PC games alongside their associated game trainers across 30 years of Windows hardware.',
     highlights: [
-      'Engineered in Visual Basic 6.0 (TStore.vbp) on Windows 2000 Professional—alongside a modern .NET port (TStore.NET)—with custom Win32 API modules for 32/64-bit OS bitness detection (DetectOSBits.bas), OS version interrogation (OSVersionInfo.bas), Registry/SpecialFolder routing, and flat-file StoreFile (.sfile / INI) serialization.',
-      'Packaged with an OS-aware Nullsoft Scriptable Install System (NSIS) installer (TSSetup.nsi) that dynamically detects the host OS and conditionally unpacks legacy runtimes (DCOM98 and Windows Script Host 5.6) on Windows 95/98/ME/NT 4.0 while supporting UAC and Common Controls 6.0 on Windows Vista through Windows 11.',
-      'Demonstrates deep Win32 systems resilience and backwards/forwards binary compatibility; slated for standalone micro-property extraction to storetrainer.raggiesoft.com.'
+      'Maintained in a Windows 2000 Professional SP4 VM and compiled in Visual Basic 6.0 (TStore.vbp)—alongside a modern .NET port (TStore.NET)—using dynamic Win32 kernel memory verification (GetProcAddress for IsWow64Process in DetectOSBits.bas) so 64-bit checks never crash Windows 95/98.',
+      'Packaged with an OS-aware NSIS Wizard95 installer (TSSetup.nsi) that conditionally deploys MSVBVM60.DLL, DCOM98, and Windows Script Host 5.6 on legacy kernels while extracting the full VB6 source tree ($INSTDIR\\Source) for educational auditing.',
+      'Slated for standalone extraction to storetrainer.raggiesoft.com—engineered to follow all modern web and Section 508 accessibility standards under the hood while looking right at home on Netscape Communicator 4.'
     ],
-    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Win95–Win11 Compatibility', 'Retro PC Gaming'],
+    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Win95–Win11 Compatibility', 'Netscape 4 Aesthetic'],
     lenses: ['architecture', 'devops', 'data-etl']
   }
 ] as const;
