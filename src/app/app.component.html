@@ -22,31 +22,119 @@ Accessibility & Recruiter UX Architecture:
 
 <!-- =========================================================================
      STICKY EXECUTIVE HEADER BAR
+     Mobile (< 48rem / 768px): Compact two-level identity bar with wrapping
+     subtitle + 44x44px native Section 508 hamburger toggle button.
+     Desktop (>= 48rem / 768px): Full horizontal inline navigation & theme bar.
      ========================================================================= -->
 <header class="site-header" role="banner">
   <div class="dossier-container header-inner">
-    <a class="brand-identity" href="#top" aria-label="Michael P. Ragsdale — Return to top of executive dossier">
-      <img
-        class="brand-logo"
-        [src]="profile.assets.logoUrl"
-        alt=""
-        width="40"
-        height="40"
-      />
-      <span class="brand-title-group">
-        <span class="brand-name">{{ profile.fullName }}</span>
-        <span class="brand-subtitle">Systems Architect • Section 508 Engineer</span>
-      </span>
-    </a>
+    <div class="header-top-bar">
+      <a
+        class="brand-identity"
+        href="#top"
+        aria-label="Michael P. Ragsdale — Return to top of executive dossier"
+        (click)="closeMobileMenu()"
+      >
+        <img
+          class="brand-logo"
+          [src]="profile.assets.logoUrl"
+          alt=""
+          width="40"
+          height="40"
+        />
+        <span class="brand-title-group">
+          <span class="brand-name">{{ profile.fullName }}</span>
+          <span class="brand-subtitle">Systems Architect • Section 508 Engineer</span>
+        </span>
+      </a>
 
-    <div class="header-controls">
+      <!-- Native Section 508 / WCAG 2.5.5 (44x44px) Mobile Menu Toggle Button -->
+      <button
+        #mobileMenuToggle
+        type="button"
+        class="mobile-menu-toggle"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-controls="header-navigation-panel"
+        [attr.aria-label]="
+          mobileMenuOpen()
+            ? 'Close navigation and theme menu'
+            : 'Open navigation and theme menu'
+        "
+        (click)="toggleMobileMenu()"
+      >
+        @if (mobileMenuOpen()) {
+          <!-- Close (X) Icon -->
+          <svg
+            class="mobile-menu-icon"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        } @else {
+          <!-- Hamburger (3-Bar) Icon -->
+          <svg
+            class="mobile-menu-icon"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.25"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        }
+      </button>
+    </div>
+
+    <div
+      id="header-navigation-panel"
+      class="header-controls"
+      [class.is-open]="mobileMenuOpen()"
+    >
       <nav aria-label="Executive Dossier Sections">
         <ul class="nav-links">
-          <li><a class="nav-link" href="#hiring-logistics">Hiring &amp; Logistics</a></li>
-          <li><a class="nav-link" href="#polyglot-ecosystem">Polyglot Stack</a></li>
-          <li><a class="nav-link" href="#case-studies">Case Studies</a></li>
-          <li><a class="nav-link" href="#devops-fleet">DevOps Fleet</a></li>
-          <li><a class="nav-link" href="#experience">Experience &amp; Education</a></li>
+          <li>
+            <a class="nav-link" href="#hiring-logistics" (click)="closeMobileMenu()">
+              Hiring &amp; Logistics
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#polyglot-ecosystem" (click)="closeMobileMenu()">
+              Polyglot Stack
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#case-studies" (click)="closeMobileMenu()">
+              Case Studies
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#devops-fleet" (click)="closeMobileMenu()">
+              DevOps Fleet
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#experience" (click)="closeMobileMenu()">
+              Experience &amp; Education
+            </a>
+          </li>
         </ul>
       </nav>
 

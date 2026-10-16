@@ -34,7 +34,10 @@ import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
+  HostListener,
   OnInit,
+  ViewChild,
   computed,
   inject,
   signal
@@ -62,6 +65,14 @@ export type ThemeMode = 'system' | 'light' | 'dark';
 export class AppComponent implements OnInit {
   private readonly document = inject(DOCUMENT);
 
+  /**
+   * Reference to the native mobile hamburger `<button>` so keyboard `Escape`
+   * dismissal can deterministically return focus to the invoking trigger per
+   * WCAG 2.1 AA / Section 508 disclosure widget guidelines.
+   */
+  @ViewChild('mobileMenuToggle')
+  private mobileMenuToggleRef?: ElementRef<HTMLButtonElement>;
+
   /** Static dossier datasets exposed to the template */
   protected readonly profile = EXECUTIVE_PROFILE;
   protected readonly roleLenses = ROLE_LENSES;
@@ -85,6 +96,12 @@ export class AppComponent implements OnInit {
    * helpful context inside the "System" theme button label.
    */
   protected readonly osPrefersDark = signal<boolean>(false);
+
+  /**
+   * Reactive Signal: Controls the collapsed/expanded state of the primary
+   * navigation and theme selector drawer at mobile widths (< 48rem / 768px).
+   */
+  protected readonly mobileMenuOpen = signal<boolean>(false);
 
   /**
    * Computed Signal: Metadata for the currently active Role-Lens filter.
@@ -206,6 +223,46 @@ export class AppComponent implements OnInit {
         this.applyThemeDomState(nextMode, false);
       }
     });
+
+    // 4. Automatically reset mobile menu state when crossing to desktop breakpoint (>= 48rem / 768px)
+    if (typeof win.matchMedia === 'function') {
+      const desktopQuery = win.matchMedia('(min-width: 48rem)');
+      desktopQuery.addEventListener('change', (event: MediaQueryListEvent) => {
+        if (event.matches && this.mobileMenuOpen()) {
+          this.mobileMenuOpen.set(false);
+        }
+      });
+    }
+  }
+
+  /**
+   * Toggles the mobile navigation and theme drawer open or closed.
+   */
+  protected toggleMobileMenu(): void {
+    this.mobileMenuOpen.update((open) => !open);
+  }
+
+  /**
+   * Explicitly closes the mobile navigation drawer (invoked when a mobile
+   * section anchor link is activated so the target section is immediately visible).
+   */
+  protected closeMobileMenu(): void {
+    if (this.mobileMenuOpen()) {
+      this.mobileMenuOpen.set(false);
+    }
+  }
+
+  /**
+   * Section 508 / WCAG 2.1 AA Keyboard Dismissal:
+   * Pressing Escape while the mobile menu is expanded collapses the menu and
+   * returns keyboard focus to the native hamburger `<button>` control.
+   */
+  @HostListener('document:keydown.escape')
+  protected onEscapeKey(): void {
+    if (this.mobileMenuOpen()) {
+      this.mobileMenuOpen.set(false);
+      this.mobileMenuToggleRef?.nativeElement.focus();
+    }
   }
 
   /**
