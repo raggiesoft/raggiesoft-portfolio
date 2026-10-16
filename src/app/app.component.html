@@ -284,7 +284,7 @@ Accessibility & Recruiter UX Architecture:
           <!-- Row 1: Header & Domain Badge -->
           <div>
             <div class="card-header-top">
-              <span class="eyebrow-label">{{ prop.repoPath }}</span>
+              <span class="eyebrow-label">{{ prop.categoryLabel }}</span>
               <span class="domain-badge">{{ prop.domain }}</span>
             </div>
             <h3 style="margin-block-start: 0.4rem;">{{ prop.name }}</h3>
@@ -325,7 +325,7 @@ Accessibility & Recruiter UX Architecture:
                 target="_blank"
                 rel="noopener"
               >
-                <span>Inspect Live Production ({{ prop.domain }})</span>
+                <span>{{ prop.ctaLabel ?? ('Inspect Live Production (' + prop.domain + ')') }}</span>
               </a>
             }
           </div>

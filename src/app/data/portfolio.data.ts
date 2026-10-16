@@ -44,7 +44,7 @@ export interface EcosystemProperty {
   readonly name: string;
   readonly domain: string;
   readonly url: string;
-  readonly repoPath: string;
+  readonly categoryLabel: string;
   readonly primaryStack: string;
   readonly architecturalPattern: string;
   readonly summary: string;
@@ -52,6 +52,7 @@ export interface EcosystemProperty {
   readonly tags: readonly string[];
   readonly lenses: readonly RoleLens[];
   readonly isCurrentSite?: boolean;
+  readonly ctaLabel?: string;
 }
 
 export interface DevOpsConstruct {
@@ -205,7 +206,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     name: 'Executive Systems Dossier (This Site)',
     domain: 'michaelpragsdale.com',
     url: 'https://michaelpragsdale.com',
-    repoPath: '/raggiesoft-portfolio',
+    categoryLabel: 'Executive Architecture Dossier',
     primaryStack: 'Angular 19 (Standalone + Zoneless Signals + TypeScript) + Modern Native CSS',
     architecturalPattern: 'Static Single-Page Dossier with Native CSS Cascade Layers (@layer), Subgrid & Container Queries',
     summary:
@@ -224,7 +225,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     name: 'Stardust Engine CMS & Corporate Hub',
     domain: 'raggiesoft.com',
     url: 'https://raggiesoft.com',
-    repoPath: '/raggiesoft-hub',
+    categoryLabel: 'Corporate & Governance Hub',
     primaryStack: 'PHP 8.5 MVC (Stardust Engine CMS) + Web Awesome Components',
     architecturalPattern: 'Zero-Database Server-Side Rendered (SSR) Front-Controller MVC with Automated SEO & CSP Hardening',
     summary:
@@ -242,7 +243,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     name: 'The Listening Room & Engine Room Studio IDE',
     domain: 'music.raggiesoft.com',
     url: 'https://music.raggiesoft.com',
-    repoPath: '/raggiesoft-music',
+    categoryLabel: 'Audio Streaming & VTT Mastering IDE',
     primaryStack: 'Svelte 5 (Runes + SvelteKit) + Tailwind CSS v4 + Web Audio / MediaSession API',
     architecturalPattern: 'Static-First Audio Streaming Platform & Local-First Browser VTT Mastering IDE',
     summary:
@@ -260,7 +261,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     name: 'Ocean View Archives Digital Library',
     domain: 'books.raggiesoft.com',
     url: 'https://books.raggiesoft.com',
-    repoPath: '/raggiesoft-book-library',
+    categoryLabel: 'Zero-Framework Digital Reading Room',
     primaryStack: 'Vanilla PHP 8.5 + Vanilla ES2024 JavaScript + Nebulae Design System',
     architecturalPattern: 'Zero-Framework Accessible Long-Form Reading Engine with Synchronized Audio Soundtracks',
     summary:
@@ -278,7 +279,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     name: 'Aethelgard & Runebreaker Interactive Engine',
     domain: 'lore.raggiesoft.com',
     url: 'https://lore.raggiesoft.com',
-    repoPath: '/raggiesoft-lore',
+    categoryLabel: 'Accessible HTML5 Canvas Engine',
     primaryStack: 'React 19 + Next.js + HTML5 Canvas + Parallel ARIA Shadow DOM',
     architecturalPattern: 'Dual-Layer Accessible Canvas Game & Interactive Lore Compendium',
     summary:
@@ -294,20 +295,21 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   {
     id: 'storetrainer',
     name: 'RaggieSoft StoreTrainer',
-    domain: 'storetrainer.raggiesoft.com',
+    domain: 'storetrainer.raggiesoft.com (Coming Soon)',
     url: 'https://raggiesoft.com/raggiesoft-media/projects/storetrainer',
-    repoPath: '/ai-staging/StoreTrainer',
+    categoryLabel: '100% Hand-Crafted Win32 Utility (Pre-AI)',
     primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS Packaging',
     architecturalPattern: 'Cross-Era Win32 Desktop PC Game & Trainer Directory Manager (Windows 95 through Windows 11)',
     summary:
-      'Specialized desktop utility engineered for the retro and modern PC gaming ecosystem to store, index, and manage the filesystem locations and command-line launch switches of PC games alongside their associated game trainers across 30 years of Windows hardware.',
+      '100% hand-written (pre-AI, 2018–2020) desktop utility engineered for the retro and modern PC gaming ecosystem to store, index, and manage the filesystem locations and command-line launch switches of PC games alongside their associated game trainers across 30 years of Windows hardware.',
     highlights: [
-      'Maintained in a Windows 2000 Professional SP4 VM and compiled in Visual Basic 6.0 (TStore.vbp)—alongside a modern .NET port (TStore.NET)—using dynamic Win32 kernel memory verification (GetProcAddress for IsWow64Process in DetectOSBits.bas) so 64-bit checks never crash Windows 95/98.',
+      'Hand-written inside a Windows 2000 Professional SP4 VM and compiled in Visual Basic 6.0 (TStore.vbp)—alongside a .NET port (TStore.NET)—using dynamic Win32 kernel memory verification (GetProcAddress for IsWow64Process in DetectOSBits.bas) so 64-bit checks never crash Windows 95/98.',
       'Packaged with an OS-aware NSIS Wizard95 installer (TSSetup.nsi) that conditionally deploys MSVBVM60.DLL, DCOM98, and Windows Script Host 5.6 on legacy kernels while extracting the full VB6 source tree ($INSTDIR\\Source) for educational auditing.',
-      'Slated for standalone extraction to storetrainer.raggiesoft.com—engineered to follow all modern web and Section 508 accessibility standards under the hood while looking right at home on Netscape Communicator 4.'
+      'Standalone portal at storetrainer.raggiesoft.com is Coming Soon (not yet built)—planned to follow all modern web and Section 508 accessibility standards under the hood while looking right at home on Netscape Communicator 4.'
     ],
-    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Win95–Win11 Compatibility', 'Netscape 4 Aesthetic'],
-    lenses: ['architecture', 'devops', 'data-etl']
+    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Win95–Win11 Compatibility', '100% Hand-Written (Zero AI)'],
+    lenses: ['architecture', 'devops', 'data-etl'],
+    ctaLabel: 'View Current Archive on raggiesoft.com (storetrainer.raggiesoft.com Coming Soon)'
   }
 ] as const;
 
