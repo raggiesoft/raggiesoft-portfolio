@@ -293,21 +293,21 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'storetrainer',
-    name: 'StoreTrainer POS Simulation Suite',
+    name: 'RaggieSoft StoreTrainer',
     domain: 'raggiesoft.com/products/storetrainer',
-    url: 'https://raggiesoft.com/products/storetrainer/overview.php',
-    repoPath: '/raggiesoft-hub/pages/products/storetrainer',
-    primaryStack: 'Visual Basic 6.0 + Win32 API + NSIS Packaging',
-    architecturalPattern: 'Zero-Dependency Native Win32 Desktop Simulation & Legacy Preservation Architecture',
+    url: 'https://raggiesoft.com/products/storetrainer/overview',
+    repoPath: '/ai-staging/StoreTrainer',
+    primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS Packaging',
+    architecturalPattern: 'Cross-Era Win32 Desktop PC Game & Trainer Directory Manager (Windows 95 through Windows 11)',
     summary:
-      'A 15+ year case study in software longevity: a retail point-of-sale training simulator originally built for cashiers that still executes natively on Windows 11 with sub-10MB memory footprint.',
+      'Specialized desktop utility engineered for the retro and modern PC gaming ecosystem to store, index, and manage the filesystem locations and command-line launch switches of PC games alongside their associated game trainers across 30 years of Windows hardware.',
     highlights: [
-      'Engineered to train retail cashiers in high-speed keyboard/10-key workflows without risking live production register databases.',
-      'Packaged with Nullsoft Scriptable Install System (NSIS) for clean, self-contained deployment across Windows XP through Windows 11.',
-      'Demonstrates deep understanding of Win32 fundamentals, backwards compatibility, and zero-bloat desktop distribution.'
+      'Engineered in Visual Basic 6.0 (TStore.vbp) on Windows 2000 Professional—alongside a modern .NET port (TStore.NET)—with custom Win32 API modules for 32/64-bit OS bitness detection (DetectOSBits.bas), OS version interrogation (OSVersionInfo.bas), Registry/SpecialFolder routing, and flat-file StoreFile (.sfile / INI) serialization.',
+      'Packaged with an OS-aware Nullsoft Scriptable Install System (NSIS) installer (TSSetup.nsi) that dynamically detects the host OS and conditionally unpacks legacy runtimes (DCOM98 and Windows Script Host 5.6) on Windows 95/98/ME/NT 4.0 while supporting UAC and Common Controls 6.0 on Windows Vista through Windows 11.',
+      'Demonstrates deep Win32 systems resilience and backwards/forwards binary compatibility; slated for standalone micro-property extraction to storetrainer.raggiesoft.com.'
     ],
-    tags: ['Visual Basic 6.0', 'Win32 API', 'NSIS Installer', 'Legacy Preservation', 'POS Simulation'],
-    lenses: ['architecture', 'devops']
+    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Win95–Win11 Compatibility', 'Retro PC Gaming'],
+    lenses: ['architecture', 'devops', 'data-etl']
   }
 ] as const;
 

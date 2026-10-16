@@ -19,7 +19,7 @@ The broader RaggieSoft production ecosystem intentionally demonstrates polyglot 
 | **The Listening Room** | `music.raggiesoft.com` | **Svelte 5 (Runes + SvelteKit) + Tailwind CSS v4** | Audio Streaming Portal & Hold-Spacebar VTT Studio IDE |
 | **Ocean View Archives** | `books.raggiesoft.com` | **Vanilla PHP 8.5 + Vanilla ES2024 JS + Nebulae CSS** | Zero-Framework Accessible Digital Reading Room |
 | **Aethelgard / Lore** | `lore.raggiesoft.com` | **React 19 + Next.js + Dual-Layer Canvas ARIA Shadow DOM** | 60fps Accessible HTML5 Canvas Engine & Compendium |
-| **StoreTrainer** | `raggiesoft.com/products/storetrainer` | **Visual Basic 6.0 + Win32 API + NSIS** | 15-Year Legacy Desktop POS Simulation Suite |
+| **StoreTrainer** | `raggiesoft.com/products/storetrainer` *(→ `storetrainer.raggiesoft.com`)* | **Visual Basic 6.0 + Win32 API + .NET + NSIS** | Cross-Era Windows PC Game & Trainer Directory Manager (Win95–Win11) |
 
 ### Key Engineering Decisions in `/raggiesoft-portfolio`:
 1. **Zoneless Angular Signals (`provideExperimentalZonelessChangeDetection`)**: Eliminates `zone.js` monkey-patching and payload overhead. All interactive filtering (`activeLens`, `filteredEcosystem`, `filteredCaseStudies`) and theme state transitions run on deterministic `signal()` and `computed()` primitives.
