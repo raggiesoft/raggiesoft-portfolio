@@ -1,0 +1,567 @@
+<!--
+=============================================================================
+File: src/app/app.component.html
+Application: Michael P. Ragsdale — Systems Architect Executive Dossier
+Domain: https://michaelpragsdale.com
+License: MIT License (Code) | CC BY-SA 4.0 (Narrative Case Study References)
+=============================================================================
+Accessibility & Recruiter UX Architecture:
+- Landmarks: `<header role="banner">`, `<nav aria-label="...">`, `<main id="main-content">`,
+  and `<footer role="contentinfo">` for rapid screen-reader rotor navigation.
+- Above-the-Fold 5-Second Scan: Immediate visibility of executive identity,
+  Resume PDF download, Microsoft Bookings pre-screening scheduler, direct
+  email, and W2 / Norfolk VA / Clearance hiring logistics.
+- LCP Optimization (`optimize-image-priority`): Primary portrait uses
+  `fetchpriority="high"`, while the hidden opposite-theme portrait uses
+  `fetchpriority="low"` so it never contends for initial bandwidth.
+=============================================================================
+-->
+
+<!-- Keyboard & Assistive Technology Skip Link -->
+<a class="skip-link" href="#main-content">Skip to main executive dossier content</a>
+
+<!-- =========================================================================
+     STICKY EXECUTIVE HEADER BAR
+     ========================================================================= -->
+<header class="site-header" role="banner">
+  <div class="dossier-container header-inner">
+    <a class="brand-identity" href="#top" aria-label="Michael P. Ragsdale — Return to top of executive dossier">
+      <img
+        class="brand-logo"
+        [src]="profile.assets.logoUrl"
+        alt=""
+        width="40"
+        height="40"
+      />
+      <span class="brand-title-group">
+        <span class="brand-name">{{ profile.fullName }}</span>
+        <span class="brand-subtitle">Systems Architect • Section 508 Engineer</span>
+      </span>
+    </a>
+
+    <div class="header-controls">
+      <nav aria-label="Executive Dossier Sections">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="#hiring-logistics">Hiring &amp; Logistics</a></li>
+          <li><a class="nav-link" href="#polyglot-ecosystem">Polyglot Stack</a></li>
+          <li><a class="nav-link" href="#case-studies">Case Studies</a></li>
+          <li><a class="nav-link" href="#devops-fleet">DevOps Fleet</a></li>
+          <li><a class="nav-link" href="#experience">Experience &amp; Education</a></li>
+        </ul>
+      </nav>
+
+      <!-- Tri-State Color Scheme Switcher (Respects prefers-color-scheme by default) -->
+      <div class="theme-switcher" role="group" aria-label="Color scheme preference">
+        <button
+          type="button"
+          class="theme-btn"
+          [attr.aria-pressed]="themeMode() === 'system'"
+          (click)="setThemeMode('system')"
+          [title]="'Follow operating system color scheme (Currently ' + (osPrefersDark() ? 'Dark' : 'Light') + ')'"
+        >
+          <span>System ({{ osPrefersDark() ? 'Dark' : 'Light' }})</span>
+        </button>
+        <button
+          type="button"
+          class="theme-btn"
+          [attr.aria-pressed]="themeMode() === 'light'"
+          (click)="setThemeMode('light')"
+        >
+          <span>Light</span>
+        </button>
+        <button
+          type="button"
+          class="theme-btn"
+          [attr.aria-pressed]="themeMode() === 'dark'"
+          (click)="setThemeMode('dark')"
+        >
+          <span>Dark</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =========================================================================
+     MAIN EXECUTIVE DOSSIER CONTENT
+     ========================================================================= -->
+<main id="main-content" class="dossier-container">
+
+  <!-- =======================================================================
+       ABOVE THE FOLD: 5-SECOND RECRUITER BRIEFING & HIRING LOGISTICS
+       ======================================================================= -->
+  <section id="top" class="hero-bento" aria-labelledby="hero-heading">
+    <div class="hero-panel-grid">
+
+      <!-- Left Panel: Executive Identity, Summary & Primary CTAs -->
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>{{ profile.statusBadge }}</span>
+          </div>
+
+          <div class="executive-profile-top">
+            <!-- Dual Theme Portrait: Frutiger Aero (Light) / Dark Aero (Dark) -->
+            <div class="portrait-frame">
+              <img
+                class="portrait-img portrait-light"
+                [src]="profile.assets.portraitLightUrl"
+                alt="Portrait of Michael P. Ragsdale"
+                width="120"
+                height="120"
+                fetchpriority="high"
+              />
+              <img
+                class="portrait-img portrait-dark"
+                [src]="profile.assets.portraitDarkUrl"
+                alt="Portrait of Michael P. Ragsdale"
+                width="120"
+                height="120"
+                fetchpriority="low"
+              />
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+              <p class="eyebrow-label">{{ profile.location }}</p>
+              <h1 id="hero-heading">{{ profile.fullName }}</h1>
+              <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);">
+                {{ profile.headline }}
+              </p>
+            </div>
+          </div>
+
+          <p style="color: var(--text-secondary); font-size: 0.98rem;">
+            {{ profile.executiveSummary }}
+          </p>
+
+          <blockquote
+            style="
+              border-inline-start: 3px solid var(--accent-primary);
+              padding-inline-start: 0.9rem;
+              color: var(--text-primary);
+              font-weight: 500;
+              font-size: 0.93rem;
+            "
+          >
+            {{ profile.valueProposition }}
+          </blockquote>
+        </div>
+
+        <!-- Immediate Recruiter Action Bar -->
+        <div>
+          <p class="eyebrow-label" style="margin-block-end: 0.4rem;">
+            Direct Recruiter &amp; Hiring Manager Actions
+          </p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              [href]="profile.assets.resumePdfUrl"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>Download Resume (PDF)</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              [href]="profile.assets.bookingsUrl"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>Book Architectural Pre-Screening</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              [href]="profile.assets.directEmail"
+            >
+              <span>{{ profile.assets.directEmailDisplay }}</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              [href]="profile.assets.githubUrl"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>GitHub (&#64;raggiesoft)</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Right Panel: "Aggressive Transparency" Hiring & Logistics Card -->
+      <aside
+        id="hiring-logistics"
+        class="logistics-card"
+        aria-labelledby="logistics-heading"
+      >
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-block-end: 0.75rem;">
+            <span class="eyebrow-label">Recruiter Fast-Track</span>
+            <span class="domain-badge">W2 • Norfolk, VA • DoD Eligible</span>
+          </div>
+          <h2 id="logistics-heading" style="font-size: 1.35rem; margin-block-end: 0.35rem;">
+            Hiring &amp; Logistics Parameters
+          </h2>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-end: 1rem;">
+            Published upfront to respect recruiter time and ensure immediate alignment on role scope, residency, and evaluation format.
+          </p>
+
+          <dl class="logistics-dl">
+            @for (param of hiringParameters; track param.label) {
+              <div class="logistics-item">
+                <dt class="logistics-dt">{{ param.label }}</dt>
+                <dd class="logistics-dd">
+                  <strong>{{ param.value }}</strong>
+                  <span style="display: block; font-size: 0.83rem; color: var(--text-secondary); margin-block-start: 0.15rem;">
+                    {{ param.detail }}
+                  </span>
+                </dd>
+              </div>
+            }
+          </dl>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       INTERACTIVE ANGULAR SIGNALS ROLE-LENS FILTER BAR
+       ======================================================================= -->
+  <section class="dossier-section" aria-labelledby="lens-heading" style="padding-block-end: 0.5rem;">
+    <div class="lens-toolbar">
+      <div>
+        <span class="eyebrow-label">Interactive Angular Signals Filter</span>
+        <h2 id="lens-heading" style="font-size: 1.2rem;">
+          Filter Dossier by Hiring Discipline
+        </h2>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-start: 0.2rem;">
+          {{ currentLensMeta().shortDescription }}
+        </p>
+      </div>
+
+      <div class="lens-button-group" role="group" aria-label="Filter portfolio by engineering discipline">
+        @for (lens of roleLenses; track lens.id) {
+          <button
+            type="button"
+            class="lens-btn"
+            [attr.aria-pressed]="activeLens() === lens.id"
+            (click)="selectLens(lens.id)"
+          >
+            <span>{{ lens.label }}</span>
+            <span class="lens-count-badge" aria-hidden="true">{{ lensCounts()[lens.id] }}</span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Polite ARIA Live Region for Assistive Technology Filter Feedback -->
+    <div class="sr-only" aria-live="polite" aria-atomic="true">
+      {{ filterAnnouncement() }}
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 1: POLYGLOT PRODUCTION ECOSYSTEM (ZERO-DATABASE ARCHITECTURE)
+       ======================================================================= -->
+  <section id="polyglot-ecosystem" class="dossier-section" aria-labelledby="ecosystem-heading">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow-label">Live Production Proof of Concepts • Zero SQL Attack Surface</p>
+        <h2 id="ecosystem-heading">Polyglot Production Ecosystem</h2>
+        <p class="section-lead">
+          Rather than relying on a single hammer for every problem, I architect specialized, decoupled web applications across <strong>Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>Svelte 5 + Tailwind v4</strong>, <strong>Vanilla PHP/ES2024 JS</strong>, and <strong>React 19 / Next.js</strong>—all operating in production without a server-side database.
+        </p>
+      </div>
+    </div>
+
+    <div class="subgrid-card-matrix">
+      @for (prop of filteredEcosystem(); track prop.id) {
+        <article class="subgrid-card">
+          <!-- Row 1: Header & Domain Badge -->
+          <div>
+            <div class="card-header-top">
+              <span class="eyebrow-label">{{ prop.repoPath }}</span>
+              <span class="domain-badge">{{ prop.domain }}</span>
+            </div>
+            <h3 style="margin-block-start: 0.4rem;">{{ prop.name }}</h3>
+            <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-primary); font-weight: 600; margin-block-start: 0.25rem;">
+              {{ prop.primaryStack }}
+            </p>
+          </div>
+
+          <!-- Row 2: Architectural Summary & Engineering Highlights -->
+          <div class="card-body-text">
+            <p style="margin-block-end: 0.65rem;">
+              <strong>Pattern:</strong> {{ prop.architecturalPattern }}. {{ prop.summary }}
+            </p>
+            <ul class="bullet-list">
+              @for (point of prop.highlights; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+
+          <!-- Row 3: Tech Stack Chips -->
+          <div>
+            <ul class="tag-list" [attr.aria-label]="'Technologies used in ' + prop.name">
+              @for (tag of prop.tags; track tag) {
+                <li class="tech-tag" [class.tech-tag-highlight]="prop.isCurrentSite">{{ tag }}</li>
+              }
+            </ul>
+          </div>
+
+          <!-- Row 4: Live Production Link -->
+          <div class="card-footer-actions">
+            @if (prop.isCurrentSite) {
+              <span class="status-pill">Active Inspection Target (You Are Here)</span>
+            } @else {
+              <a
+                class="btn btn-secondary"
+                [href]="prop.url"
+                target="_blank"
+                rel="noopener"
+              >
+                <span>Inspect Live Production ({{ prop.domain }})</span>
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 2: ARCHITECTURAL & ACCESSIBILITY CASE STUDIES
+       ======================================================================= -->
+  <section id="case-studies" class="dossier-section" aria-labelledby="cases-heading">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow-label">Proven Problem Solving in Municipal, Higher-Ed &amp; Cloud Systems</p>
+        <h2 id="cases-heading">Architectural &amp; Section 508 Case Studies</h2>
+        <p class="section-lead">
+          Selected engineering reports detailing how I resolve legacy data normalization bottlenecks, university-wide Section 508 compliance audits, and high-performance web decoupling.
+        </p>
+      </div>
+    </div>
+
+    <div class="dual-column-grid">
+      @for (study of filteredCaseStudies(); track study.id) {
+        <article class="case-study-card">
+          <div class="card-header-top">
+            <span class="domain-badge">{{ study.code }} • {{ study.organization }}</span>
+            <span class="mono text-muted" style="font-size: 0.8rem;">{{ study.timeframe }}</span>
+          </div>
+
+          <h3>{{ study.title }}</h3>
+
+          <!-- Quantified Impact Metrics Bar -->
+          <div class="case-study-metrics" aria-label="Quantified engineering outcomes">
+            @for (metric of study.quantifiedImpact; track metric.label) {
+              <div class="metric-box">
+                <span class="metric-label">{{ metric.label }}</span>
+                <span class="metric-value">{{ metric.value }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.65rem;">
+            <p>
+              <strong>Operational Challenge:</strong> {{ study.problemStatement }}
+            </p>
+            <p>
+              <strong>Architectural Solution:</strong> {{ study.architecturalSolution }}
+            </p>
+          </div>
+
+          <ul class="tag-list" aria-label="Case study technologies">
+            @for (tech of study.technologies; track tech) {
+              <li class="tech-tag">{{ tech }}</li>
+            }
+          </ul>
+
+          <div class="card-footer-actions">
+            @for (link of study.referenceLinks; track link.url) {
+              <a
+                class="btn btn-secondary"
+                [href]="link.url"
+                target="_blank"
+                rel="noopener"
+              >
+                <span>{{ link.label }}</span>
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 3: "PERSONIFIED DEVOPS" CI/CD & MEDIA AUTOMATION FLEET
+       ======================================================================= -->
+  <section id="devops-fleet" class="dossier-section" aria-labelledby="devops-heading">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow-label">Autonomous Build, Mastering &amp; CDN Orchestration</p>
+        <h2 id="devops-heading">DevOps &amp; Content Automation Pipeline</h2>
+        <p class="section-lead">
+          Operating six production properties as a solo Systems Architect requires ruthless automation. I engineered a suite of modular Bash and Python CLI daemons ("Personified DevOps") that govern build verification, EBU R128 audio mastering, Metal GPU upscaling, and S3 CDN synchronization.
+        </p>
+      </div>
+    </div>
+
+    <div class="subgrid-card-matrix">
+      @for (bot of devopsConstructs; track bot.codename) {
+        <article class="subgrid-card">
+          <div>
+            <div class="card-header-top">
+              <span class="eyebrow-label">Automation Daemon: {{ bot.codename }}</span>
+              <code>{{ bot.scriptName }}</code>
+            </div>
+            <h3 style="margin-block-start: 0.4rem;">{{ bot.roleTitle }}</h3>
+          </div>
+
+          <div class="card-body-text">
+            <p style="margin-block-end: 0.65rem;">{{ bot.summary }}</p>
+            <ul class="bullet-list">
+              @for (cap of bot.capabilities; track cap) {
+                <li>{{ cap }}</li>
+              }
+            </ul>
+          </div>
+
+          <div>
+            <p class="mono" style="font-size: 0.78rem; color: var(--accent-primary); font-weight: 600;">
+              Toolchain: {{ bot.stack }}
+            </p>
+          </div>
+
+          <div class="card-footer-actions">
+            <span class="tech-tag">Zero-Downtime NYC1 Pipeline</span>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 4: PROFESSIONAL EXPERIENCE & ACADEMIC CREDENTIALS
+       ======================================================================= -->
+  <section id="experience" class="dossier-section" aria-labelledby="experience-heading">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow-label">Functional Engineering Scope vs. Civil-Service HR Classifications</p>
+        <h2 id="experience-heading">Professional Experience &amp; Education</h2>
+        <p class="section-lead">
+          In municipal government and public higher education, civil-service HR billet titles often lag behind actual technical responsibilities. Both functional engineering roles and official HR classifications are listed transparently below for background-check verification.
+        </p>
+      </div>
+    </div>
+
+    <ol class="timeline-list">
+      @for (job of filteredExperience(); track job.functionalTitle) {
+        <li class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <h3>{{ job.functionalTitle }}</h3>
+              <p style="font-weight: 600; color: var(--accent-primary);">
+                {{ job.organization }} • {{ job.location }}
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem;">
+              <span class="mono" style="font-weight: 700; font-size: 0.88rem;">{{ job.timeframe }}</span>
+              <span class="hr-classification">{{ job.hrClassification }}</span>
+            </div>
+          </div>
+
+          <p style="color: var(--text-secondary); margin-block-end: 0.75rem; font-size: 0.95rem;">
+            {{ job.summary }}
+          </p>
+
+          <ul class="bullet-list" style="margin-block-end: 0.9rem;">
+            @for (item of job.achievements; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+
+          <ul class="tag-list" [attr.aria-label]="'Technologies applied at ' + job.organization">
+            @for (tech of job.technologies; track tech) {
+              <li class="tech-tag">{{ tech }}</li>
+            }
+          </ul>
+        </li>
+      }
+    </ol>
+
+    <!-- Academic Credentials -->
+    <div style="margin-block-start: 2rem;">
+      <h3 style="margin-block-end: 1rem;">Academic Credentials &amp; Continuing Education</h3>
+      <div class="dual-column-grid">
+        @for (edu of educationCredentials; track edu.degree) {
+          <article class="timeline-card">
+            <span class="eyebrow-label">{{ edu.timeframe }}</span>
+            <h4 style="font-size: 1.1rem; margin-block-start: 0.25rem;">{{ edu.degree }}</h4>
+            <p style="font-weight: 600; color: var(--text-secondary); margin-block: 0.25rem 0.5rem;">
+              {{ edu.institution }}
+            </p>
+            <p class="hr-classification" style="display: inline-block; margin-block-end: 0.75rem;">
+              {{ edu.statusNote }}
+            </p>
+            <ul class="bullet-list">
+              @for (focus of edu.focusAreas; track focus) {
+                <li>{{ focus }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================================
+     GLOBAL FOOTER WITH MANDATORY LICENSING & FICTITIOUS ENTITIES DISCLAIMER
+     ========================================================================= -->
+<footer class="site-footer" role="contentinfo">
+  <div class="dossier-container">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+      <div>
+        <strong style="color: var(--text-primary); font-size: 1rem;">
+          {{ profile.fullName }} — Executive Systems Architect Dossier (michaelpragsdale.com)
+        </strong>
+        <p style="margin-block-start: 0.2rem;">
+          Built with Angular 19 (Standalone + Zoneless Signals + TypeScript) &amp; Modern Native CSS (<code>&#64;layer</code>, <code>subgrid</code>, <code>&#64;container</code>, <code>light-dark()</code>). Hosted on NYC1 (142.93.244.239).
+        </p>
+      </div>
+
+      <div class="cta-row" style="padding-block-start: 0;">
+        <a class="btn btn-primary" [href]="profile.assets.resumePdfUrl" target="_blank" rel="noopener">
+          Download Resume (PDF)
+        </a>
+        <a class="btn btn-secondary" [href]="profile.assets.bookingsUrl" target="_blank" rel="noopener">
+          Schedule Screening
+        </a>
+      </div>
+    </div>
+
+    <!-- Mandatory Fictitious Persons & Entities Disclaimer per GEMINI.md -->
+    <div class="disclaimer-box" role="note" aria-label="Fictitious Entities and Licensing Disclaimer">
+      <p style="margin-block-end: 0.5rem;">
+        <strong>Licensing Notice:</strong> All application source code powering <code>michaelpragsdale.com</code> and the RaggieSoft engineering ecosystem is licensed under the <strong>MIT License</strong>. Creative narrative and musical works referenced in RaggieSoft Media case studies are licensed under <strong>CC BY-SA 4.0</strong> (alongside applicable DSP consumer licenses or direct commercial licenses cleared via <a href="https://raggiesoft.com/raggiesoft-media/licensing/commercial" target="_blank" rel="noopener">raggiesoft.com/raggiesoft-media/licensing/commercial</a>).
+      </p>
+      <p>
+        <strong>Fictitious Persons &amp; Entities Disclaimer:</strong> While all professional employment records, academic credentials, municipal/university achievements, and software architecture specifications on this page represent the factual career of <strong>Michael P. Ragsdale</strong>, all narrative characters, bands, biographies, universities (including Commonwealth Polytechnic Institute / CPI, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (Blue Ridge Transit), in-universe legal filings, and events referenced within RaggieSoft Media entertainment properties (<code>raggiesoft.com</code>, <code>music.raggiesoft.com</code>, <code>books.raggiesoft.com</code>, <code>lore.raggiesoft.com</code>) are works of fiction. Any resemblance to actual persons (living or dead), businesses, institutions, or events is purely coincidental.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
+      <span>&copy; 2008–2026 Michael P. Ragsdale / RaggieSoft Media. All rights reserved where applicable.</span>
+      <span>WCAG 2.1 AA/AAA &amp; Federal Section 508 Compliant • Zero External Trackers • Zero SQL Databases</span>
+    </div>
+  </div>
+</footer>

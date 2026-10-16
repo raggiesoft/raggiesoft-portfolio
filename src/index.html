@@ -1,0 +1,162 @@
+<!doctype html>
+<!--
+=============================================================================
+File: index.html
+Application: Michael P. Ragsdale — Systems Architect & Accessibility Dossier
+Domain: https://michaelpragsdale.com
+Tech Stack: Angular 19 Standalone + Signals | Modern Native CSS (@layer, Subgrid, Container Queries)
+License: MIT License (Code) | CC BY-SA 4.0 (Creative Narrative References)
+Author: Michael P. Ragsdale <hireme@michaelpragsdale.com>
+=============================================================================
+Architectural Notes:
+- Designed for sub-second Largest Contentful Paint (LCP) and immediate 5-second
+  recruiter comprehension.
+- Uses zero external webfont blocking requests: relies strictly on native OS
+  system UI and monospace font stacks.
+- Includes comprehensive Schema.org ProfilePage JSON-LD structured data so
+  Automated Applicant Tracking Systems (ATS), AI Recruiter Agents, and search
+  indexers can parse credentials, PHP 8.5 / Angular / Svelte 5 / React polyglot
+  architecture experience, and Section 508 certifications automatically.
+- Pre-initializes color-scheme before first paint to prevent Flash of Incorrect
+  Theme (FOIT) while respecting prefers-color-scheme.
+=============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Michael P. Ragsdale | Systems Architect, Data Normalization &amp; Section 508 Engineer</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Executive engineering dossier and polyglot systems architecture portfolio of Michael P. Ragsdale — Systems Architect, Data Normalization Lead, and Certified Section 508 / WCAG 2.1 AA Accessibility Specialist in Norfolk &amp; Virginia Beach, VA.">
+  <meta name="author" content="Michael P. Ragsdale">
+  <link rel="canonical" href="https://michaelpragsdale.com/">
+
+  <!-- Open Graph / Recruiter Link Unfurling Metadata -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Michael P. Ragsdale | Systems Architect &amp; Section 508 Engineer">
+  <meta property="og:description" content="Polyglot Systems Architect (Angular, PHP 8.5 MVC, Svelte 5, React/Next.js, Python/Bash DevOps) &amp; Section 508 Accessibility Specialist based in Norfolk, VA. View live production architectures, municipal ETL case studies, and W2 hiring logistics.">
+  <meta property="og:url" content="https://michaelpragsdale.com/">
+  <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-corporate/images/mragsdale-aero/mragsdale-frutiger-aero.jpg">
+  <meta property="profile:first_name" content="Michael">
+  <meta property="profile:last_name" content="Ragsdale">
+
+  <!-- Preconnect to CDN for zero-latency portrait and logo loading -->
+  <link rel="preconnect" href="https://assets.raggiesoft.com" crossorigin>
+  <link rel="icon" type="image/png" href="https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png">
+
+  <!--
+    =========================================================================
+    Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6)
+    =========================================================================
+    Unified RaggieSoft ecosystem measurement property. Loaded asynchronously
+    via gtag.js so it never blocks Largest Contentful Paint (LCP) or First
+    Input Delay (FID) during recruiter dossier evaluations.
+    =========================================================================
+  -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-P9RG9JVYB6');
+  </script>
+
+  <!-- Synchronous Theme Detection Script: Prevents FOUC by syncing <meta name="color-scheme"> before first paint -->
+  <script>
+    (function () {
+      try {
+        var meta = document.querySelector('meta[name="color-scheme"]');
+        var saved = localStorage.getItem('color-scheme');
+        if (meta && (saved === 'light' || saved === 'dark')) {
+          meta.content = saved;
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      } catch (e) {
+        // Ignore storage errors in strict privacy browsers; CSS prefers-color-scheme handles fallback natively.
+      }
+    })();
+  </script>
+
+  <!-- Schema.org ProfilePage Structured Data for ATS & AI Recruiter Ingestion -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "dateCreated": "2008-07-07T22:26:07Z",
+    "dateModified": "2026-10-15T21:45:00-04:00",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://michaelpragsdale.com/#michael-ragsdale",
+      "name": "Michael P. Ragsdale",
+      "givenName": "Michael",
+      "additionalName": "P.",
+      "familyName": "Ragsdale",
+      "jobTitle": "Systems Architect & Section 508 Accessibility Engineer",
+      "description": "Systems Architect, Technical Lead, and Section 508 Compliance Specialist specializing in accessible enterprise web applications, legacy municipal ETL data normalization, and zero-database static-first polyglot architectures.",
+      "url": "https://michaelpragsdale.com/",
+      "image": "https://assets.raggiesoft.com/raggiesoft-corporate/images/mragsdale-aero/mragsdale-frutiger-aero.jpg",
+      "email": "mailto:hireme@michaelpragsdale.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Norfolk",
+        "addressRegion": "VA",
+        "addressCountry": "US"
+      },
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": "RaggieSoft Media",
+          "url": "https://raggiesoft.com"
+        },
+        {
+          "@type": "GovernmentOrganization",
+          "name": "City of Virginia Beach"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Tidewater Community College",
+          "sameAs": "https://www.tcc.edu/"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Old Dominion University",
+          "sameAs": "https://www.odu.edu/"
+        }
+      ],
+      "knowsAbout": [
+        "Systems Architecture",
+        "Angular",
+        "TypeScript",
+        "PHP 8.5 MVC",
+        "Svelte 5",
+        "React 19",
+        "Next.js",
+        "Section 508 Compliance",
+        "WCAG 2.1 AA/AAA Accessibility",
+        "Deque axe",
+        "ETL Data Normalization",
+        "ActiveNet CRM",
+        "DevOps Automation",
+        "Linux Server Administration",
+        "Nginx",
+        "Modern CSS Architecture"
+      ],
+      "sameAs": [
+        "https://raggiesoft.com/about/michael-ragsdale/overview.php",
+        "https://github.com/raggiesoft",
+        "https://music.raggiesoft.com",
+        "https://books.raggiesoft.com",
+        "https://lore.raggiesoft.com"
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <mpr-root></mpr-root>
+</body>
+</html>
