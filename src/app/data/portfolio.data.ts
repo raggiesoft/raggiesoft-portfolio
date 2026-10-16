@@ -539,12 +539,12 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
  */
 export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
   {
-    degree: 'Associate of Science (A.S.) in Information Technology (Focus: Software Engineering)',
+    degree: 'Associate of Science (A.S.) in Information Technology (Focus: Software Engineering & Web Dev)',
     institution: 'Tidewater Community College — Virginia Beach / Norfolk, VA',
-    timeframe: 'Expected Graduation: December 2026',
+    timeframe: 'Expected Graduation: December 2027',
     statusNote: 'Active In-State Student (Requires Virginia physical residency for tuition rate)',
     focusAreas: [
-      'Enterprise Software Engineering & Object-Oriented Systems Design',
+      'Enterprise Software Engineering, Web Development & Object-Oriented Systems Design',
       'Network Architecture, Linux Administration & Cybersecurity Fundamentals',
       'Database Design, Data Structures & Algorithmic Problem Solving'
     ]
@@ -552,12 +552,22 @@ export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
   {
     degree: 'Bachelor of Science (B.S.) Coursework — Customized Studies in Leadership & Information Systems',
     institution: 'Old Dominion University — Norfolk, VA',
-    timeframe: 'Prior Undergraduate Coursework',
+    timeframe: 'Prior Coursework',
     statusNote: 'Foundation in Organizational Leadership, Technical Communication & Public Sector Operations',
     focusAreas: [
       'Technical Leadership & Cross-Functional Team Coordination',
       'Public Sector & Higher-Education Information Systems Governance',
       'Accessible Communication & Section 508 Regulatory Frameworks'
+    ]
+  },
+  {
+    degree: 'Certificate in Business & Information Technology',
+    institution: 'Wilson Workforce and Rehabilitation Center (formerly Woodrow Wilson Rehabilitation Center) — Fishersville, VA',
+    timeframe: 'Graduated: 2011',
+    statusNote: 'Foundational Business Operations & Information Technology Credential',
+    focusAreas: [
+      'Business Information Systems, Office Automation & Technical Operations',
+      'Applied Assistive Technology & Accessible Workplace Workflows'
     ]
   }
 ] as const;
