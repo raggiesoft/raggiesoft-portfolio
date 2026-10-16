@@ -1,9 +1,9 @@
 # =============================================================================
-# File: public/robots.txt
+# File: robots.txt
 # Domain: https://michaelpragsdale.com
-# Purpose: Allow all search indexers, Applicant Tracking Systems (ATS), and
-#          AI Recruiter crawlers to index the executive dossier.
+# Purpose: Search Engine & AI Recruiter Crawler Directives
 # =============================================================================
 User-agent: *
 Allow: /
 
+Sitemap: https://michaelpragsdale.com/sitemap.xml

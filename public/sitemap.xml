@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  =============================================================================
+  File: sitemap.xml
+  Domain: https://michaelpragsdale.com
+  Application: Michael P. Ragsdale — Executive Systems Architect Dossier
+  Purpose: Canonical XML Sitemap for Google Search Console & Bing Webmaster Tools
+  =============================================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://michaelpragsdale.com/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
