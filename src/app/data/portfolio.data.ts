@@ -440,14 +440,14 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
   },
   {
     codename: 'Paige & Elara',
-    scriptName: 'paige.py / audit-pipeline',
-    roleTitle: 'Accessible EPUB 3.3 Compiler & Schema QA Gatekeeper',
-    stack: 'Python 3 • Pandoc • JSON Schema • WCAG Contrast Verifier',
+    scriptName: 'paige.php / amanda/elara.php',
+    roleTitle: 'Narrative Route Compiler, Full-Text Indexer & Gateway Router',
+    stack: 'PHP 8.5 • Pandoc EPUB 3.3 • JSON Route & Search Compiler',
     summary:
-      'Automated publishing and quality-assurance toolchain compiling Markdown manuscripts into Section 508-compliant EPUB 3.3 e-books and validating cross-property JSON catalogs.',
+      'Automated literary publishing and routing toolchain compiling Markdown manuscripts (`e*`/`c*`/`s*.md`) into dual-target route maps, 3,185-scene search indices, and Section 508-compliant EPUB 3.3 e-books.',
     capabilities: [
-      'Compiles multi-chapter Markdown narratives into validated EPUB 3.3 packages with embedded accessible navigation landmarks.',
-      'Audits `album.json`, `tracks.json`, `books.json`, and `corporate-structure.json` manifests for referential integrity and broken CDN links prior to deployment.'
+      'Compiles multi-era Markdown narratives into structured JSON route trees, Table of Contents manifests (`toc.json`), and a 3,185-scene full-text `search-index.json` across `raggiesoft.com` and `books.raggiesoft.com`.',
+      'Preserves compiled `.epub` and `.pdf` deliverables during destructive CDN shelf syncs while auditing JSON manifests for referential integrity.'
     ]
   }
 ] as const;
