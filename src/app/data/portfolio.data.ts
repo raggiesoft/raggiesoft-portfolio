@@ -295,8 +295,8 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   {
     id: 'storetrainer',
     name: 'RaggieSoft StoreTrainer',
-    domain: 'storetrainer.raggiesoft.com (Coming Soon)',
-    url: 'https://raggiesoft.com/raggiesoft-media/projects/storetrainer',
+    domain: 'storetrainer.raggiesoft.com',
+    url: 'https://storetrainer.raggiesoft.com',
     categoryLabel: '100% Hand-Crafted Win32 Utility (Pre-AI)',
     primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS Packaging',
     architecturalPattern: 'Cross-Era Win32 Desktop PC Game & Trainer Directory Manager (Windows 95 through Windows 11)',
@@ -305,11 +305,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     highlights: [
       'Hand-written inside a Windows 2000 Professional SP4 VM and compiled in Visual Basic 6.0 (TStore.vbp)—alongside a .NET port (TStore.NET)—using dynamic Win32 kernel memory verification (GetProcAddress for IsWow64Process in DetectOSBits.bas) so 64-bit checks never crash Windows 95/98.',
       'Packaged with an OS-aware NSIS Wizard95 installer (TSSetup.nsi) that conditionally deploys MSVBVM60.DLL, DCOM98, and Windows Script Host 5.6 on legacy kernels while extracting the full VB6 source tree ($INSTDIR\\Source) for educational auditing.',
-      'Standalone portal at storetrainer.raggiesoft.com is Coming Soon (not yet built)—planned to follow all modern web and Section 508 accessibility standards under the hood while looking right at home on Netscape Communicator 4.'
+      'Standalone portal at storetrainer.raggiesoft.com follows all modern web and Section 508 accessibility standards under the hood while looking right at home on Netscape Communicator 4.78 / Windows 98–2000.'
     ],
     tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Win95–Win11 Compatibility', '100% Hand-Written (Zero AI)'],
     lenses: ['architecture', 'devops', 'data-etl'],
-    ctaLabel: 'View Current Archive on raggiesoft.com (storetrainer.raggiesoft.com Coming Soon)'
+    ctaLabel: 'Explore StoreTrainer Portal (storetrainer.raggiesoft.com)'
   }
 ] as const;
 
