@@ -27,10 +27,28 @@ Accessibility & Recruiter UX Architecture:
     <ul class="rs-network-links">
       <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
       <li><a href="https://nebulae.raggiesoft.com">🌌 Nebulae</a></li>
-      <li><a href="https://music.raggiesoft.com">🎧 Music</a></li>
       <li><a href="https://books.raggiesoft.com">📚 Books</a></li>
-      <li><a href="https://stardust.raggiesoft.com">🚀 Stardust</a></li>
-      <li><a href="https://engineroom.raggiesoft.com">⚙️ Engine Room</a></li>
+      <li class="rs-network-dropdown">
+        <button type="button" class="rs-network-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          <span aria-hidden="true">⚙️</span>
+          <span>Engine Room</span>
+          <span class="rs-network-caret" aria-hidden="true">▾</span>
+        </button>
+        <ul class="rs-network-dropdown-menu" role="menu" aria-label="Engine Room Records &amp; Band Roster">
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com"><span aria-hidden="true">⚙️</span><span>Engine Room Records Hub</span></a></li>
+          <li role="none"><a role="menuitem" href="https://music.raggiesoft.com"><span aria-hidden="true">🎧</span><span>The Listening Room</span></a></li>
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com/artists"><span aria-hidden="true">🎸</span><span>All Artists Directory (7)</span></a></li>
+          <li class="rs-network-dropdown-divider" role="separator"></li>
+          <li class="rs-network-dropdown-header" role="presentation">✦ Band Roster (A–Z)</li>
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com/artists/crimson-node"><span aria-hidden="true">🔴</span><span>Crimson Node</span></a></li>
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com/artists/firelight"><span aria-hidden="true">🔥</span><span>Firelight</span></a></li>
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com/artists/fractured-prisms"><span aria-hidden="true">💎</span><span>Fractured Prisms</span></a></li>
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com/artists/mana-canvas"><span aria-hidden="true">🎨</span><span>Mana Canvas</span></a></li>
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com/artists/the-arctic-symphony-project"><span aria-hidden="true">❄️</span><span>The Arctic Symphony Project</span></a></li>
+          <li role="none"><a role="menuitem" href="https://engineroom.raggiesoft.com/artists/the-paper-wall"><span aria-hidden="true">🧱</span><span>The Paper Wall</span></a></li>
+          <li role="none"><a role="menuitem" href="https://stardust.raggiesoft.com"><span aria-hidden="true">🚀</span><span>The Stardust Engine</span></a></li>
+        </ul>
+      </li>
       <li><a href="https://lore.raggiesoft.com">🏛️ Lore</a></li>
       <li><a href="https://corporate.raggiesoft.com">🏢 Corporate</a></li>
       <li><a href="https://storetrainer.raggiesoft.com">💾 StoreTrainer</a></li>
@@ -377,13 +395,39 @@ Accessibility & Recruiter UX Architecture:
   <section id="polyglot-ecosystem" class="dossier-section" aria-labelledby="ecosystem-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">Live Production Proof of Concepts • Zero SQL Attack Surface</p>
+        <p class="eyebrow-label">10 Live Production Properties • 10 Distinct Tech Stacks • Zero SQL Attack Surface</p>
         <h2 id="ecosystem-heading">Polyglot Production Ecosystem</h2>
         <p class="section-lead">
-          Rather than relying on a single hammer for every problem, I architect specialized, decoupled web applications across <strong>Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>Svelte 5 + Tailwind v4</strong>, <strong>Vanilla PHP/ES2024 JS</strong>, and <strong>React 19 / Next.js</strong>—all operating in production without a server-side database.
+          Rather than relying on a single hammer for every problem, I architect specialized, decoupled web applications across <strong>Angular 19 (Zoneless Signals)</strong>, <strong>PHP 8.5 MVC</strong>, <strong>SvelteKit 2 + Svelte 5 Runes</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 + Vue 3</strong>, <strong>Next.js 16 + React 19</strong>, <strong>Bootstrap 5.3.8 Static SSG</strong>, <strong>Vanilla PHP/ES2024 JS</strong>, and <strong>Visual Basic 6.0 / Win32 API + TypeScript</strong>—all operating in production without a server-side database.
         </p>
       </div>
     </div>
+
+    <!-- Recruiter Briefing: Domain & Tech-Stack Governance Strategy -->
+    <aside
+      class="timeline-card"
+      aria-label="Polyglot Domain Topology and Maintainability Strategy"
+      style="margin-block-end: 1.5rem; border-inline-start: 4px solid var(--accent-primary);"
+    >
+      <div class="card-header-top" style="margin-block-end: 0.4rem;">
+        <span class="eyebrow-label">Architectural Governance Note for Engineering Leaders</span>
+        <span class="domain-badge">*.raggiesoft.com + michaelpragsdale.com</span>
+      </div>
+      <h3 style="font-size: 1.08rem; margin-block-end: 0.5rem;">
+        How 10 Polyglot Stacks Stay Maintainable Under a Solo Systems Architect
+      </h3>
+      <ul class="bullet-list" style="font-size: 0.92rem;">
+        <li>
+          <strong>Subdomain-First Topology &amp; Edge 301 Governance:</strong> Every property lives on a first-level <code>*.raggiesoft.com</code> subdomain (alongside <code>michaelpragsdale.com</code>) to retain 18+ years of WHOIS domain authority and single-tier Cloudflare Universal SSL/HSTS coverage, while external vanity domains (<code>raggiesoftmedia.com</code>, <code>engineroom-records.com</code>, <code>fracturedprisms.com</code>, <code>thestardustengine.com</code>) execute deterministic <code>301</code> edge redirects.
+        </li>
+        <li>
+          <strong>Path-Hierarchy Consolidation vs. Standalone App Decoupling:</strong> Rather than spinning up a separate framework or fourth-level subdomain for every band on the label roster, multi-tenant artist lore dossiers are consolidated under <code>engineroom.raggiesoft.com/artists/&#123;band-slug&#125;</code> on a single <strong>Astro 6</strong> static engine—while delegating stateful audio streaming &amp; WebVTT lyric mastering to <code>music.raggiesoft.com</code> (<strong>Svelte 5 Runes PWA</strong>) and dedicating <code>stardust.raggiesoft.com</code> (<strong>Nuxt 4 + Vue 3</strong>) to the flagship transmedia novel &amp; accessible fleet archive.
+        </li>
+        <li>
+          <strong>Shared Cross-Network Navigation &amp; WCAG 2.1 AA Layer:</strong> A single CDN-hosted script and stylesheet (<code>raggiesoft-network.js</code> / <code>.css</code>) links all 10 properties omnidirectionally on desktop (including the alphabetical <code>⚙️ Engine Room ▾</code> roster dropdown) and collapses cleanly into each property’s native single-hamburger menu on mobile.
+        </li>
+      </ul>
+    </aside>
 
     <div class="subgrid-card-matrix">
       @for (prop of filteredEcosystem(); track prop.id) {
@@ -516,7 +560,7 @@ Accessibility & Recruiter UX Architecture:
         <p class="eyebrow-label">Autonomous Build, Mastering &amp; CDN Orchestration</p>
         <h2 id="devops-heading">DevOps &amp; Content Automation Pipeline</h2>
         <p class="section-lead">
-          Operating six production properties as a solo Systems Architect requires ruthless automation. I engineered a suite of modular Bash and Python CLI daemons ("Personified DevOps") that govern build verification, EBU R128 audio mastering, Metal GPU upscaling, and S3 CDN synchronization.
+          Operating ten decoupled production properties as a solo Systems Architect requires ruthless automation. I engineered a suite of modular Bash and Python CLI daemons ("Personified DevOps") that govern build verification, EBU R128 audio mastering, Metal GPU upscaling, and S3 CDN synchronization.
         </p>
       </div>
     </div>
@@ -662,7 +706,7 @@ Accessibility & Recruiter UX Architecture:
         <strong>Licensing Notice:</strong> All application source code powering <code>michaelpragsdale.com</code> and the RaggieSoft engineering ecosystem is licensed under the <strong>MIT License</strong>. Creative narrative and musical works referenced in RaggieSoft Media case studies are licensed under <strong>CC BY-SA 4.0</strong> (alongside applicable DSP consumer licenses or direct commercial licenses cleared via <a href="https://corporate.raggiesoft.com/licensing/commercial" target="_blank" rel="noopener">corporate.raggiesoft.com/licensing/commercial</a>).
       </p>
       <p>
-        <strong>Fictitious Persons &amp; Entities Disclaimer:</strong> While all professional employment records, academic credentials, municipal/university achievements, and software architecture specifications on this page represent the factual career of <strong>Michael P. Ragsdale</strong>, all narrative characters, bands, biographies, universities (including Commonwealth Polytechnic Institute / CPI, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (Blue Ridge Transit), in-universe legal filings, and events referenced within RaggieSoft entertainment properties (<code>raggiesoft.com</code>, <code>music.raggiesoft.com</code>, <code>books.raggiesoft.com</code>, <code>lore.raggiesoft.com</code>, <code>engineroom.raggiesoft.com</code>, <code>stardust.raggiesoft.com</code>) are works of fiction. Any resemblance to actual persons (living or dead), businesses, institutions, or events is purely coincidental.
+        <strong>Fictitious Persons &amp; Entities Disclaimer:</strong> While all professional employment records, academic credentials, municipal/university achievements, and software architecture specifications on this page represent the factual career of <strong>Michael P. Ragsdale</strong>, all narrative characters, bands, biographies, universities (including Commonwealth Polytechnic Institute / CPI, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (Blue Ridge Transit), in-universe legal filings, and events referenced within RaggieSoft properties (<code>raggiesoft.com</code>, <code>corporate.raggiesoft.com</code>, <code>engineroom.raggiesoft.com</code>, <code>music.raggiesoft.com</code>, <code>stardust.raggiesoft.com</code>, <code>books.raggiesoft.com</code>, <code>lore.raggiesoft.com</code>, <code>nebulae.raggiesoft.com</code>, <code>storetrainer.raggiesoft.com</code>) are works of fiction. Any resemblance to actual persons (living or dead), businesses, institutions, or events is purely coincidental.
       </p>
     </div>
 

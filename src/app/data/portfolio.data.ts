@@ -134,12 +134,12 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
   {
     id: 'all',
     label: 'Complete Dossier (All)',
-    shortDescription: 'Showing the complete polyglot architecture matrix, Section 508 proofs, ETL pipelines, and DevOps automation.'
+    shortDescription: 'Showing all 10 polyglot production properties, Section 508 proofs, ETL pipelines, and DevOps automation.'
   },
   {
     id: 'architecture',
     label: 'Systems & Polyglot Architecture',
-    shortDescription: 'Focused on multi-framework system design (Angular, PHP 8.5 MVC, Svelte 5, React 19, Vanilla JS) and zero-database edge/CDN topology.'
+    shortDescription: 'Focused on multi-framework system design (Angular 19, PHP 8.5 MVC, Svelte 5, Astro 6, Nuxt 4, Next.js 16 / React 19, Bootstrap 5.3.8 SSG, VB6/Win32) and zero-database edge/CDN topology.'
   },
   {
     id: 'accessibility',
@@ -191,12 +191,12 @@ export const HIRING_PARAMETERS: readonly HiringParameter[] = [
   {
     label: 'Technical Evaluation Protocol',
     value: 'Live Architectural Review & System Design Over Unpaid Take-Homes',
-    detail: 'This live multi-property production ecosystem serves as my code sample. I welcome rigorous live system-design reviews and code walkthroughs, and respectfully decline unpaid multi-day take-home projects.'
+    detail: 'This live 10-property production ecosystem serves as my code sample. I welcome rigorous live system-design reviews and code walkthroughs, and respectfully decline unpaid multi-day take-home projects.'
   }
 ] as const;
 
 /**
- * Polyglot Production Ecosystem Matrix.
+ * Polyglot Production Ecosystem Matrix (10 Live Properties).
  * Demonstrates mastery across distinct modern web paradigms without relying on
  * any server-side relational database.
  */
@@ -206,14 +206,14 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     name: 'Executive Systems Dossier (This Site)',
     domain: 'michaelpragsdale.com',
     url: 'https://michaelpragsdale.com',
-    categoryLabel: 'Executive Architecture Dossier',
-    primaryStack: 'Angular 19 (Standalone + Zoneless Signals + TypeScript) + Modern Native CSS',
+    categoryLabel: '01 • Executive Architecture Dossier',
+    primaryStack: 'Angular 19 (Standalone + Zoneless Signals + TypeScript 5.7) + Modern Native CSS',
     architecturalPattern: 'Static Single-Page Dossier with Native CSS Cascade Layers (@layer), Subgrid & Container Queries',
     summary:
-      'Decoupled from the main corporate hub to demonstrate enterprise-grade TypeScript and Zoneless Angular Signals architecture favored by Defense, Government, and Enterprise engineering organizations.',
+      'Decoupled onto its own standalone root domain to demonstrate enterprise-grade TypeScript and Zoneless Angular Signals architecture favored by Defense, Federal/Municipal Government, and Enterprise engineering organizations.',
     highlights: [
       'Zero zone.js runtime overhead via provideExperimentalZonelessChangeDetection() and reactive Angular Signals (signal, computed).',
-      '100% Native Modern CSS architecture (@layer, CSS Grid subgrid, @container queries, light-dark() with prefers-color-scheme and forced-colors fallbacks) — zero Bootstrap.',
+      '100% Native Modern CSS architecture (@layer, CSS Grid subgrid, @container queries, light-dark() with prefers-color-scheme and forced-colors fallbacks) — zero CSS framework dependencies.',
       'Sub-second Largest Contentful Paint (LCP) with native system font stacks and embedded Schema.org ProfilePage JSON-LD for ATS parsers.'
     ],
     tags: ['Angular 19', 'TypeScript 5.7', 'Zoneless Signals', 'CSS @layer', 'CSS Subgrid', 'Container Queries', 'Section 508'],
@@ -222,100 +222,180 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-hub',
-    name: 'Stardust Engine CMS & Corporate Hub',
+    name: 'RaggieSoft Hub & Stardust Engine CMS',
     domain: 'raggiesoft.com',
     url: 'https://raggiesoft.com',
-    categoryLabel: 'Corporate & Governance Hub',
-    primaryStack: 'PHP 8.5 MVC (Stardust Engine CMS) + Web Awesome Components',
-    architecturalPattern: 'Zero-Database Server-Side Rendered (SSR) Front-Controller MVC with Automated SEO & CSP Hardening',
+    categoryLabel: '02 • Root Portal & SSR Governance Hub',
+    primaryStack: 'PHP 8.5 MVC (Stardust Engine CMS) + Bootstrap 5.3.8 + Web Awesome SSR',
+    architecturalPattern: 'Zero-Database Server-Side Rendered (SSR) Front-Controller MVC with Edge 301 Routing & CSP Hardening',
     summary:
-      'Custom-engineered PHP 8.5 MVC platform powering RaggieSoft corporate governance, legal licensing, and architectural documentation without a SQL attack surface.',
+      'Custom-engineered PHP 8.5 MVC platform anchoring the 18-year-old raggiesoft.com root domain, orchestrating legacy 301 edge redirects to decoupled subdomains and serving server-rendered architectural documentation without a SQL attack surface.',
     highlights: [
-      'Powered by PHP 8.5 with strict typing, custom front-controller routing, and zero database dependencies.',
-      'Automatic Open Graph, canonical URL, and JSON-LD structured data synthesis per route.',
-      'Migrated from legacy Bootstrap 5.3 to semantic Web Awesome custom elements and native CSS tokens.'
+      'Powered by PHP 8.5 with strict typing, custom front-controller routing, and zero relational database dependencies.',
+      'Automatic Open Graph, canonical URL, XML sitemap, and JSON-LD structured data synthesis per route.',
+      'Enforces strict Content Security Policy (CSP) headers and WCAG 2.1 AA contrast across both Light and Dark OS color schemes.'
     ],
-    tags: ['PHP 8.5', 'Custom MVC', 'Web Awesome', 'Zero-Database SSR', 'Nginx', 'JSON-LD'],
-    lenses: ['architecture', 'accessibility', 'devops']
+    tags: ['PHP 8.5 MVC', 'Stardust Engine CMS', 'Bootstrap 5.3.8', 'Web Awesome', 'Zero-Database SSR', 'Nginx'],
+    lenses: ['architecture', 'accessibility', 'devops'],
+    ctaLabel: 'Inspect Root Hub (raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-corporate',
+    name: 'RaggieSoft Media (B2B Corporate & Licensing Hub)',
+    domain: 'corporate.raggiesoft.com',
+    url: 'https://corporate.raggiesoft.com',
+    categoryLabel: '03 • B2B Licensing & Open-Source Portal',
+    primaryStack: 'Node.js ESM Static Site Generator + Bootstrap 5.3.8 ("Corporate Aero" System)',
+    architecturalPattern: 'Build-Time Static SSG Decoupling Real-World B2B Governance from Creative Lore',
+    summary:
+      'Dedicated B2B corporate subdomain (301 target of raggiesoftmedia.com) housing Master & Commercial Sync Licensing, the Open-Source Software Hub (Stardust Engine CMS & StoreTrainer), and anti-phishing recruiter verification notices.',
+    highlights: [
+      'Cleanly separates real-world intellectual property governance, MIT / CC BY-SA 4.0 licensing, and commercial sync clearance from in-universe creative storytelling.',
+      'Compiled via a zero-dependency Node.js ESM static generator into immutable HTML/CSS bundles with verified WCAG 2.1 AA Light and Dark mode contrast.',
+      'Includes transparent career/recruiter scam-prevention advisories directing hiring managers to verified michaelpragsdale.com channels.'
+    ],
+    tags: ['Bootstrap 5.3.8 SSG', 'Node.js ESM', 'Corporate Aero CSS', 'B2B Sync Licensing', 'Open-Source Governance', 'WCAG 2.1 AA'],
+    lenses: ['architecture', 'accessibility', 'devops'],
+    ctaLabel: 'Inspect Corporate Hub (corporate.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-engineroom',
+    name: 'Engine Room Records Imprint & Consolidated Band Roster',
+    domain: 'engineroom.raggiesoft.com',
+    url: 'https://engineroom.raggiesoft.com',
+    categoryLabel: '04 • Multi-Tenant Imprint & Artist Lore Hub',
+    primaryStack: 'Astro 6 Static SSG Architecture + Multi-Tenant Path Hierarchy (/artists/{slug})',
+    architecturalPattern: 'Consolidated Multi-Artist Static Publishing Engine with Centralized Streaming Handoff',
+    summary:
+      'Serves as the record label imprint (301 target of engineroom-records.com and fracturedprisms.com) and consolidates the band lore roster under engineroom.raggiesoft.com/artists/{band-slug} so adding new bands never multiplies framework maintenance.',
+    highlights: [
+      'Demonstrates pragmatic architectural consolidation: houses all artist lore dossiers (Crimson Node, Firelight, Fractured Prisms, Mana Canvas, The Arctic Symphony Project, The Paper Wall) under one Astro 6 static codebase.',
+      'Documents transparent studio engineering workflows (human direction + AI audio generation, 74% Cover Audio Influence protocol, phonetic vowel extension, and Dual Timeline metadata governance).',
+      'Clearly delineates the real-world creative brand (Engine Room Records) from the in-universe corporate lore (Engine Room Records, LLC) while deep-linking all audio playback to music.raggiesoft.com.'
+    ],
+    tags: ['Astro 6', 'Static SSG', 'Multi-Tenant Routing', 'Path-Hierarchy Consolidation', 'JSON Data Lake', 'Section 508'],
+    lenses: ['architecture', 'accessibility', 'data-etl', 'devops'],
+    ctaLabel: 'Inspect Label & Band Roster (engineroom.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-music',
     name: 'The Listening Room & Engine Room Studio IDE',
     domain: 'music.raggiesoft.com',
     url: 'https://music.raggiesoft.com',
-    categoryLabel: 'Audio Streaming & VTT Mastering IDE',
-    primaryStack: 'Svelte 5 (Runes + SvelteKit) + Tailwind CSS v4 + Web Audio / MediaSession API',
-    architecturalPattern: 'Static-First Audio Streaming Platform & Local-First Browser VTT Mastering IDE',
+    categoryLabel: '05 • Audio Streaming PWA & VTT Mastering IDE',
+    primaryStack: 'SvelteKit 2 + Svelte 5 Runes ($state, $derived, $effect) + Tailwind CSS v4 + Web Audio PWA',
+    architecturalPattern: 'Static-First Progressive Web App (PWA) & Local-First Browser WebVTT Mastering IDE',
     summary:
-      'Full-featured audiophile streaming portal and internal lyric synchronization IDE backed by structured JSON/Markdown catalogs and DigitalOcean Spaces CDN.',
+      'Centralized audiophile streaming portal and internal lyric synchronization IDE receiving deep-linked playback handoffs (?track=<slug>) from every property across the RaggieSoft network.',
     highlights: [
-      'Built on Svelte 5 Runes ($state, $derived, $effect) and Tailwind CSS v4 with persistent gapless audio playback across client-side route transitions.',
-      'Includes an integrated DistroKid-style Hold-Spacebar WebVTT Lyric Synchronizer (/studio) that stamps human_verified_by_michael metadata headers so AI pipelines never overwrite human timing.',
-      'Automated build-time catalog ingestion compiling 19+ albums, liner notes, and transcripts into static JSON endpoints.'
+      'Built on Svelte 5 Runes ($state, $derived, $effect) and Tailwind CSS v4 with persistent gapless audio playback, MediaSession lock-screen controls, and multi-palette Light/Dark themes.',
+      'Features an integrated Hold-Spacebar WebVTT Lyric Synchronizer (/studio) that stamps human_verified_by_michael metadata headers so automated Whisper AI pipelines never overwrite human timing.',
+      'Automated build-time catalog ingestion compiling 31+ albums, liner notes, and transcripts into static JSON endpoints.'
     ],
-    tags: ['Svelte 5 Runes', 'SvelteKit SSG', 'Tailwind CSS v4', 'WebVTT Sync IDE', 'MediaSession API', 'ETL Pipeline'],
-    lenses: ['architecture', 'accessibility', 'data-etl']
+    tags: ['Svelte 5 Runes', 'SvelteKit 2 PWA', 'Tailwind CSS v4', 'WebVTT Sync IDE', 'MediaSession API', 'ETL Pipeline'],
+    lenses: ['architecture', 'accessibility', 'data-etl'],
+    ctaLabel: 'Inspect The Listening Room (music.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-stardust',
+    name: 'The Stardust Engine Flagship Narrative Portal',
+    domain: 'stardust.raggiesoft.com',
+    url: 'https://stardust.raggiesoft.com',
+    categoryLabel: '06 • Flagship Transmedia & Accessible Fleet Portal',
+    primaryStack: 'Nuxt 4 + Vue 3 Static SSG + Adaptive Cosmic Environment Engine',
+    architecturalPattern: 'Environmental Storytelling Portal with Strict Motion & Color-Scheme Accessibility',
+    summary:
+      'Dedicated standalone subdomain (301 target of thestardustengine.com) housing the flagship multi-decade band narrative, acoustic stem architecture, and wheelchair-accessible tour coach engineering dossiers.',
+    highlights: [
+      'Powered by Nuxt 4 and Vue 3 static generation, wrapping Markdown/JSON narrative archives and fleet blueprints in an adaptive cosmic environment.',
+      'Natively transforms between an Earth-like exoplanet horizon in Light Mode (prefers-color-scheme: light) and a deep-space nebula starfield in Dark Mode (prefers-color-scheme: dark).',
+      'Enforces strict prefers-reduced-motion: reduce compliance—automatically disabling star-twinkling, orbital, and parallax animations while handing off audio playback to music.raggiesoft.com.'
+    ],
+    tags: ['Nuxt 4', 'Vue 3', 'Static SSG', 'prefers-reduced-motion', 'prefers-color-scheme', 'Transmedia Architecture'],
+    lenses: ['architecture', 'accessibility', 'data-etl'],
+    ctaLabel: 'Inspect Stardust Portal (stardust.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-book-library',
-    name: 'Ocean View Archives Digital Library',
+    name: 'RaggieSoft Book Reader (Ocean View Archives)',
     domain: 'books.raggiesoft.com',
     url: 'https://books.raggiesoft.com',
-    categoryLabel: 'Zero-Framework Digital Reading Room',
-    primaryStack: 'Vanilla PHP 8.5 + Vanilla ES2024 JavaScript + Nebulae Design System',
+    categoryLabel: '07 • Zero-Framework Digital Reading Room',
+    primaryStack: 'PHP 8.5 + Stardust Engine Library SPA (Vanilla ES2024 JavaScript + Adaptive Typography)',
     architecturalPattern: 'Zero-Framework Accessible Long-Form Reading Engine with Synchronized Audio Soundtracks',
     summary:
-      'Demonstrates mastery of foundational web standards without framework abstractions—delivering a fast, WCAG AAA-capable literary reading environment.',
+      'Demonstrates mastery of foundational web standards without heavy client-side framework abstractions—delivering a fast, WCAG AAA-capable literary reading environment and EPUB 3.3 distribution hub.',
     highlights: [
-      'Zero client-side framework overhead: pure semantic HTML5, Vanilla PHP 8.5 manifest parsing, and modular ES2024 JavaScript.',
-      'Real-time reader accessibility preferences (adjustable line-height, measure width, font family, and high-contrast themes) persisted via localStorage.',
-      'Deep cross-domain integration with Engine Room Records for chapter-synced musical accompaniment.'
+      'Zero client-side framework bloat: pure semantic HTML5, PHP 8.5 manifest parsing, and modular ES2024 JavaScript.',
+      'Real-time reader accessibility preferences (adjustable line-height, measure width, font family, and Light/Dark/Sepia high-contrast themes) persisted via localStorage.',
+      'Deep cross-domain integration with The Listening Room (music.raggiesoft.com) for chapter-synced musical accompaniment.'
     ],
-    tags: ['PHP 8.5', 'Vanilla ES2024 JS', 'Nebulae CSS', 'WCAG AAA Typography', 'EPUB 3.3 Pipeline'],
-    lenses: ['architecture', 'accessibility', 'data-etl']
+    tags: ['PHP 8.5', 'Vanilla ES2024 JS', 'Stardust Library SPA', 'WCAG AAA Typography', 'EPUB 3.3 Pipeline'],
+    lenses: ['architecture', 'accessibility', 'data-etl'],
+    ctaLabel: 'Inspect Book Reader (books.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-lore',
-    name: 'Aethelgard & Runebreaker Interactive Engine',
+    name: 'RaggieSoft Lore Graph & Accessible Canvas Engine',
     domain: 'lore.raggiesoft.com',
     url: 'https://lore.raggiesoft.com',
-    categoryLabel: 'Accessible HTML5 Canvas Engine',
-    primaryStack: 'React 19 + Next.js + HTML5 Canvas + Parallel ARIA Shadow DOM',
-    architecturalPattern: 'Dual-Layer Accessible Canvas Game & Interactive Lore Compendium',
+    categoryLabel: '08 • Semantic Knowledge Graph & Canvas Engine',
+    primaryStack: 'Next.js 16 + React 19 + Tailwind CSS v4 + HTML5 Canvas + Parallel ARIA Shadow DOM',
+    architecturalPattern: 'Dual-Layer Accessible Canvas Visualization & Interactive Knowledge Graph',
     summary:
-      'Proves that high-frame-rate graphical `<canvas>` applications and strict Section 508 screen-reader accessibility are not mutually exclusive.',
+      'Proves that high-frame-rate graphical <canvas> applications and strict Federal Section 508 screen-reader accessibility are not mutually exclusive.',
     highlights: [
       'Implements the Dual-Layer Canvas Accessibility Pattern: a 60fps 2D graphical canvas paired with a synchronized, keyboard-navigable ARIA Shadow DOM.',
-      'Screen readers (JAWS, NVDA, VoiceOver) receive real-time spatial telemetry and tactical state announcements via polite/assertive ARIA live regions.',
-      'React 19 & Next.js static export architecture for instant global edge delivery.'
+      'Screen readers (JAWS, NVDA, VoiceOver) receive deterministic spatial telemetry and node relationship announcements via polite/assertive ARIA live regions.',
+      'Built with Next.js 16, React 19, and Tailwind CSS v4 static export architecture for instant global edge delivery.'
     ],
-    tags: ['React 19', 'Next.js', 'HTML5 Canvas', 'ARIA Shadow DOM', 'Section 508 Gaming', 'TypeScript'],
-    lenses: ['architecture', 'accessibility']
+    tags: ['Next.js 16', 'React 19', 'Tailwind CSS v4', 'HTML5 Canvas', 'ARIA Shadow DOM', 'Section 508'],
+    lenses: ['architecture', 'accessibility'],
+    ctaLabel: 'Inspect Lore Graph (lore.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-nebulae',
+    name: 'Nebulae Cosmic Observatory & Design Incubator',
+    domain: 'nebulae.raggiesoft.com',
+    url: 'https://nebulae.raggiesoft.com',
+    categoryLabel: '09 • Astrophysical Telemetry & CSS Incubator',
+    primaryStack: 'Custom Node.js Observatory Compiler + Vanilla ES2024 Canvas + Glassmorphic CSS',
+    architecturalPattern: 'Static Astrophysical Telemetry Atlas & High-Contrast Glassmorphic UI Lab',
+    summary:
+      'Interactive deep-space observatory and UI design-system incubator cataloging real-world nebulae and cosmic phenomena while testing accessible glassmorphic surface tokens.',
+    highlights: [
+      'Compiles structured astrophysical datasets into a zero-database interactive observatory with hardware-accelerated starfield rendering.',
+      'Validates high-contrast glassmorphism (backdrop-filter with opaque fallback tokens) to guarantee >= 4.5:1 text contrast across light and dark viewports.',
+      'Honors prefers-reduced-motion and keyboard rotor navigation across all celestial catalog cards.'
+    ],
+    tags: ['Node.js SSG', 'ES2024 Canvas', 'Accessible Glassmorphism', 'Astrophysical Telemetry', 'WCAG 2.1 AA'],
+    lenses: ['architecture', 'accessibility', 'data-etl'],
+    ctaLabel: 'Inspect Nebulae Atlas (nebulae.raggiesoft.com)'
   },
   {
     id: 'storetrainer',
     name: 'RaggieSoft StoreTrainer',
     domain: 'storetrainer.raggiesoft.com',
     url: 'https://storetrainer.raggiesoft.com',
-    categoryLabel: '100% Hand-Crafted Win32 Utility (Pre-AI)',
-    primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS Packaging',
+    categoryLabel: '10 • Pre-AI Win32 Utility & Retro-Accessible Portal',
+    primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS + Vanilla TypeScript / Vite',
     architecturalPattern: 'Cross-Era Win32 Desktop PC Game & Trainer Directory Manager (Windows 95 through Windows 11)',
     summary:
-      '100% hand-written (pre-AI, 2018–2020) desktop utility engineered for the retro and modern PC gaming ecosystem to store, index, and manage the filesystem locations and command-line launch switches of PC games alongside their associated game trainers across 30 years of Windows hardware.',
+      '100% hand-written (pre-AI, 2018–2020) desktop utility engineered inside a Windows 2000 Professional SP4 VM to store, index, and launch PC games alongside their associated game trainers and command-line switches across 30 years of Windows hardware.',
     highlights: [
-      'Hand-written inside a Windows 2000 Professional SP4 VM and compiled in Visual Basic 6.0 (TStore.vbp)—alongside a .NET port (TStore.NET)—using dynamic Win32 kernel memory verification (GetProcAddress for IsWow64Process in DetectOSBits.bas) so 64-bit checks never crash Windows 95/98.',
+      'Hand-written in Visual Basic 6.0 (TStore.vbp) alongside a .NET port (TStore.NET), using dynamic Win32 kernel memory verification (GetProcAddress for IsWow64Process in DetectOSBits.bas) so 64-bit checks never crash Windows 95/98.',
       'Packaged with an OS-aware NSIS Wizard95 installer (TSSetup.nsi) that conditionally deploys MSVBVM60.DLL, DCOM98, and Windows Script Host 5.6 on legacy kernels while extracting the full VB6 source tree ($INSTDIR\\Source) for educational auditing.',
-      'Standalone portal at storetrainer.raggiesoft.com follows all modern web and Section 508 accessibility standards under the hood while looking right at home on Netscape Communicator 4.78 / Windows 98–2000.'
+      'Standalone web portal at storetrainer.raggiesoft.com is compiled with Vanilla TypeScript + Vite—passing modern Section 508 and Light/Dark mode standards under the hood while paying homage to Netscape Communicator 4.78 / Windows 98–2000.'
     ],
-    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Win95–Win11 Compatibility', '100% Hand-Written (Zero AI)'],
+    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Vanilla TypeScript', '100% Hand-Written (Pre-AI)'],
     lenses: ['architecture', 'devops', 'data-etl'],
-    ctaLabel: 'Explore StoreTrainer Portal (storetrainer.raggiesoft.com)'
+    ctaLabel: 'Inspect StoreTrainer Portal (storetrainer.raggiesoft.com)'
   }
 ] as const;
 
 /**
  * "Personified DevOps" CI/CD & Content Automation Fleet.
- * Explains how a solo Systems Architect maintains 6+ production properties and
+ * Explains how a solo Systems Architect maintains 10 production properties and
  * gigabytes of multi-format media with enterprise reliability.
  */
 export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
@@ -323,13 +403,13 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
     codename: 'Jenna',
     scriptName: 'jenna-sync.sh',
     roleTitle: 'Multi-Repo Git & S3/Spaces CDN Release Orchestrator',
-    stack: 'Bash • Git • s3cmd • DigitalOcean Spaces (NYC1)',
+    stack: 'Bash • Git • rclone • DigitalOcean Spaces (NYC1)',
     summary:
-      'Single-command deployment pipeline governing build verification, semantic Git tagging, multi-repository GitHub synchronization, and differential S3 CDN asset publishing.',
+      'Single-command deployment pipeline governing build verification, semantic Git tagging, 10-property GitHub synchronization, and differential S3 CDN asset publishing.',
     capabilities: [
-      'Enforces pre-push build gates across SvelteKit, Angular, and PHP repositories before any commit reaches production.',
-      'Synchronizes immutable media assets to DigitalOcean Spaces CDN (assets.raggiesoft.com) with strict MIME-type and cache-control headers.',
-      'Eliminates manual `git push` drift across decoupled micro-properties.'
+      'Enforces pre-push build and type-check gates across Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Node.js ESM, and PHP 8.5 repositories before any commit reaches production.',
+      'Synchronizes public media and shared network navigation assets (raggiesoft-network.js/.css) to DigitalOcean Spaces CDN (assets.raggiesoft.com) while isolating local lossless audio vaults (/raggiesoft-vaults).',
+      'Eliminates manual `git push` drift across all 10 decoupled properties.'
     ]
   },
   {
@@ -340,7 +420,7 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
     summary:
       'Idempotent media ingestion pipeline that transforms raw studio renders into broadcast-normalized MP3/OGG streams, 4K upscaled artwork, and time-synced WebVTT closed captions.',
     capabilities: [
-      'Normalizes audio masters to EBU R128 (-14 LUFS) broadcast standards via FFmpeg.',
+      'Normalizes audio masters to EBU R128 (-14 LUFS) broadcast standards via FFmpeg while archiving lossless WAV/FLAC masters in a decoupled local vault.',
       'Executes macOS Metal-accelerated RealESRGAN neural upscaling for 1:1 album covers and 16:9 Open Graph social banners.',
       'Inspects `.vtt` files for `NOTE human_verified_by_michael` signatures—preserving human-synced studio timings while auto-transcribing unverified tracks.'
     ]
@@ -349,12 +429,12 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
     codename: 'Sarah',
     scriptName: 'sarah-deploy.sh',
     roleTitle: 'Zero-Downtime Linux & Nginx Infrastructure Provisioner',
-    stack: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • Let’s Encrypt TLS',
+    stack: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • Cloudflare / Let’s Encrypt TLS',
     summary:
-      'Server-side orchestration daemon on NYC1 (142.93.244.239) managing virtual host routing, 301 decoupling redirects, TLS termination, and atomic release promotion.',
+      'Server-side orchestration daemon on NYC1 (142.93.244.239) managing virtual host routing, 301 vanity domain redirects, TLS termination, and atomic release promotion.',
     capabilities: [
-      'Manages Nginx reverse-proxy and static root configurations across raggiesoft.com, music.raggiesoft.com, books.raggiesoft.com, and michaelpragsdale.com.',
-      'Configures strict HTTP security headers (CSP, HSTS, X-Content-Type-Options, Referrer-Policy).',
+      'Manages Nginx virtual hosts across raggiesoft.com, all eight *.raggiesoft.com subdomains (corporate, engineroom, music, stardust, books, lore, nebulae, storetrainer), and michaelpragsdale.com.',
+      'Configures strict HTTP security headers (CSP, HSTS, X-Content-Type-Options, Referrer-Policy) and edge 301 redirects for legacy routes and vanity domains.',
       'Executes zero-downtime reloads after verifying Nginx configuration syntax.'
     ]
   },
@@ -367,7 +447,7 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
       'Automated publishing and quality-assurance toolchain compiling Markdown manuscripts into Section 508-compliant EPUB 3.3 e-books and validating cross-property JSON catalogs.',
     capabilities: [
       'Compiles multi-chapter Markdown narratives into validated EPUB 3.3 packages with embedded accessible navigation landmarks.',
-      'Audits `album.json`, `tracks.json`, and `books.json` manifests for referential integrity and broken CDN links prior to deployment.'
+      'Audits `album.json`, `tracks.json`, `books.json`, and `corporate-structure.json` manifests for referential integrity and broken CDN links prior to deployment.'
     ]
   }
 ] as const;
@@ -443,24 +523,24 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
     id: 'cascade-protocol-decoupling',
     code: 'CASE-04',
-    title: 'The Cascade Protocol: Zero-Database Micro-Property Decoupling & CDN Data Lake',
+    title: 'The Cascade Protocol: 10-Property Polyglot Decoupling, Path Consolidation & CDN Data Lake',
     organization: 'RaggieSoft Infrastructure (NYC1 Production Cluster)',
     timeframe: '2024 – 2026',
     lenses: ['architecture', 'devops', 'data-etl'],
     problemStatement:
-      'Hosting corporate pages, 19+ full-length music albums, interactive novels, and a recruiter portfolio inside a single monolithic PHP repository created tight coupling, content sprawl, and single-point-of-failure deployment risks—while installing a relational database (MySQL/PostgreSQL) would introduce unnecessary patching overhead and SQL injection attack vectors.',
+      'Hosting B2B corporate licensing, 31+ full-length music albums, 7 band lore archives, interactive novels, and a recruiter portfolio inside a single monolithic PHP repository created tight coupling and deployment risk—while spinning up fourth-level subdomains or relational databases (MySQL/PostgreSQL) would fracture Universal SSL coverage, multiply framework maintenance, and introduce SQL injection attack vectors.',
     architecturalSolution:
-      'Executed a phased strangler-fig decoupling strategy: extracted structured metadata, liner notes, WebVTT lyrics, and book manuscripts into a canonical S3/Spaces JSON+Markdown data lake (`raggiesoft-assets`), and deployed specialized, fault-isolated frontends (`music.raggiesoft.com` in Svelte 5, `books.raggiesoft.com` in Vanilla PHP/JS, `michaelpragsdale.com` in Angular 19) governed by Nginx 301 edge redirects and automated `jenna-sync.sh` CI/CD pipelines.',
+      'Executed a strangler-fig decoupling strategy across 10 specialized properties (`*.raggiesoft.com` + `michaelpragsdale.com`) backed by a flat-file JSON+Markdown data lake (`raggiesoft-assets`). Consolidated multi-band lore under `engineroom.raggiesoft.com/artists/{slug}` (Astro 6) so adding new artists never increases operational overhead, while dedicating standalone stacks to stateful audio streaming (`music.raggiesoft.com` in Svelte 5), flagship narrative worlds (`stardust.raggiesoft.com` in Nuxt 4), B2B governance (`corporate.raggiesoft.com` in Bootstrap 5.3.8 SSG), and executive evaluation (`michaelpragsdale.com` in Angular 19)—unified by a shared CDN network bar (`raggiesoft-network.js`) and single-command `jenna-sync.sh` CI/CD.',
     quantifiedImpact: [
       { label: 'Database Attack Surface', value: '0 SQL Databases (100% Static/JSON)' },
-      { label: 'Production Properties', value: '6 Polyglot Micro-Properties' },
+      { label: 'Production Properties', value: '10 Polyglot Micro-Properties' },
       { label: 'Deployment Automation', value: 'Single-Command CI/CD (jenna-sync.sh)' }
     ],
-    technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Nginx 301 Routing', 'DigitalOcean Spaces CDN', 'Bash CI/CD'],
+    technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'Next.js 16', 'Nginx 301 Routing', 'DigitalOcean Spaces CDN'],
     referenceLinks: [
+      { label: 'View Engine Room Imprint (Astro 6)', url: 'https://engineroom.raggiesoft.com' },
       { label: 'View The Listening Room (Svelte 5)', url: 'https://music.raggiesoft.com' },
-      { label: 'View Ocean View Archives (Books)', url: 'https://books.raggiesoft.com' },
-      { label: 'View Corporate Hub (PHP 8.5)', url: 'https://raggiesoft.com' }
+      { label: 'View Corporate Hub (Bootstrap 5.3.8 SSG)', url: 'https://corporate.raggiesoft.com' }
     ]
   }
 ] as const;
@@ -477,13 +557,13 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     timeframe: 'Jul 2008 – Present (18+ Years)',
     lenses: ['architecture', 'accessibility', 'devops', 'data-etl'],
     summary:
-      'Architect and maintain a multi-domain, polyglot cloud ecosystem serving interactive media, accessible digital publications, and enterprise web proofs-of-concept with zero database attack surface.',
+      'Architect and maintain a 10-property, polyglot cloud ecosystem serving B2B licensing, interactive media, accessible digital publications, and enterprise web proofs-of-concept with zero database attack surface.',
     achievements: [
-      'Engineered and decoupled 6 production web properties spanning Angular 19 (Zoneless Signals), PHP 8.5 MVC (Stardust Engine CMS), Svelte 5 + Tailwind v4, Vanilla PHP/JS, and React 19 / Next.js.',
-      'Built custom local-first tooling including the Engine Room Studio Hold-Spacebar WebVTT Lyric Synchronizer and automated Bash/Python media mastering pipelines (`jenna-sync.sh`, `harper.sh`, `sarah-deploy.sh`).',
-      'Enforced strict WCAG 2.1 AA/AAA and Federal Section 508 compliance across all properties, including native `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors` support.'
+      'Engineered and decoupled 10 production web properties spanning Angular 19 (Zoneless Signals), PHP 8.5 MVC (Stardust Engine CMS), SvelteKit 2 + Svelte 5 Runes, Astro 6, Nuxt 4 + Vue 3, Next.js 16 + React 19, Bootstrap 5.3.8 Static SSG, Vanilla PHP/ES2024 JS, and Visual Basic 6.0 / Win32 API.',
+      'Architected a unified cross-network navigation bar and single-hamburger mobile drawer (`raggiesoft-network.js` / `.css`) plus local-first studio tooling (`jenna-sync.sh`, `harper.sh`, `sarah-deploy.sh`, and the Hold-Spacebar WebVTT Lyric Synchronizer).',
+      'Enforced strict WCAG 2.1 AA/AAA and Federal Section 508 compliance across all 10 properties, including native `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors` support.'
     ],
-    technologies: ['Angular 19', 'PHP 8.5', 'Svelte 5', 'TypeScript', 'Linux/Nginx', 'Section 508', 'Bash/Python CI/CD']
+    technologies: ['Angular 19', 'PHP 8.5', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'React 19', 'TypeScript', 'Linux/Nginx', 'Section 508', 'Bash/Python CI/CD']
   },
   {
     functionalTitle: 'Technical Lead & Data Normalization Specialist',
