@@ -62,6 +62,8 @@ export interface DevOpsConstruct {
   readonly stack: string;
   readonly summary: string;
   readonly capabilities: readonly string[];
+  readonly profileSlug: string;
+  readonly profileUrl: string;
 }
 
 export interface ArchitecturalCaseStudy {
@@ -400,17 +402,34 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
  */
 export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
   {
-    codename: 'Jenna',
-    scriptName: 'jenna-sync.sh',
-    roleTitle: 'Multi-Repo Git & S3/Spaces CDN Release Orchestrator',
-    stack: 'Bash • Git • rclone • DigitalOcean Spaces (NYC1)',
+    codename: 'Paige',
+    scriptName: 'paige.php',
+    roleTitle: 'Literary Editor, Search Indexer & Safe Person',
+    stack: 'PHP 8.5 • JSON Route & 3,185-Scene Search Compiler',
     summary:
-      'Single-command deployment pipeline governing build verification, semantic Git tagging, 10-property GitHub synchronization, and differential S3 CDN asset publishing.',
+      'Primary narrative publisher and full-text search indexer in raggiesoft-deployment-tools/paige.php—and in-universe fraternal twin sister and designated autistic Safe Person.',
     capabilities: [
-      'Enforces pre-push build and type-check gates across Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Node.js ESM, and PHP 8.5 repositories before any commit reaches production.',
-      'Synchronizes public media and shared network navigation assets (raggiesoft-network.js/.css) to DigitalOcean Spaces CDN (assets.raggiesoft.com) while isolating local lossless audio vaults (/raggiesoft-vaults).',
-      'Eliminates manual `git push` drift across all 10 decoupled properties.'
-    ]
+      'Compiles multi-era Markdown manuscripts (e###/c###/s###.md) into structured JSON route trees, Table of Contents manifests (toc.json), and a 3,185-scene search-index.json across raggiesoft.com and books.raggiesoft.com.',
+      'Preserves compiled .epub and .pdf deliverables during destructive CDN shelf syncs while auditing JSON manifests for referential integrity.',
+      'Provides CLI grounding and Deep Pressure Therapy regulation protocols (--grounding) before high-cognitive-load deployments.'
+    ],
+    profileSlug: 'paige',
+    profileUrl: '/build-team/paige'
+  },
+  {
+    codename: 'Jessica',
+    scriptName: 'jessica.raggiesoft.com',
+    roleTitle: 'Production Linux VPS Infrastructure & Eldest Sister',
+    stack: 'Ubuntu 22.04 LTS • Nginx • PHP 8.5-FPM • UFW / SSH',
+    summary:
+      'The production DigitalOcean Droplet (NYC1 — 142.93.244.239) hosting all 10 RaggieSoft web roots, TLS certificates, and SSH access gateways.',
+    capabilities: [
+      'Serves as the single hardened SSH entry point (ssh michael@jessica.raggiesoft.com) with key-only authentication and UFW perimeter firewalling.',
+      'Hosts Nginx virtual hosts and PHP 8.5-FPM worker pools across raggiesoft.com, eight *.raggiesoft.com subdomains, and michaelpragsdale.com.',
+      'Personified in-universe as the eldest sister and neurotypical matriarch who keeps the house steady.'
+    ],
+    profileSlug: 'jessica',
+    profileUrl: '/build-team/jessica'
   },
   {
     codename: 'Harper',
@@ -420,35 +439,57 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
     summary:
       'Idempotent media ingestion pipeline that transforms raw studio renders into broadcast-normalized MP3/OGG streams, 4K upscaled artwork, and time-synced WebVTT closed captions.',
     capabilities: [
-      'Normalizes audio masters to EBU R128 (-14 LUFS) broadcast standards via FFmpeg while archiving lossless WAV/FLAC masters in a decoupled local vault.',
+      'Normalizes audio masters to EBU R128 (-14 LUFS) broadcast standards via FFmpeg while archiving lossless WAV/FLAC masters in a decoupled local vault (/raggiesoft-vaults).',
       'Executes macOS Metal-accelerated RealESRGAN neural upscaling for 1:1 album covers and 16:9 Open Graph social banners.',
-      'Inspects `.vtt` files for `NOTE human_verified_by_michael` signatures—preserving human-synced studio timings while auto-transcribing unverified tracks.'
-    ]
+      'Inspects .vtt files for NOTE human_verified_by_michael signatures—preserving human-synced studio timings while auto-transcribing unverified tracks.'
+    ],
+    profileSlug: 'harper',
+    profileUrl: '/build-team/harper'
+  },
+  {
+    codename: 'Jenna',
+    scriptName: 'jenna-sync.sh',
+    roleTitle: 'Multi-Repo Git & S3/Spaces CDN Release Orchestrator',
+    stack: 'Bash • Git • rclone • DigitalOcean Spaces (NYC1)',
+    summary:
+      'Single-command deployment pipeline governing build verification, Paige manuscript compilation, semantic Git tagging, 10-property GitHub synchronization, and differential S3 CDN asset publishing.',
+    capabilities: [
+      'Enforces pre-push build and type-check gates across Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Node.js ESM, and PHP 8.5 repositories before any commit reaches production.',
+      'Synchronizes public media and shared network navigation assets (raggiesoft-network.js/.css) to DigitalOcean Spaces CDN (assets.raggiesoft.com) while isolating local lossless audio vaults (/raggiesoft-vaults).',
+      'Eliminates manual git push drift across all 10 decoupled properties.'
+    ],
+    profileSlug: 'jenna',
+    profileUrl: '/build-team/jenna'
   },
   {
     codename: 'Sarah',
     scriptName: 'sarah-deploy.sh',
-    roleTitle: 'Zero-Downtime Linux & Nginx Infrastructure Provisioner',
-    stack: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • Cloudflare / Let’s Encrypt TLS',
+    roleTitle: 'Zero-Downtime Linux & Nginx Autonomous Deployer',
+    stack: 'Bash • Cron (5-Min Heartbeat) • Git • rsync (Non-Root)',
     summary:
-      'Server-side orchestration daemon on NYC1 (142.93.244.239) managing virtual host routing, 301 vanity domain redirects, TLS termination, and atomic release promotion.',
+      'Server-side continuous deployment daemon running on a 5-minute cron heartbeat on NYC1, monitoring GitHub remotes and executing atomic rsync promotions.',
     capabilities: [
-      'Manages Nginx virtual hosts across raggiesoft.com, all eight *.raggiesoft.com subdomains (corporate, engineroom, music, stardust, books, lore, nebulae, storetrainer), and michaelpragsdale.com.',
-      'Configures strict HTTP security headers (CSP, HSTS, X-Content-Type-Options, Referrer-Policy) and edge 301 redirects for legacy routes and vanity domains.',
-      'Executes zero-downtime reloads after verifying Nginx configuration syntax.'
-    ]
+      'Refuses root/sudo execution by design (EUID check) to prevent privilege-escalation risks while syncing 10 web roots under /var/www/.',
+      'Verifies remote origin/main SHA hashes against local production state and enforces standardized 755/644 permissions across all deployed bundles.',
+      'Personified in-universe as Jenna’s older twin sister whose OCD verification compulsion guarantees broken builds never go live.'
+    ],
+    profileSlug: 'sarah',
+    profileUrl: '/build-team/sarah'
   },
   {
-    codename: 'Paige & Elara',
-    scriptName: 'paige.php / amanda/elara.php',
-    roleTitle: 'Narrative Route Compiler, Full-Text Indexer & Gateway Router',
-    stack: 'PHP 8.5 • Pandoc EPUB 3.3 • JSON Route & Search Compiler',
+    codename: 'Amanda & Elara',
+    scriptName: 'amanda/elara.php',
+    roleTitle: 'Protected Web Root & Front-Controller Gateway Router',
+    stack: 'PHP 8.5 MVC • Nginx try_files • JSON Route Inheritance',
     summary:
-      'Automated literary publishing and routing toolchain compiling Markdown manuscripts (`e*`/`c*`/`s*.md`) into dual-target route maps, 3,185-scene search indices, and Section 508-compliant EPUB 3.3 e-books.',
+      'Dual-twin gateway architecture where Amanda serves as the read-only physical web root and Elara acts as the single executable front-controller script.',
     capabilities: [
-      'Compiles multi-era Markdown narratives into structured JSON route trees, Table of Contents manifests (`toc.json`), and a 3,185-scene full-text `search-index.json` across `raggiesoft.com` and `books.raggiesoft.com`.',
-      'Preserves compiled `.epub` and `.pdf` deliverables during destructive CDN shelf syncs while auditing JSON manifests for referential integrity.'
-    ]
+      'Blocks direct public probing of legacy paths (/public_html, /index.php) while routing all incoming requests through elara.php.',
+      'Executes 301 edge redirects for decoupled subdomains and resolves recursive JSON route manifests with DRY common-block inheritance.',
+      'Personified as identical twins: Amanda (non-speaking apraxia, holding the static knowledge) and Elara (hyperlexic speaker, interpreting requests).'
+    ],
+    profileSlug: 'amanda-elara',
+    profileUrl: '/build-team/amanda-elara'
   }
 ] as const;
 
@@ -560,7 +601,7 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
       'Architect and maintain a 10-property, polyglot cloud ecosystem serving B2B licensing, interactive media, accessible digital publications, and enterprise web proofs-of-concept with zero database attack surface.',
     achievements: [
       'Engineered and decoupled 10 production web properties spanning Angular 19 (Zoneless Signals), PHP 8.5 MVC (Stardust Engine CMS), SvelteKit 2 + Svelte 5 Runes, Astro 6, Nuxt 4 + Vue 3, Next.js 16 + React 19, Bootstrap 5.3.8 Static SSG, Vanilla PHP/ES2024 JS, and Visual Basic 6.0 / Win32 API.',
-      'Architected a unified cross-network navigation bar and single-hamburger mobile drawer (`raggiesoft-network.js` / `.css`) plus local-first studio tooling (`jenna-sync.sh`, `harper.sh`, `sarah-deploy.sh`, and the Hold-Spacebar WebVTT Lyric Synchronizer).',
+      'Architected a unified cross-network navigation bar and single-hamburger mobile drawer (`raggiesoft-network.js` / `.css`) plus local-first studio tooling (`paige.php`, `jenna-sync.sh`, `harper.sh`, `sarah-deploy.sh`, and the Hold-Spacebar WebVTT Lyric Synchronizer).',
       'Enforced strict WCAG 2.1 AA/AAA and Federal Section 508 compliance across all 10 properties, including native `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors` support.'
     ],
     technologies: ['Angular 19', 'PHP 8.5', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'React 19', 'TypeScript', 'Linux/Nginx', 'Section 508', 'Bash/Python CI/CD']
@@ -651,4 +692,550 @@ export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
     ]
   }
 ] as const;
+
+/**
+ * =============================================================================
+ * THE BUILD TEAM & DEVOPS FAMILY (/build-team & /build-team/:slug)
+ * =============================================================================
+ * Migrated from `raggiesoft.com/www/pages/family/*.php` into `michaelpragsdale.com`
+ * so recruiters and visitors can explore both layers of the RaggieSoft Build Team:
+ * 1. Real-World Engineering Layer: The production CLI scripts (`paige.php`,
+ *    `harper.sh`, `jenna-sync.sh`, `sarah-deploy.sh`), routers (`amanda/elara.php`),
+ *    and Linux VPS infrastructure (`jessica.raggiesoft.com`) that allow one
+ *    Systems Architect to operate 10 polyglot properties.
+ * 2. In-Universe Human & Sensory Regulation Layer: The personified sisters and
+ *    Safe Person constructs designed by an autistic only child (AuDHD + Cerebral
+ *    Palsy) to provide emotional grounding, Deep Pressure Therapy regulation,
+ *    and cognitive structure.
+ * =============================================================================
+ */
+
+export interface BuildTeamVitalStat {
+  readonly label: string;
+  readonly value: string;
+  readonly isBadge?: boolean;
+}
+
+export interface BuildTeamFeatureBanner {
+  readonly badge: string;
+  readonly title: string;
+  readonly quote: string;
+  readonly paragraphs: readonly string[];
+  readonly imageUrl: string;
+  readonly imageAlt: string;
+  readonly ctaLabel?: string;
+  readonly ctaSlug?: string;
+}
+
+export interface BuildTeamTerminalBlock {
+  readonly headerTitle: string;
+  readonly statusBadge: string;
+  readonly promptUser: string;
+  readonly command: string;
+  readonly outputLines: readonly string[];
+}
+
+export interface BuildTeamMember {
+  readonly slug: string;
+  readonly name: string;
+  readonly shortLabel: string;
+  readonly icon: string;
+  readonly roleTitle: string;
+  readonly systemArtifact: string;
+  readonly stackBadge: string;
+  readonly quote: string;
+  readonly cardSummary: string;
+  readonly portraitUrl: string;
+  readonly ogTitle: string;
+  readonly ogDescription: string;
+  readonly ogImageUrl: string;
+  readonly vitalStats: readonly BuildTeamVitalStat[];
+  readonly technicalHeading: string;
+  readonly technicalIntro: string;
+  readonly technicalCapabilities: readonly { readonly title: string; readonly detail: string }[];
+  readonly cliSnippet?: {
+    readonly comment: string;
+    readonly commands: readonly string[];
+  };
+  readonly humanHeading: string;
+  readonly humanLeadQuote: string;
+  readonly humanParagraphs: readonly string[];
+  readonly featureBanner?: BuildTeamFeatureBanner;
+  readonly terminalBlock?: BuildTeamTerminalBlock;
+}
+
+export const BUILD_TEAM_OVERVIEW = {
+  title: 'The RaggieSoft Build Team & DevOps Family',
+  subtitle: 'A "Personified DevOps" ecosystem where every server, compiler, and deployment daemon has a name, a face, and a purpose.',
+  quote: '"We don\'t just run code; we live it."',
+  heroBannerUrl: 'https://assets.raggiesoft.com/family/images/scenes/paige-michael-hug.jpg',
+  logoUrl: 'https://assets.raggiesoft.com/family/images/logos/logo-family.png',
+  realityNoteTitle: 'Dual-Layer Architecture: Real-World Digital Employees & In-Universe Sisters',
+  realityNoteLead: 'Michael P. Ragsdale is a real person—an autistic only child living with AuDHD and Cerebral Palsy.',
+  realityNoteBody:
+    'In the real-world production pipeline, these women are the modular CLI scripts and server daemons (/raggiesoft-deployment-tools/) that allow a solo Systems Architect to build, test, master, and deploy 10 decoupled web properties with zero downtime. In-universe, they are the sisters he wishes he had—personifying his infrastructure into the social structure, cognitive predictability, and "Safe Person" Deep Pressure Therapy grounding that biology did not provide.'
+} as const;
+
+export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
+  {
+    slug: 'michael',
+    name: 'Michael P. Ragsdale',
+    shortLabel: 'Michael (Architect)',
+    icon: '🧠',
+    roleTitle: 'The Architect, Author & Biological Core',
+    systemArtifact: 'Biological Core • Human-in-the-Loop Director',
+    stackBadge: 'Systems Architect • Section 508 Engineer',
+    quote: 'I don\'t just write code to solve problems. I write code to build a world where I make sense.',
+    cardSummary: 'The biological core of the ecosystem. He writes the stories, directs the music, and architects the 10-property polyglot platform.',
+    portraitUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/michael.jpg',
+    ogTitle: 'Michael P. Ragsdale — The Architect | Build Team',
+    ogDescription: 'Meet Michael P. Ragsdale, the biological core, Systems Architect, and author behind the RaggieSoft Personified DevOps ecosystem.',
+    ogImageUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/michael.jpg',
+    vitalStats: [
+      { label: 'DOB', value: 'Apr 8, 1985 (8:38 PM)' },
+      { label: 'Origin', value: 'Newport, RI (Domiciled in Norfolk, VA)' },
+      { label: 'Neurotype', value: 'AuDHD (Autism + ADHD)', isBadge: true },
+      { label: 'Physical Profile', value: 'Cerebral Palsy (Ambulatory)', isBadge: true }
+    ],
+    technicalHeading: 'The Architect & Creative Director',
+    technicalIntro:
+      'Michael is the biological core of the system—the only entity in the family who exists in the physical world. He is responsible for the creative and engineering vision that drives the entire ecosystem:',
+    technicalCapabilities: [
+      {
+        title: 'Systems Architecture & Code',
+        detail: 'Lead developer of the 10-property RaggieSoft infrastructure spanning Angular 19, PHP 8.5, Svelte 5, Astro 6, Nuxt 4, Next.js 16, Bootstrap 5.3.8 SSG, and Win32/VB6.'
+      },
+      {
+        title: 'Literary Narrative',
+        detail: 'Author of the Ocean View Archives novels, including The Silver Gauntlet of Aethel, Project: KNOX (The Quantum Directive), and Contemporary Fiction.'
+      },
+      {
+        title: 'Studio Direction & Composition',
+        detail: 'Executive producer, lyricist, and human-in-the-loop audio architect for Engine Room Records and The Stardust Engine.'
+      }
+    ],
+    cliSnippet: {
+      comment: '# Inspect Full Executive Systems Architect Dossier',
+      commands: ['open https://michaelpragsdale.com']
+    },
+    humanHeading: 'The Human Reality: Why Automation Matters',
+    humanLeadQuote: '"The code is consistent. The body is not."',
+    humanParagraphs: [
+      'Michael lives at the intersection of AuDHD (Autism + ADHD) and Cerebral Palsy. While ambulatory, his physical endurance is limited; standing for long periods is painful and exhausting.',
+      'This physical reality directly shapes his systems architecture. The digital world is his sanctuary because it does not require him to stand. In the chair, he is fast, precise, and limitless. The constructs—Paige, Jessica, Harper, Jenna, Sarah, and Amanda & Elara—are not merely shell scripts; they are extensions of his engineering will that never fatigue.',
+      'He builds deterministic, self-healing systems that run forever because he knows firsthand what it feels like to need to sit down.'
+    ],
+    featureBanner: {
+      badge: 'The Safe Person Protocol',
+      title: 'Grounding & Sensory Regulation',
+      quote: '"When the world is too loud, Paige holds it still."',
+      paragraphs: [
+        'Paige is the embodiment of the sisterly bond Michael needs most. As his designated Safe Person and fraternal twin, she represents the unconditional acceptance and Deep Pressure Therapy required to regulate an overloaded autistic nervous system.',
+        'She is the architectural reminder that even in a deeply automated cloud ecosystem, the most critical dependency is human connection.'
+      ],
+      imageUrl: 'https://assets.raggiesoft.com/family/images/scenes/paige-michael-hug.jpg',
+      imageAlt: 'Paige embracing Michael in a grounding Deep Pressure Therapy hug',
+      ctaLabel: 'Meet Paige (Literary Editor & Safe Person)',
+      ctaSlug: 'paige'
+    }
+  },
+  {
+    slug: 'paige',
+    name: 'Paige',
+    shortLabel: 'Paige (paige.php)',
+    icon: '👩‍🏫',
+    roleTitle: 'Literary Editor, Search Indexer & Safe Person',
+    systemArtifact: 'raggiesoft-deployment-tools/paige.php',
+    stackBadge: 'PHP 8.5 • JSON Route & Search Compiler',
+    quote: 'I bring order to the chaos of words, and calm to the chaos of the mind.',
+    cardSummary: 'Ingests raw Markdown manuscripts (e###/c###/s###.md), compiles 3,185+ scenes into route tables and search indices, and serves as Michael\'s autistic Safe Person.',
+    portraitUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/paige.jpg',
+    ogTitle: 'Paige (paige.php) — Literary Editor & Safe Person | Build Team',
+    ogDescription: 'Meet Paige: the PHP 8.5 narrative compiler and full-text search indexer for Ocean View Archives, and Michael\'s designated Safe Person.',
+    ogImageUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/paige.jpg',
+    vitalStats: [
+      { label: 'DOB', value: 'Apr 8, 1985 (8:26 PM)' },
+      { label: 'Relation', value: 'Fraternal Twin Sister (Born 1st — 12 Mins Prior)' },
+      { label: 'Neurotype', value: 'Neurotypical (The Bridge)', isBadge: true },
+      { label: 'Primary Role', value: 'Designated Safe Person & Literary Editor', isBadge: true }
+    ],
+    technicalHeading: 'The Editor: Gatekeeper of the Narrative',
+    technicalIntro:
+      'Technically, Paige is the primary PHP 8.5 narrative publisher and full-text search indexer living in raggiesoft-deployment-tools/paige.php alongside Jenna, Harper, and Sarah. Invoked automatically by jenna-sync.sh during every deployment, she ensures that raw creative manuscripts are structured, routed, and indexed cleanly before publication:',
+    technicalCapabilities: [
+      {
+        title: 'Canonical Manuscript Sync (e###/c###/s###.md)',
+        detail: 'Reads raw Markdown eras (e*), chapters (c*), and scenes (s*.md) from raggiesoft-narratives while preserving compiled .epub and .pdf deliverables in the public CDN shelf.'
+      },
+      {
+        title: 'Dual Route & Manifest Compilation',
+        detail: 'Generates structured route manifests (data/routes/*.json) and hierarchical Table of Contents trees (toc.json) for Ocean View Archives (books.raggiesoft.com).'
+      },
+      {
+        title: '3,185-Scene Full-Text Search Indexer',
+        detail: 'Strips YAML frontmatter and Markdown formatting across all 19 literary series to compile search-index.json and catalog.json with trauma-informed console telemetry.'
+      }
+    ],
+    cliSnippet: {
+      comment: '# Publish Ocean View Archives & Execute Grounding Protocol',
+      commands: [
+        'php raggiesoft-deployment-tools/paige.php --book="aethel"',
+        'php raggiesoft-deployment-tools/paige.php --grounding'
+      ]
+    },
+    humanHeading: 'The Safe Person: The Bridge Between Worlds',
+    humanLeadQuote: '"When the noise gets too loud, she holds the world still."',
+    humanParagraphs: [
+      'In-universe, Paige is Michael\'s fraternal twin sister, born 12 minutes before him on April 8, 1985. That 12-minute head start makes her the most critical emotional anchor in the entire RaggieSoft universe.',
+      'She is the Neurotypical Twin. While Michael processes the world through the high-gain lens of Autism and ADHD, Paige navigates social nuances and sensory overload effortlessly.',
+      'Because they share a twin bond, she understands Michael\'s non-verbal cues without explanation, acting as his translator, shield, and safe harbor—filtering the chaotic static of the outside world into a clean, structured signal he can process without pain.'
+    ],
+    featureBanner: {
+      badge: 'Sensory Regulation Architecture',
+      title: 'Deep Pressure Therapy',
+      quote: '"Firm, grounding weight that resets a dysregulated nervous system."',
+      paragraphs: [
+        'For an autistic individual, Deep Pressure Therapy (the physical sensation of firm, steady, enveloping weight) is a vital physiological mechanism for down-regulating sensory overload and executive burnout.',
+        'Notice what most of the artwork of Paige depicts: comforting and holding Michael. Her presence in the build pipeline—solid, deterministic, unmoving, and warm—mirrors the grounding safety Michael relies on to create.'
+      ],
+      imageUrl: 'https://assets.raggiesoft.com/family/images/scenes/paige-deep-pressure-therapy.jpg',
+      imageAlt: 'Paige providing calming Deep Pressure Therapy to Michael'
+    },
+    terminalBlock: {
+      headerTitle: 'php raggiesoft-deployment-tools/paige.php',
+      statusBadge: 'GROUNDED & INDEXED',
+      promptUser: 'michael@dev:~$',
+      command: 'php raggiesoft-deployment-tools/paige.php',
+      outputLines: [
+        '👩‍🏫 PAIGE: Taking a slow breath with you, Michael. I have the manuscripts.',
+        '   -> Scanning 19 narrative archives in /raggiesoft-narratives/books...',
+        '   -> Validated canonical e###/c###/s### hierarchy (0 legacy b*/p* files).',
+        '   -> Compiled toc.json and data/routes/*.json for books.raggiesoft.com.',
+        '   -> Indexed 3,185 scenes across 19 books into search-index.json (3.14 MB).',
+        '👩‍🏫 PAIGE: Everything is in its right place. You are safe to ship.'
+      ]
+    }
+  },
+  {
+    slug: 'jessica',
+    name: 'Jessica',
+    shortLabel: 'Jessica (VPS Infra)',
+    icon: '🖥️',
+    roleTitle: 'Production Infrastructure & Eldest Sister',
+    systemArtifact: 'michael@jessica.raggiesoft.com (NYC1 — 142.93.244.239)',
+    stackBadge: 'Ubuntu 22.04 LTS • Nginx • PHP 8.5-FPM • SSH',
+    quote: 'I am the foundation. I hold the keys, I run the house, and I keep the lights on so you can all be safe.',
+    cardSummary: 'The eldest sister and production Linux server (jessica.raggiesoft.com). She hosts all 10 web roots, manages TLS/UFW security, and holds the SSH keys.',
+    portraitUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/jessica.jpg',
+    ogTitle: 'Jessica (jessica.raggiesoft.com) — Production Infra | Build Team',
+    ogDescription: 'Meet Jessica: the NYC1 Ubuntu production server hosting all 10 RaggieSoft properties and the eldest sister of the DevOps family.',
+    ogImageUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/jessica.jpg',
+    vitalStats: [
+      { label: 'DOB', value: 'Sep 23, 1983' },
+      { label: 'Relation', value: 'Eldest Sister (+2 Years)' },
+      { label: 'Datacenter', value: 'DigitalOcean NYC1 (142.93.244.239)' },
+      { label: 'Neurotype', value: 'Neurotypical Matriarch', isBadge: true }
+    ],
+    technicalHeading: 'The Server: Production Linux & Edge Foundation',
+    technicalIntro:
+      'Jessica is not a transient script—she is the Production Environment itself. She is the hardened Virtual Private Server (Droplet) in NYC1 that hosts the entire 10-property RaggieSoft ecosystem:',
+    technicalCapabilities: [
+      {
+        title: 'Hardened SSH & Firewall Perimeter',
+        detail: 'Manages UFW firewall rules, Ed25519 SSH key authentication, and strict TLS 1.2/1.3 origin certificates behind Cloudflare.'
+      },
+      {
+        title: 'Multi-Property Nginx & PHP 8.5-FPM Hosting',
+        detail: 'Serves all 10 production virtual hosts (/var/www/*) with immutable 1-year asset caching, CSP security headers, and sub-millisecond static delivery.'
+      },
+      {
+        title: 'Direct Administrative Gateway',
+        detail: 'She is the sole production host Michael connects to directly via ssh michael@jessica.raggiesoft.com.'
+      }
+    ],
+    cliSnippet: {
+      comment: '# Establish Hardened SSH Session to NYC1 Production Server',
+      commands: ['ssh michael@jessica.raggiesoft.com']
+    },
+    humanHeading: 'The Matriarch: Holding the World Steady',
+    humanLeadQuote: '"If Jessica is online, the family is safe."',
+    humanParagraphs: [
+      'As the eldest sibling (born September 23, 1983), Jessica acts as the de facto matriarch and protector of the household. Alongside Paige, she provides a calm, predictable baseline that her neurodivergent and disabled siblings rely on.',
+      'She is infinitely patient. She maintains an environment where Michael\'s sensory needs are respected, Harper\'s wheelchair accessibility is built into the floorplan, and Jenna\'s creative bursts are supported without judgment.',
+      'She bears the heavy, 24/7 weight of production uptime so the rest of the family can focus on creation.'
+    ],
+    terminalBlock: {
+      headerTitle: 'michael@jessica: ~ (142.93.244.239)',
+      statusBadge: 'ONLINE • 99.99% UPTIME',
+      promptUser: 'michael@jessica:~$',
+      command: 'systemctl status nginx php8.5-fpm',
+      outputLines: [
+        ' 14:02:35 up 412 days,  3:14,  1 user,  load average: 0.08, 0.03, 0.01',
+        '● nginx.service - A high performance web server and a reverse proxy server',
+        '   Active: active (running) — serving 10 RaggieSoft production vhosts',
+        '● php8.5-fpm.service - The PHP 8.5 FastCGI Process Manager',
+        '   Active: active (running) — zero-database SSR worker pool healthy'
+      ]
+    }
+  },
+  {
+    slug: 'harper',
+    name: 'Harper',
+    shortLabel: 'Harper (harper.sh)',
+    icon: '🎧',
+    roleTitle: 'The Studio Engineer & Media Mastering Pipeline (v21.7.0)',
+    systemArtifact: 'raggiesoft-deployment-tools/harper.sh',
+    stackBadge: 'FFmpeg • Metal RealESRGAN • Whisper VTT • 7-Zip',
+    quote: 'I live in the studio. I take raw master tapes and press them for the airwaves.',
+    cardSummary: 'High-energy multi-threaded audio mastering, EBU R128 normalization, 4K Metal RealESRGAN upscaling, and WebVTT closed-caption pipeline.',
+    portraitUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/harper.jpg',
+    ogTitle: 'Harper (harper.sh) — Studio Engineer | Build Team',
+    ogDescription: 'Meet Harper: the multi-threaded FFmpeg, Metal RealESRGAN, and Whisper WebVTT studio engineering pipeline for Engine Room Records.',
+    ogImageUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/harper.jpg',
+    vitalStats: [
+      { label: 'DOB', value: 'Oct 30, 1992' },
+      { label: 'Family Role', value: 'The Middle Sister (Studio Engineer)' },
+      { label: 'Neurotype', value: 'Sensory Seeker (SPD)', isBadge: true },
+      { label: 'Mobility', value: 'Ambulatory Wheelchair User', isBadge: true }
+    ],
+    technicalHeading: 'The Heavy Lifter: Multi-Core Audio & Visual Mastering',
+    technicalIntro:
+      'Harper is a concurrent modular Bash & Python mastering suite (harper.sh + harper/01-init.sh through 05-archiver.sh). She is the backbone of the Engine Room Records archival pipeline, managing decoupled lossless vaults and public streaming encodes:',
+    technicalCapabilities: [
+      {
+        title: 'Decoupled Vault Ingestion & Discovery',
+        detail: 'Reads 24-bit master-wav files from /raggiesoft-vaults/engine-room-records/ so raw lossless studio masters are never exposed on public cloud storage.'
+      },
+      {
+        title: 'Dynamic Multi-Core FFmpeg Transcoding',
+        detail: 'Detects logical CPU cores to parallelize EBU R128normalized 128kbps web MP3s (web-mp3), V0 archival MP3s, Q9 OGG Vorbis, and FLAC deliverables.'
+      },
+      {
+        title: 'RealESRGAN 4K Upscaling & Human-Verified VTT Guard',
+        detail: 'Invokes macOS Metal-accelerated RealESRGAN for 4K album art and checks .vtt transcripts for NOTE human_verified_by_michael before running Whisper AI.'
+      }
+    ],
+    cliSnippet: {
+      comment: '# Rebuild Engine Room Records Studio Vault with Parallel Processing',
+      commands: ['./raggiesoft-deployment-tools/harper.sh --rebuild']
+    },
+    humanHeading: 'The Audiophile: Accessible Studio Engineering',
+    humanLeadQuote: '"Accessibility isn\'t just accommodation—it\'s superior engineering."',
+    humanParagraphs: [
+      'Harper is a high-energy sensory seeker (Sensory Processing Disorder) who thrives on rich acoustic harmonics, studio VU meters, and multi-core throughput.',
+      'As an ambulatory wheelchair user, she designed her entire studio control room so every patchbay, synth rack, and mastering chain is reachable from her chair without physical strain—everything is scripted, automated, and ergonomic.',
+      'That lived accessibility mindset translates directly into her code: zero wasted motion, deterministic ERR-ID tracking numbers, and full WebVTT closed-caption transcripts for every song.'
+    ],
+    terminalBlock: {
+      headerTitle: 'harper.sh --rebuild (v21.7.0)',
+      statusBadge: 'MASTERING • 8 CORES',
+      promptUser: 'michael@studio:~$',
+      command: './raggiesoft-deployment-tools/harper.sh --rebuild',
+      outputLines: [
+        '🎧 HARPER: Alright! Firing up the mixing board (v21.7.0)... Let\'s hit the Vault!',
+        '   🎚️ Targeting Studio Archives: /raggiesoft-vaults/engine-room-records/artists',
+        '   🎛️ System reports 8 logical CPU cores. Parallel transcoding engaged.',
+        '   💿 HARPER: Processing "Progress Street" by The Stardust Engine...',
+        '      🖼️ RealESRGAN 4K Metal upscaler verified album-art.jpg & social-preview.jpg',
+        '      📝 WebVTT Check: NOTE human_verified_by_michael preserved.',
+        '   📦 HARPER: Session complete! Public web-mp3 ready; lossless masters locked in Vault.'
+      ]
+    }
+  },
+  {
+    slug: 'jenna',
+    name: 'Jenna',
+    shortLabel: 'Jenna (jenna-sync.sh)',
+    icon: '👱‍♀️',
+    roleTitle: 'The Dev Twin, Build Orchestrator & CDN Sync Manager',
+    systemArtifact: 'raggiesoft-deployment-tools/jenna-sync.sh',
+    stackBadge: 'Bash • Multi-Repo Git • rclone • DO Spaces CDN',
+    quote: 'Create whatever you want. Break things. Make a mess. I\'ll make sure none of it gets lost.',
+    cardSummary: 'Single-command release orchestrator compiling all 10 web properties, invoking Paige, pushing to GitHub, and syncing public assets to DigitalOcean Spaces.',
+    portraitUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/jenna.jpg',
+    ogTitle: 'Jenna (jenna-sync.sh) — Release & CDN Orchestrator | Build Team',
+    ogDescription: 'Meet Jenna: the single-command multi-repo build orchestrator and DigitalOcean Spaces CDN sync engine for RaggieSoft.',
+    ogImageUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/jenna.jpg',
+    vitalStats: [
+      { label: 'DOB', value: 'Jun 21, 1989' },
+      { label: 'Relation', value: 'Fraternal Twin B (Younger Twin to Sarah)' },
+      { label: 'Neurotype', value: 'ADHD (Hyperactive / High-Velocity)', isBadge: true },
+      { label: 'Primary Domain', value: 'Multi-Repo Git + S3/Spaces CDN Sync', isBadge: true }
+    ],
+    technicalHeading: 'The Sync Engine: 10-Property CI/CD & Hybrid Storage',
+    technicalIntro:
+      'While Sarah guards the production server, Jenna governs the development workspace (raggiesoft-deployment-tools/jenna-sync.sh). Direct git push commands are strictly forbidden across RaggieSoft; every release flows through Jenna:',
+    technicalCapabilities: [
+      {
+        title: 'Pre-Push Polyglot Build Verification',
+        detail: 'Runs Paige (paige.php) to compile narratives, then executes production builds and type-checks across Nebulae, Lore (Next.js 16), Music (SvelteKit 2), Engine Room (Astro 6), Stardust (Nuxt 4), Corporate (Bootstrap SSG), StoreTrainer (Vite/TS), and Portfolio (Angular 19).'
+      },
+      {
+        title: 'Multi-Repo Git Synchronization & Tagging',
+        detail: 'Commits, tags, and pushes all 12 code, narrative, nginx-config, and deployment-tools repositories to GitHub in a single atomic workflow.'
+      },
+      {
+        title: 'Vault-Isolated S3 CDN Beaming (rclone)',
+        detail: 'Synchronizes /raggiesoft-assets to DigitalOcean Spaces (assets.raggiesoft.com) at high concurrency while strictly excluding private /raggiesoft-vaults master files.'
+      }
+    ],
+    cliSnippet: {
+      comment: '# The Mandatory Single-Command RaggieSoft Release Pipeline',
+      commands: ['./raggiesoft-deployment-tools/jenna-sync.sh --push -m "Deploy network updates"']
+    },
+    humanHeading: 'The Dev Twin: Sarah\'s Creative Counterpart',
+    humanLeadQuote: '"The safety net that catches ideas before they vanish."',
+    humanParagraphs: [
+      'Jenna is the younger fraternal twin to Sarah (born June 21, 1989). Where Sarah is cautious, methodical, and driven by OCD verification, Jenna embodies high-velocity ADHD creative momentum.',
+      'She allows Michael to iterate fearlessly across 10 different technology stacks without worrying about manual deployment drift or forgotten asset uploads.',
+      'When Michael finishes a late-night coding or songwriting sprint, a single call to Jenna packages every repository, compiles every static bundle, beams the artwork and MP3s to the CDN, and hands the baton cleanly to Sarah.'
+    ],
+    terminalBlock: {
+      headerTitle: 'jenna-sync.sh --push -m "Release update"',
+      statusBadge: 'SYNCING 10 PROPERTIES',
+      promptUser: 'michael@dev:~$',
+      command: './raggiesoft-deployment-tools/jenna-sync.sh --push -m "Release update"',
+      outputLines: [
+        '👱‍♀️ JENNA: Alright, let\'s ship this! Calling Paige first...',
+        '   -> [Paige] 3,185 narrative scenes indexed & routes updated.',
+        '   -> [Builds] Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16: PASS ✓',
+        '   -> [GitHub] All 12 repositories committed and pushed to origin/main ✓',
+        '   -> [CDN] Rclone synced public assets to do-spaces:assets.raggiesoft.com ✓',
+        '👱‍♀️ JENNA: Success! All public assets are live on the CDN. Sarah will pick this up shortly.'
+      ]
+    }
+  },
+  {
+    slug: 'sarah',
+    name: 'Sarah',
+    shortLabel: 'Sarah (sarah-deploy.sh)',
+    icon: '🛡️',
+    roleTitle: 'The Guardian & Autonomous Production Deployer',
+    systemArtifact: 'raggiesoft-deployment-tools/sarah-deploy.sh',
+    stackBadge: 'Bash • 5-Min Cron Heartbeat • Non-Root rsync',
+    quote: 'I watch the perimeter. When the code changes, I verify it. Then, I make it real.',
+    cardSummary: 'Watches GitHub remotes on a 5-minute cron heartbeat on NYC1, verifies commit SHA integrity, and performs non-root atomic rsync deployments.',
+    portraitUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/sarah.jpg',
+    ogTitle: 'Sarah (sarah-deploy.sh) — Autonomous Deployer | Build Team',
+    ogDescription: 'Meet Sarah: the non-root autonomous Linux cron deployment guardian managing all 10 RaggieSoft web roots on NYC1.',
+    ogImageUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/sarah.jpg',
+    vitalStats: [
+      { label: 'DOB', value: 'Jun 21, 1989' },
+      { label: 'Relation', value: 'Fraternal Twin A (Older Twin to Jenna)' },
+      { label: 'Neurotype', value: 'OCD (Rigid Hash & Permission Verification)', isBadge: true },
+      { label: 'Security Posture', value: 'Strict Non-Root Execution (EUID != 0)', isBadge: true }
+    ],
+    technicalHeading: 'The Deployer: Sudo-Less Continuous Deployment',
+    technicalIntro:
+      'Sarah is an autonomous Bash deployment daemon (sarah-deploy.sh) running on a 5-minute cron heartbeat on Jessica (NYC1). She eliminates the anxiety of manual server pulls:',
+    technicalCapabilities: [
+      {
+        title: 'Hardened Non-Root Security Gate',
+        detail: 'Explicitly refuses to run if EUID == 0 (root/sudo), preventing accidental privilege escalation or root-owned file lockouts in /var/www/.'
+      },
+      {
+        title: 'Cryptographic SHA Hash Verification',
+        detail: 'Fetches origin/main across all 10 site repositories and compares git rev-parse HEAD against origin/main before touching any production web root.'
+      },
+      {
+        title: 'Atomic rsync Promotion & Permission Normalization',
+        detail: 'Syncs pre-compiled browser/static bundles (/dist, /build, /out, /.output/public) into /var/www/* and enforces 755 directory / 644 file permissions.'
+      }
+    ],
+    cliSnippet: {
+      comment: '# Autonomous 5-Minute Cron Daemon (or Manual Nuclear Reset)',
+      commands: [
+        '/home/michael/raggiesoft-deployment-tools/sarah-deploy.sh',
+        '/home/michael/raggiesoft-deployment-tools/sarah-deploy.sh --force-reset'
+      ]
+    },
+    humanHeading: 'The Guardian: The Compulsion to Protect',
+    humanLeadQuote: '"She physically cannot proceed until the checksums match."',
+    humanParagraphs: [
+      'Sarah is Jenna\'s older fraternal twin. While Jenna thrives in the fast-moving creative workspace, Sarah embodies Rigid Verification.',
+      'In this architecture, her OCD is her superpower. She does not merely "check" a deployment; she feels an unshakeable compulsion to verify every SHA hash, directory boundary, and POSIX file permission bit before letting a single byte go live.',
+      'That vigilance lets Michael sleep at night knowing Sarah will never cut a corner, never run as root, and never deploy an unverified build.'
+    ],
+    terminalBlock: {
+      headerTitle: '/var/log/sarah-deploy.log (Cron Heartbeat)',
+      statusBadge: 'WATCHING PERIMETER',
+      promptUser: 'sarah@jessica:~$',
+      command: './sarah-deploy.sh',
+      outputLines: [
+        '[12:00:00] 👩‍💼 SARAH: Heartbeat active. Scanning 12 repositories...',
+        '[12:00:02] 👩‍💼 SARAH: Change detected in Portfolio (michaelpragsdale.com)! Jenna pushed updates.',
+        '   -> Syncing dist/raggiesoft-portfolio/browser/ to /var/www/michaelpragsdale.com...',
+        '   -> Standardizing POSIX permissions (755 dirs / 644 files)...',
+        '[12:00:04] ✅ SARAH: Portfolio Deployment Complete. Perimeter secure.'
+      ]
+    }
+  },
+  {
+    slug: 'amanda-elara',
+    name: 'Amanda & Elara',
+    shortLabel: 'Amanda & Elara (Router)',
+    icon: '🌱',
+    roleTitle: 'The Protected Web Root & Front-Controller Router',
+    systemArtifact: 'raggiesoft.com/www/amanda/elara.php',
+    stackBadge: 'PHP 8.5 MVC • Nginx Gateway • Stardust Engine CMS',
+    quote: 'One holds the knowledge. The other speaks the words. You cannot have one without the other.',
+    cardSummary: 'Identical twins powering the Stardust Engine CMS gateway: Amanda is the read-only physical web root and Elara is the single executable PHP 8.5 router.',
+    portraitUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/amanda-elara.jpg',
+    ogTitle: 'Amanda & Elara (amanda/elara.php) — Root & Router | Build Team',
+    ogDescription: 'Meet Amanda & Elara: the symbiotic web root and PHP 8.5 front-controller router powering raggiesoft.com and Stardust Engine CMS.',
+    ogImageUrl: 'https://assets.raggiesoft.com/family/images/atmospheric/amanda-elara.jpg',
+    vitalStats: [
+      { label: 'DOB', value: 'Jan 1, 1995' },
+      { label: 'Relation', value: 'Identical Twin Sisters (The Youngest)' },
+      { label: 'Amanda Profile', value: 'Non-Speaking (Apraxia — Static Memory)', isBadge: true },
+      { label: 'Elara Profile', value: 'Hyperlexic (Dynamic Front-Controller)', isBadge: true }
+    ],
+    technicalHeading: 'The Gateway Architecture: Division of Labor',
+    technicalIntro:
+      'RaggieSoft Hub (raggiesoft.com) and the open-source Stardust Engine CMS do not expose a conventional public_html/index.php directory tree. Instead, the twins govern all incoming HTTP traffic through a strict two-part symbiosis:',
+    technicalCapabilities: [
+      {
+        title: 'Amanda (The Protected Web Root Directory)',
+        detail: 'Represents the physical web root (/amanda). She holds the entry point and static assets while keeping application views (/pages), route manifests (/data/routes), and includes outside direct URL probing.'
+      },
+      {
+        title: 'Elara (The Executable Front-Controller Router)',
+        detail: 'Represents elara.php—the only PHP script Nginx is permitted to execute. She intercepts every request, enforces 301 subdomain redirects, merges DRY JSON route inheritance, and assembles the response.'
+      },
+      {
+        title: 'Bot & Scraper Obscurity Shield',
+        detail: 'Automated scanners probing for /index.php or /public_html receive immediate 404 responses at the Nginx edge.'
+      }
+    ],
+    cliSnippet: {
+      comment: '# Nginx Front-Controller Gateway Routing to Amanda & Elara',
+      commands: ['try_files $uri $uri/ /elara.php?$query_string;']
+    },
+    humanHeading: 'The Symbiosis: The Silent & The Speaker',
+    humanLeadQuote: '"Elara protects Amanda from the noise of the world, and Amanda gives Elara something meaningful to say."',
+    humanParagraphs: [
+      'Amanda is stoic and non-speaking (childhood apraxia of speech). She represents the static filesystem—perfect, uncorrupted memory, but unable to speak directly to the outside world.',
+      'Elara is dynamic and hyperlexic. She acts as her twin sister\'s voice and interpreter, translating messy incoming HTTP requests into structured instructions that Amanda understands.',
+      'Their neurodivergence is not a limitation; it is their security model. Neither twin can function alone, and together they form an unbreakable gateway.'
+    ],
+    terminalBlock: {
+      headerTitle: '/etc/nginx/sites-available/raggiesoft.com.conf',
+      statusBadge: 'GATEWAY ACTIVE',
+      promptUser: 'nginx@jessica:~$',
+      command: 'cat /etc/nginx/sites-available/raggiesoft.com.conf',
+      outputLines: [
+        'server {',
+        '    server_name raggiesoft.com;',
+        '    # 1. Point Root to Amanda (Protected Entry Directory)',
+        '    root /var/www/raggiesoft.com/amanda;',
+        '    # 2. Route All Dynamic Traffic Through Elara',
+        '    location / {',
+        '        try_files $uri $uri/ /elara.php?$query_string;',
+        '    }',
+        '}'
+      ]
+    }
+  }
+] as const;
+
 

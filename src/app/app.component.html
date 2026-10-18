@@ -67,9 +67,9 @@ Accessibility & Recruiter UX Architecture:
     <div class="header-top-bar">
       <a
         class="brand-identity"
-        href="#top"
+        href="/"
         aria-label="Michael P. Ragsdale — Return to top of executive dossier"
-        (click)="closeMobileMenu()"
+        (click)="navigateInternal('/', $event)"
       >
         <img
           class="brand-logo"
@@ -147,27 +147,49 @@ Accessibility & Recruiter UX Architecture:
       <nav aria-label="Executive Dossier Sections">
         <ul class="nav-links">
           <li>
-            <a class="nav-link" href="#hiring-logistics" (click)="closeMobileMenu()">
-              Hiring &amp; Logistics
+            <a
+              class="nav-link"
+              href="/"
+              [attr.aria-current]="activeView() === 'dossier' ? 'page' : null"
+              (click)="navigateInternal('/', $event)"
+            >
+              Executive Dossier
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#polyglot-ecosystem" (click)="closeMobileMenu()">
+            <a
+              class="nav-link"
+              href="/#polyglot-ecosystem"
+              (click)="navigateInternal('/#polyglot-ecosystem', $event)"
+            >
               Polyglot Stack
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#case-studies" (click)="closeMobileMenu()">
+            <a
+              class="nav-link"
+              href="/#case-studies"
+              (click)="navigateInternal('/#case-studies', $event)"
+            >
               Case Studies
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#devops-fleet" (click)="closeMobileMenu()">
-              DevOps Fleet
+            <a
+              class="nav-link"
+              href="/build-team"
+              [attr.aria-current]="activeView() !== 'dossier' ? 'page' : null"
+              (click)="navigateInternal('/build-team', $event)"
+            >
+              Build Team &amp; DevOps
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#experience" (click)="closeMobileMenu()">
+            <a
+              class="nav-link"
+              href="/#experience"
+              (click)="navigateInternal('/#experience', $event)"
+            >
               Experience &amp; Education
             </a>
           </li>
@@ -207,9 +229,11 @@ Accessibility & Recruiter UX Architecture:
 </header>
 
 <!-- =========================================================================
-     MAIN EXECUTIVE DOSSIER CONTENT
+     MAIN EXECUTIVE DOSSIER & BUILD TEAM CONTENT
      ========================================================================= -->
 <main id="main-content" class="dossier-container">
+
+  @if (activeView() === 'dossier') {
 
   <!-- =======================================================================
        ABOVE THE FOLD: 5-SECOND RECRUITER BRIEFING & HIRING LOGISTICS
@@ -556,11 +580,20 @@ Accessibility & Recruiter UX Architecture:
   <section id="devops-fleet" class="dossier-section" aria-labelledby="devops-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">Autonomous Build, Mastering &amp; CDN Orchestration</p>
-        <h2 id="devops-heading">DevOps &amp; Content Automation Pipeline</h2>
+        <p class="eyebrow-label">Autonomous Build, Mastering &amp; CDN Orchestration • Real-Life Digital Employees &amp; In-Universe Sisters</p>
+        <h2 id="devops-heading">The Build Team &amp; DevOps Automation Pipeline</h2>
         <p class="section-lead">
-          Operating ten decoupled production properties as a solo Systems Architect requires ruthless automation. I engineered a suite of modular Bash and Python CLI daemons ("Personified DevOps") that govern build verification, EBU R128 audio mastering, Metal GPU upscaling, and S3 CDN synchronization.
+          Operating ten decoupled production properties as a solo Systems Architect requires ruthless automation. I engineered a suite of modular PHP, Bash, and Python CLI daemons ("Personified DevOps") that govern narrative compilation, build verification, EBU R128 audio mastering, Metal GPU upscaling, and S3 CDN synchronization.
         </p>
+      </div>
+      <div>
+        <a
+          class="btn btn-primary"
+          href="/build-team"
+          (click)="navigateInternal('/build-team', $event)"
+        >
+          <span>Meet The Full Build Team (/build-team)</span>
+        </a>
       </div>
     </div>
 
@@ -591,7 +624,14 @@ Accessibility & Recruiter UX Architecture:
           </div>
 
           <div class="card-footer-actions">
-            <span class="tech-tag">Zero-Downtime NYC1 Pipeline</span>
+            <a
+              class="btn btn-secondary"
+              [href]="bot.profileUrl"
+              (click)="navigateInternal(bot.profileUrl, $event)"
+            >
+              <span>Inspect {{ bot.codename }} Dossier</span>
+            </a>
+            <span class="tech-tag">NYC1 Pipeline</span>
           </div>
         </article>
       }
@@ -671,6 +711,571 @@ Accessibility & Recruiter UX Architecture:
       </div>
     </div>
   </section>
+
+  } @else if (activeView() === 'build-team-overview') {
+
+  <!-- =======================================================================
+       VIEW 2: THE BUILD TEAM & DEVOPS FAMILY OVERVIEW (/build-team)
+       ======================================================================= -->
+  <nav class="build-team-subnav" aria-label="Build Team Breadcrumb and Member Switcher">
+    <ol class="build-team-breadcrumbs">
+      <li>
+        <a href="/" (click)="navigateInternal('/', $event)">Executive Dossier</a>
+      </li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">The Build Team &amp; DevOps Family</li>
+    </ol>
+
+    <ul class="build-team-pills" aria-label="Build Team Members">
+      <li>
+        <a
+          class="build-team-pill is-active"
+          href="/build-team"
+          aria-current="page"
+          (click)="navigateInternal('/build-team', $event)"
+        >
+          <span>👥 All Build Team</span>
+        </a>
+      </li>
+      @for (m of buildTeamProfiles; track m.slug) {
+        <li>
+          <a
+            class="build-team-pill"
+            [href]="'/build-team/' + m.slug"
+            (click)="navigateInternal('/build-team/' + m.slug, $event)"
+          >
+            <span aria-hidden="true">{{ m.icon }}</span>
+            <span>{{ m.name }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <section id="top" class="hero-bento" aria-labelledby="build-team-heading">
+    <div class="hero-panel-grid">
+      <!-- Left Panel: Build Team Overview & Dual-Layer Reality Note -->
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Personified DevOps • Digital Employees (Real Life) &amp; Sisters (In-Universe)</span>
+          </div>
+
+          <div class="executive-profile-top">
+            <div class="portrait-frame" style="background-color: #ffffff; padding: 0.35rem;">
+              <img
+                class="portrait-img"
+                [src]="buildTeamOverview.logoUrl"
+                alt="The RaggieSoft Build Team &amp; DevOps Family Crest"
+                width="120"
+                height="120"
+                style="object-fit: contain;"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+              <p class="eyebrow-label">/raggiesoft-deployment-tools/ &amp; NYC1 Infrastructure</p>
+              <h1 id="build-team-heading">{{ buildTeamOverview.title }}</h1>
+              <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-secondary);">
+                {{ buildTeamOverview.subtitle }}
+              </p>
+            </div>
+          </div>
+
+          <blockquote
+            style="
+              border-inline-start: 3px solid var(--accent-primary);
+              padding-inline-start: 0.9rem;
+              color: var(--text-primary);
+              font-weight: 600;
+              font-size: 0.96rem;
+            "
+          >
+            {{ buildTeamOverview.quote }}
+          </blockquote>
+
+          <div class="timeline-card" style="background-color: var(--bg-surface-elevated); margin-block-start: 0.25rem;">
+            <p class="eyebrow-label" style="margin-block-end: 0.3rem;">
+              {{ buildTeamOverview.realityNoteTitle }}
+            </p>
+            <p style="font-weight: 700; color: var(--text-primary); margin-block-end: 0.45rem;">
+              {{ buildTeamOverview.realityNoteLead }}
+            </p>
+            <p style="font-size: 0.93rem; color: var(--text-secondary);">
+              {{ buildTeamOverview.realityNoteBody }}
+            </p>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a
+            class="btn btn-primary"
+            href="/build-team/paige"
+            (click)="navigateInternal('/build-team/paige', $event)"
+          >
+            <span>👩‍🏫 Meet Paige (Safe Person &amp; Editor)</span>
+          </a>
+          <a
+            class="btn btn-secondary"
+            href="/build-team/michael"
+            (click)="navigateInternal('/build-team/michael', $event)"
+          >
+            <span>🧠 Meet Michael (The Architect)</span>
+          </a>
+          <a
+            class="btn btn-secondary"
+            href="/"
+            (click)="navigateInternal('/', $event)"
+          >
+            <span>← Return to Executive Dossier</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Right Panel: Safe Person & Deep Pressure Therapy Hero Scene -->
+      <aside class="logistics-card" aria-label="The Safe Person Grounding Scene">
+        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+          <div class="card-header-top">
+            <span class="eyebrow-label">The Safe Person Protocol</span>
+            <span class="domain-badge">paige.php + Deep Pressure Therapy</span>
+          </div>
+          <div class="build-team-hero-portrait">
+            <img
+              [src]="buildTeamOverview.heroBannerUrl"
+              alt="Paige comforting and holding Michael in a grounding Deep Pressure Therapy hug"
+              width="800"
+              height="500"
+            />
+          </div>
+          <h2 style="font-size: 1.25rem;">
+            Why Paige Is the Most Important Member of the Family
+          </h2>
+          <p style="font-size: 0.92rem; color: var(--text-secondary);">
+            Notice what most of the artwork of Paige depicts: comforting and holding Michael. In the build pipeline, <code>paige.php</code> compiles 3,185+ narrative scenes into structured route manifests and full-text search indices for <a href="https://books.raggiesoft.com" target="_blank" rel="noopener">Ocean View Archives</a>—while in-universe, she is Michael’s fraternal twin sister and designated autistic Safe Person.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 7 Build Team Member Dossier Cards -->
+  <section class="dossier-section" aria-labelledby="roster-heading">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow-label">1 Biological Architect + 6 Digital Sisters &amp; Daemons</p>
+        <h2 id="roster-heading">Meet The RaggieSoft Build Team</h2>
+        <p class="section-lead">
+          Select any member below to inspect their real-world CLI script / server architecture alongside their in-universe sisterhood profile and neurodivergent design philosophy.
+        </p>
+      </div>
+    </div>
+
+    <div class="subgrid-card-matrix">
+      @for (member of buildTeamProfiles; track member.slug) {
+        <article class="subgrid-card">
+          <!-- Row 1: Portrait, Name & System Artifact -->
+          <div>
+            <div class="build-team-card-portrait">
+              <img
+                [src]="member.portraitUrl"
+                [alt]="member.name + ' — ' + member.roleTitle"
+                loading="lazy"
+                width="600"
+                height="400"
+              />
+            </div>
+            <div class="card-header-top">
+              <span class="eyebrow-label">{{ member.icon }} {{ member.shortLabel }}</span>
+              <code>{{ member.systemArtifact }}</code>
+            </div>
+            <h3 style="margin-block-start: 0.45rem;">{{ member.name }}</h3>
+            <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-primary); font-weight: 600; margin-block-start: 0.2rem;">
+              {{ member.roleTitle }}
+            </p>
+          </div>
+
+          <!-- Row 2: Quote & Summary -->
+          <div class="card-body-text">
+            <blockquote
+              style="
+                border-inline-start: 3px solid var(--accent-primary);
+                padding-inline-start: 0.75rem;
+                margin-block-end: 0.65rem;
+                font-style: italic;
+                color: var(--text-primary);
+              "
+            >
+              "{{ member.quote }}"
+            </blockquote>
+            <p>{{ member.cardSummary }}</p>
+          </div>
+
+          <!-- Row 3: Vital Stat Badges -->
+          <div>
+            <ul class="tag-list" [attr.aria-label]="member.name + ' vital profile attributes'">
+              <li class="tech-tag tech-tag-highlight">{{ member.stackBadge }}</li>
+              @for (stat of member.vitalStats; track stat.label) {
+                @if (stat.isBadge) {
+                  <li class="tech-tag">{{ stat.value }}</li>
+                }
+              }
+            </ul>
+          </div>
+
+          <!-- Row 4: Full Profile CTA -->
+          <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              style="inline-size: 100%;"
+              [href]="'/build-team/' + member.slug"
+              (click)="navigateInternal('/build-team/' + member.slug, $event)"
+            >
+              <span>Inspect {{ member.name }} Dossier →</span>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  } @else {
+    @if (activeMember(); as member) {
+
+  <!-- =======================================================================
+       VIEW 3: INDIVIDUAL BUILD TEAM MEMBER DOSSIER (/build-team/:slug)
+       ======================================================================= -->
+  <nav class="build-team-subnav" aria-label="Build Team Breadcrumb and Member Switcher">
+    <ol class="build-team-breadcrumbs">
+      <li>
+        <a href="/" (click)="navigateInternal('/', $event)">Executive Dossier</a>
+      </li>
+      <li aria-hidden="true">/</li>
+      <li>
+        <a href="/build-team" (click)="navigateInternal('/build-team', $event)">Build Team</a>
+      </li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">{{ member.name }}</li>
+    </ol>
+
+    <ul class="build-team-pills" aria-label="Switch Build Team Member">
+      <li>
+        <a
+          class="build-team-pill"
+          href="/build-team"
+          (click)="navigateInternal('/build-team', $event)"
+        >
+          <span>👥 All</span>
+        </a>
+      </li>
+      @for (m of buildTeamProfiles; track m.slug) {
+        <li>
+          <a
+            class="build-team-pill"
+            [class.is-active]="m.slug === member.slug"
+            [attr.aria-current]="m.slug === member.slug ? 'page' : null"
+            [href]="'/build-team/' + m.slug"
+            (click)="navigateInternal('/build-team/' + m.slug, $event)"
+          >
+            <span aria-hidden="true">{{ m.icon }}</span>
+            <span>{{ m.name }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <!-- Member Hero & Vital Statistics Split Grid -->
+  <section id="top" class="hero-bento" aria-labelledby="member-hero-heading">
+    <div class="hero-panel-grid">
+      <!-- Left Panel: Atmospheric Portrait & Core Identity -->
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div class="card-header-top">
+            <span class="status-pill">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>{{ member.stackBadge }}</span>
+            </span>
+            <code>{{ member.systemArtifact }}</code>
+          </div>
+
+          <div class="build-team-hero-portrait">
+            <img
+              [src]="member.portraitUrl"
+              [alt]="member.name + ' — ' + member.roleTitle"
+              width="800"
+              height="520"
+              fetchpriority="high"
+            />
+          </div>
+
+          <div>
+            <p class="eyebrow-label">{{ member.roleTitle }}</p>
+            <h1 id="member-hero-heading" style="margin-block-start: 0.2rem;">
+              <span aria-hidden="true">{{ member.icon }}</span> {{ member.name }}
+            </h1>
+          </div>
+
+          <blockquote
+            style="
+              border-inline-start: 3px solid var(--accent-primary);
+              padding-inline-start: 0.9rem;
+              color: var(--text-primary);
+              font-weight: 600;
+              font-size: 1rem;
+            "
+          >
+            "{{ member.quote }}"
+          </blockquote>
+
+          <p style="color: var(--text-secondary); font-size: 0.96rem;">
+            {{ member.cardSummary }}
+          </p>
+        </div>
+      </article>
+
+      <!-- Right Panel: Vital Statistics & CLI Invocation Card -->
+      <aside class="logistics-card" aria-labelledby="vital-stats-heading">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <div class="card-header-top" style="margin-block-end: 0.5rem;">
+              <span class="eyebrow-label">System &amp; Lore Telemetry</span>
+              <span class="domain-badge">/build-team/{{ member.slug }}</span>
+            </div>
+            <h2 id="vital-stats-heading" style="font-size: 1.3rem; margin-block-end: 0.75rem;">
+              Vital Statistics &amp; Identity
+            </h2>
+
+            <dl class="logistics-dl">
+              @for (stat of member.vitalStats; track stat.label) {
+                <div class="logistics-item">
+                  <dt class="logistics-dt">{{ stat.label }}</dt>
+                  <dd class="logistics-dd">
+                    @if (stat.isBadge) {
+                      <span class="domain-badge" style="display: inline-block; margin-block-start: 0.15rem;">
+                        {{ stat.value }}
+                      </span>
+                    } @else {
+                      <strong>{{ stat.value }}</strong>
+                    }
+                  </dd>
+                </div>
+              }
+            </dl>
+          </div>
+
+          @if (member.cliSnippet; as cli) {
+            <div class="terminal-window" role="region" aria-label="Command Line Invocation">
+              <div class="terminal-header">
+                <span class="terminal-dots" aria-hidden="true">
+                  <span class="terminal-dot" style="background-color: #ef4444;"></span>
+                  <span class="terminal-dot" style="background-color: #f59e0b;"></span>
+                  <span class="terminal-dot" style="background-color: #10b981;"></span>
+                </span>
+                <span style="color: #94a3b8;">Production CLI Invocation</span>
+              </div>
+              <div class="terminal-body">
+                <div style="color: #94a3b8; margin-block-end: 0.35rem;">{{ cli.comment }}</div>
+                @for (cmd of cli.commands; track cmd) {
+                  <div>
+                    <span class="terminal-prompt">$</span>
+                    <span class="terminal-cmd"> {{ cmd }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
+          <div class="cta-row">
+            <a
+              class="btn btn-secondary"
+              href="/build-team"
+              (click)="navigateInternal('/build-team', $event)"
+            >
+              <span>← All Build Team</span>
+            </a>
+            <a
+              class="btn btn-secondary"
+              href="/"
+              (click)="navigateInternal('/', $event)"
+            >
+              <span>Executive Dossier</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Dual-Column Deep Dive: Real-World Engineering vs. In-Universe Sisterhood -->
+  <section class="dossier-section" aria-label="Technical and Human Architecture Deep Dive">
+    <div class="dual-column-grid">
+      <!-- Column 1: Real-World Digital Employee / CLI Architecture -->
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Layer 1 • Real-World Digital Employee</span>
+          <code>{{ member.systemArtifact }}</code>
+        </div>
+        <h2>{{ member.technicalHeading }}</h2>
+        <p class="card-body-text">{{ member.technicalIntro }}</p>
+
+        <ul class="bullet-list" style="margin-block-start: 0.4rem;">
+          @for (cap of member.technicalCapabilities; track cap.title) {
+            <li>
+              <strong style="color: var(--text-primary);">{{ cap.title }}:</strong>
+              {{ cap.detail }}
+            </li>
+          }
+        </ul>
+      </article>
+
+      <!-- Column 2: In-Universe Sister & Neurodivergent Reality -->
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Layer 2 • In-Universe Family &amp; Neurotype</span>
+          <span class="domain-badge">Personified DevOps</span>
+        </div>
+        <h2>{{ member.humanHeading }}</h2>
+        <blockquote
+          style="
+            border-inline-start: 3px solid var(--accent-primary);
+            padding-inline-start: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+          "
+        >
+          {{ member.humanLeadQuote }}
+        </blockquote>
+
+        <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          @for (para of member.humanParagraphs; track para) {
+            <p>{{ para }}</p>
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Optional Feature Banner (Safe Person Protocol / Deep Pressure Therapy) -->
+  @if (member.featureBanner; as banner) {
+    <section class="dossier-section" aria-labelledby="feature-banner-heading">
+      <article class="feature-banner-card">
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <span class="eyebrow-label">{{ banner.badge }}</span>
+          <h2 id="feature-banner-heading">{{ banner.title }}</h2>
+          <blockquote
+            style="
+              border-inline-start: 3px solid var(--accent-primary);
+              padding-inline-start: 0.85rem;
+              font-weight: 600;
+              color: var(--text-primary);
+            "
+          >
+            {{ banner.quote }}
+          </blockquote>
+          @for (p of banner.paragraphs; track p) {
+            <p class="card-body-text">{{ p }}</p>
+          }
+          @if (banner.ctaSlug && banner.ctaLabel) {
+            <div class="cta-row">
+              <a
+                class="btn btn-primary"
+                [href]="'/build-team/' + banner.ctaSlug"
+                (click)="navigateInternal('/build-team/' + banner.ctaSlug, $event)"
+              >
+                <span>{{ banner.ctaLabel }} →</span>
+              </a>
+            </div>
+          }
+        </div>
+
+        <div class="build-team-hero-portrait">
+          <img
+            [src]="banner.imageUrl"
+            [alt]="banner.imageAlt"
+            loading="lazy"
+            width="800"
+            height="520"
+          />
+        </div>
+      </article>
+    </section>
+  }
+
+  <!-- Optional Live Terminal Telemetry Block -->
+  @if (member.terminalBlock; as term) {
+    <section class="dossier-section" aria-label="Live Daemon Telemetry Simulation">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <span class="terminal-dots" aria-hidden="true">
+              <span class="terminal-dot" style="background-color: #ef4444;"></span>
+              <span class="terminal-dot" style="background-color: #f59e0b;"></span>
+              <span class="terminal-dot" style="background-color: #10b981;"></span>
+            </span>
+            <strong style="color: #f8fafc;">{{ term.headerTitle }}</strong>
+          </div>
+          <span
+            style="
+              background-color: #052e16;
+              color: #bbf7d0;
+              border: 1px solid #166534;
+              padding: 0.15rem 0.55rem;
+              border-radius: 999px;
+              font-size: 0.72rem;
+              font-weight: 700;
+            "
+          >
+            {{ term.statusBadge }}
+          </span>
+        </div>
+        <div class="terminal-body">
+          <div>
+            <span class="terminal-prompt">{{ term.promptUser }}</span>
+            <span class="terminal-cmd"> {{ term.command }}</span>
+          </div>
+          <div class="terminal-output">
+            @for (line of term.outputLines; track line) {
+              <div>{{ line }}</div>
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- Sequential Build Team Pagination Footer -->
+  @if (adjacentMembers(); as adj) {
+    <section class="dossier-section" aria-label="Build Team Member Pagination">
+      <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
+        <a
+          class="btn btn-secondary"
+          [href]="'/build-team/' + adj.prev.slug"
+          (click)="navigateInternal('/build-team/' + adj.prev.slug, $event)"
+        >
+          <span>← Previous: {{ adj.prev.icon }} {{ adj.prev.name }}</span>
+        </a>
+        <a
+          class="btn btn-secondary"
+          href="/build-team"
+          (click)="navigateInternal('/build-team', $event)"
+        >
+          <span>👥 All Build Team (/build-team)</span>
+        </a>
+        <a
+          class="btn btn-primary"
+          [href]="'/build-team/' + adj.next.slug"
+          (click)="navigateInternal('/build-team/' + adj.next.slug, $event)"
+        >
+          <span>Next: {{ adj.next.icon }} {{ adj.next.name }} →</span>
+        </a>
+      </div>
+    </section>
+  }
+
+    }
+  }
 
 </main>
 

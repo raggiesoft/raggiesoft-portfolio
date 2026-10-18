@@ -44,6 +44,9 @@ import {
 } from '@angular/core';
 import {
   ARCHITECTURAL_CASE_STUDIES,
+  BUILD_TEAM_OVERVIEW,
+  BUILD_TEAM_PROFILES,
+  BuildTeamMember,
   DEVOPS_CONSTRUCTS,
   EDUCATION_CREDENTIALS,
   EXECUTIVE_PROFILE,
@@ -55,6 +58,7 @@ import {
 } from './data/portfolio.data';
 
 export type ThemeMode = 'system' | 'light' | 'dark';
+export type PortfolioView = 'dossier' | 'build-team-overview' | 'build-team-member';
 
 @Component({
   selector: 'mpr-root',
@@ -73,12 +77,61 @@ export class AppComponent implements OnInit {
   @ViewChild('mobileMenuToggle')
   private mobileMenuToggleRef?: ElementRef<HTMLButtonElement>;
 
-  /** Static dossier datasets exposed to the template */
+  /** Static dossier & Build Team datasets exposed to the template */
   protected readonly profile = EXECUTIVE_PROFILE;
   protected readonly roleLenses = ROLE_LENSES;
   protected readonly hiringParameters = HIRING_PARAMETERS;
   protected readonly devopsConstructs = DEVOPS_CONSTRUCTS;
   protected readonly educationCredentials = EDUCATION_CREDENTIALS;
+  protected readonly buildTeamOverview = BUILD_TEAM_OVERVIEW;
+  protected readonly buildTeamProfiles = BUILD_TEAM_PROFILES;
+
+  /**
+   * Reactive Signal: Current route view ('dossier' | 'build-team-overview' | 'build-team-member').
+   */
+  protected readonly activeView = signal<PortfolioView>('dossier');
+
+  /**
+   * Reactive Signal: Currently selected Build Team member slug when on `/build-team/:slug`.
+   */
+  protected readonly activeMemberSlug = signal<string | null>(null);
+
+  /**
+   * Computed Signal: Resolved `BuildTeamMember` profile for `/build-team/:slug`.
+   */
+  protected readonly activeMember = computed<BuildTeamMember | null>(() => {
+    const slug = this.activeMemberSlug();
+    if (!slug) {
+      return null;
+    }
+    return (
+      this.buildTeamProfiles.find((member) => member.slug === slug) ?? null
+    );
+  });
+
+  /**
+   * Computed Signal: Previous and Next Build Team members for sequential profile pagination.
+   */
+  protected readonly adjacentMembers = computed<{
+    prev: BuildTeamMember;
+    next: BuildTeamMember;
+  } | null>(() => {
+    const current = this.activeMember();
+    if (!current) {
+      return null;
+    }
+    const list = this.buildTeamProfiles;
+    const idx = list.findIndex((m) => m.slug === current.slug);
+    if (idx === -1) {
+      return null;
+    }
+    const prevIdx = (idx - 1 + list.length) % list.length;
+    const nextIdx = (idx + 1) % list.length;
+    return {
+      prev: list[prevIdx],
+      next: list[nextIdx]
+    };
+  });
 
   /**
    * Reactive Signal: Currently selected Recruiter Role-Lens filter.
@@ -232,6 +285,108 @@ export class AppComponent implements OnInit {
           this.mobileMenuOpen.set(false);
         }
       });
+    }
+
+    // 5. Synchronize initial route state from URL pathname (/ vs /build-team vs /build-team/:slug)
+    this.syncRouteFromPathname(win.location.pathname);
+
+    // 6. Listen for browser Back/Forward navigation
+    win.addEventListener('popstate', () => {
+      this.syncRouteFromPathname(win.location.pathname);
+    });
+  }
+
+  /**
+   * Client-side History API navigation for internal routes (`/`, `/build-team`, `/build-team/:slug`).
+   * Preserves middle-click / Cmd+click / Ctrl+click native browser tab behavior.
+   */
+  protected navigateInternal(targetHref: string, event?: MouseEvent): void {
+    if (
+      event &&
+      (event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button !== 0)
+    ) {
+      return;
+    }
+
+    const win = this.document.defaultView;
+    if (!win) {
+      return;
+    }
+
+    const hashIndex = targetHref.indexOf('#');
+    const pathPart =
+      hashIndex >= 0 ? targetHref.slice(0, hashIndex) || '/' : targetHref;
+    const hashPart = hashIndex >= 0 ? targetHref.slice(hashIndex + 1) : '';
+
+    const currentNormalized =
+      (win.location.pathname || '/').replace(/\/+$/, '') || '/';
+    const targetNormalized = pathPart.replace(/\/+$/, '') || '/';
+
+    // If staying on the same view and navigating to an anchor hash, let anchor scroll work smoothly
+    if (currentNormalized === targetNormalized && hashPart) {
+      this.closeMobileMenu();
+      return;
+    }
+
+    event?.preventDefault();
+    this.closeMobileMenu();
+
+    win.history.pushState({}, '', targetHref);
+    this.syncRouteFromPathname(targetNormalized);
+
+    if (hashPart) {
+      win.setTimeout(() => {
+        const el = this.document.getElementById(hashPart);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 40);
+    } else {
+      win.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  /**
+   * Parses `window.location.pathname` to set `activeView`, `activeMemberSlug`,
+   * and document `<title>` for `/`, `/build-team`, and `/build-team/:slug`.
+   */
+  private syncRouteFromPathname(rawPathname: string): void {
+    const cleanPath = (rawPathname || '/').replace(/\/+$/, '') || '/';
+
+    if (cleanPath === '/build-team') {
+      this.activeView.set('build-team-overview');
+      this.activeMemberSlug.set(null);
+      this.document.title =
+        'The Build Team & DevOps Family | Michael P. Ragsdale';
+    } else if (cleanPath.startsWith('/build-team/')) {
+      const slug = cleanPath.slice('/build-team/'.length).toLowerCase();
+      const matched = this.buildTeamProfiles.find((m) => m.slug === slug);
+      if (matched) {
+        this.activeView.set('build-team-member');
+        this.activeMemberSlug.set(matched.slug);
+        this.document.title = matched.ogTitle;
+      } else {
+        this.activeView.set('build-team-overview');
+        this.activeMemberSlug.set(null);
+        this.document.title =
+          'The Build Team & DevOps Family | Michael P. Ragsdale';
+      }
+    } else {
+      this.activeView.set('dossier');
+      this.activeMemberSlug.set(null);
+      this.document.title =
+        'Michael P. Ragsdale | Systems & Section 508 Architect';
+    }
+
+    const win = this.document.defaultView as
+      | (Window & { initRaggieSoftNetworkMenu?: () => void })
+      | null;
+    if (win && typeof win.initRaggieSoftNetworkMenu === 'function') {
+      win.setTimeout(() => win.initRaggieSoftNetworkMenu?.(), 30);
     }
   }
 
