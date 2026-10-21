@@ -51,7 +51,7 @@ const ROUTES = [
     title: 'The Build Team & DevOps Family | Michael P. Ragsdale',
     description:
       'Explore the RaggieSoft Personified DevOps ecosystem: real-world CLI daemons (Paige, Jessica, Harper, Jenna, Sarah, Amanda & Elara) and in-universe sisters.',
-    image: 'https://assets.raggiesoft.com/family/images/scenes/paige-michael-hug.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/scenes/paige-michael-hug.jpg',
     imageAlt: 'Paige comforting Michael — The RaggieSoft Build Team & DevOps Family'
   },
   {
@@ -59,7 +59,7 @@ const ROUTES = [
     title: 'Michael P. Ragsdale — The Architect | Build Team',
     description:
       'Meet Michael P. Ragsdale, the biological core, Systems Architect, and author behind the RaggieSoft Personified DevOps ecosystem.',
-    image: 'https://assets.raggiesoft.com/family/images/atmospheric/michael.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/michael.jpg',
     imageAlt: 'Michael P. Ragsdale — The Architect & Biological Core'
   },
   {
@@ -67,7 +67,7 @@ const ROUTES = [
     title: 'Paige (paige.php) — Editor & Safe Person | Build Team',
     description:
       'Meet Paige: the PHP 8.5 narrative compiler and full-text search indexer for Ocean View Archives, and Michael\'s designated autistic Safe Person.',
-    image: 'https://assets.raggiesoft.com/family/images/atmospheric/paige.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/paige.jpg',
     imageAlt: 'Paige (paige.php) — Literary Editor & Designated Safe Person'
   },
   {
@@ -75,7 +75,7 @@ const ROUTES = [
     title: 'Jessica (jessica.raggiesoft.com) — VPS Infra | Build Team',
     description:
       'Meet Jessica: the NYC1 Ubuntu production server hosting all 10 RaggieSoft properties and the eldest sister of the DevOps family.',
-    image: 'https://assets.raggiesoft.com/family/images/atmospheric/jessica.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jessica.jpg',
     imageAlt: 'Jessica (jessica.raggiesoft.com) — Production Linux Infrastructure'
   },
   {
@@ -83,7 +83,7 @@ const ROUTES = [
     title: 'Harper (harper.sh) — Studio Engineer | Build Team',
     description:
       'Meet Harper: the multi-threaded FFmpeg, Metal RealESRGAN, and Whisper WebVTT studio engineering pipeline for Engine Room Records.',
-    image: 'https://assets.raggiesoft.com/family/images/atmospheric/harper.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/harper.jpg',
     imageAlt: 'Harper (harper.sh) — Studio Engineer & Media Mastering Pipeline'
   },
   {
@@ -91,7 +91,7 @@ const ROUTES = [
     title: 'Jenna (jenna-sync.sh) — Release & CDN Sync | Build Team',
     description:
       'Meet Jenna: the single-command multi-repo build orchestrator and DigitalOcean Spaces CDN sync engine for RaggieSoft.',
-    image: 'https://assets.raggiesoft.com/family/images/atmospheric/jenna.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jenna.jpg',
     imageAlt: 'Jenna (jenna-sync.sh) — Release Orchestrator & CDN Sync Manager'
   },
   {
@@ -99,7 +99,7 @@ const ROUTES = [
     title: 'Sarah (sarah-deploy.sh) — Autonomous Deployer | Build Team',
     description:
       'Meet Sarah: the non-root autonomous Linux cron deployment guardian managing all 10 RaggieSoft web roots on NYC1.',
-    image: 'https://assets.raggiesoft.com/family/images/atmospheric/sarah.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/sarah.jpg',
     imageAlt: 'Sarah (sarah-deploy.sh) — The Guardian & Autonomous Deployer'
   },
   {
@@ -107,7 +107,7 @@ const ROUTES = [
     title: 'Amanda & Elara (amanda/elara.php) — Router | Build Team',
     description:
       'Meet Amanda & Elara: the symbiotic web root and PHP 8.5 front-controller router powering raggiesoft.com and Stardust Engine CMS.',
-    image: 'https://assets.raggiesoft.com/family/images/atmospheric/amanda-elara.jpg',
+    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/amanda-elara.jpg',
     imageAlt: 'Amanda & Elara (amanda/elara.php) — Protected Web Root & Router'
   }
 ];
