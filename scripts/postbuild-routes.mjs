@@ -183,7 +183,18 @@ for (const route of ROUTES) {
   fs.writeFileSync(path.join(targetDir, 'index.html'), html, 'utf8');
 }
 
+// Automatically synchronize sitemap.xml with all pre-rendered canonical routes
+const todayIso = new Date().toISOString().split('T')[0];
+const allCanonicalUrls = [
+  'https://michaelpragsdale.com/',
+  ...ROUTES.map((r) => `https://michaelpragsdale.com/${r.routePath}`)
+];
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${allCanonicalUrls
+  .map((u) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${todayIso}</lastmod>\n  </url>`)
+  .join('\n')}\n</urlset>\n`;
+fs.writeFileSync(path.join(browserDistDir, 'sitemap.xml'), sitemapXml, 'utf8');
+
 console.log(
-  `[postbuild-routes] Generated ${ROUTES.length} static OpenGraph route entry points under dist/raggiesoft-portfolio/browser/build-team/.`
+  `[postbuild-routes] Generated ${ROUTES.length} static OpenGraph route entry points + ${allCanonicalUrls.length}-URL sitemap.xml under dist/raggiesoft-portfolio/browser/.`
 );
 
