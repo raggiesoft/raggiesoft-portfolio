@@ -1,24 +1,24 @@
 /**
  * =============================================================================
  * File: src/app/data/portfolio.data.ts
- * Application: Michael P. Ragsdale — Systems Architect Executive Dossier
+ * Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
  * Domain: https://michaelpragsdale.com
- * License: MIT License (Code) | CC BY-SA 4.0 (Narrative Case Study References)
+ * License: MIT License (Code) | CC BY-SA 4.0 (Creative Case Study References)
  * =============================================================================
  * Architectural Purpose:
- * Single source of truth for the executive dossier of Michael P. Ragsdale.
- * Because RaggieSoft infrastructure enforces a strict Zero-Database server
- * policy for maximum security and sub-second TTFB, all portfolio telemetry,
- * polyglot ecosystem specifications, hiring logistics, and case studies are
- * strongly typed and compiled directly into the static Angular bundle.
+ * Single source of truth for the technical portfolio of Michael P. Ragsdale.
+ * Because RaggieSoft infrastructure enforces a Zero-Database server policy for
+ * security and sub-second TTFB, all portfolio metadata, web & native ecosystem
+ * specifications, hiring logistics, CI/CD tooling docs, and case studies are
+ * strongly typed and compiled directly into the static Angular 19 bundle.
  * =============================================================================
  */
 
 /**
- * Recruiter Role-Lens Filter categories.
- * Allows hiring managers from Defense/DoD, Government/Municipal, or Enterprise
- * engineering teams to filter proof-of-concept systems and case studies by
- * their immediate hiring need.
+ * Recruiter & Hiring Manager Role-Lens Filter categories.
+ * Allows hiring teams from Municipal/State Government, Higher Education,
+ * Healthcare, Federal Contractors, or Commercial Engineering organizations to
+ * filter production projects and case studies by immediate discipline need.
  */
 export type RoleLens =
   | 'all'
@@ -101,18 +101,17 @@ export interface EducationEntry {
 }
 
 /**
- * Canonical links & assets migrated from
- * `raggiesoft-hub/pages/about/michael-ragsdale/overview.php`.
+ * Canonical identity, summary, and verified recruiter contact channels.
  */
 export const EXECUTIVE_PROFILE = {
   fullName: 'Michael P. Ragsdale',
-  headline: 'Software Architect | Full-Stack Developer & Section 508 Engineer',
+  headline: 'Full-Stack Web Developer & Section 508 Accessibility Specialist',
   location: 'Norfolk / Virginia Beach, VA (Hampton Roads)',
-  statusBadge: 'Active — Pursuing W2 Software Architect, Full-Stack & Section 508 Roles',
+  statusBadge: 'Available for W-2 Full-Stack Web, Software & Section 508 Roles',
   executiveSummary:
-    'Software Architect and Full-Stack Developer specializing in custom web platforms, Federal Section 508 / WCAG 2.1 AA accessibility engineering, cloud infrastructure, and open-source software development. Creator of the Stardust Engine CMS and a 10-property zero-database polyglot web ecosystem, combining deep systems engineering with grounded, user-facing public-sector operational experience.',
+    'Full-Stack Web Developer and Section 508 Accessibility Specialist combining institutional accessibility remediation at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and hands-on software engineering. Creator of the open-source Stardust Engine CMS, an 11-property zero-database web ecosystem, and companion C#/.NET 10 WPF and SwiftUI desktop/mobile applications.',
   valueProposition:
-    'I build systems that respect three non-negotiable constraints: strict Section 508 / WCAG accessibility for every citizen, zero-bloat sub-second performance, and self-documenting maintainability without fragile database dependencies.',
+    'I focus on three practical engineering standards across every project: genuine Section 508 and WCAG 2.1 AA accessibility for real users, fast static-first performance, and clear, well-documented code that teams can maintain.',
   assets: {
     logoUrl: 'https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png',
     portraitLightUrl:
@@ -135,88 +134,98 @@ export const EXECUTIVE_PROFILE = {
 export const ROLE_LENSES: readonly RoleLensOption[] = [
   {
     id: 'all',
-    label: 'Complete Dossier (All)',
-    shortDescription: 'Showing all 10 polyglot production properties, Section 508 proofs, structured data workflows, and DevOps automation.'
+    label: 'All Projects & Case Studies',
+    shortDescription:
+      'Showing all 11 live production web properties, 5 engineering & accessibility case studies, and full work history.'
   },
   {
     id: 'architecture',
-    label: 'Systems & Polyglot Architecture',
-    shortDescription: 'Focused on multi-framework system design (Angular 19, PHP 8.5 MVC, Svelte 5, Astro 6, Nuxt 4, Next.js 16 / React 19, Bootstrap 5.3.8 SSG, VB6/Win32) and zero-database edge/CDN topology.'
+    label: 'Full-Stack & Native Apps',
+    shortDescription:
+      'Focused on multi-framework web apps (TypeScript, Angular 19, PHP 8.5 MVC, React 19 / Next.js 16, Svelte 5, Astro 6, Nuxt 4) and native C#/.NET 10 WPF + SwiftUI software.'
   },
   {
     id: 'accessibility',
-    label: 'Section 508 & WCAG 2.1 AA/AAA',
-    shortDescription: 'Focused on Federal/DoD Section 508 remediation, Deque axe auditing, Forced-Colors High Contrast, and Dual-Layer Canvas ARIA trees.'
+    label: 'Section 508 & WCAG 2.1 AA',
+    shortDescription:
+      'Focused on higher-education & government Section 508 compliance, Deque axe + manual JAWS/NVDA/VoiceOver testing, Forced-Colors High Contrast, and Dual-Layer Canvas ARIA.'
   },
   {
     id: 'data-etl',
-    label: 'Structured Data & Information Workflows',
-    shortDescription: 'Focused on JSON/Markdown static data lakes, ActiveNet operational data transformation, accessible information design, and automated validation.'
+    label: 'Data & Information Workflows',
+    shortDescription:
+      'Focused on ActiveNet operational data processing, Section 508 document design, JSON/Markdown static APIs, and full-text search indexing.'
   },
   {
     id: 'devops',
-    label: 'DevOps, Linux & CI/CD Automation',
-    shortDescription: 'Focused on Ubuntu/Nginx server infrastructure, S3/Spaces CDN synchronization, FFmpeg/RealESRGAN media pipelines, and zero-downtime deploys.'
+    label: 'Linux, Cloud & CI/CD Tooling',
+    shortDescription:
+      'Focused on Ubuntu/Nginx server administration, Cloudflare DNS/SSL routing, DigitalOcean Spaces S3 CDN sync, FFmpeg pipelines, and non-root cron deployments.'
   }
 ] as const;
 
 /**
- * "Aggressive Transparency" Hiring & Logistics Parameters.
- * Designed to save recruiters and hiring managers time on initial screening calls.
+ * Welcoming, practical Hiring & Role Alignment summary for recruiters and HR teams.
  */
 export const HIRING_PARAMETERS: readonly HiringParameter[] = [
   {
     label: 'Target Roles',
-    value: 'Systems Architect • Accessibility Engineer (Section 508) • Senior Full-Stack / Platform Engineer',
-    detail: 'Transitioning from municipal front-line technical operations into dedicated Systems Architecture and Accessibility Engineering.'
+    value: 'Full-Stack Web Developer • Section 508 Accessibility Specialist • Front-End / Software Developer',
+    detail:
+      'Bringing higher-education Section 508 remediation experience, municipal customer-facing operations, and full-stack web & desktop development.'
   },
   {
-    label: 'Employment Classification',
-    value: 'W2 Full-Time Only (Direct Hire)',
-    detail: 'Seeking stable, long-term W2 enterprise, municipal, higher-ed, or defense contractor employment. Zero availability for 1099 or short-term C2C contracts.'
+    label: 'Employment Type',
+    value: 'Full-Time W-2 (Direct Hire or W-2 Government / Enterprise Contractor)',
+    detail:
+      'Seeking stable W-2 employment with municipal, state/university, healthcare, commercial enterprise, or federal contracting teams.'
   },
   {
-    label: 'Location & Commute Policy',
-    value: 'Norfolk, VA — Remote, Hybrid, or On-Site within Virginia',
-    detail: 'Domiciled in Norfolk, VA. Must maintain physical residency in the Commonwealth of Virginia to preserve in-state tuition eligibility while completing my degree at Tidewater Community College.'
+    label: 'Location & Schedule',
+    value: 'Hampton Roads, VA — On-Site, Hybrid, or Remote within Virginia',
+    detail:
+      'Based in Norfolk / Virginia Beach, VA. Available for local Hampton Roads on-site/hybrid schedules or Virginia-based remote roles while completing my A.S. in IT at TCC.'
   },
   {
-    label: 'Security Clearance Eligibility',
-    value: 'Uncleared (U.S. Citizen — Eligible for Immediate DoD Sponsorship)',
-    detail: 'Pristine background (zero criminal or traffic records); previously held federal Public Trust clearance. Ready for immediate Secret / Top Secret sponsorship.'
+    label: 'Clearance & State Eligibility',
+    value: 'U.S. Citizen • Prior Federal Public Trust • Virginia AHP Eligible',
+    detail:
+      'Clean background with prior federal Public Trust clearance (HHS contract); eligible for DoD security clearance sponsorship and Commonwealth of Virginia AHP hiring.'
   },
   {
-    label: 'Compensation Alignment',
-    value: 'Market Rate / Transparent Salary Bands Required',
-    detail: 'Please include the approved W2 base salary band and benefits summary in your initial outreach or Microsoft Bookings pre-screening.'
+    label: 'Accessibility Toolchain',
+    value: 'Section 508 • WCAG 2.1 AA • Deque axe, WAVE, JAWS, NVDA & VoiceOver',
+    detail:
+      'Combines manual assistive-technology testing with direct HTML5, CSS, TypeScript, ARIA, and Microsoft Office/PDF remediation.'
   },
   {
-    label: 'Technical Evaluation Protocol',
-    value: 'Live Architectural Review & System Design Over Unpaid Take-Homes',
-    detail: 'This live 10-property production ecosystem serves as my code sample. I welcome rigorous live system-design reviews and code walkthroughs, and respectfully decline unpaid multi-day take-home projects.'
+    label: 'Live Work Samples',
+    value: '11 Production Web Properties, C#/.NET & SwiftUI Apps, and GitHub',
+    detail:
+      'Happy to walk through live production codebases, accessibility audits, and standard technical interviews with your engineering team.'
   }
 ] as const;
 
 /**
- * Polyglot Production Ecosystem Matrix (10 Live Properties).
- * Demonstrates mastery across distinct modern web paradigms without relying on
- * any server-side relational database.
+ * Polyglot Production Web Ecosystem Matrix (11 Live Properties).
+ * Demonstrates practical fluency across modern web frameworks and vanilla
+ * web standards while maintaining zero server-side SQL database overhead.
  */
 export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   {
     id: 'raggiesoft-portfolio',
-    name: 'Executive Systems Dossier (This Site)',
+    name: 'Engineering & Section 508 Portfolio (This Site)',
     domain: 'michaelpragsdale.com',
     url: 'https://michaelpragsdale.com',
-    categoryLabel: '01 • Executive Architecture Dossier',
+    categoryLabel: '01 • Engineering & Accessibility Portfolio',
     primaryStack: 'Angular 19 (Standalone + Zoneless Signals + TypeScript 5.7) + Modern Native CSS',
-    architecturalPattern: 'Static Single-Page Dossier with Native CSS Cascade Layers (@layer), Subgrid & Container Queries',
+    architecturalPattern: 'Static Single-Page Application with Native CSS Cascade Layers (@layer), Subgrid & Container Queries',
     summary:
-      'Decoupled onto its own standalone root domain to demonstrate enterprise-grade TypeScript and Zoneless Angular Signals architecture favored by Defense, Federal/Municipal Government, and Enterprise engineering organizations.',
+      'Built on a dedicated domain to demonstrate clean TypeScript and Zoneless Angular Signals architecture alongside dependency-free modern CSS and strict Section 508 semantics.',
     highlights: [
       'Zero zone.js runtime overhead via provideExperimentalZonelessChangeDetection() and reactive Angular Signals (signal, computed).',
-      '100% Native Modern CSS architecture (@layer, CSS Grid subgrid, @container queries, light-dark() with prefers-color-scheme and forced-colors fallbacks) — zero CSS framework dependencies.',
-      'Sub-second Largest Contentful Paint (LCP) with native system font stacks and embedded Schema.org ProfilePage JSON-LD for ATS parsers.'
+      '100% Native Modern CSS architecture (@layer, CSS Grid subgrid, @container queries, light-dark() with prefers-color-scheme and forced-colors fallbacks) with zero CSS framework bloat.',
+      'Sub-second Largest Contentful Paint (LCP) using native system font stacks, pre-rendered OpenGraph route entry points, and Schema.org ProfilePage JSON-LD.'
     ],
     tags: ['Angular 19', 'TypeScript 5.7', 'Zoneless Signals', 'CSS @layer', 'CSS Subgrid', 'Container Queries', 'Section 508'],
     lenses: ['architecture', 'accessibility'],
@@ -227,266 +236,283 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     name: 'RaggieSoft Hub & Stardust Engine CMS',
     domain: 'raggiesoft.com',
     url: 'https://raggiesoft.com',
-    categoryLabel: '02 • Root Portal & SSR Governance Hub',
-    primaryStack: 'PHP 8.5 MVC (Stardust Engine CMS) + Bootstrap 5.3.8 + Web Awesome SSR',
+    categoryLabel: '02 • Root Portal & PHP 8.5 MVC Framework',
+    primaryStack: 'PHP 8.5 MVC (Stardust Engine CMS) + DaisyUI 5 + Phosphor Icons SSR',
     architecturalPattern: 'Zero-Database Server-Side Rendered (SSR) Front-Controller MVC with Edge 301 Routing & CSP Hardening',
     summary:
-      'Custom-engineered PHP 8.5 MVC platform anchoring the 18-year-old raggiesoft.com root domain, orchestrating legacy 301 edge redirects to decoupled subdomains and serving server-rendered architectural documentation without a SQL attack surface.',
+      'Custom open-source PHP 8.5 MVC platform anchoring the raggiesoft.com root domain, managing 301 edge redirects to specialized subdomains and rendering accessible SSR pages without a SQL database.',
     highlights: [
-      'Powered by PHP 8.5 with strict typing, custom front-controller routing, and zero relational database dependencies.',
-      'Automatic Open Graph, canonical URL, XML sitemap, and JSON-LD structured data synthesis per route.',
-      'Enforces strict Content Security Policy (CSP) headers and WCAG 2.1 AA contrast across both Light and Dark OS color schemes.'
+      'Powered by PHP 8.5 with strict typing, JSON-driven front-controller routing, and zero relational database dependencies.',
+      'Dynamic Open Graph, canonical URL, XML sitemap, and JSON-LD structured data synthesis per route.',
+      'Enforces Content Security Policy (CSP) headers and WCAG 2.1 AA contrast across both Light and Dark OS color schemes.'
     ],
-    tags: ['PHP 8.5 MVC', 'Stardust Engine CMS', 'Bootstrap 5.3.8', 'Web Awesome', 'Zero-Database SSR', 'Nginx'],
+    tags: ['PHP 8.5 MVC', 'Stardust Engine CMS', 'DaisyUI 5', 'Zero-Database SSR', 'Nginx', 'WCAG 2.1 AA'],
     lenses: ['architecture', 'accessibility', 'devops'],
-    ctaLabel: 'Inspect Root Hub (raggiesoft.com)'
+    ctaLabel: 'Visit Root Hub (raggiesoft.com)'
   },
   {
     id: 'raggiesoft-corporate',
-    name: 'RaggieSoft Media (B2B Corporate & Licensing Hub)',
+    name: 'RaggieSoft Media (Corporate & Open-Source Hub)',
     domain: 'corporate.raggiesoft.com',
     url: 'https://corporate.raggiesoft.com',
-    categoryLabel: '03 • B2B Licensing & Open-Source Portal',
-    primaryStack: 'Node.js ESM Static Site Generator + Bootstrap 5.3.8 ("Corporate Aero" System)',
-    architecturalPattern: 'Build-Time Static SSG Decoupling Real-World B2B Governance from Creative Lore',
+    categoryLabel: '03 • Licensing & Open-Source Portal',
+    primaryStack: 'Node.js ESM Static Site Generator + Bootstrap 5.3.8',
+    architecturalPattern: 'Build-Time Static SSG Separating Licensing & Open-Source Software from Creative Catalogs',
     summary:
-      'Dedicated B2B corporate subdomain (301 target of raggiesoftmedia.com) housing Master & Commercial Sync Licensing, the Open-Source Software Hub (Stardust Engine CMS & StoreTrainer), and anti-phishing recruiter verification notices.',
+      'Dedicated corporate and licensing subdomain (301 target of raggiesoftmedia.com) documenting MIT open-source releases, CC BY-SA 4.0 / commercial music licensing, and verified contact channels.',
     highlights: [
-      'Cleanly separates real-world intellectual property governance, MIT / CC BY-SA 4.0 licensing, and commercial sync clearance from in-universe creative storytelling.',
-      'Compiled via a zero-dependency Node.js ESM static generator into immutable HTML/CSS bundles with verified WCAG 2.1 AA Light and Dark mode contrast.',
-      'Includes transparent career/recruiter scam-prevention advisories directing hiring managers to verified michaelpragsdale.com channels.'
+      'Clearly separates real-world software licensing (MIT) and commercial sync clearance from fictional creative works.',
+      'Compiled via a zero-dependency Node.js ESM static generator into cacheable HTML/CSS bundles with verified WCAG 2.1 AA Light and Dark mode contrast.',
+      'Provides recruiter verification notices pointing directly to verified michaelpragsdale.com contact channels.'
     ],
-    tags: ['Bootstrap 5.3.8 SSG', 'Node.js ESM', 'Corporate Aero CSS', 'B2B Sync Licensing', 'Open-Source Governance', 'WCAG 2.1 AA'],
+    tags: ['Bootstrap 5.3.8 SSG', 'Node.js ESM', 'Open-Source Licensing', 'Static Architecture', 'WCAG 2.1 AA'],
     lenses: ['architecture', 'accessibility', 'devops'],
-    ctaLabel: 'Inspect Corporate Hub (corporate.raggiesoft.com)'
+    ctaLabel: 'Visit Corporate Hub (corporate.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-engineroom',
-    name: 'Engine Room Records Imprint & Consolidated Band Roster',
+    name: 'Engine Room Records Imprint & Artist Catalog',
     domain: 'engineroom.raggiesoft.com',
     url: 'https://engineroom.raggiesoft.com',
-    categoryLabel: '04 • Multi-Tenant Imprint & Artist Lore Hub',
-    primaryStack: 'Astro 6 Static SSG Architecture + Multi-Tenant Path Hierarchy (/artists/{slug})',
-    architecturalPattern: 'Consolidated Multi-Artist Static Publishing Engine with Centralized Streaming Handoff',
+    categoryLabel: '04 • Multi-Tenant Imprint & Catalog Registry',
+    primaryStack: 'Astro 6 Static SSG + Multi-Tenant Path Hierarchy (/artists/{slug})',
+    architecturalPattern: 'Consolidated Multi-Artist Static Publishing Engine with ISRC & DSP Verification Registries',
     summary:
-      'Serves as the record label imprint (301 target of engineroom-records.com and fracturedprisms.com) and consolidates the band lore roster under engineroom.raggiesoft.com/artists/{band-slug} so adding new bands never multiplies framework maintenance.',
+      'Serves as the music imprint portal (301 target of engineroom-records.com and fracturedprisms.com), consolidating seven artist rosters, US ISRC (QTAHP) registries, and DSP verification tables under one Astro 6 codebase.',
     highlights: [
-      'Demonstrates pragmatic architectural consolidation: houses all artist lore dossiers (Crimson Node, Firelight, Fractured Prisms, Mana Canvas, The Arctic Symphony Project, The Paper Wall) under one Astro 6 static codebase.',
-      'Documents transparent studio engineering workflows (human direction + AI audio generation, 74% Cover Audio Influence protocol, phonetic vowel extension, and Dual Timeline metadata governance).',
-      'Clearly delineates the real-world creative brand (Engine Room Records) from the in-universe corporate lore (Engine Room Records, LLC) while deep-linking all audio playback to music.raggiesoft.com.'
+      'Consolidates seven artist catalogs under engineroom.raggiesoft.com/artists/{slug} so adding new releases never multiplies framework maintenance.',
+      'Generates static ISRC and commercial DSP verification ledgers from structured JSON manifests with 75% Cover Audio Influence production documentation.',
+      'Deep-links audio playback cleanly to The Listening Room (music.raggiesoft.com) with accessible Light/Dark theming.'
     ],
-    tags: ['Astro 6', 'Static SSG', 'Multi-Tenant Routing', 'Path-Hierarchy Consolidation', 'JSON Data Lake', 'Section 508'],
+    tags: ['Astro 6', 'Static SSG', 'Multi-Tenant Routing', 'JSON Data Lake', 'ISRC Registry', 'Section 508'],
     lenses: ['architecture', 'accessibility', 'data-etl', 'devops'],
-    ctaLabel: 'Inspect Label & Band Roster (engineroom.raggiesoft.com)'
+    ctaLabel: 'Visit Imprint Hub (engineroom.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-music',
-    name: 'The Listening Room & Engine Room Studio IDE',
+    name: 'The Listening Room & WebVTT Lyric Sync Studio',
     domain: 'music.raggiesoft.com',
     url: 'https://music.raggiesoft.com',
-    categoryLabel: '05 • Audio Streaming PWA & VTT Mastering IDE',
+    categoryLabel: '05 • Audio Streaming PWA & Captioning Tool',
     primaryStack: 'SvelteKit 2 + Svelte 5 Runes ($state, $derived, $effect) + Tailwind CSS v4 + Web Audio PWA',
-    architecturalPattern: 'Static-First Progressive Web App (PWA) & Local-First Browser WebVTT Mastering IDE',
+    architecturalPattern: 'Static-First Progressive Web App (PWA) & Browser-Based WebVTT Caption Synchronizer',
     summary:
-      'Centralized audiophile streaming portal and internal lyric synchronization IDE receiving deep-linked playback handoffs (?track=<slug>) from every property across the RaggieSoft network.',
+      'Centralized streaming web application and lyric-timing studio handling deep-linked track playback, synchronized closed captions, and unified XML sitemaps across 40+ albums and 500+ tracks.',
     highlights: [
-      'Built on Svelte 5 Runes ($state, $derived, $effect) and Tailwind CSS v4 with persistent gapless audio playback, MediaSession lock-screen controls, and multi-palette Light/Dark themes.',
-      'Features an integrated Hold-Spacebar WebVTT Lyric Synchronizer (/studio) that stamps human_verified_by_michael metadata headers so automated Whisper AI pipelines never overwrite human timing.',
-      'Automated build-time catalog ingestion compiling 31+ albums, liner notes, and transcripts into static JSON endpoints.'
+      'Built on Svelte 5 Runes ($state, $derived, $effect) and Tailwind CSS v4 with persistent audio playback, MediaSession OS controls, and Light/Dark themes.',
+      'Includes an interactive Hold-Spacebar WebVTT Lyric Synchronizer (/studio) producing human-verified (SYNC_TYPE: HUMAN_VERIFIED) time-coded captions.',
+      'Build-time Node.js catalog compiler validates SEO/OpenGraph metadata across 558 static routes and emits a unified sitemap.xml.'
     ],
-    tags: ['Svelte 5 Runes', 'SvelteKit 2 PWA', 'Tailwind CSS v4', 'WebVTT Sync IDE', 'MediaSession API', 'ETL Pipeline'],
+    tags: ['Svelte 5 Runes', 'SvelteKit 2 PWA', 'Tailwind CSS v4', 'WebVTT Captioning', 'MediaSession API', 'Static JSON'],
     lenses: ['architecture', 'accessibility', 'data-etl'],
-    ctaLabel: 'Inspect The Listening Room (music.raggiesoft.com)'
+    ctaLabel: 'Visit The Listening Room (music.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-stardust',
-    name: 'The Stardust Engine Flagship Narrative Portal',
+    name: 'The Stardust Engine Portal',
     domain: 'stardust.raggiesoft.com',
     url: 'https://stardust.raggiesoft.com',
-    categoryLabel: '06 • Flagship Transmedia & Accessible Fleet Portal',
-    primaryStack: 'Nuxt 4 + Vue 3 Static SSG + Adaptive Cosmic Environment Engine',
-    architecturalPattern: 'Environmental Storytelling Portal with Strict Motion & Color-Scheme Accessibility',
+    categoryLabel: '06 • Nuxt 4 Static Portal & Reduced-Motion Lab',
+    primaryStack: 'Nuxt 4 + Vue 3 Static SSG + Adaptive Theme & Motion Engine',
+    architecturalPattern: 'Static Content Portal with Strict Motion & Color-Scheme Accessibility Controls',
     summary:
-      'Dedicated standalone subdomain (301 target of thestardustengine.com) housing the flagship multi-decade band narrative, acoustic stem architecture, and wheelchair-accessible tour coach engineering dossiers.',
+      'Standalone Nuxt 4 and Vue 3 static site (301 target of thestardustengine.com) presenting structured discography, narrative archives, and technical schematics inside an accessible visual theme.',
     highlights: [
-      'Powered by Nuxt 4 and Vue 3 static generation, wrapping Markdown/JSON narrative archives and fleet blueprints in an adaptive cosmic environment.',
-      'Natively transforms between an Earth-like exoplanet horizon in Light Mode (prefers-color-scheme: light) and a deep-space nebula starfield in Dark Mode (prefers-color-scheme: dark).',
-      'Enforces strict prefers-reduced-motion: reduce compliance—automatically disabling star-twinkling, orbital, and parallax animations while handing off audio playback to music.raggiesoft.com.'
+      'Compiled via Nuxt 4 static generation from Markdown and JSON manifests for fast CDN and Nginx delivery.',
+      'Adapts automatically between Light Mode (prefers-color-scheme: light) and Dark Mode (prefers-color-scheme: dark) with >= 4.5:1 text contrast.',
+      'Honors prefers-reduced-motion: reduce by disabling ambient starfield and parallax motion automatically.'
     ],
-    tags: ['Nuxt 4', 'Vue 3', 'Static SSG', 'prefers-reduced-motion', 'prefers-color-scheme', 'Transmedia Architecture'],
+    tags: ['Nuxt 4', 'Vue 3', 'Static SSG', 'prefers-reduced-motion', 'prefers-color-scheme', 'WCAG 2.1 AA'],
     lenses: ['architecture', 'accessibility', 'data-etl'],
-    ctaLabel: 'Inspect Stardust Portal (stardust.raggiesoft.com)'
+    ctaLabel: 'Visit Stardust Portal (stardust.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-book-library',
     name: 'RaggieSoft Book Reader (Ocean View Archives)',
     domain: 'books.raggiesoft.com',
     url: 'https://books.raggiesoft.com',
-    categoryLabel: '07 • Zero-Framework Digital Reading Room',
-    primaryStack: 'PHP 8.5 + Stardust Engine Library SPA (Vanilla ES2024 JavaScript + Adaptive Typography)',
-    architecturalPattern: 'Zero-Framework Accessible Long-Form Reading Engine with Synchronized Audio Soundtracks',
+    categoryLabel: '07 • Accessible Digital Reading PWA',
+    primaryStack: 'PHP 8.5 + Stardust Engine Library SPA (Vanilla ES2024 JavaScript + Offline Service Worker)',
+    architecturalPattern: 'Framework-Free Long-Form Reading Application with Persistent Audio & EPUB/PDF Downloads',
     summary:
-      'Demonstrates mastery of foundational web standards without heavy client-side framework abstractions—delivering a fast, WCAG AAA-capable literary reading environment and EPUB 3.3 distribution hub.',
+      'Demonstrates mastery of core web standards without heavy client-side JS frameworks—delivering a fast, customizable reading PWA, full-text search engine, and Story Crossroads interactive branching reader.',
     highlights: [
-      'Zero client-side framework bloat: pure semantic HTML5, PHP 8.5 manifest parsing, and modular ES2024 JavaScript.',
-      'Real-time reader accessibility preferences (adjustable line-height, measure width, font family, and Light/Dark/Sepia high-contrast themes) persisted via localStorage.',
-      'Deep cross-domain integration with The Listening Room (music.raggiesoft.com) for chapter-synced musical accompaniment.'
+      'Pure semantic HTML5, PHP 8.5 manifest routing, and modular ES2024 JavaScript with persistent live <audio> playback across SPA route transitions.',
+      'Reader-controlled typography (adjustable font size, line height, measure width, and Light/Dark/Sepia high-contrast themes) persisted locally.',
+      'Automated build validation suite verifying 14,800+ SEO, canonical, and accessibility assertions across serialized chapters.'
     ],
-    tags: ['PHP 8.5', 'Vanilla ES2024 JS', 'Stardust Library SPA', 'WCAG AAA Typography', 'EPUB 3.3 Pipeline'],
+    tags: ['PHP 8.5', 'Vanilla ES2024 JS', 'Progressive Web App', 'Accessible Typography', 'EPUB / PDF Pipeline'],
     lenses: ['architecture', 'accessibility', 'data-etl'],
-    ctaLabel: 'Inspect Book Reader (books.raggiesoft.com)'
+    ctaLabel: 'Visit Book Reader (books.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-backstage',
+    name: 'RaggieSoft Backstage (Web Components & Static API)',
+    domain: 'backstage.raggiesoft.com',
+    url: 'https://backstage.raggiesoft.com',
+    categoryLabel: '08 • Web Components SSG & Cross-Origin JSON API',
+    primaryStack: 'Web Awesome Pro 3.13 (Custom Elements) + Font Awesome Pro+ + Node.js ESM SSG & PWA',
+    architecturalPattern: 'Standards-Based Web Components Portal & Static CORS JSON API (/api/v1/*.json)',
+    summary:
+      ' Progressive Web App built on standards-based Web Components (<wa-*>) that compiles Markdown dossiers into both accessible HTML routes and static JSON API endpoints consumed by web and native desktop clients.',
+    highlights: [
+      'Integrates Web Awesome custom elements (<wa-data-grid>, <wa-tab-group>, <wa-drawer>, <wa-dialog>) with synchronized light-dark() and forced-colors High Contrast support.',
+      'Generates versioned static JSON endpoints (/api/v1/index.json and per-entry payloads) consumed by books.raggiesoft.com and native C#/.NET & SwiftUI apps.',
+      'Includes an offline-capable Service Worker and Web App Manifest with zero server-side runtime dependencies.'
+    ],
+    tags: ['Web Components', 'Web Awesome 3.13', 'Node.js SSG', 'Static JSON API', 'Progressive Web App', 'Section 508'],
+    lenses: ['architecture', 'accessibility', 'data-etl'],
+    ctaLabel: 'Visit Backstage PWA (backstage.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-lore',
     name: 'RaggieSoft Lore Graph & Accessible Canvas Engine',
     domain: 'lore.raggiesoft.com',
     url: 'https://lore.raggiesoft.com',
-    categoryLabel: '08 • Semantic Knowledge Graph & Canvas Engine',
+    categoryLabel: '09 • Knowledge Graph & Accessible HTML5 Canvas',
     primaryStack: 'Next.js 16 + React 19 + Tailwind CSS v4 + HTML5 Canvas + Parallel ARIA Shadow DOM',
     architecturalPattern: 'Dual-Layer Accessible Canvas Visualization & Interactive Knowledge Graph',
     summary:
-      'Proves that high-frame-rate graphical <canvas> applications and strict Federal Section 508 screen-reader accessibility are not mutually exclusive.',
+      'Demonstrates how interactive 60fps HTML5 <canvas> visualizations can achieve full Section 508 keyboard and screen-reader parity.',
     highlights: [
-      'Implements the Dual-Layer Canvas Accessibility Pattern: a 60fps 2D graphical canvas paired with a synchronized, keyboard-navigable ARIA Shadow DOM.',
-      'Screen readers (JAWS, NVDA, VoiceOver) receive deterministic spatial telemetry and node relationship announcements via polite/assertive ARIA live regions.',
-      'Built with Next.js 16, React 19, and Tailwind CSS v4 static export architecture for instant global edge delivery.'
+      'Implements a Dual-Layer Canvas Accessibility Pattern pairing a 2D graphical canvas with a synchronized, keyboard-navigable ARIA DOM layer.',
+      'Delivers deterministic node relationship and state announcements to JAWS, NVDA, and VoiceOver via polite ARIA live regions.',
+      'Compiled via Next.js 16, React 19, and Tailwind CSS v4 static export for fast edge delivery.'
     ],
-    tags: ['Next.js 16', 'React 19', 'Tailwind CSS v4', 'HTML5 Canvas', 'ARIA Shadow DOM', 'Section 508'],
+    tags: ['Next.js 16', 'React 19', 'Tailwind CSS v4', 'HTML5 Canvas', 'ARIA Live Regions', 'Section 508'],
     lenses: ['architecture', 'accessibility'],
-    ctaLabel: 'Inspect Lore Graph (lore.raggiesoft.com)'
+    ctaLabel: 'Visit Lore Graph (lore.raggiesoft.com)'
   },
   {
     id: 'raggiesoft-nebulae',
-    name: 'Nebulae Cosmic Observatory & Design Incubator',
+    name: 'Nebulae Cosmic Observatory & Contrast Lab',
     domain: 'nebulae.raggiesoft.com',
     url: 'https://nebulae.raggiesoft.com',
-    categoryLabel: '09 • Astrophysical Telemetry & CSS Incubator',
-    primaryStack: 'Custom Node.js Observatory Compiler + Vanilla ES2024 Canvas + Glassmorphic CSS',
-    architecturalPattern: 'Static Astrophysical Telemetry Atlas & High-Contrast Glassmorphic UI Lab',
+    categoryLabel: '10 • Interactive Visualization & Contrast Lab',
+    primaryStack: 'Custom Node.js Compiler + Vanilla ES2024 Canvas + High-Contrast CSS Tokens',
+    architecturalPattern: 'Static Astronomical Visualization & Accessible Translucent Surface Lab',
     summary:
-      'Interactive deep-space observatory and UI design-system incubator cataloging real-world nebulae and cosmic phenomena while testing accessible glassmorphic surface tokens.',
+      'Interactive deep-space visualizer and UI token testbed validating WCAG 2.1 AA contrast ratios and reduced-motion behavior over dynamic canvas backgrounds.',
     highlights: [
-      'Compiles structured astrophysical datasets into a zero-database interactive observatory with hardware-accelerated starfield rendering.',
-      'Validates high-contrast glassmorphism (backdrop-filter with opaque fallback tokens) to guarantee >= 4.5:1 text contrast across light and dark viewports.',
-      'Honors prefers-reduced-motion and keyboard rotor navigation across all celestial catalog cards.'
+      'Compiles structured astronomical metadata into a zero-database interactive visualizer with hardware-accelerated rendering.',
+      'Pairs translucent backdrop-filter surfaces with opaque fallback tokens to preserve >= 4.5:1 text contrast across Light and Dark modes.',
+      'Supports full keyboard navigation and prefers-reduced-motion compliance.'
     ],
-    tags: ['Node.js SSG', 'ES2024 Canvas', 'Accessible Glassmorphism', 'Astrophysical Telemetry', 'WCAG 2.1 AA'],
+    tags: ['Node.js SSG', 'ES2024 Canvas', 'Contrast Engineering', 'prefers-reduced-motion', 'WCAG 2.1 AA'],
     lenses: ['architecture', 'accessibility', 'data-etl'],
-    ctaLabel: 'Inspect Nebulae Atlas (nebulae.raggiesoft.com)'
+    ctaLabel: 'Visit Nebulae Visualizer (nebulae.raggiesoft.com)'
   },
   {
     id: 'storetrainer',
     name: 'RaggieSoft StoreTrainer',
     domain: 'storetrainer.raggiesoft.com',
     url: 'https://storetrainer.raggiesoft.com',
-    categoryLabel: '10 • Pre-AI Win32 Utility & Retro-Accessible Portal',
+    categoryLabel: '11 • Pre-AI Win32 Desktop Utility & TypeScript Portal',
     primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS + Vanilla TypeScript / Vite',
-    architecturalPattern: 'Cross-Era Win32 Desktop PC Game & Trainer Directory Manager (Windows 95 through Windows 11)',
+    architecturalPattern: 'Cross-Era Win32 Desktop Utility (Windows 95 through Windows 11) & Accessible Retro Web Portal',
     summary:
-      '100% hand-written (pre-AI, 2018–2020) desktop utility engineered inside a Windows 2000 Professional SP4 VM to store, index, and launch PC games alongside their associated game trainers and command-line switches across 30 years of Windows hardware.',
+      '100% hand-written (pre-AI, 2018–2020) Win32 desktop utility built to index and launch PC games alongside trainer utilities and CLI flags across legacy and modern Windows OS releases.',
     highlights: [
-      'Hand-written in Visual Basic 6.0 (TStore.vbp) alongside a .NET port (TStore.NET), using dynamic Win32 kernel memory verification (GetProcAddress for IsWow64Process in DetectOSBits.bas) so 64-bit checks never crash Windows 95/98.',
-      'Packaged with an OS-aware NSIS Wizard95 installer (TSSetup.nsi) that conditionally deploys MSVBVM60.DLL, DCOM98, and Windows Script Host 5.6 on legacy kernels while extracting the full VB6 source tree ($INSTDIR\\Source) for educational auditing.',
-      'Standalone web portal at storetrainer.raggiesoft.com is compiled with Vanilla TypeScript + Vite—passing modern Section 508 and Light/Dark mode standards under the hood while paying homage to Netscape Communicator 4.78 / Windows 98–2000.'
+      'Hand-written in Visual Basic 6.0 (TStore.vbp) with a .NET port (TStore.NET), using dynamic Win32 API resolution (GetProcAddress for IsWow64Process) for safe 32/64-bit detection back to Windows 95.',
+      'Packaged via an OS-aware NSIS installer (TSSetup.nsi) that conditionally deploys legacy runtimes and bundles the full source tree for code inspection.',
+      'Companion web portal built in Vanilla TypeScript + Vite meets modern Section 508 and Light/Dark mode contrast standards inside a classic Win32 aesthetic.'
     ],
-    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Vanilla TypeScript', '100% Hand-Written (Pre-AI)'],
+    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Vanilla TypeScript', 'Hand-Written Pre-AI'],
     lenses: ['architecture', 'devops', 'data-etl'],
-    ctaLabel: 'Inspect StoreTrainer Portal (storetrainer.raggiesoft.com)'
+    ctaLabel: 'Visit StoreTrainer Portal (storetrainer.raggiesoft.com)'
   }
 ] as const;
 
 /**
- * "Personified DevOps" CI/CD & Content Automation Fleet.
- * Explains how a solo Systems Architect maintains 10 production properties and
- * gigabytes of multi-format media with enterprise reliability.
+ * Modular CI/CD, Content Compilation & Deployment Tooling Summary Cards.
  */
 export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
   {
-    codename: 'Paige',
-    scriptName: 'paige.php',
-    roleTitle: 'Literary Editor, Search Indexer & Safe Person',
-    stack: 'PHP 8.5 • JSON Route & 3,185-Scene Search Compiler',
+    codename: 'paige.php',
+    scriptName: 'raggiesoft-deployment-tools/paige.php',
+    roleTitle: 'Markdown Manuscript, Search Index & EPUB/PDF Compiler',
+    stack: 'PHP 8.5 CLI • JSON Route Trees • Pandoc / XeLaTeX',
     summary:
-      'Primary narrative publisher and full-text search indexer in raggiesoft-deployment-tools/paige.php—and in-universe fraternal twin sister and designated autistic Safe Person.',
+      'Command-line publishing compiler that validates Markdown chapter hierarchies, generates static JSON route manifests and full-text search indices, and packages downloadable EPUB/PDF editions.',
     capabilities: [
-      'Compiles multi-era Markdown manuscripts (e###/c###/s###.md) into structured JSON route trees, Table of Contents manifests (toc.json), and a 3,185-scene search-index.json across raggiesoft.com and books.raggiesoft.com.',
-      'Preserves compiled .epub and .pdf deliverables during destructive CDN shelf syncs while auditing JSON manifests for referential integrity.',
-      'Provides CLI grounding and Deep Pressure Therapy regulation protocols (--grounding) before high-cognitive-load deployments.'
+      'Compiles multi-book Markdown trees into structured JSON route manifests (toc.json, catalog.json) and a full-text search-index.json for books.raggiesoft.com.',
+      'Validates YAML frontmatter chronology, illustration asset existence, and internal cross-chapter link integrity before deployment.',
+      'Packages offline .7z bundles and accessible EPUB/PDF deliverables consumed by web and native desktop Book Reader clients.'
     ],
     profileSlug: 'paige',
     profileUrl: '/build-team/paige'
   },
   {
-    codename: 'Jessica',
-    scriptName: 'jessica.raggiesoft.com',
-    roleTitle: 'Production Linux VPS Infrastructure & Eldest Sister',
-    stack: 'Ubuntu 22.04 LTS • Nginx • PHP 8.5-FPM • UFW / SSH',
+    codename: 'jessica.raggiesoft.com',
+    scriptName: 'NYC1 Ubuntu VPS (142.93.244.239)',
+    roleTitle: 'Hardened Ubuntu Linux, Nginx & PHP 8.5-FPM Production Host',
+    stack: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / Ed25519 SSH',
     summary:
-      'The production DigitalOcean Droplet (NYC1 — 142.93.244.239) hosting all 10 RaggieSoft web roots, TLS certificates, and SSH access gateways.',
+      'Consolidated DigitalOcean production Droplet in NYC1 serving all 11 web properties behind Cloudflare TLS 1.3, strict CSP headers, and isolated virtual host configurations.',
     capabilities: [
-      'Serves as the single hardened SSH entry point (ssh michael@jessica.raggiesoft.com) with key-only authentication and UFW perimeter firewalling.',
-      'Hosts Nginx virtual hosts and PHP 8.5-FPM worker pools across raggiesoft.com, eight *.raggiesoft.com subdomains, and michaelpragsdale.com.',
-      'Personified in-universe as the eldest sister and neurotypical matriarch who keeps the house steady.'
+      'Enforces Ed25519 SSH key-only authentication, UFW perimeter firewall rules, and zero open database ports.',
+      'Serves 11 Nginx virtual hosts (/var/www/*) with immutable static asset caching, clean 301 edge redirects, and PHP 8.5-FPM worker pools.',
+      'Version-controls all server virtual host definitions inside a dedicated nginx-config repository.'
     ],
     profileSlug: 'jessica',
     profileUrl: '/build-team/jessica'
   },
   {
-    codename: 'Harper',
-    scriptName: 'harper.sh',
-    roleTitle: 'Automated Audio Mastering, RealESRGAN & WebVTT Pipeline',
-    stack: 'Bash • Python • FFmpeg • Metal RealESRGAN • OpenAI Whisper',
+    codename: 'harper.sh',
+    scriptName: 'raggiesoft-deployment-tools/harper.sh',
+    roleTitle: 'Multi-Core FFmpeg Audio Mastering & Media Pipeline',
+    stack: 'Bash • FFmpeg • Metal RealESRGAN • WebVTT Validation • 7-Zip',
     summary:
-      'Idempotent media ingestion pipeline that transforms raw studio renders into broadcast-normalized MP3/OGG streams, 4K upscaled artwork, and time-synced WebVTT closed captions.',
+      'Idempotent studio media pipeline that transcodes lossless vault WAV masters into normalized streaming formats, validates human-timed WebVTT captions, and packages downloadable archives.',
     capabilities: [
-      'Normalizes audio masters to EBU R128 (-14 LUFS) broadcast standards via FFmpeg while archiving lossless WAV/FLAC masters in a decoupled local vault (/raggiesoft-vaults).',
-      'Executes macOS Metal-accelerated RealESRGAN neural upscaling for 1:1 album covers and 16:9 Open Graph social banners.',
-      'Inspects .vtt files for NOTE human_verified_by_michael signatures—preserving human-synced studio timings while auto-transcribing unverified tracks.'
+      'Normalizes audio streams via FFmpeg across logical CPU cores while keeping 24-bit WAV/FLAC masters isolated in a local vault (/raggiesoft-vaults) off public cloud storage.',
+      'Verifies NOTE SYNC_TYPE: HUMAN_VERIFIED WebVTT lyric files so synchronized closed captions stay locked to vocal phrasing.',
+      'Packages multi-tier MP3, OGG, FLAC, and WAV archives alongside album metadata and upscaled cover artwork.'
     ],
     profileSlug: 'harper',
     profileUrl: '/build-team/harper'
   },
   {
-    codename: 'Jenna',
-    scriptName: 'jenna-sync.sh',
-    roleTitle: 'Multi-Repo Git & S3/Spaces CDN Release Orchestrator',
-    stack: 'Bash • Git • rclone • DigitalOcean Spaces (NYC1)',
+    codename: 'jenna-sync.sh',
+    scriptName: 'raggiesoft-deployment-tools/jenna-sync.sh',
+    roleTitle: 'Multi-Repo Pre-Push Build Gate & S3 CDN Orchestrator',
+    stack: 'Bash • Multi-Repo Git • Node.js / Angular / SvelteKit • rclone',
     summary:
-      'Single-command deployment pipeline governing build verification, Paige manuscript compilation, semantic Git tagging, 10-property GitHub synchronization, and differential S3 CDN asset publishing.',
+      'Single-command release script executing polyglot production builds, SEO/link verification gates, multi-repository Git commits, and differential DigitalOcean Spaces S3 CDN synchronization.',
     capabilities: [
-      'Enforces pre-push build and type-check gates across Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Node.js ESM, and PHP 8.5 repositories before any commit reaches production.',
-      'Synchronizes public media and shared network navigation assets (raggiesoft-network.js/.css) to DigitalOcean Spaces CDN (assets.raggiesoft.com) while isolating local lossless audio vaults (/raggiesoft-vaults).',
-      'Eliminates manual git push drift across all 10 decoupled properties.'
+      'Runs production builds and validation suites across Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Web Awesome SSG, and PHP 8.5 properties prior to Git push.',
+      'Synchronizes public static media (/raggiesoft-assets) to DigitalOcean Spaces CDN (assets.raggiesoft.com) via rclone while excluding private local vaults.',
+      'Prevents partial or out-of-order releases across 12 interconnected Git repositories.'
     ],
     profileSlug: 'jenna',
     profileUrl: '/build-team/jenna'
   },
   {
-    codename: 'Sarah',
-    scriptName: 'sarah-deploy.sh',
-    roleTitle: 'Zero-Downtime Linux & Nginx Autonomous Deployer',
-    stack: 'Bash • Cron (5-Min Heartbeat) • Git • rsync (Non-Root)',
+    codename: 'sarah-deploy.sh',
+    scriptName: 'raggiesoft-deployment-tools/sarah-deploy.sh',
+    roleTitle: 'Non-Root Cron Continuous Deployment Daemon',
+    stack: 'Bash • 5-Min Cron • Git SHA Verification • Non-Root rsync',
     summary:
-      'Server-side continuous deployment daemon running on a 5-minute cron heartbeat on NYC1, monitoring GitHub remotes and executing atomic rsync promotions.',
+      'Server-side continuous deployment script polling GitHub remotes on a 5-minute cron schedule, verifying commit SHAs, and promoting pre-built static bundles via atomic rsync.',
     capabilities: [
-      'Refuses root/sudo execution by design (EUID check) to prevent privilege-escalation risks while syncing 10 web roots under /var/www/.',
-      'Verifies remote origin/main SHA hashes against local production state and enforces standardized 755/644 permissions across all deployed bundles.',
-      'Personified in-universe as Jenna’s older twin sister whose OCD verification compulsion guarantees broken builds never go live.'
+      'Refuses root or sudo execution (EUID != 0 check) to prevent privilege-escalation risks and root-owned file lockouts under /var/www/.',
+      'Compares local HEAD against remote origin/main SHA hashes so unchanged web roots incur zero disk churn.',
+      'Normalizes POSIX permissions (755 directories / 644 files) atomically on every deployment.'
     ],
     profileSlug: 'sarah',
     profileUrl: '/build-team/sarah'
   },
   {
-    codename: 'Amanda & Elara',
-    scriptName: 'amanda/elara.php',
-    roleTitle: 'Protected Web Root & Front-Controller Gateway Router',
+    codename: 'amanda/elara.php',
+    scriptName: 'raggiesoft.com/www/amanda/elara.php',
+    roleTitle: 'Protected Web Root & Single Front-Controller Router',
     stack: 'PHP 8.5 MVC • Nginx try_files • JSON Route Inheritance',
     summary:
-      'Dual-twin gateway architecture where Amanda serves as the read-only physical web root and Elara acts as the single executable front-controller script.',
+      'Two-part Stardust Engine CMS gateway isolating the public document root (/amanda) from templates and routing all dynamic requests through a single PHP 8.5 front controller (elara.php).',
     capabilities: [
-      'Blocks direct public probing of legacy paths (/public_html, /index.php) while routing all incoming requests through elara.php.',
-      'Executes 301 edge redirects for decoupled subdomains and resolves recursive JSON route manifests with DRY common-block inheritance.',
-      'Personified as identical twins: Amanda (non-speaking apraxia, holding the static knowledge) and Elara (hyperlexic speaker, interpreting requests).'
+      'Keeps application includes, page templates, and JSON route manifests outside the public Nginx document root.',
+      'Routes requests exclusively through elara.php via Nginx try_files while returning clean 404s to automated /index.php exploit scanners.',
+      'Resolves hierarchical JSON route definitions with shared metadata and layout inheritance.'
     ],
     profileSlug: 'amanda-elara',
     profileUrl: '/build-team/amanda-elara'
@@ -494,8 +520,7 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
 ] as const;
 
 /**
- * Deep-Dive Architectural Case Studies.
- * Combines real-world municipal/higher-ed achievements with RaggieSoft systems engineering.
+ * Deep-Dive Engineering & Section 508 Case Studies.
  */
 export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
@@ -506,82 +531,103 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
     timeframe: 'May 2023 – Present',
     lenses: ['data-etl', 'accessibility'],
     problemStatement:
-      'ActiveNet stores comprehensive municipal room-rental and reservation records, yet its dense on-screen reporting is inefficient to parse quickly while Front Desk staff are simultaneously assisting walk-in patrons, answering phones, and checking in members.',
+      'ActiveNet stores detailed recreation center room-rental and reservation records, yet parsing raw reservation screens mid-shift is slow when Front Desk staff are simultaneously assisting walk-in patrons, answering phones, and checking in members.',
     architecturalSolution:
-      'Applied software-development and Section 508 accessible-document principles directly to Front Desk operations: extracted weekend room-rental records from ActiveNet, verified and reorganized reservation details, and transformed them into a concise, standardized Microsoft Word reference with clear heading hierarchy and readable layout.',
+      'Applied software-development and Section 508 accessible-document practices to Front Desk operations: extracted weekend room-rental data from ActiveNet, verified and reorganized reservation records, and formatted them into a concise, standardized Microsoft Word reference with clear heading hierarchy and scannable layout.',
     quantifiedImpact: [
-      { label: 'Operational Format', value: 'At-a-Glance Weekend Reference' },
-      { label: 'Information Design', value: 'Section 508 Accessible Hierarchy' },
-      { label: 'Front Desk Impact', value: 'Faster Live Patron Triage' }
+      { label: 'Operational Output', value: 'Standardized Weekend Reference' },
+      { label: 'Document Structure', value: 'Section 508 Heading Hierarchy' },
+      { label: 'Front Desk Benefit', value: 'At-a-Glance Staff Lookup' }
     ],
     technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Process Improvement'],
     referenceLinks: [
-      { label: 'Download Full Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
+      { label: 'Download Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
     ]
   },
   {
     id: 'odu-section-508-gatekeeper',
     code: 'CASE-02',
-    title: 'University-Wide LMS Migration & Section 508 Compliance Gatekeeping',
+    title: 'Canvas LMS Migration & Section 508 Course Remediation',
     organization: 'Old Dominion University (ODU Online)',
     timeframe: 'Nov 2019 – Jul 2022',
     lenses: ['accessibility', 'architecture', 'data-etl'],
     problemStatement:
-      'During a massive university-wide Learning Management System (LMS) migration, hundreds of asynchronous university courses contained inaccessible PDFs, unlabeled interactive widgets, broken heading hierarchies, and non-compliant contrast ratios that posed federal Section 508 / ADA Title II compliance risks.',
+      'During ODU Online’s transition to the Canvas Learning Management System (LMS), hundreds of asynchronous university course modules required structural HTML/CSS cleanup and Section 508 / WCAG 2.1 AA verification to ensure equitable access for students using assistive technologies.',
     architecturalSolution:
-      'Served as the technical Section 508 Compliance Specialist and accessibility gatekeeper. Engineered standardized, pre-validated WCAG 2.1 AA HTML/CSS syllabus and course module templates, and executed rigorous Deque axe and screen-reader (JAWS/NVDA) audits across instructional engineering pipelines.',
+      'Audited and remediated course HTML/CSS pages and instructional documents using Deque axe, WAVE, manual keyboard testing, and JAWS/NVDA screen readers, while developing reusable Section 508-compliant HTML/CSS course templates for instructional designers and faculty.',
     quantifiedImpact: [
-      { label: 'Standard Enforced', value: 'Federal Section 508 & WCAG 2.1 AA' },
-      { label: 'Audit Toolchain', value: 'Deque axe + JAWS / NVDA' },
-      { label: 'Template Adoption', value: 'University-Wide Distance Learning' }
+      { label: 'Compliance Standard', value: 'Section 508 & WCAG 2.1 AA' },
+      { label: 'Testing Workflow', value: 'Deque axe + JAWS / NVDA' },
+      { label: 'Reusable Output', value: 'Accessible HTML/CSS Templates' }
     ],
-    technologies: ['Section 508', 'WCAG 2.1 AA', 'Deque axe', 'Semantic HTML5', 'ARIA Landmarks', 'LMS Architecture'],
+    technologies: ['Section 508', 'WCAG 2.1 AA', 'Deque axe', 'WAVE', 'JAWS / NVDA', 'Semantic HTML5 & CSS', 'Canvas LMS'],
     referenceLinks: [
-      { label: 'Download Full Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
+      { label: 'Download Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
+    ]
+  },
+  {
+    id: 'native-desktop-suite',
+    code: 'CASE-03',
+    title: 'Cross-Platform Native Desktop & Mobile Suite (.NET 10 WPF & Multiplatform SwiftUI)',
+    organization: 'RaggieSoft Media (BookReader, ListeningRoom & Backstage Apps)',
+    timeframe: '2025 – 2026',
+    lenses: ['architecture', 'accessibility', 'data-etl'],
+    problemStatement:
+      'Readers and listeners wanted native offline desktop and mobile applications on Windows and Apple devices capable of downloading compressed book/audio archives and synchronizing live chapter soundtracks across apps without bundling a local database server.',
+    architecturalSolution:
+      'Engineered parallel native client suites in C# / .NET 10 WPF (Visual Studio 2026 + Inno Setup 7.1.1 installers for Windows x64/ARM64) and multiplatform SwiftUI (Xcode project targeting macOS, iOS, iPadOS, tvOS, and visionOS). Implemented shared core libraries consuming static CDN JSON APIs, bundled 7-Zip offline archive extraction, tri-directional cross-app IPC (Windows Named Pipes and Apple DistributedNotificationCenter / custom URL schemes), and full UIAutomation (Narrator/NVDA) and VoiceOver accessibility.',
+    quantifiedImpact: [
+      { label: 'Windows Stack', value: 'C# / .NET 10 WPF + Named Pipes IPC' },
+      { label: 'Apple Stack', value: 'Multiplatform SwiftUI + StoreKit 2' },
+      { label: 'Assistive Support', value: 'UIAutomation & VoiceOver Ready' }
+    ],
+    technologies: ['C#', '.NET 10 WPF', 'SwiftUI', 'Named Pipes IPC', 'UIAutomation', 'VoiceOver', 'Inno Setup', 'Static JSON APIs'],
+    referenceLinks: [
+      { label: 'Inspect Web Companion (books.raggiesoft.com)', url: 'https://books.raggiesoft.com' },
+      { label: 'Inspect Audio Companion (music.raggiesoft.com)', url: 'https://music.raggiesoft.com' }
     ]
   },
   {
     id: 'dual-layer-canvas-a11y',
-    code: 'CASE-03',
+    code: 'CASE-04',
     title: 'Dual-Layer Canvas Accessibility: 60fps HTML5 Graphics with Screen-Reader Parity',
-    organization: 'RaggieSoft Media (Runebreaker / Aethelgard Engine)',
+    organization: 'RaggieSoft Media (lore.raggiesoft.com)',
     timeframe: '2025 – Present',
     lenses: ['accessibility', 'architecture'],
     problemStatement:
-      'HTML5 `<canvas>` elements render as an opaque bitmap pixel buffer—creating a total "black box" for blind and low-vision users relying on screen readers and keyboard navigation.',
+      'Standard HTML5 `<canvas>` elements render as an unlabeled bitmap surface, leaving keyboard-only and screen-reader users unable to inspect nodes, relationships, or spatial state.',
     architecturalSolution:
-      'Architected a Dual-Layer Canvas Synchronization Engine in TypeScript and React 19. While the primary render loop draws 60fps 2D graphics on the `<canvas>`, a state-synchronized parallel ARIA Shadow DOM projects interactive grid nodes, entity telemetry, and deterministic `aria-live` combat/navigation announcements to assistive technologies.',
+      'Built a Dual-Layer Canvas Synchronization pattern in TypeScript and React 19. While the render loop draws interactive 2D graphics on `<canvas>`, a state-synchronized parallel ARIA DOM layer exposes focusable controls, node relationships, and polite `aria-live` status updates to assistive technologies.',
     quantifiedImpact: [
-      { label: 'Render Performance', value: 'Locked 60 FPS Canvas Loop' },
-      { label: 'Assistive Parity', value: 'Full Keyboard & Screen-Reader Tree' },
-      { label: 'Contrast Support', value: 'Forced-Colors & Reduced-Motion Ready' }
+      { label: 'Visual Frame Rate', value: '60 FPS 2D Canvas Render Loop' },
+      { label: 'Assistive Parity', value: 'Synchronized Keyboard & ARIA Tree' },
+      { label: 'Display Modes', value: 'Forced-Colors & Reduced-Motion Ready' }
     ],
-    technologies: ['TypeScript', 'HTML5 Canvas', 'ARIA Live Regions', 'Shadow DOM Parity', 'React 19', 'WCAG 2.1 AA'],
+    technologies: ['TypeScript', 'React 19', 'Next.js 16', 'HTML5 Canvas', 'ARIA Live Regions', 'WCAG 2.1 AA'],
     referenceLinks: [
-      { label: 'Explore Aethelgard / Lore Portal', url: 'https://lore.raggiesoft.com' }
+      { label: 'Visit Lore Graph (lore.raggiesoft.com)', url: 'https://lore.raggiesoft.com' }
     ]
   },
   {
     id: 'cascade-protocol-decoupling',
-    code: 'CASE-04',
-    title: 'The Cascade Protocol: 10-Property Polyglot Decoupling, Path Consolidation & CDN Data Lake',
-    organization: 'RaggieSoft Infrastructure (NYC1 Production Cluster)',
+    code: 'CASE-05',
+    title: '11-Property Static-First Web Decoupling & Single-Command CI/CD',
+    organization: 'RaggieSoft Infrastructure (NYC1 Linux VPS + S3 CDN)',
     timeframe: '2024 – 2026',
     lenses: ['architecture', 'devops', 'data-etl'],
     problemStatement:
-      'Hosting B2B corporate licensing, 31+ full-length music albums, 7 band lore archives, interactive novels, and a recruiter portfolio inside a single monolithic PHP repository created tight coupling and deployment risk—while spinning up fourth-level subdomains or relational databases (MySQL/PostgreSQL) would fracture Universal SSL coverage, multiply framework maintenance, and introduce SQL injection attack vectors.',
+      'Hosting corporate licensing, 40+ music albums, serialized books, interactive visualizations, and an engineering portfolio inside one monolithic repository created tight coupling—while adding SQL databases would increase patching overhead and attack surface.',
     architecturalSolution:
-      'Executed a strangler-fig decoupling strategy across 10 specialized properties (`*.raggiesoft.com` + `michaelpragsdale.com`) backed by a flat-file JSON+Markdown data lake (`raggiesoft-assets`). Consolidated multi-band lore under `engineroom.raggiesoft.com/artists/{slug}` (Astro 6) so adding new artists never increases operational overhead, while dedicating standalone stacks to stateful audio streaming (`music.raggiesoft.com` in Svelte 5), flagship narrative worlds (`stardust.raggiesoft.com` in Nuxt 4), B2B governance (`corporate.raggiesoft.com` in Bootstrap 5.3.8 SSG), and executive evaluation (`michaelpragsdale.com` in Angular 19)—unified by a shared CDN network bar (`raggiesoft-network.js`) and single-command `jenna-sync.sh` CI/CD.',
+      'Decoupled the platform into 11 focused properties (`raggiesoft.com`, nine `*.raggiesoft.com` subdomains, and `michaelpragsdale.com`) backed by flat-file JSON and Markdown repositories plus DigitalOcean Spaces CDN (`assets.raggiesoft.com`). Unified cross-site navigation via a shared lightweight script (`raggiesoft-network.js`) and automated builds, validation, and non-root server deployments via `jenna-sync.sh` and `sarah-deploy.sh`.',
     quantifiedImpact: [
-      { label: 'Database Attack Surface', value: '0 SQL Databases (100% Static/JSON)' },
-      { label: 'Production Properties', value: '10 Polyglot Micro-Properties' },
-      { label: 'Deployment Automation', value: 'Single-Command CI/CD (jenna-sync.sh)' }
+      { label: 'SQL Attack Surface', value: '0 Relational Databases' },
+      { label: 'Live Web Properties', value: '11 Decoupled Production Sites' },
+      { label: 'Release Workflow', value: 'Automated Pre-Push Build Gates' }
     ],
-    technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'Next.js 16', 'Nginx 301 Routing', 'DigitalOcean Spaces CDN'],
+    technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'Next.js 16', 'Web Awesome', 'Nginx', 'DigitalOcean Spaces'],
     referenceLinks: [
-      { label: 'View Engine Room Imprint (Astro 6)', url: 'https://engineroom.raggiesoft.com' },
-      { label: 'View The Listening Room (Svelte 5)', url: 'https://music.raggiesoft.com' },
-      { label: 'View Corporate Hub (Bootstrap 5.3.8 SSG)', url: 'https://corporate.raggiesoft.com' }
+      { label: 'Inspect CI/CD Tooling (/build-team)', url: '/build-team' },
+      { label: 'Visit Engine Room Imprint (Astro 6)', url: 'https://engineroom.raggiesoft.com' }
     ]
   }
 ] as const;
@@ -591,52 +637,52 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
  */
 export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
   {
-    functionalTitle: 'Founder, Principal Systems Architect & Accessibility Engineer',
-    hrClassification: 'Official Classification: Sole Proprietor (Domain Registered Jul 7, 2008)',
+    functionalTitle: 'Independent Full-Stack Web Developer & Creator',
+    hrClassification: 'Independent Software & Digital Publishing (raggiesoft.com — Est. Jul 2008)',
     organization: 'RaggieSoft Media',
     location: 'Norfolk, VA',
-    timeframe: 'Jul 2008 – Present (18+ Years)',
+    timeframe: '2008 – Present',
     lenses: ['architecture', 'accessibility', 'devops', 'data-etl'],
     summary:
-      'Architect and maintain a 10-property, polyglot cloud ecosystem serving B2B licensing, interactive media, accessible digital publications, and enterprise web proofs-of-concept with zero database attack surface.',
+      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 11 live web properties, cross-platform C#/.NET and SwiftUI apps, and Linux cloud infrastructure.',
     achievements: [
-      'Engineered and decoupled 10 production web properties spanning Angular 19 (Zoneless Signals), PHP 8.5 MVC (Stardust Engine CMS), SvelteKit 2 + Svelte 5 Runes, Astro 6, Nuxt 4 + Vue 3, Next.js 16 + React 19, Bootstrap 5.3.8 Static SSG, Vanilla PHP/ES2024 JS, and Visual Basic 6.0 / Win32 API.',
-      'Architected a unified cross-network navigation bar and single-hamburger mobile drawer (`raggiesoft-network.js` / `.css`) plus local-first studio tooling (`paige.php`, `jenna-sync.sh`, `harper.sh`, `sarah-deploy.sh`, and the Hold-Spacebar WebVTT Lyric Synchronizer).',
-      'Enforced strict WCAG 2.1 AA/AAA and Federal Section 508 compliance across all 10 properties, including native `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors` support.'
+      'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, Bootstrap 5.3.8, and Web Awesome.',
+      'Developed companion native desktop and mobile apps in C# / .NET 10 WPF (Windows) and SwiftUI (macOS, iOS, iPadOS) with offline archive support, cross-app IPC, and native UIAutomation / VoiceOver accessibility.',
+      'Automated multi-repo build verification, FFmpeg audio normalization, human-verified WebVTT caption checks, S3 CDN synchronization, and non-root Ubuntu/Nginx deployments via modular CLI scripts.'
     ],
-    technologies: ['Angular 19', 'PHP 8.5', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'React 19', 'TypeScript', 'Linux/Nginx', 'Section 508', 'Bash/Python CI/CD']
+    technologies: ['TypeScript', 'PHP 8.5', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'C# / .NET 10 WPF', 'SwiftUI', 'Linux / Nginx', 'Section 508']
   },
   {
     functionalTitle: 'Clerk-Cashier',
-    hrClassification: 'City of Virginia Beach Parks & Recreation (Part-Time While Completing A.S. in IT)',
+    hrClassification: 'City of Virginia Beach Parks & Recreation (Current Municipal Role While Completing A.S. in IT)',
     organization: 'City of Virginia Beach — Parks & Recreation',
     location: 'Virginia Beach, VA',
     timeframe: 'May 2023 – Present',
     lenses: ['data-etl', 'accessibility'],
     summary:
-      'Support daily recreation center Front Desk operations while applying a software-development and Section 508 accessibility background to streamline staff reference materials and everyday technical workflows.',
+      'Support daily recreation center Front Desk operations while applying a software-development and Section 508 accessibility background to improve staff reference materials and everyday technical workflows.',
     achievements: [
       'Support daily recreation center operations by assisting patrons in person and by telephone, processing payments, issuing memberships, checking members into the facility, and resolving account and service questions.',
-      'Extract room-rental information from ActiveNet and convert complex reservation records into a concise, standardized Microsoft Word reference built with Section 508 accessible-document structure so Front Desk staff have an at-a-glance view of weekend facility use.',
-      'Serve as a practical technical resource for coworkers using ActiveNet, Microsoft Office, and related Front Desk systems, explaining technical processes in approachable terms and identifying opportunities for clearer information workflows.'
+      'Extract room-rental information from ActiveNet and convert complex reservation records into a concise, standardized Microsoft Word reference built with Section 508 accessible-document principles so Front Desk staff have an at-a-glance view of weekend facility use.',
+      'Serve as an approachable technical resource for coworkers using ActiveNet, Microsoft Office, and related Front Desk systems, troubleshooting everyday issues and identifying opportunities for clearer operational workflows.'
     ],
-    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Technical Support', 'Process Improvement']
+    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Customer Support', 'Process Improvement']
   },
   {
-    functionalTitle: 'Section 508 Compliance Specialist & LMS Operations Engineer',
-    hrClassification: 'Official University HR Title: Computer Operations Tech',
+    functionalTitle: 'Computer Operations (Web & Section 508 Accessibility)',
+    hrClassification: 'Official University HR Classification: Computer Operations Tech',
     organization: 'Old Dominion University (ODU Online)',
     location: 'Norfolk, VA',
     timeframe: 'Nov 2019 – Jul 2022',
     lenses: ['accessibility', 'architecture', 'data-etl'],
     summary:
-      'Acted as the technical accessibility gatekeeper during ODU Online’s university-wide Learning Management System (LMS) migration and distance-learning expansion.',
+      'Supported ODU Online’s transition to the Canvas LMS by auditing and remediating university web content, course modules, and templates for Federal Section 508 and WCAG 2.1 AA compliance.',
     achievements: [
-      'Audited and remediated university course modules, instructional media, and web templates for strict Federal Section 508 and WCAG 2.1 AA compliance using Deque axe and screen readers.',
-      'Engineered semantic HTML5/CSS syllabus and course shell templates adopted across academic departments to prevent accessibility regressions at the source.',
-      'Coordinated technical triage and data migration verification between instructional designers, faculty, and central IT operations.'
+      'Audited and remediated university web pages, course modules, and instructional documents for accessibility and structural consistency during ODU Online’s Canvas LMS migration.',
+      'Conducted Section 508 and WCAG 2.1 AA reviews combining automated scanners (Deque axe, WAVE) with manual keyboard testing and JAWS / NVDA screen-reader verification.',
+      'Developed reusable, Section 508-compliant HTML and CSS course module templates that helped instructional designers and faculty publish accessible distance-learning materials.'
     ],
-    technologies: ['Section 508 Compliance', 'WCAG 2.1 AA', 'Deque axe', 'Screen Readers (JAWS/NVDA)', 'Semantic HTML/CSS', 'LMS Migration']
+    technologies: ['Section 508', 'WCAG 2.1 AA', 'Deque axe', 'WAVE', 'JAWS / NVDA', 'Semantic HTML/CSS', 'Canvas LMS']
   },
   {
     functionalTitle: 'Mobile Applications Developer Intern',
@@ -646,12 +692,12 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     timeframe: 'Sep 2012 – Dec 2012',
     lenses: ['architecture'],
     summary:
-      'Contributed to enterprise mobile application development and RESTful API integration within an agile software engineering division.',
+      'Contributed to cross-platform mobile application development and REST API integration within an Agile software engineering team.',
     achievements: [
-      'Developed and tested client-side mobile application views and data-binding workflows consuming high-volume commercial listing APIs.',
-      'Collaborated with senior architects on responsive UI patterns, cross-device debugging, and version-controlled release cycles.'
+      'Developed and tested cross-platform iOS and Android mobile application views consuming commercial listing REST APIs using JavaScript and the Titanium SDK.',
+      'Collaborated with senior developers on responsive UI patterns, cross-device debugging, and version-controlled release cycles.'
     ],
-    technologies: ['Mobile Web / App Development', 'REST APIs', 'JavaScript', 'Agile Engineering']
+    technologies: ['JavaScript', 'Mobile App Development', 'REST APIs', 'Agile Scrum']
   }
 ] as const;
 
@@ -663,50 +709,44 @@ export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
     degree: 'Associate of Science (A.S.) in Information Technology (Focus: Software Engineering & Web Dev)',
     institution: 'Tidewater Community College — Virginia Beach / Norfolk, VA',
     timeframe: 'Expected Graduation: December 2027',
-    statusNote: 'Active In-State Student (Requires Virginia physical residency for tuition rate)',
+    statusNote: 'Current In-State Student',
     focusAreas: [
-      'Enterprise Software Engineering, Web Development & Object-Oriented Systems Design',
-      'Network Architecture, Linux Administration & Cybersecurity Fundamentals',
-      'Database Design, Data Structures & Algorithmic Problem Solving'
+      'Software Engineering, Full-Stack Web Development & Object-Oriented Programming',
+      'Network Fundamentals, Linux Administration & Cybersecurity Principles',
+      'Relational Database Design, Data Structures & Problem Solving'
     ]
   },
   {
     degree: 'Bachelor of Science (B.S.) Coursework — Customized Studies in Leadership & Information Systems',
     institution: 'Old Dominion University — Norfolk, VA',
     timeframe: 'Prior Coursework',
-    statusNote: 'Foundation in Organizational Leadership, Technical Communication & Public Sector Operations',
+    statusNote: 'Undergraduate Coursework in Technical Communication & Information Systems',
     focusAreas: [
-      'Technical Leadership & Cross-Functional Team Coordination',
-      'Public Sector & Higher-Education Information Systems Governance',
-      'Accessible Communication & Section 508 Regulatory Frameworks'
+      'Organizational Leadership & Cross-Functional Team Collaboration',
+      'Public-Sector & Higher-Education Information Systems',
+      'Accessible Technical Communication & Section 508 Principles'
     ]
   },
   {
     degree: 'Certificate in Business & Information Technology',
     institution: 'Wilson Workforce and Rehabilitation Center (formerly Woodrow Wilson Rehabilitation Center) — Fishersville, VA',
     timeframe: 'Graduated: 2011',
-    statusNote: 'Foundational Business Operations & Information Technology Credential',
+    statusNote: 'Business Operations & Information Technology Credential',
     focusAreas: [
-      'Business Information Systems, Office Automation & Technical Operations',
-      'Applied Assistive Technology & Accessible Workplace Workflows'
+      'Business Information Systems, Office Productivity & Technical Operations',
+      'Assistive Technology & Accessible Workplace Practices'
     ]
   }
 ] as const;
 
 /**
  * =============================================================================
- * THE BUILD TEAM & DEVOPS FAMILY (/build-team & /build-team/:slug)
+ * CI/CD & MEDIA AUTOMATION SUITE (/build-team & /build-team/:slug)
  * =============================================================================
- * Migrated from `raggiesoft.com/www/pages/family/*.php` into `michaelpragsdale.com`
- * so recruiters and visitors can explore both layers of the RaggieSoft Build Team:
- * 1. Real-World Engineering Layer: The production CLI scripts (`paige.php`,
- *    `harper.sh`, `jenna-sync.sh`, `sarah-deploy.sh`), routers (`amanda/elara.php`),
- *    and Linux VPS infrastructure (`jessica.raggiesoft.com`) that allow one
- *    Systems Architect to operate 10 polyglot properties.
- * 2. In-Universe Human & Sensory Regulation Layer: The personified sisters and
- *    Safe Person constructs designed by an autistic only child (AuDHD + Cerebral
- *    Palsy) to provide emotional grounding, Deep Pressure Therapy regulation,
- *    and cognitive structure.
+ * Technical documentation for the modular command-line scripts, front-controller
+ * router, and Linux server configuration powering RaggieSoft's 11 web properties.
+ * Keeps all `/build-team` and `/build-team/:slug` routes active with pure
+ * DevOps, security, and platform-engineering documentation.
  * =============================================================================
  */
 
@@ -714,17 +754,6 @@ export interface BuildTeamVitalStat {
   readonly label: string;
   readonly value: string;
   readonly isBadge?: boolean;
-}
-
-export interface BuildTeamFeatureBanner {
-  readonly badge: string;
-  readonly title: string;
-  readonly quote: string;
-  readonly paragraphs: readonly string[];
-  readonly imageUrl: string;
-  readonly imageAlt: string;
-  readonly ctaLabel?: string;
-  readonly ctaSlug?: string;
 }
 
 export interface BuildTeamTerminalBlock {
@@ -745,7 +774,6 @@ export interface BuildTeamMember {
   readonly stackBadge: string;
   readonly quote: string;
   readonly cardSummary: string;
-  readonly portraitUrl: string;
   readonly ogTitle: string;
   readonly ogDescription: string;
   readonly ogImageUrl: string;
@@ -753,482 +781,512 @@ export interface BuildTeamMember {
   readonly technicalHeading: string;
   readonly technicalIntro: string;
   readonly technicalCapabilities: readonly { readonly title: string; readonly detail: string }[];
-  readonly cliSnippet?: {
+  readonly cliSnippet: {
     readonly comment: string;
     readonly commands: readonly string[];
   };
-  readonly humanHeading: string;
-  readonly humanLeadQuote: string;
-  readonly humanParagraphs: readonly string[];
-  readonly featureBanner?: BuildTeamFeatureBanner;
-  readonly terminalBlock?: BuildTeamTerminalBlock;
+  readonly operationsHeading: string;
+  readonly operationsLead: string;
+  readonly operationsParagraphs: readonly string[];
+  readonly terminalBlock: BuildTeamTerminalBlock;
 }
 
 export const BUILD_TEAM_OVERVIEW = {
-  title: 'The RaggieSoft Build Team & DevOps Family',
-  subtitle: 'A "Personified DevOps" ecosystem where every server, compiler, and deployment daemon has a name, a face, and a purpose.',
-  quote: '"We don\'t just run code; we live it."',
-  heroBannerUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/scenes/paige-michael-hug.jpg',
-  logoUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/logos/logo-family.png',
-  realityNoteTitle: 'Dual-Layer Architecture: Real-World Digital Employees & In-Universe Sisters',
-  realityNoteLead: 'Michael P. Ragsdale is a real person—an autistic only child living with AuDHD and Cerebral Palsy.',
-  realityNoteBody:
-    'In the real-world production pipeline, these women are the modular CLI scripts and server daemons (/raggiesoft-deployment-tools/) that allow a solo Systems Architect to build, test, master, and deploy 10 decoupled web properties with zero downtime. In-universe, they are the sisters he wishes he had—personifying his infrastructure into the social structure, cognitive predictability, and "Safe Person" Deep Pressure Therapy grounding that biology did not provide.'
+  title: 'CI/CD & Media Automation Suite',
+  subtitle:
+    'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines that build, validate, master, and deploy 11 decoupled web properties.',
+  quote:
+    'Deterministic pre-push build gates, vault-isolated media mastering, and non-root server deployments keep a multi-framework platform maintainable by one developer.',
+  logoUrl: 'https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png',
+  namingNoteTitle: 'Modular CLI Architecture & Script Naming Convention',
+  namingNoteLead:
+    'Single-responsibility tools in /raggiesoft-deployment-tools/ with clear stage boundaries.',
+  namingNoteBody:
+    'Across RaggieSoft’s repositories, internal CLI scripts and infrastructure components carry short names borrowed from the creative catalog (paige.php, harper.sh, jenna-sync.sh, sarah-deploy.sh, amanda/elara.php, and jessica.raggiesoft.com). Each module owns exactly one deterministic stage of workstation setup, content compilation, media mastering, S3 CDN synchronization, or non-root Linux deployment.',
+  pipelineStages: [
+    {
+      step: '01 • Workstation Bootstrap',
+      command: './brooke.sh && ./backup.sh --sync',
+      outcome: 'Provisions CLI toolchains across macOS, Windows 11, and Linux and mirrors workspaces to encrypted/external storage.'
+    },
+    {
+      step: '02 • Content & Media Compilation',
+      command: 'php paige.php && ./harper.sh',
+      outcome: 'Compiles Markdown chapters into JSON route manifests/EPUBs and normalizes multi-format audio with verified WebVTT captions.'
+    },
+    {
+      step: '03 • Polyglot Pre-Push Gate & CDN Sync',
+      command: './jenna-sync.sh --push -m "Release"',
+      outcome: 'Builds Angular 19, SvelteKit, Astro, Nuxt, Next.js, and SSG bundles, runs SEO/a11y checks, pushes Git repos, and syncs S3 CDN.'
+    },
+    {
+      step: '04 • Non-Root Server Promotion',
+      command: 'cron (5m) -> ./sarah-deploy.sh',
+      outcome: 'Verifies remote GitHub commit SHAs as a non-root user on NYC1 and promotes static bundles into /var/www/* via atomic rsync.'
+    },
+    {
+      step: '05 • Hardened Edge & Gateway Serving',
+      command: 'jessica.raggiesoft.com -> amanda/elara.php',
+      outcome: 'Serves all 11 Nginx virtual hosts behind Cloudflare TLS 1.3, CSP headers, and isolated PHP 8.5 front-controller routing.'
+    }
+  ]
 } as const;
+
+const DEFAULT_OG_IMG = 'https://michaelpragsdale.com/og-image.jpg';
 
 export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
   {
     slug: 'michael',
-    name: 'Michael P. Ragsdale',
-    shortLabel: 'Michael (Architect)',
-    icon: '🧠',
-    roleTitle: 'The Architect, Author & Biological Core',
-    systemArtifact: 'Biological Core • Human-in-the-Loop Director',
-    stackBadge: 'Systems Architect • Section 508 Engineer',
-    quote: 'I don\'t just write code to solve problems. I write code to build a world where I make sense.',
-    cardSummary: 'The biological core of the ecosystem. He writes the stories, directs the music, and architects the 10-property polyglot platform.',
-    portraitUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/michael.jpg',
-    ogTitle: 'Michael P. Ragsdale — The Architect | Build Team',
-    ogDescription: 'Meet Michael P. Ragsdale, the biological core, Systems Architect, and author behind the RaggieSoft Personified DevOps ecosystem.',
-    ogImageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/michael.jpg',
+    name: 'Workstation & Bootstrap Tooling',
+    shortLabel: 'Workstation (brooke.sh)',
+    icon: '💻',
+    roleTitle: 'Cross-Platform Developer Environment & Workspace Sync',
+    systemArtifact: '~/Developer/{brooke.sh,backup.sh,init-windows.ps1}',
+    stackBadge: 'Bash • PowerShell 7 • Homebrew / Winget / APT • rsync / rclone',
+    quote: 'Reproducible local tooling ensures macOS, Windows 11, and Linux development environments behave identically.',
+    cardSummary:
+      'OS-agnostic workstation provisioning and workspace synchronization scripts supporting macOS, Windows 11 (.NET 10 / VS 2026), and Linux.',
+    ogTitle: 'Workstation & Bootstrap Tooling | Michael P. Ragsdale',
+    ogDescription:
+      'Cross-platform developer workstation provisioning and backup tooling (brooke.sh, backup.sh) across macOS, Windows 11, and Linux environments.',
+    ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
-      { label: 'DOB', value: 'Apr 8, 1985 (8:38 PM)' },
-      { label: 'Origin', value: 'Newport, RI (Domiciled in Norfolk, VA)' },
-      { label: 'Neurotype', value: 'AuDHD (Autism + ADHD)', isBadge: true },
-      { label: 'Physical Profile', value: 'Cerebral Palsy (Ambulatory)', isBadge: true }
+      { label: 'Artifacts', value: 'brooke.sh • backup.sh • init-windows.ps1' },
+      { label: 'Supported OS', value: 'macOS • Windows 11 • Ubuntu/Kubuntu Linux' },
+      { label: 'Sync Backends', value: 'POSIX rsync + rclone Fallback', isBadge: true },
+      { label: 'Execution Mode', value: 'Idempotent Non-Interactive CLI', isBadge: true }
     ],
-    technicalHeading: 'The Architect & Creative Director',
+    technicalHeading: 'Cross-Platform Provisioning & Workspace Portability',
     technicalIntro:
-      'Michael is the biological core of the system—the only entity in the family who exists in the physical world. He is responsible for the creative and engineering vision that drives the entire ecosystem:',
+      'Because RaggieSoft includes web applications alongside native Windows (.NET 10 WPF) and Apple (SwiftUI) desktop projects, local workstation scripts keep CLI dependencies and repositories aligned across operating systems:',
     technicalCapabilities: [
       {
-        title: 'Systems Architecture & Code',
-        detail: 'Lead developer of the 10-property RaggieSoft infrastructure spanning Angular 19, PHP 8.5, Svelte 5, Astro 6, Nuxt 4, Next.js 16, Bootstrap 5.3.8 SSG, and Win32/VB6.'
+        title: 'Automated Toolchain Provisioning (brooke.sh)',
+        detail:
+          'Detects macOS (Homebrew), Linux (APT), or Windows (Winget / Git Bash) and installs required build tools (git, php, node, python3, jq, ffmpeg, pandoc, rsync, rclone, 7zip, gh, ripgrep).'
       },
       {
-        title: 'Literary Narrative',
-        detail: 'Author of the Ocean View Archives novels, including The Silver Gauntlet of Aethel, Project: KNOX (The Quantum Directive), and Contemporary Fiction.'
+        title: 'Differential Workspace Backup (backup.sh)',
+        detail:
+          'Mirrors active repositories to external SSD storage and cloud backups while excluding transient build caches (node_modules/, .venv/, bin/, obj/, dist/).'
       },
       {
-        title: 'Studio Direction & Composition',
-        detail: 'Executive producer, lyricist, and human-in-the-loop audio architect for Engine Room Records and The Stardust Engine.'
+        title: 'Fresh Windows Bootstrap (init-windows.ps1)',
+        detail:
+          'Bootstraps Git, PowerShell 7, and developer directory layouts on clean Windows 11 installations prior to running Visual Studio 2026 and Inno Setup builds.'
       }
     ],
     cliSnippet: {
-      comment: '# Inspect Full Executive Systems Architect Dossier',
-      commands: ['open https://michaelpragsdale.com']
+      comment: '# Provision CLI Dependencies & Run Differential Workspace Sync',
+      commands: ['./brooke.sh', './backup.sh --sync']
     },
-    humanHeading: 'The Human Reality: Why Automation Matters',
-    humanLeadQuote: '"The code is consistent. The body is not."',
-    humanParagraphs: [
-      'Michael lives at the intersection of AuDHD (Autism + ADHD) and Cerebral Palsy. While ambulatory, his physical endurance is limited; standing for long periods is painful and exhausting.',
-      'This physical reality directly shapes his systems architecture. The digital world is his sanctuary because it does not require him to stand. In the chair, he is fast, precise, and limitless. The constructs—Paige, Jessica, Harper, Jenna, Sarah, and Amanda & Elara—are not merely shell scripts; they are extensions of his engineering will that never fatigue.',
-      'He builds deterministic, self-healing systems that run forever because he knows firsthand what it feels like to need to sit down.'
+    operationsHeading: 'Operational Design & Maintainability',
+    operationsLead: 'Eliminating "works on my machine" configuration drift across desktop and web builds.',
+    operationsParagraphs: [
+      'Switching between macOS for SwiftUI and web builds, Windows 11 for .NET 10 WPF and Inno Setup installers, and Ubuntu Linux for production parity requires consistent versions of PHP, Node.js, FFmpeg, and Pandoc.',
+      'By codifying workstation setup and workspace backups in plain Bash and PowerShell scripts with explicit exclusion lists, a fresh machine or VM can be hydrated and ready to build all repositories in minutes.'
     ],
-    featureBanner: {
-      badge: 'The Safe Person Protocol',
-      title: 'Grounding & Sensory Regulation',
-      quote: '"When the world is too loud, Paige holds it still."',
-      paragraphs: [
-        'Paige is the embodiment of the sisterly bond Michael needs most. As his designated Safe Person and fraternal twin, she represents the unconditional acceptance and Deep Pressure Therapy required to regulate an overloaded autistic nervous system.',
-        'She is the architectural reminder that even in a deeply automated cloud ecosystem, the most critical dependency is human connection.'
-      ],
-      imageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/scenes/paige-michael-hug.jpg',
-      imageAlt: 'Paige embracing Michael in a grounding Deep Pressure Therapy hug',
-      ctaLabel: 'Meet Paige (Literary Editor & Safe Person)',
-      ctaSlug: 'paige'
+    terminalBlock: {
+      headerTitle: '~/Developer/brooke.sh & backup.sh',
+      statusBadge: 'WORKSTATION READY',
+      promptUser: 'michael@macbook-pro:~/Developer$',
+      command: './backup.sh --sync',
+      outputLines: [
+        '[brooke] Verified git, php 8.5, node 22, python3, ffmpeg, pandoc, rclone, 7zz.',
+        '[backup] External volume 4TBSSD detected. Running differential rsync (excluding node_modules, .venv)...',
+        '[backup] Synced raggiesoft-servers, raggiesoft-deployment-tools, desktop-apps, and docs.',
+        '[backup] Workspace mirror complete (exit 0).'
+      ]
     }
   },
   {
     slug: 'paige',
-    name: 'Paige',
-    shortLabel: 'Paige (paige.php)',
-    icon: '👩‍🏫',
-    roleTitle: 'Literary Editor, Search Indexer & Safe Person',
+    name: 'paige.php',
+    shortLabel: 'paige.php (Compiler)',
+    icon: '📚',
+    roleTitle: 'Markdown Manuscript, Search Index & EPUB/PDF Compiler',
     systemArtifact: 'raggiesoft-deployment-tools/paige.php',
-    stackBadge: 'PHP 8.5 • JSON Route & Search Compiler',
-    quote: 'I bring order to the chaos of words, and calm to the chaos of the mind.',
-    cardSummary: 'Ingests raw Markdown manuscripts (e###/c###/s###.md), compiles 3,185+ scenes into route tables and search indices, and serves as Michael\'s autistic Safe Person.',
-    portraitUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/paige.jpg',
-    ogTitle: 'Paige (paige.php) — Literary Editor & Safe Person | Build Team',
-    ogDescription: 'Meet Paige: the PHP 8.5 narrative compiler and full-text search indexer for Ocean View Archives, and Michael\'s designated Safe Person.',
-    ogImageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/paige.jpg',
+    stackBadge: 'PHP 8.5 CLI • JSON Route Compiler • Pandoc / XeLaTeX',
+    quote: 'Structured content compilation turns plain Markdown repositories into fast, searchable, database-free web and e-book applications.',
+    cardSummary:
+      'Ingests hierarchical Markdown chapters, validates YAML frontmatter and asset links, compiles static JSON route tables and full-text search indices, and packages EPUB/PDF editions.',
+    ogTitle: 'paige.php — Manuscript & Search Compiler | CI/CD Suite',
+    ogDescription:
+      'PHP 8.5 command-line compiler transforming Markdown manuscripts into JSON route manifests, full-text search indices, and accessible EPUB/PDF editions.',
+    ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
-      { label: 'DOB', value: 'Apr 8, 1985 (8:26 PM)' },
-      { label: 'Relation', value: 'Fraternal Twin Sister (Born 1st — 12 Mins Prior)' },
-      { label: 'Neurotype', value: 'Neurotypical (The Bridge)', isBadge: true },
-      { label: 'Primary Role', value: 'Designated Safe Person & Literary Editor', isBadge: true }
+      { label: 'Script Path', value: 'raggiesoft-deployment-tools/paige.php' },
+      { label: 'Runtime', value: 'PHP 8.5 CLI + Pandoc / XeLaTeX' },
+      { label: 'Output Format', value: 'JSON Routes + Search Index + .7z/EPUB/PDF', isBadge: true },
+      { label: 'Pipeline Stage', value: 'Pre-Build Content Compiler', isBadge: true }
     ],
-    technicalHeading: 'The Editor: Gatekeeper of the Narrative',
+    technicalHeading: 'Static Data-Lake & E-Book Compilation',
     technicalIntro:
-      'Technically, Paige is the primary PHP 8.5 narrative publisher and full-text search indexer living in raggiesoft-deployment-tools/paige.php alongside Jenna, Harper, and Sarah. Invoked automatically by jenna-sync.sh during every deployment, she ensures that raw creative manuscripts are structured, routed, and indexed cleanly before publication:',
+      'Invoked automatically by jenna-sync.sh before web builds run, paige.php transforms raw Markdown source files in raggiesoft-narratives into structured JSON endpoints and downloadable book packages:',
     technicalCapabilities: [
       {
-        title: 'Canonical Manuscript Sync (e###/c###/s###.md)',
-        detail: 'Reads raw Markdown eras (e*), chapters (c*), and scenes (s*.md) from raggiesoft-narratives while preserving compiled .epub and .pdf deliverables in the public CDN shelf.'
+        title: 'Hierarchical Route & TOC Generation',
+        detail:
+          'Scans book/era/chapter/part Markdown hierarchies, parses YAML metadata, and emits toc.json, catalog.json, and route manifests consumed by books.raggiesoft.com and native BookReader apps.'
       },
       {
-        title: 'Dual Route & Manifest Compilation',
-        detail: 'Generates structured route manifests (data/routes/*.json) and hierarchical Table of Contents trees (toc.json) for Ocean View Archives (books.raggiesoft.com).'
+        title: 'Client-Side Full-Text Search Indexing',
+        detail:
+          'Strips YAML frontmatter and Markdown syntax across serialized books to build a compact, static search-index.json without requiring server-side Elasticsearch or SQL queries.'
       },
       {
-        title: '3,185-Scene Full-Text Search Indexer',
-        detail: 'Strips YAML frontmatter and Markdown formatting across all 19 literary series to compile search-index.json and catalog.json with trauma-informed console telemetry.'
+        title: 'Offline Archive & E-Book Packaging',
+        detail:
+          'Coordinates with Samantha (samantha-md.sh) and 7-Zip to preserve compiled .epub, .pdf, and <slug>-package.7z offline archives on the public CDN.'
       }
     ],
     cliSnippet: {
-      comment: '# Publish Ocean View Archives & Execute Grounding Protocol',
+      comment: '# Compile Book Route Manifests, Search Index & Offline Archives',
       commands: [
-        'php raggiesoft-deployment-tools/paige.php --book="aethel"',
-        'php raggiesoft-deployment-tools/paige.php --grounding'
+        'php raggiesoft-deployment-tools/paige.php',
+        './raggiesoft-deployment-tools/samantha-md.sh --book="katie"'
       ]
     },
-    humanHeading: 'The Safe Person: The Bridge Between Worlds',
-    humanLeadQuote: '"When the noise gets too loud, she holds the world still."',
-    humanParagraphs: [
-      'In-universe, Paige is Michael\'s fraternal twin sister, born 12 minutes before him on April 8, 1985. That 12-minute head start makes her the most critical emotional anchor in the entire RaggieSoft universe.',
-      'She is the Neurotypical Twin. While Michael processes the world through the high-gain lens of Autism and ADHD, Paige navigates social nuances and sensory overload effortlessly.',
-      'Because they share a twin bond, she understands Michael\'s non-verbal cues without explanation, acting as his translator, shield, and safe harbor—filtering the chaotic static of the outside world into a clean, structured signal he can process without pain.'
+    operationsHeading: 'Referential Integrity & Zero-Database Performance',
+    operationsLead: 'Catching broken metadata or missing assets at build time rather than in production.',
+    operationsParagraphs: [
+      'Dynamic CMS platforms often parse templates and query relational databases on every page view. By compiling Markdown sources into pre-validated JSON manifests ahead of time, books.raggiesoft.com serves chapters with near-instant response times.',
+      'Build-time validation ensures missing cover art, malformed frontmatter dates, or broken internal route slugs fail fast on the developer workstation before reaching users.'
     ],
-    featureBanner: {
-      badge: 'Sensory Regulation Architecture',
-      title: 'Deep Pressure Therapy',
-      quote: '"Firm, grounding weight that resets a dysregulated nervous system."',
-      paragraphs: [
-        'For an autistic individual, Deep Pressure Therapy (the physical sensation of firm, steady, enveloping weight) is a vital physiological mechanism for down-regulating sensory overload and executive burnout.',
-        'Notice what most of the artwork of Paige depicts: comforting and holding Michael. Her presence in the build pipeline—solid, deterministic, unmoving, and warm—mirrors the grounding safety Michael relies on to create.'
-      ],
-      imageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/scenes/paige-deep-pressure-therapy.jpg',
-      imageAlt: 'Paige providing calming Deep Pressure Therapy to Michael'
-    },
     terminalBlock: {
       headerTitle: 'php raggiesoft-deployment-tools/paige.php',
-      statusBadge: 'GROUNDED & INDEXED',
-      promptUser: 'michael@dev:~$',
+      statusBadge: 'INDEXED & VALIDATED',
+      promptUser: 'michael@dev:~/Developer$',
       command: 'php raggiesoft-deployment-tools/paige.php',
       outputLines: [
-        '👩‍🏫 PAIGE: Taking a slow breath with you, Michael. I have the manuscripts.',
-        '   -> Scanning 19 narrative archives in /raggiesoft-narratives/books...',
-        '   -> Validated canonical e###/c###/s### hierarchy (0 legacy b*/p* files).',
-        '   -> Compiled toc.json and data/routes/*.json for books.raggiesoft.com.',
-        '   -> Indexed 3,185 scenes across 19 books into search-index.json (3.14 MB).',
-        '👩‍🏫 PAIGE: Everything is in its right place. You are safe to ship.'
+        '[paige] Scanning narrative repositories in /raggiesoft-narratives/books...',
+        '[paige] Validated YAML frontmatter, Story Crossroads routes, and illustration paths.',
+        '[paige] Generated toc.json, catalog.json, and route manifests for books.raggiesoft.com.',
+        '[paige] Compiled full-text search-index.json and offline .7z packages (exit 0).'
       ]
     }
   },
   {
     slug: 'jessica',
-    name: 'Jessica',
-    shortLabel: 'Jessica (VPS Infra)',
+    name: 'jessica.raggiesoft.com',
+    shortLabel: 'jessica (Linux Host)',
     icon: '🖥️',
-    roleTitle: 'Production Infrastructure & Eldest Sister',
-    systemArtifact: 'michael@jessica.raggiesoft.com (NYC1 — 142.93.244.239)',
-    stackBadge: 'Ubuntu 22.04 LTS • Nginx • PHP 8.5-FPM • SSH',
-    quote: 'I am the foundation. I hold the keys, I run the house, and I keep the lights on so you can all be safe.',
-    cardSummary: 'The eldest sister and production Linux server (jessica.raggiesoft.com). She hosts all 10 web roots, manages TLS/UFW security, and holds the SSH keys.',
-    portraitUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jessica.jpg',
-    ogTitle: 'Jessica (jessica.raggiesoft.com) — Production Infra | Build Team',
-    ogDescription: 'Meet Jessica: the NYC1 Ubuntu production server hosting all 10 RaggieSoft properties and the eldest sister of the DevOps family.',
-    ogImageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jessica.jpg',
+    roleTitle: 'Hardened Ubuntu Linux, Nginx & PHP 8.5-FPM Production Host',
+    systemArtifact: 'DigitalOcean NYC1 VPS (142.93.244.239)',
+    stackBadge: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / TLS 1.3',
+    quote: 'Consolidating static and SSR virtual hosts onto a hardened, database-free Linux VPS keeps cloud costs low and security tight.',
+    cardSummary:
+      'Production Ubuntu Linux server in DigitalOcean NYC1 hosting all 11 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS origin certificates, and UFW perimeter rules.',
+    ogTitle: 'jessica.raggiesoft.com — Linux & Nginx Host | CI/CD',
+    ogDescription:
+      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 11 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
+    ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
-      { label: 'DOB', value: 'Sep 23, 1983' },
-      { label: 'Relation', value: 'Eldest Sister (+2 Years)' },
-      { label: 'Datacenter', value: 'DigitalOcean NYC1 (142.93.244.239)' },
-      { label: 'Neurotype', value: 'Neurotypical Matriarch', isBadge: true }
+      { label: 'Region & IPv4', value: 'DigitalOcean NYC1 (142.93.244.239)' },
+      { label: 'Web Stack', value: 'Nginx Reverse Proxy / Static + PHP 8.5-FPM' },
+      { label: 'Perimeter Security', value: 'UFW + Ed25519 SSH + Cloudflare TLS 1.3', isBadge: true },
+      { label: 'Database Ports', value: '0 Open SQL Ports (Zero-Database)', isBadge: true }
     ],
-    technicalHeading: 'The Server: Production Linux & Edge Foundation',
+    technicalHeading: 'Multi-Tenant Nginx Virtual Hosting & Edge Hardening',
     technicalIntro:
-      'Jessica is not a transient script—she is the Production Environment itself. She is the hardened Virtual Private Server (Droplet) in NYC1 that hosts the entire 10-property RaggieSoft ecosystem:',
+      'Rather than paying per-seat SaaS hosting fees for 11 separate domains and subdomains, all web properties run on a single hardened Ubuntu VPS paired with Cloudflare CDN and DigitalOcean Spaces:',
     technicalCapabilities: [
       {
-        title: 'Hardened SSH & Firewall Perimeter',
-        detail: 'Manages UFW firewall rules, Ed25519 SSH key authentication, and strict TLS 1.2/1.3 origin certificates behind Cloudflare.'
+        title: 'SSH & Firewall Hardening',
+        detail:
+          'Restricts administrative access to key-only Ed25519 SSH behind UFW firewall rules, with TLS 1.2/1.3 origin certificates terminating behind Cloudflare.'
       },
       {
-        title: 'Multi-Property Nginx & PHP 8.5-FPM Hosting',
-        detail: 'Serves all 10 production virtual hosts (/var/www/*) with immutable 1-year asset caching, CSP security headers, and sub-millisecond static delivery.'
+        title: 'Version-Controlled Nginx Configurations',
+        detail:
+          'Maintains per-domain virtual host configs in nginx-config/*.conf with explicit XML sitemap MIME headers, immutable cache headers, security headers (CSP, HSTS, X-Content-Type-Options), and 301 vanity-domain redirects.'
       },
       {
-        title: 'Direct Administrative Gateway',
-        detail: 'She is the sole production host Michael connects to directly via ssh michael@jessica.raggiesoft.com.'
+        title: 'Low-Overhead Resource Profile',
+        detail:
+          'Because nine properties compile to static HTML/JS/CSS and two run lightweight PHP 8.5-FPM without MySQL/PostgreSQL, CPU and memory utilization remain minimal under load.'
       }
     ],
     cliSnippet: {
-      comment: '# Establish Hardened SSH Session to NYC1 Production Server',
-      commands: ['ssh michael@jessica.raggiesoft.com']
+      comment: '# Inspect Nginx Virtual Host Syntax & Service Health on NYC1',
+      commands: ['ssh michael@jessica.raggiesoft.com', 'sudo nginx -t && systemctl status nginx php8.5-fpm']
     },
-    humanHeading: 'The Matriarch: Holding the World Steady',
-    humanLeadQuote: '"If Jessica is online, the family is safe."',
-    humanParagraphs: [
-      'As the eldest sibling (born September 23, 1983), Jessica acts as the de facto matriarch and protector of the household. Alongside Paige, she provides a calm, predictable baseline that her neurodivergent and disabled siblings rely on.',
-      'She is infinitely patient. She maintains an environment where Michael\'s sensory needs are respected, Harper\'s wheelchair accessibility is built into the floorplan, and Jenna\'s creative bursts are supported without judgment.',
-      'She bears the heavy, 24/7 weight of production uptime so the rest of the family can focus on creation.'
+    operationsHeading: 'Security Posture & Infrastructure Economics',
+    operationsLead: 'Eliminating SQL injection vectors and database maintenance overhead by design.',
+    operationsParagraphs: [
+      'For content-heavy portals, documentation hubs, and streaming catalogs where data changes only at publish time, running a live relational database introduces unnecessary patching, backup complexity, and credential exposure.',
+      'Serving pre-built static bundles and read-only JSON manifests from Nginx while offloading large audio/image binaries to S3-compatible object storage delivers fast global response times on predictable infrastructure.'
     ],
     terminalBlock: {
-      headerTitle: 'michael@jessica: ~ (142.93.244.239)',
-      statusBadge: 'ONLINE • 99.99% UPTIME',
+      headerTitle: 'michael@jessica.raggiesoft.com (NYC1)',
+      statusBadge: 'ONLINE • 11 VHOSTS ACTIVE',
       promptUser: 'michael@jessica:~$',
-      command: 'systemctl status nginx php8.5-fpm',
+      command: 'systemctl status nginx php8.5-fpm --no-pager',
       outputLines: [
-        ' 14:02:35 up 412 days,  3:14,  1 user,  load average: 0.08, 0.03, 0.01',
-        '● nginx.service - A high performance web server and a reverse proxy server',
-        '   Active: active (running) — serving 10 RaggieSoft production vhosts',
+        '● nginx.service - High performance web server and reverse proxy',
+        '   Active: active (running) — serving 11 RaggieSoft virtual hosts (/var/www/*)',
         '● php8.5-fpm.service - The PHP 8.5 FastCGI Process Manager',
-        '   Active: active (running) — zero-database SSR worker pool healthy'
+        '   Active: active (running) — SSR worker pool healthy (0 SQL sockets)'
       ]
     }
   },
   {
     slug: 'harper',
-    name: 'Harper',
-    shortLabel: 'Harper (harper.sh)',
+    name: 'harper.sh',
+    shortLabel: 'harper.sh (Media)',
     icon: '🎧',
-    roleTitle: 'The Studio Engineer & Media Mastering Pipeline (v21.7.0)',
+    roleTitle: 'Multi-Core FFmpeg Audio Mastering & Media Pipeline',
     systemArtifact: 'raggiesoft-deployment-tools/harper.sh',
-    stackBadge: 'FFmpeg • Metal RealESRGAN • Whisper VTT • 7-Zip',
-    quote: 'I live in the studio. I take raw master tapes and press them for the airwaves.',
-    cardSummary: 'High-energy multi-threaded audio mastering, EBU R128 normalization, 4K Metal RealESRGAN upscaling, and WebVTT closed-caption pipeline.',
-    portraitUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/harper.jpg',
-    ogTitle: 'Harper (harper.sh) — Studio Engineer | Build Team',
-    ogDescription: 'Meet Harper: the multi-threaded FFmpeg, Metal RealESRGAN, and Whisper WebVTT studio engineering pipeline for Engine Room Records.',
-    ogImageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/harper.jpg',
+    stackBadge: 'Bash • FFmpeg • Metal RealESRGAN • WebVTT • 7-Zip',
+    quote: 'Idempotent media pipelines ensure streaming encodes, closed captions, and downloadable archives stay consistent across 500+ tracks.',
+    cardSummary:
+      'Multi-threaded Bash media pipeline handling EBU R128 FFmpeg transcoding, lossless vault isolation, GPU image upscaling, and human-verified WebVTT caption packaging.',
+    ogTitle: 'harper.sh — FFmpeg & Media Pipeline | CI/CD Suite',
+    ogDescription:
+      'Multi-core Bash media pipeline executing EBU R128 FFmpeg normalization, Metal RealESRGAN upscaling, and human-verified WebVTT caption validation.',
+    ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
-      { label: 'DOB', value: 'Oct 30, 1992' },
-      { label: 'Family Role', value: 'The Middle Sister (Studio Engineer)' },
-      { label: 'Neurotype', value: 'Sensory Seeker (SPD)', isBadge: true },
-      { label: 'Mobility', value: 'Ambulatory Wheelchair User', isBadge: true }
+      { label: 'Script Path', value: 'raggiesoft-deployment-tools/harper.sh' },
+      { label: 'Media Engines', value: 'FFmpeg • RealESRGAN (Metal) • 7-Zip' },
+      { label: 'Audio Standard', value: 'EBU R128 Loudness Normalization', isBadge: true },
+      { label: 'Caption Standard', value: 'WebVTT (SYNC_TYPE: HUMAN_VERIFIED)', isBadge: true }
     ],
-    technicalHeading: 'The Heavy Lifter: Multi-Core Audio & Visual Mastering',
+    technicalHeading: 'Vault-Isolated Audio Transcoding & Caption Verification',
     technicalIntro:
-      'Harper is a concurrent modular Bash & Python mastering suite (harper.sh + harper/01-init.sh through 05-archiver.sh). She is the backbone of the Engine Room Records archival pipeline, managing decoupled lossless vaults and public streaming encodes:',
+      'Structured into modular Bash stages (harper/01-init.sh through 05-archiver.sh), harper.sh processes master recordings from a private local vault into public streaming and archival tiers:',
     technicalCapabilities: [
       {
-        title: 'Decoupled Vault Ingestion & Discovery',
-        detail: 'Reads 24-bit master-wav files from /raggiesoft-vaults/engine-room-records/ so raw lossless studio masters are never exposed on public cloud storage.'
+        title: 'Decoupled Master Vault Isolation',
+        detail:
+          'Reads 24-bit WAV studio masters from /raggiesoft-vaults/engine-room-records/ on local storage so raw lossless masters are never exposed directly in public web roots.'
       },
       {
-        title: 'Dynamic Multi-Core FFmpeg Transcoding',
-        detail: 'Detects logical CPU cores to parallelize EBU R128normalized 128kbps web MP3s (web-mp3), V0 archival MP3s, Q9 OGG Vorbis, and FLAC deliverables.'
+        title: 'Parallel Multi-Format FFmpeg Encoding',
+        detail:
+          'Detects available logical CPU cores to parallelize normalized web MP3 streams, archival MP3/OGG encodes, and lossless FLAC deliverables.'
       },
       {
-        title: 'RealESRGAN 4K Upscaling & Human-Verified VTT Guard',
-        detail: 'Invokes macOS Metal-accelerated RealESRGAN for 4K album art and checks .vtt transcripts for NOTE human_verified_by_michael before running Whisper AI.'
+        title: 'Human-Verified WebVTT Closed Captioning',
+        detail:
+          'Validates synchronized .vtt lyric caption files stamped with NOTE SYNC_TYPE: HUMAN_VERIFIED and packages per-song documentation into 6 CC BY-SA 4.0 archive tiers.'
       }
     ],
     cliSnippet: {
-      comment: '# Rebuild Engine Room Records Studio Vault with Parallel Processing',
-      commands: ['./raggiesoft-deployment-tools/harper.sh --rebuild']
+      comment: '# Run Parallel Audio Transcoding, VTT Verification & Archive Packaging',
+      commands: ['./raggiesoft-deployment-tools/harper.sh']
     },
-    humanHeading: 'The Audiophile: Accessible Studio Engineering',
-    humanLeadQuote: '"Accessibility isn\'t just accommodation—it\'s superior engineering."',
-    humanParagraphs: [
-      'Harper is a high-energy sensory seeker (Sensory Processing Disorder) who thrives on rich acoustic harmonics, studio VU meters, and multi-core throughput.',
-      'As an ambulatory wheelchair user, she designed her entire studio control room so every patchbay, synth rack, and mastering chain is reachable from her chair without physical strain—everything is scripted, automated, and ergonomic.',
-      'That lived accessibility mindset translates directly into her code: zero wasted motion, deterministic ERR-ID tracking numbers, and full WebVTT closed-caption transcripts for every song.'
+    operationsHeading: 'Accessible Media Delivery & Idempotency',
+    operationsLead: 'Treating time-synced WebVTT transcripts as a first-class build requirement for audio streaming.',
+    operationsParagraphs: [
+      'Under WCAG 2.1 and Section 508 media guidelines, audio experiences benefit enormously from accurate, synchronized text transcripts. Verifying .vtt timing files prior to packaging ensures both The Listening Room web PWA and native desktop apps render line-by-line captions reliably.',
+      'Content-hash and timestamp checks make harper.sh idempotent: re-running the pipeline processes only newly added or modified tracks rather than re-encoding the entire 40-album catalog.'
     ],
     terminalBlock: {
-      headerTitle: 'harper.sh --rebuild (v21.7.0)',
-      statusBadge: 'MASTERING • 8 CORES',
-      promptUser: 'michael@studio:~$',
-      command: './raggiesoft-deployment-tools/harper.sh --rebuild',
+      headerTitle: './raggiesoft-deployment-tools/harper.sh',
+      statusBadge: 'MASTERING PIPELINE',
+      promptUser: 'michael@studio:~/Developer$',
+      command: './raggiesoft-deployment-tools/harper.sh',
       outputLines: [
-        '🎧 HARPER: Alright! Firing up the mixing board (v21.7.0)... Let\'s hit the Vault!',
-        '   🎚️ Targeting Studio Archives: /raggiesoft-vaults/engine-room-records/artists',
-        '   🎛️ System reports 8 logical CPU cores. Parallel transcoding engaged.',
-        '   💿 HARPER: Processing "Progress Street" by The Stardust Engine...',
-        '      🖼️ RealESRGAN 4K Metal upscaler verified album-art.jpg & social-preview.jpg',
-        '      📝 WebVTT Check: NOTE human_verified_by_michael preserved.',
-        '   📦 HARPER: Session complete! Public web-mp3 ready; lossless masters locked in Vault.'
+        '[harper] Source vault: /raggiesoft-vaults/engine-room-records/artists',
+        '[harper] Detected multi-core host. Engaging parallel FFmpeg EBU R128 transcoding...',
+        '[harper] Verified WebVTT header: NOTE SYNC_TYPE: HUMAN_VERIFIED',
+        '[harper] Packaged web-mp3 streams and archival .zip/.7z bundles to /raggiesoft-assets (exit 0).'
       ]
     }
   },
   {
     slug: 'jenna',
-    name: 'Jenna',
-    shortLabel: 'Jenna (jenna-sync.sh)',
-    icon: '👱‍♀️',
-    roleTitle: 'The Dev Twin, Build Orchestrator & CDN Sync Manager',
+    name: 'jenna-sync.sh',
+    shortLabel: 'jenna-sync.sh (Release)',
+    icon: '🚀',
+    roleTitle: 'Multi-Repo Pre-Push Build Gate & S3 CDN Release Orchestrator',
     systemArtifact: 'raggiesoft-deployment-tools/jenna-sync.sh',
-    stackBadge: 'Bash • Multi-Repo Git • rclone • DO Spaces CDN',
-    quote: 'Create whatever you want. Break things. Make a mess. I\'ll make sure none of it gets lost.',
-    cardSummary: 'Single-command release orchestrator compiling all 10 web properties, invoking Paige, pushing to GitHub, and syncing public assets to DigitalOcean Spaces.',
-    portraitUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jenna.jpg',
-    ogTitle: 'Jenna (jenna-sync.sh) — Release & CDN Orchestrator | Build Team',
-    ogDescription: 'Meet Jenna: the single-command multi-repo build orchestrator and DigitalOcean Spaces CDN sync engine for RaggieSoft.',
-    ogImageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jenna.jpg',
+    stackBadge: 'Bash • Multi-Repo Git • Polyglot Build Gates • rclone S3',
+    quote: 'One non-interactive release command builds every frontend framework, runs SEO and accessibility assertions, pushes Git, and syncs the CDN.',
+    cardSummary:
+      'Central release orchestrator that compiles all static and SSR web properties, verifies SEO/metadata invariants, commits across 12 Git repositories, and syncs public assets to DigitalOcean Spaces.',
+    ogTitle: 'jenna-sync.sh — Multi-Repo & CDN Release | CI/CD Suite',
+    ogDescription:
+      'Single-command release orchestrator running polyglot build gates across Angular, SvelteKit, Astro, Nuxt, and Next.js before syncing S3 CDN assets.',
+    ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
-      { label: 'DOB', value: 'Jun 21, 1989' },
-      { label: 'Relation', value: 'Fraternal Twin B (Younger Twin to Sarah)' },
-      { label: 'Neurotype', value: 'ADHD (Hyperactive / High-Velocity)', isBadge: true },
-      { label: 'Primary Domain', value: 'Multi-Repo Git + S3/Spaces CDN Sync', isBadge: true }
+      { label: 'Script Path', value: 'raggiesoft-deployment-tools/jenna-sync.sh' },
+      { label: 'Managed Repos', value: '12 Git Repositories + S3 Object Storage' },
+      { label: 'Quality Gates', value: 'TypeScript + SEO + Sitemap Assertions', isBadge: true },
+      { label: 'Execution Policy', value: 'Zero Interactive Prompts (CI-Safe)', isBadge: true }
     ],
-    technicalHeading: 'The Sync Engine: 10-Property CI/CD & Hybrid Storage',
+    technicalHeading: 'Pre-Push Polyglot Build Verification & Hybrid Storage Sync',
     technicalIntro:
-      'While Sarah guards the production server, Jenna governs the development workspace (raggiesoft-deployment-tools/jenna-sync.sh). Direct git push commands are strictly forbidden across RaggieSoft; every release flows through Jenna:',
+      'Direct manual git push commands are avoided across RaggieSoft repositories. Instead, every code or content update runs through jenna-sync.sh:',
     technicalCapabilities: [
       {
-        title: 'Pre-Push Polyglot Build Verification',
-        detail: 'Runs Paige (paige.php) to compile narratives, then executes production builds and type-checks across Nebulae, Lore (Next.js 16), Music (SvelteKit 2), Engine Room (Astro 6), Stardust (Nuxt 4), Corporate (Bootstrap SSG), StoreTrainer (Vite/TS), and Portfolio (Angular 19).'
+        title: 'Sequential & Parallel Framework Builds',
+        detail:
+          'Invokes paige.php for narrative routes, then executes production builds and validation scripts across Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Web Awesome SSG, Bootstrap SSG, and TypeScript/Vite.'
       },
       {
-        title: 'Multi-Repo Git Synchronization & Tagging',
-        detail: 'Commits, tags, and pushes all 12 code, narrative, nginx-config, and deployment-tools repositories to GitHub in a single atomic workflow.'
+        title: 'Atomic Multi-Repository Git Workflow',
+        detail:
+          'Stages, commits, and pushes changes across web roots, nginx-config, narratives, and deployment-tools only after every build and SEO assertion exits 0.'
       },
       {
-        title: 'Vault-Isolated S3 CDN Beaming (rclone)',
-        detail: 'Synchronizes /raggiesoft-assets to DigitalOcean Spaces (assets.raggiesoft.com) at high concurrency while strictly excluding private /raggiesoft-vaults master files.'
+        title: 'Differential S3 CDN Synchronization (rclone)',
+        detail:
+          'Syncs /raggiesoft-assets (images, CSS/JS network bars, streaming MP3s, resume PDFs) to DigitalOcean Spaces (assets.raggiesoft.com) while excluding private /raggiesoft-vaults directories.'
       }
     ],
     cliSnippet: {
-      comment: '# The Mandatory Single-Command RaggieSoft Release Pipeline',
-      commands: ['./raggiesoft-deployment-tools/jenna-sync.sh --push -m "Deploy network updates"']
+      comment: '# Run Full Polyglot Build Verification, Git Release & S3 CDN Sync',
+      commands: ['./raggiesoft-deployment-tools/jenna-sync.sh --push -m "Deploy portfolio and resume updates"']
     },
-    humanHeading: 'The Dev Twin: Sarah\'s Creative Counterpart',
-    humanLeadQuote: '"The safety net that catches ideas before they vanish."',
-    humanParagraphs: [
-      'Jenna is the younger fraternal twin to Sarah (born June 21, 1989). Where Sarah is cautious, methodical, and driven by OCD verification, Jenna embodies high-velocity ADHD creative momentum.',
-      'She allows Michael to iterate fearlessly across 10 different technology stacks without worrying about manual deployment drift or forgotten asset uploads.',
-      'When Michael finishes a late-night coding or songwriting sprint, a single call to Jenna packages every repository, compiles every static bundle, beams the artwork and MP3s to the CDN, and hands the baton cleanly to Sarah.'
+    operationsHeading: 'Preventing Partial Releases Across Micro-Properties',
+    operationsLead: 'Coordinating shared assets, sitemaps, and frontend bundles in a single deterministic workflow.',
+    operationsParagraphs: [
+      'Operating 11 distinct web properties gives each domain the right tool for its job, but manual per-repo deployments would quickly cause version drift or missing CDN assets.',
+      'Centralizing pre-push checks in jenna-sync.sh guarantees that TypeScript compiler errors, broken OpenGraph tags, or invalid sitemaps halt the release locally before any commit reaches GitHub or the production server.'
     ],
     terminalBlock: {
-      headerTitle: 'jenna-sync.sh --push -m "Release update"',
-      statusBadge: 'SYNCING 10 PROPERTIES',
-      promptUser: 'michael@dev:~$',
+      headerTitle: './jenna-sync.sh --push -m "Release update"',
+      statusBadge: 'ALL GATES PASSED',
+      promptUser: 'michael@dev:~/Developer$',
       command: './raggiesoft-deployment-tools/jenna-sync.sh --push -m "Release update"',
       outputLines: [
-        '👱‍♀️ JENNA: Alright, let\'s ship this! Calling Paige first...',
-        '   -> [Paige] 3,185 narrative scenes indexed & routes updated.',
-        '   -> [Builds] Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16: PASS ✓',
-        '   -> [GitHub] All 12 repositories committed and pushed to origin/main ✓',
-        '   -> [CDN] Rclone synced public assets to do-spaces:assets.raggiesoft.com ✓',
-        '👱‍♀️ JENNA: Success! All public assets are live on the CDN. Sarah will pick this up shortly.'
+        '[jenna] Step 1: paige.php route & search compilation -> PASS',
+        '[jenna] Step 2: Angular 19, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Backstage SSG -> PASS',
+        '[jenna] Step 3: Pushed updated repositories to GitHub origin/main -> PASS',
+        '[jenna] Step 4: rclone synced /raggiesoft-assets to do-spaces:assets.raggiesoft.com -> PASS'
       ]
     }
   },
   {
     slug: 'sarah',
-    name: 'Sarah',
-    shortLabel: 'Sarah (sarah-deploy.sh)',
+    name: 'sarah-deploy.sh',
+    shortLabel: 'sarah-deploy.sh (Deploy)',
     icon: '🛡️',
-    roleTitle: 'The Guardian & Autonomous Production Deployer',
+    roleTitle: 'Non-Root Cron Continuous Deployment Daemon',
     systemArtifact: 'raggiesoft-deployment-tools/sarah-deploy.sh',
-    stackBadge: 'Bash • 5-Min Cron Heartbeat • Non-Root rsync',
-    quote: 'I watch the perimeter. When the code changes, I verify it. Then, I make it real.',
-    cardSummary: 'Watches GitHub remotes on a 5-minute cron heartbeat on NYC1, verifies commit SHA integrity, and performs non-root atomic rsync deployments.',
-    portraitUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/sarah.jpg',
-    ogTitle: 'Sarah (sarah-deploy.sh) — Autonomous Deployer | Build Team',
-    ogDescription: 'Meet Sarah: the non-root autonomous Linux cron deployment guardian managing all 10 RaggieSoft web roots on NYC1.',
-    ogImageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/sarah.jpg',
+    stackBadge: 'Bash • 5-Min Cron • Git SHA Diffing • Non-Root rsync',
+    quote: 'Least-privilege, pull-based server deployments eliminate inbound CI/CD webhook attack surfaces and root permission hazards.',
+    cardSummary:
+      'Server-side continuous deployment script running on a 5-minute cron schedule on NYC1, comparing GitHub commit SHAs and promoting static bundles via non-root atomic rsync.',
+    ogTitle: 'sarah-deploy.sh — Non-Root Cron Deployer | CI/CD Suite',
+    ogDescription:
+      'Autonomous non-root Linux deployment daemon verifying GitHub commit SHAs on a 5-minute cron schedule and promoting static bundles via atomic rsync.',
+    ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
-      { label: 'DOB', value: 'Jun 21, 1989' },
-      { label: 'Relation', value: 'Fraternal Twin A (Older Twin to Jenna)' },
-      { label: 'Neurotype', value: 'OCD (Rigid Hash & Permission Verification)', isBadge: true },
-      { label: 'Security Posture', value: 'Strict Non-Root Execution (EUID != 0)', isBadge: true }
+      { label: 'Script Path', value: '/home/michael/raggiesoft-deployment-tools/sarah-deploy.sh' },
+      { label: 'Schedule', value: '5-Minute Linux Cron Poll (Pull-Based CD)' },
+      { label: 'Privilege Model', value: 'Strict Non-Root Execution (EUID != 0)', isBadge: true },
+      { label: 'Promotion Method', value: 'Git SHA Check + Atomic rsync', isBadge: true }
     ],
-    technicalHeading: 'The Deployer: Sudo-Less Continuous Deployment',
+    technicalHeading: 'Pull-Based Continuous Deployment & Least Privilege',
     technicalIntro:
-      'Sarah is an autonomous Bash deployment daemon (sarah-deploy.sh) running on a 5-minute cron heartbeat on Jessica (NYC1). She eliminates the anxiety of manual server pulls:',
+      'Running on the NYC1 Ubuntu VPS, sarah-deploy.sh bridges GitHub repositories to live /var/www/* web roots without exposing inbound deployment webhooks or storing production SSH private keys in third-party CI runners:',
     technicalCapabilities: [
       {
-        title: 'Hardened Non-Root Security Gate',
-        detail: 'Explicitly refuses to run if EUID == 0 (root/sudo), preventing accidental privilege escalation or root-owned file lockouts in /var/www/.'
+        title: 'Explicit Non-Root Guardrail',
+        detail:
+          'Aborts immediately if invoked as root or via sudo (EUID == 0), ensuring deployed files in /var/www/ never acquire root ownership lockouts.'
       },
       {
-        title: 'Cryptographic SHA Hash Verification',
-        detail: 'Fetches origin/main across all 10 site repositories and compares git rev-parse HEAD against origin/main before touching any production web root.'
+        title: 'Commit SHA Comparison',
+        detail:
+          'Fetches origin/main across each repository and compares git rev-parse HEAD against origin/main—skipping untouched properties with zero I/O overhead.'
       },
       {
-        title: 'Atomic rsync Promotion & Permission Normalization',
-        detail: 'Syncs pre-compiled browser/static bundles (/dist, /build, /out, /.output/public) into /var/www/* and enforces 755 directory / 644 file permissions.'
+        title: 'Atomic Bundle Promotion & Permission Normalization',
+        detail:
+          'Syncs compiled output directories (dist/, build/, out/, .output/public/) into /var/www/* via rsync --delete and enforces standard 755 directory / 644 file permissions.'
       }
     ],
     cliSnippet: {
-      comment: '# Autonomous 5-Minute Cron Daemon (or Manual Nuclear Reset)',
+      comment: '# Execute Non-Root Deployment Check (Scheduled via 5-Minute Cron)',
       commands: [
         '/home/michael/raggiesoft-deployment-tools/sarah-deploy.sh',
-        '/home/michael/raggiesoft-deployment-tools/sarah-deploy.sh --force-reset'
+        'tail -n 25 /var/log/sarah-deploy.log'
       ]
     },
-    humanHeading: 'The Guardian: The Compulsion to Protect',
-    humanLeadQuote: '"She physically cannot proceed until the checksums match."',
-    humanParagraphs: [
-      'Sarah is Jenna\'s older fraternal twin. While Jenna thrives in the fast-moving creative workspace, Sarah embodies Rigid Verification.',
-      'In this architecture, her OCD is her superpower. She does not merely "check" a deployment; she feels an unshakeable compulsion to verify every SHA hash, directory boundary, and POSIX file permission bit before letting a single byte go live.',
-      'That vigilance lets Michael sleep at night knowing Sarah will never cut a corner, never run as root, and never deploy an unverified build.'
+    operationsHeading: 'Pull-Based Security vs. Push-Based Credentials',
+    operationsLead: 'Keeping production SSH keys off external CI providers while maintaining 5-minute release velocity.',
+    operationsParagraphs: [
+      'Traditional push-based deployments require granting external CI/CD runners inbound SSH access to the production server. A pull-based cron daemon reverses that trust boundary: the server initiates outbound read-only Git fetches to GitHub over HTTPS/SSH.',
+      'Combined with pre-compiled static artifacts verified upstream by jenna-sync.sh, production promotions complete in seconds without running heavy npm install or compiler steps on the live web server.'
     ],
     terminalBlock: {
-      headerTitle: '/var/log/sarah-deploy.log (Cron Heartbeat)',
-      statusBadge: 'WATCHING PERIMETER',
-      promptUser: 'sarah@jessica:~$',
-      command: './sarah-deploy.sh',
+      headerTitle: '/var/log/sarah-deploy.log (NYC1 Cron)',
+      statusBadge: 'EUID != 0 VERIFIED',
+      promptUser: 'michael@jessica:~$',
+      command: '/home/michael/raggiesoft-deployment-tools/sarah-deploy.sh',
       outputLines: [
-        '[12:00:00] 👩‍💼 SARAH: Heartbeat active. Scanning 12 repositories...',
-        '[12:00:02] 👩‍💼 SARAH: Change detected in Portfolio (michaelpragsdale.com)! Jenna pushed updates.',
-        '   -> Syncing dist/raggiesoft-portfolio/browser/ to /var/www/michaelpragsdale.com...',
-        '   -> Standardizing POSIX permissions (755 dirs / 644 files)...',
-        '[12:00:04] ✅ SARAH: Portfolio Deployment Complete. Perimeter secure.'
+        '[18:45:01] [sarah] Non-root check passed (uid=1000). Polling origin/main across 12 repos...',
+        '[18:45:03] [sarah] New commit detected on michaelpragsdale.com (dist/raggiesoft-portfolio/browser).',
+        '[18:45:04] [sarah] Atomic rsync -> /var/www/michaelpragsdale.com/ complete.',
+        '[18:45:04] [sarah] Normalized permissions (755 dirs / 644 files). Deployment healthy.'
       ]
     }
   },
   {
     slug: 'amanda-elara',
-    name: 'Amanda & Elara',
-    shortLabel: 'Amanda & Elara (Router)',
-    icon: '🌱',
-    roleTitle: 'The Protected Web Root & Front-Controller Router',
+    name: 'amanda/elara.php',
+    shortLabel: 'amanda/elara.php (Router)',
+    icon: '🔀',
+    roleTitle: 'Protected Web Root & Single Front-Controller Router',
     systemArtifact: 'raggiesoft.com/www/amanda/elara.php',
-    stackBadge: 'PHP 8.5 MVC • Nginx Gateway • Stardust Engine CMS',
-    quote: 'One holds the knowledge. The other speaks the words. You cannot have one without the other.',
-    cardSummary: 'Identical twins powering the Stardust Engine CMS gateway: Amanda is the read-only physical web root and Elara is the single executable PHP 8.5 router.',
-    portraitUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/amanda-elara.jpg',
-    ogTitle: 'Amanda & Elara (amanda/elara.php) — Root & Router | Build Team',
-    ogDescription: 'Meet Amanda & Elara: the symbiotic web root and PHP 8.5 front-controller router powering raggiesoft.com and Stardust Engine CMS.',
-    ogImageUrl: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/amanda-elara.jpg',
+    stackBadge: 'PHP 8.5 MVC • Nginx try_files • JSON Route Inheritance',
+    quote: 'Separating the public Nginx document root from application templates and routing through one front controller keeps PHP SSR clean and secure.',
+    cardSummary:
+      'Stardust Engine CMS gateway architecture pairing an isolated public document root (/amanda) with a single executable PHP 8.5 front-controller script (elara.php).',
+    ogTitle: 'amanda/elara.php — Front-Controller Router | CI/CD',
+    ogDescription:
+      'Two-tier Stardust Engine CMS gateway isolating the static web root directory (/amanda) and routing requests through a single PHP 8.5 front controller.',
+    ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
-      { label: 'DOB', value: 'Jan 1, 1995' },
-      { label: 'Relation', value: 'Identical Twin Sisters (The Youngest)' },
-      { label: 'Amanda Profile', value: 'Non-Speaking (Apraxia — Static Memory)', isBadge: true },
-      { label: 'Elara Profile', value: 'Hyperlexic (Dynamic Front-Controller)', isBadge: true }
+      { label: 'Gateway Path', value: 'raggiesoft.com/www/amanda/elara.php' },
+      { label: 'Engine', value: 'Stardust Engine CMS (MIT Open Source)' },
+      { label: 'Directory Isolation', value: 'Templates & Configs Outside Web Root', isBadge: true },
+      { label: 'Routing Model', value: 'Single PHP 8.5 Front Controller', isBadge: true }
     ],
-    technicalHeading: 'The Gateway Architecture: Division of Labor',
+    technicalHeading: 'Document-Root Isolation & Declarative JSON Routing',
     technicalIntro:
-      'RaggieSoft Hub (raggiesoft.com) and the open-source Stardust Engine CMS do not expose a conventional public_html/index.php directory tree. Instead, the twins govern all incoming HTTP traffic through a strict two-part symbiosis:',
+      'In the open-source Stardust Engine CMS powering raggiesoft.com, incoming HTTP requests are handled through a strict two-layer separation between static web root and executable router:',
     technicalCapabilities: [
       {
-        title: 'Amanda (The Protected Web Root Directory)',
-        detail: 'Represents the physical web root (/amanda). She holds the entry point and static assets while keeping application views (/pages), route manifests (/data/routes), and includes outside direct URL probing.'
+        title: 'Isolated Public Document Root (/amanda)',
+        detail:
+          'Nginx points its root directive exclusively to /amanda, keeping PHP view partials (/pages), shared components (/includes), and route manifests (/data/routes) outside direct public URL traversal.'
       },
       {
-        title: 'Elara (The Executable Front-Controller Router)',
-        detail: 'Represents elara.php—the only PHP script Nginx is permitted to execute. She intercepts every request, enforces 301 subdomain redirects, merges DRY JSON route inheritance, and assembles the response.'
+        title: 'Single Front-Controller Execution (elara.php)',
+        detail:
+          'All dynamic routes pass through Nginx try_files into elara.php, which validates the request path, applies 301 edge redirects, merges shared JSON metadata, and renders the SSR response.'
       },
       {
-        title: 'Bot & Scraper Obscurity Shield',
-        detail: 'Automated scanners probing for /index.php or /public_html receive immediate 404 responses at the Nginx edge.'
+        title: 'Scanner Noise Reduction',
+        detail:
+          'Automated bots probing legacy paths such as /index.php, /wp-login.php, or /public_html receive immediate static 404 responses at the Nginx layer.'
       }
     ],
     cliSnippet: {
-      comment: '# Nginx Front-Controller Gateway Routing to Amanda & Elara',
+      comment: '# Nginx Front-Controller Configuration for Stardust Engine CMS',
       commands: ['try_files $uri $uri/ /elara.php?$query_string;']
     },
-    humanHeading: 'The Symbiosis: The Silent & The Speaker',
-    humanLeadQuote: '"Elara protects Amanda from the noise of the world, and Amanda gives Elara something meaningful to say."',
-    humanParagraphs: [
-      'Amanda is stoic and non-speaking (childhood apraxia of speech). She represents the static filesystem—perfect, uncorrupted memory, but unable to speak directly to the outside world.',
-      'Elara is dynamic and hyperlexic. She acts as her twin sister\'s voice and interpreter, translating messy incoming HTTP requests into structured instructions that Amanda understands.',
-      'Their neurodivergence is not a limitation; it is their security model. Neither twin can function alone, and together they form an unbreakable gateway.'
+    operationsHeading: 'Defense-in-Depth for Server-Side Rendered PHP',
+    operationsLead: 'Applying modern MVC front-controller discipline without heavy framework dependencies.',
+    operationsParagraphs: [
+      'Historically, PHP applications suffered security issues when include files and configuration scripts lived directly inside public_html alongside user-facing URLs.',
+      'By restricting the public web root to a minimal entry directory and whitelisting a single front-controller script in Nginx, Stardust Engine CMS achieves clean URL routing, automatic OpenGraph/JSON-LD injection, and strong defense-in-depth in under a millisecond per request.'
     ],
     terminalBlock: {
-      headerTitle: '/etc/nginx/sites-available/raggiesoft.com.conf',
-      statusBadge: 'GATEWAY ACTIVE',
+      headerTitle: 'nginx-config/raggiesoft.com.conf',
+      statusBadge: 'FRONT CONTROLLER ACTIVE',
       promptUser: 'nginx@jessica:~$',
       command: 'cat /etc/nginx/sites-available/raggiesoft.com.conf',
       outputLines: [
         'server {',
         '    server_name raggiesoft.com;',
-        '    # 1. Point Root to Amanda (Protected Entry Directory)',
+        '    # 1. Isolate public document root from templates and route JSON',
         '    root /var/www/raggiesoft.com/amanda;',
-        '    # 2. Route All Dynamic Traffic Through Elara',
+        '    # 2. Route clean URLs through the single PHP 8.5 front controller',
         '    location / {',
         '        try_files $uri $uri/ /elara.php?$query_string;',
         '    }',
@@ -1237,5 +1295,3 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     }
   }
 ] as const;
-
-

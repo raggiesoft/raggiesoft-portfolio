@@ -2,7 +2,7 @@
 <!--
 =============================================================================
 File: index.html
-Application: Michael P. Ragsdale — Systems Architect & Accessibility Dossier
+Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
 Domain: https://michaelpragsdale.com
 Tech Stack: Angular 19 Standalone + Signals | Modern Native CSS (@layer, Subgrid, Container Queries)
 License: MIT License (Code) | CC BY-SA 4.0 (Creative Narrative References)
@@ -10,13 +10,12 @@ Author: Michael P. Ragsdale <hello@michaelpragsdale.com>
 =============================================================================
 Architectural Notes:
 - Designed for sub-second Largest Contentful Paint (LCP) and immediate 5-second
-  recruiter comprehension.
+  recruiter and hiring-manager comprehension.
 - Uses zero external webfont blocking requests: relies strictly on native OS
   system UI and monospace font stacks.
 - Includes comprehensive Schema.org ProfilePage JSON-LD structured data so
-  Automated Applicant Tracking Systems (ATS), AI Recruiter Agents, and search
-  indexers can parse credentials, PHP 8.5 / Angular / Svelte 5 / React polyglot
-  architecture experience, and Section 508 certifications automatically.
+  Applicant Tracking Systems (ATS), technical recruiters, and search indexers
+  can parse full-stack web, C#/.NET, SwiftUI, and Section 508 credentials.
 - Pre-initializes color-scheme before first paint to prevent Flash of Incorrect
   Theme (FOIT) while respecting prefers-color-scheme.
 =============================================================================
@@ -24,36 +23,36 @@ Architectural Notes:
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Michael P. Ragsdale | Systems &amp; Section 508 Architect</title>
+  <title>Michael P. Ragsdale | Full-Stack &amp; 508 Developer</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Executive engineering dossier of Michael P. Ragsdale — Software Architect, Full-Stack Developer, and Section 508 Engineer in Norfolk, VA.">
+  <meta name="description" content="Full-Stack Web Developer &amp; Section 508 Accessibility Specialist in Norfolk, VA. Explore 11 live web apps, C#/.NET &amp; SwiftUI tools, and case studies.">
   <meta name="author" content="Michael P. Ragsdale">
   <link rel="canonical" href="https://michaelpragsdale.com/">
 
   <!-- Open Graph & Social Card Unfurling Metadata (1200x630 Standard) -->
   <meta property="og:type" content="profile">
-  <meta property="og:site_name" content="Michael P. Ragsdale — Executive Systems Dossier">
+  <meta property="og:site_name" content="Michael P. Ragsdale — Engineering &amp; Section 508 Portfolio">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Michael P. Ragsdale | Systems &amp; Section 508 Architect">
-  <meta property="og:description" content="Executive engineering dossier of Michael P. Ragsdale — Software Architect, Full-Stack Developer, and Section 508 Engineer in Norfolk, VA.">
+  <meta property="og:title" content="Michael P. Ragsdale | Full-Stack &amp; 508 Developer">
+  <meta property="og:description" content="Full-Stack Web Developer &amp; Section 508 Accessibility Specialist in Norfolk, VA. Explore 11 live web apps, C#/.NET &amp; SwiftUI tools, and case studies.">
   <meta property="og:url" content="https://michaelpragsdale.com/">
   <meta property="og:image" content="https://michaelpragsdale.com/og-image.jpg">
   <meta property="og:image:secure_url" content="https://michaelpragsdale.com/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Michael P. Ragsdale — Systems Architect &amp; Section 508 Engineer (michaelpragsdale.com)">
+  <meta property="og:image:alt" content="Michael P. Ragsdale — Full-Stack Web Developer &amp; Section 508 Accessibility Specialist (michaelpragsdale.com)">
   <meta property="profile:first_name" content="Michael">
   <meta property="profile:last_name" content="Ragsdale">
 
   <!-- Twitter / X / Slack / Teams Large Summary Card Metadata -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Michael P. Ragsdale | Systems &amp; Section 508 Architect">
-  <meta name="twitter:description" content="Executive engineering dossier of Michael P. Ragsdale — Software Architect, Full-Stack Developer, and Section 508 Engineer in Norfolk, VA.">
+  <meta name="twitter:title" content="Michael P. Ragsdale | Full-Stack &amp; 508 Developer">
+  <meta name="twitter:description" content="Full-Stack Web Developer &amp; Section 508 Accessibility Specialist in Norfolk, VA. Explore 11 live web apps, C#/.NET &amp; SwiftUI tools, and case studies.">
   <meta name="twitter:image" content="https://michaelpragsdale.com/og-image.jpg">
-  <meta name="twitter:image:alt" content="Michael P. Ragsdale — Systems Architect &amp; Section 508 Engineer (michaelpragsdale.com)">
+  <meta name="twitter:image:alt" content="Michael P. Ragsdale — Full-Stack Web Developer &amp; Section 508 Accessibility Specialist (michaelpragsdale.com)">
 
   <!-- Preconnect to CDN for zero-latency portrait and logo loading -->
   <link rel="preconnect" href="https://assets.raggiesoft.com" crossorigin>
@@ -66,8 +65,8 @@ Architectural Notes:
     Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6)
     =========================================================================
     Unified RaggieSoft ecosystem measurement property. Loaded asynchronously
-    via gtag.js so it never blocks Largest Contentful Paint (LCP) or First
-    Input Delay (FID) during recruiter dossier evaluations.
+    via gtag.js so it never blocks Largest Contentful Paint (LCP) or INP
+    during portfolio evaluations.
     =========================================================================
   -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
@@ -95,13 +94,13 @@ Architectural Notes:
     })();
   </script>
 
-  <!-- Schema.org ProfilePage Structured Data for ATS & AI Recruiter Ingestion -->
+  <!-- Schema.org ProfilePage Structured Data for ATS & Search Ingestion -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     "dateCreated": "2008-07-07T22:26:07Z",
-    "dateModified": "2026-10-29T21:00:00-04:00",
+    "dateModified": "2026-11-18T18:45:00-05:00",
     "mainEntity": {
       "@type": "Person",
       "@id": "https://michaelpragsdale.com/#michael-ragsdale",
@@ -109,8 +108,8 @@ Architectural Notes:
       "givenName": "Michael",
       "additionalName": "P.",
       "familyName": "Ragsdale",
-      "jobTitle": "Software Architect, Full-Stack Developer & Section 508 Engineer",
-      "description": "Software Architect, Full-Stack Developer, and Section 508 Accessibility Engineer specializing in custom web platforms, zero-database static-first polyglot architectures across 10 production web properties, and accessible operational workflows.",
+      "jobTitle": "Full-Stack Web Developer & Section 508 Accessibility Specialist",
+      "description": "Full-Stack Web Developer and Section 508 Accessibility Specialist in Norfolk, VA combining higher-education accessibility remediation, municipal public-service operations, and hands-on engineering across 11 live web properties and native C#/.NET and SwiftUI applications.",
       "url": "https://michaelpragsdale.com/",
       "image": "https://assets.raggiesoft.com/raggiesoft-corporate/images/mragsdale-aero/mragsdale-frutiger-aero.jpg",
       "email": "mailto:hello@michaelpragsdale.com",
@@ -122,13 +121,13 @@ Architectural Notes:
       },
       "worksFor": [
         {
+          "@type": "GovernmentOrganization",
+          "name": "City of Virginia Beach"
+        },
+        {
           "@type": "Organization",
           "name": "RaggieSoft Media",
           "url": "https://corporate.raggiesoft.com"
-        },
-        {
-          "@type": "GovernmentOrganization",
-          "name": "City of Virginia Beach"
         }
       ],
       "alumniOf": [
@@ -144,26 +143,24 @@ Architectural Notes:
         }
       ],
       "knowsAbout": [
-        "Systems Architecture",
-        "Angular 19 (Zoneless Signals)",
-        "TypeScript",
-        "PHP 8.5 MVC (Stardust Engine CMS)",
-        "Svelte 5 Runes & SvelteKit 2",
-        "React 19 & Next.js 16",
-        "Astro 6 Static SSG",
-        "Nuxt 4 & Vue 3",
-        "Bootstrap 5.3.8 & Web Awesome",
-        "Visual Basic 6.0 & Win32 API",
+        "Full-Stack Web Development",
         "Section 508 Compliance",
-        "WCAG 2.1 AA/AAA Accessibility",
+        "WCAG 2.1 AA Accessibility",
+        "Manual Screen-Reader Testing (JAWS, NVDA, VoiceOver)",
         "Deque axe",
+        "TypeScript & JavaScript",
+        "Angular 19 (Zoneless Signals)",
+        "PHP 8.5 MVC (Stardust Engine CMS)",
+        "React 19 & Next.js 16",
+        "Svelte 5 Runes & SvelteKit 2",
+        "Astro 6 & Nuxt 4",
+        "C# & .NET 10 WPF",
+        "Swift & SwiftUI",
+        "Bootstrap 5.3.8 & Web Awesome",
         "Accessible Information Design",
-        "ActiveNet",
-        "Microsoft Office",
-        "DevOps Automation",
-        "Linux Server Administration",
-        "Nginx",
-        "Modern CSS Architecture"
+        "ActiveNet & Microsoft Office",
+        "Linux & Nginx Server Administration",
+        "WebVTT Closed Captioning"
       ],
       "sameAs": [
         "https://raggiesoft.com",
@@ -172,6 +169,7 @@ Architectural Notes:
         "https://music.raggiesoft.com",
         "https://stardust.raggiesoft.com",
         "https://books.raggiesoft.com",
+        "https://backstage.raggiesoft.com",
         "https://lore.raggiesoft.com",
         "https://nebulae.raggiesoft.com",
         "https://storetrainer.raggiesoft.com",

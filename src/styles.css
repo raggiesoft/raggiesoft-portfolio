@@ -1,7 +1,7 @@
 /**
  * =============================================================================
  * File: src/styles.css
- * Application: Michael P. Ragsdale — Systems Architect Executive Dossier
+ * Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
  * Domain: https://michaelpragsdale.com
  * License: MIT License
  * =============================================================================
@@ -892,7 +892,7 @@
     border-color: var(--accent-primary);
   }
 
-  /* Hiring & Logistics Parameter Table ("Aggressive Transparency") */
+  /* Role & Availability Summary Table */
   .logistics-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);

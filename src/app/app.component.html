@@ -1,16 +1,16 @@
 <!--
 =============================================================================
 File: src/app/app.component.html
-Application: Michael P. Ragsdale — Systems Architect Executive Dossier
+Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
 Domain: https://michaelpragsdale.com
-License: MIT License (Code) | CC BY-SA 4.0 (Narrative Case Study References)
+License: MIT License (Code) | CC BY-SA 4.0 (Creative Case Study References)
 =============================================================================
 Accessibility & Recruiter UX Architecture:
 - Landmarks: `<header role="banner">`, `<nav aria-label="...">`, `<main id="main-content">`,
   and `<footer role="contentinfo">` for rapid screen-reader rotor navigation.
-- Above-the-Fold 5-Second Scan: Immediate visibility of executive identity,
-  Resume PDF download, Microsoft Bookings pre-screening scheduler, direct
-  email, and W2 / Norfolk VA / Clearance hiring logistics.
+- Above-the-Fold 5-Second Scan: Immediate visibility of professional identity,
+  Resume PDF download, Microsoft Bookings intro scheduler, direct email,
+  GitHub, and welcoming W-2 / Hampton Roads / Clearance alignment parameters.
 - LCP Optimization (`optimize-image-priority`): Primary portrait uses
   `fetchpriority="high"`, while the hidden opposite-theme portrait uses
   `fetchpriority="low"` so it never contends for initial bandwidth.
@@ -18,7 +18,7 @@ Accessibility & Recruiter UX Architecture:
 -->
 
 <!-- Keyboard & Assistive Technology Skip Link -->
-<a class="skip-link" href="#main-content">Skip to main executive dossier content</a>
+<a class="skip-link" href="#main-content">Skip to main portfolio content</a>
 
 <!-- Omnidirectional RaggieSoft Ecosystem Network Bar -->
 <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
@@ -28,6 +28,7 @@ Accessibility & Recruiter UX Architecture:
       <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
       <li><a href="https://nebulae.raggiesoft.com">🌌 Nebulae</a></li>
       <li><a href="https://books.raggiesoft.com">📚 Books</a></li>
+      <li><a href="https://backstage.raggiesoft.com">🎬 Backstage</a></li>
       <li class="rs-network-dropdown">
         <button type="button" class="rs-network-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
           <span aria-hidden="true">⚙️</span>
@@ -59,7 +60,7 @@ Accessibility & Recruiter UX Architecture:
 </nav>
 
 <!-- =========================================================================
-     STICKY EXECUTIVE HEADER BAR
+     STICKY PORTFOLIO HEADER BAR
      Mobile (< 48rem / 768px): Compact two-level identity bar with wrapping
      subtitle + 44x44px native Section 508 hamburger toggle button.
      Desktop (>= 48rem / 768px): Full horizontal inline navigation & theme bar.
@@ -70,7 +71,7 @@ Accessibility & Recruiter UX Architecture:
       <a
         class="brand-identity"
         href="/"
-        aria-label="Michael P. Ragsdale — Return to top of executive dossier"
+        aria-label="Michael P. Ragsdale — Return to top of portfolio"
         (click)="navigateInternal('/', $event)"
       >
         <img
@@ -82,7 +83,7 @@ Accessibility & Recruiter UX Architecture:
         />
         <span class="brand-title-group">
           <span class="brand-name">{{ profile.fullName }}</span>
-          <span class="brand-subtitle">Systems Architect • Section 508 Engineer</span>
+          <span class="brand-subtitle">Full-Stack Developer • Section 508 Specialist</span>
         </span>
       </a>
 
@@ -146,7 +147,7 @@ Accessibility & Recruiter UX Architecture:
       class="header-controls"
       [class.is-open]="mobileMenuOpen()"
     >
-      <nav aria-label="Executive Dossier Sections">
+      <nav aria-label="Portfolio Sections">
         <ul class="nav-links">
           <li>
             <a
@@ -155,7 +156,7 @@ Accessibility & Recruiter UX Architecture:
               [attr.aria-current]="activeView() === 'dossier' ? 'page' : null"
               (click)="navigateInternal('/', $event)"
             >
-              Executive Dossier
+              Portfolio
             </a>
           </li>
           <li>
@@ -164,7 +165,7 @@ Accessibility & Recruiter UX Architecture:
               href="/#polyglot-ecosystem"
               (click)="navigateInternal('/#polyglot-ecosystem', $event)"
             >
-              Polyglot Stack
+              Web Apps (11)
             </a>
           </li>
           <li>
@@ -183,7 +184,7 @@ Accessibility & Recruiter UX Architecture:
               [attr.aria-current]="activeView() !== 'dossier' ? 'page' : null"
               (click)="navigateInternal('/build-team', $event)"
             >
-              Build Team &amp; DevOps
+              CI/CD Tooling
             </a>
           </li>
           <li>
@@ -231,19 +232,19 @@ Accessibility & Recruiter UX Architecture:
 </header>
 
 <!-- =========================================================================
-     MAIN EXECUTIVE DOSSIER & BUILD TEAM CONTENT
+     MAIN PORTFOLIO & CI/CD TOOLING CONTENT
      ========================================================================= -->
 <main id="main-content" class="dossier-container">
 
   @if (activeView() === 'dossier') {
 
   <!-- =======================================================================
-       ABOVE THE FOLD: 5-SECOND RECRUITER BRIEFING & HIRING LOGISTICS
+       ABOVE THE FOLD: 5-SECOND RECRUITER OVERVIEW & ROLE ALIGNMENT
        ======================================================================= -->
   <section id="top" class="hero-bento" aria-labelledby="hero-heading">
     <div class="hero-panel-grid">
 
-      <!-- Left Panel: Executive Identity, Summary & Primary CTAs -->
+      <!-- Left Panel: Professional Identity, Summary & Primary Contact Actions -->
       <article class="executive-card">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div class="status-pill">
@@ -301,7 +302,7 @@ Accessibility & Recruiter UX Architecture:
         <!-- Immediate Recruiter Action Bar -->
         <div>
           <p class="eyebrow-label" style="margin-block-end: 0.4rem;">
-            Direct Recruiter &amp; Hiring Manager Actions
+            Resume, Intro Call &amp; Direct Contact
           </p>
           <div class="cta-row">
             <a
@@ -319,7 +320,7 @@ Accessibility & Recruiter UX Architecture:
               target="_blank"
               rel="noopener"
             >
-              <span>Book Architectural Pre-Screening</span>
+              <span>Schedule Intro Call</span>
             </a>
 
             <a
@@ -341,7 +342,7 @@ Accessibility & Recruiter UX Architecture:
         </div>
       </article>
 
-      <!-- Right Panel: "Aggressive Transparency" Hiring & Logistics Card -->
+      <!-- Right Panel: Practical Role & Logistics Summary Card -->
       <aside
         id="hiring-logistics"
         class="logistics-card"
@@ -349,14 +350,14 @@ Accessibility & Recruiter UX Architecture:
       >
         <div>
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-block-end: 0.75rem;">
-            <span class="eyebrow-label">Recruiter Fast-Track</span>
-            <span class="domain-badge">W2 • Norfolk, VA • DoD Eligible</span>
+            <span class="eyebrow-label">Quick Overview for Hiring Teams</span>
+            <span class="domain-badge">W-2 • Hampton Roads / VA • Public Trust</span>
           </div>
           <h2 id="logistics-heading" style="font-size: 1.35rem; margin-block-end: 0.35rem;">
-            Hiring &amp; Logistics Parameters
+            Role &amp; Availability Summary
           </h2>
           <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-end: 1rem;">
-            Published upfront to respect recruiter time and ensure immediate alignment on role scope, residency, and evaluation format.
+            Key details on target roles, Virginia location availability, Section 508 experience, and clearance eligibility.
           </p>
 
           <dl class="logistics-dl">
@@ -386,7 +387,7 @@ Accessibility & Recruiter UX Architecture:
       <div>
         <span class="eyebrow-label">Interactive Angular Signals Filter</span>
         <h2 id="lens-heading" style="font-size: 1.2rem;">
-          Filter Dossier by Hiring Discipline
+          Filter Portfolio by Engineering Discipline
         </h2>
         <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-start: 0.2rem;">
           {{ currentLensMeta().shortDescription }}
@@ -415,41 +416,41 @@ Accessibility & Recruiter UX Architecture:
   </section>
 
   <!-- =======================================================================
-       SECTION 1: POLYGLOT PRODUCTION ECOSYSTEM (ZERO-DATABASE ARCHITECTURE)
+       SECTION 1: LIVE WEB APPLICATION ECOSYSTEM (11 PRODUCTION PROPERTIES)
        ======================================================================= -->
   <section id="polyglot-ecosystem" class="dossier-section" aria-labelledby="ecosystem-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">10 Live Production Properties • 10 Distinct Tech Stacks • Zero SQL Attack Surface</p>
-        <h2 id="ecosystem-heading">Polyglot Production Ecosystem</h2>
+        <p class="eyebrow-label">11 Live Web Properties • Multi-Framework &amp; Vanilla Web Standards • Zero SQL Databases</p>
+        <h2 id="ecosystem-heading">Live Web Application Ecosystem</h2>
         <p class="section-lead">
-          Rather than relying on a single hammer for every problem, I architect specialized, decoupled web applications across <strong>Angular 19 (Zoneless Signals)</strong>, <strong>PHP 8.5 MVC</strong>, <strong>SvelteKit 2 + Svelte 5 Runes</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 + Vue 3</strong>, <strong>Next.js 16 + React 19</strong>, <strong>Bootstrap 5.3.8 Static SSG</strong>, <strong>Vanilla PHP/ES2024 JS</strong>, and <strong>Visual Basic 6.0 / Win32 API + TypeScript</strong>—all operating in production without a server-side database.
+          Each web property in the RaggieSoft network is built with a purposeful stack—spanning <strong>TypeScript &amp; Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>React 19 &amp; Next.js 16</strong>, <strong>SvelteKit 2 &amp; Svelte 5</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 &amp; Vue 3</strong>, <strong>Web Awesome Custom Elements</strong>, and <strong>Bootstrap 5.3.8</strong>—all enforcing Section 508 / WCAG 2.1 AA accessibility in production.
         </p>
       </div>
     </div>
 
-    <!-- Recruiter Briefing: Domain & Tech-Stack Governance Strategy -->
+    <!-- Architecture Note -->
     <aside
       class="timeline-card"
-      aria-label="Polyglot Domain Topology and Maintainability Strategy"
+      aria-label="Subdomain Architecture and Maintainability Note"
       style="margin-block-end: 1.5rem; border-inline-start: 4px solid var(--accent-primary);"
     >
       <div class="card-header-top" style="margin-block-end: 0.4rem;">
-        <span class="eyebrow-label">Architectural Governance Note for Engineering Leaders</span>
+        <span class="eyebrow-label">Architecture &amp; Maintainability Overview</span>
         <span class="domain-badge">*.raggiesoft.com + michaelpragsdale.com</span>
       </div>
       <h3 style="font-size: 1.08rem; margin-block-end: 0.5rem;">
-        How 10 Polyglot Stacks Stay Maintainable Under a Solo Systems Architect
+        How 11 Web Properties Stay Clean, Fast &amp; Maintainable
       </h3>
       <ul class="bullet-list" style="font-size: 0.92rem;">
         <li>
-          <strong>Subdomain-First Topology &amp; Edge 301 Governance:</strong> Every property lives on a first-level <code>*.raggiesoft.com</code> subdomain (alongside <code>michaelpragsdale.com</code>) to retain 18+ years of WHOIS domain authority and single-tier Cloudflare Universal SSL/HSTS coverage, while external vanity domains (<code>raggiesoftmedia.com</code>, <code>engineroom-records.com</code>, <code>fracturedprisms.com</code>, <code>thestardustengine.com</code>) execute deterministic <code>301</code> edge redirects.
+          <strong>Subdomain Topology &amp; Edge 301 Redirects:</strong> Properties live on first-level <code>*.raggiesoft.com</code> subdomains (alongside <code>michaelpragsdale.com</code>) under unified Cloudflare SSL/HSTS, while external domains (<code>raggiesoftmedia.com</code>, <code>engineroom-records.com</code>, <code>fracturedprisms.com</code>, <code>thestardustengine.com</code>) execute clean <code>301</code> redirects.
         </li>
         <li>
-          <strong>Path-Hierarchy Consolidation vs. Standalone App Decoupling:</strong> Rather than spinning up a separate framework or fourth-level subdomain for every band on the label roster, multi-tenant artist lore dossiers are consolidated under <code>engineroom.raggiesoft.com/artists/&#123;band-slug&#125;</code> on a single <strong>Astro 6</strong> static engine—while delegating stateful audio streaming &amp; WebVTT lyric mastering to <code>music.raggiesoft.com</code> (<strong>Svelte 5 Runes PWA</strong>) and dedicating <code>stardust.raggiesoft.com</code> (<strong>Nuxt 4 + Vue 3</strong>) to the flagship transmedia novel &amp; accessible fleet archive.
+          <strong>Right-Sized Consolidation vs. Decoupling:</strong> Multi-artist catalogs share a single <strong>Astro 6</strong> codebase (<code>engineroom.raggiesoft.com/artists/&#123;slug&#125;</code>), while stateful audio playback &amp; WebVTT captioning run in <strong>Svelte 5</strong> (<code>music.raggiesoft.com</code>) and cross-origin static JSON APIs are served from <code>backstage.raggiesoft.com</code> to both web and native <strong>C#/.NET 10 WPF</strong> and <strong>SwiftUI</strong> apps.
         </li>
         <li>
-          <strong>Shared Cross-Network Navigation &amp; WCAG 2.1 AA Layer:</strong> A single CDN-hosted script and stylesheet (<code>raggiesoft-network.js</code> / <code>.css</code>) links all 10 properties omnidirectionally on desktop (including the alphabetical <code>⚙️ Engine Room ▾</code> roster dropdown) and collapses cleanly into each property’s native single-hamburger menu on mobile.
+          <strong>Shared WCAG 2.1 AA Navigation Layer:</strong> A lightweight shared script and stylesheet (<code>raggiesoft-network.js</code> / <code>.css</code>) provides keyboard-accessible navigation across all properties and integrates cleanly into mobile disclosure menus.
         </li>
       </ul>
     </aside>
@@ -493,7 +494,7 @@ Accessibility & Recruiter UX Architecture:
           <!-- Row 4: Live Production Link -->
           <div class="card-footer-actions">
             @if (prop.isCurrentSite) {
-              <span class="status-pill">Active Inspection Target (You Are Here)</span>
+              <span class="status-pill">Current Site (You Are Here)</span>
             } @else {
               <a
                 class="btn btn-secondary"
@@ -501,7 +502,7 @@ Accessibility & Recruiter UX Architecture:
                 target="_blank"
                 rel="noopener"
               >
-                <span>{{ prop.ctaLabel ?? ('Inspect Live Production (' + prop.domain + ')') }}</span>
+                <span>{{ prop.ctaLabel ?? ('Visit Live Site (' + prop.domain + ')') }}</span>
               </a>
             }
           </div>
@@ -511,15 +512,15 @@ Accessibility & Recruiter UX Architecture:
   </section>
 
   <!-- =======================================================================
-       SECTION 2: ARCHITECTURAL & ACCESSIBILITY CASE STUDIES
+       SECTION 2: ENGINEERING, DESKTOP & SECTION 508 CASE STUDIES
        ======================================================================= -->
   <section id="case-studies" class="dossier-section" aria-labelledby="cases-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">Proven Problem Solving in Municipal, Higher-Ed &amp; Cloud Systems</p>
-        <h2 id="cases-heading">Architectural &amp; Section 508 Case Studies</h2>
+        <p class="eyebrow-label">Applied Problem Solving Across Municipal, University, Desktop &amp; Web Systems</p>
+        <h2 id="cases-heading">Engineering &amp; Section 508 Case Studies</h2>
         <p class="section-lead">
-          Selected engineering reports detailing how I resolve legacy data normalization bottlenecks, university-wide Section 508 compliance audits, and high-performance web decoupling.
+          Concrete examples of operational data formatting in municipal service, university-wide Canvas LMS Section 508 remediation, native C#/.NET &amp; SwiftUI application development, and accessible web engineering.
         </p>
       </div>
     </div>
@@ -534,8 +535,8 @@ Accessibility & Recruiter UX Architecture:
 
           <h3>{{ study.title }}</h3>
 
-          <!-- Quantified Impact Metrics Bar -->
-          <div class="case-study-metrics" aria-label="Quantified engineering outcomes">
+          <!-- Impact Summary Metrics Bar -->
+          <div class="case-study-metrics" aria-label="Key project outcomes">
             @for (metric of study.quantifiedImpact; track metric.label) {
               <div class="metric-box">
                 <span class="metric-label">{{ metric.label }}</span>
@@ -546,10 +547,10 @@ Accessibility & Recruiter UX Architecture:
 
           <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.65rem;">
             <p>
-              <strong>Operational Challenge:</strong> {{ study.problemStatement }}
+              <strong>Challenge:</strong> {{ study.problemStatement }}
             </p>
             <p>
-              <strong>Architectural Solution:</strong> {{ study.architecturalSolution }}
+              <strong>Approach &amp; Solution:</strong> {{ study.architecturalSolution }}
             </p>
           </div>
 
@@ -561,14 +562,24 @@ Accessibility & Recruiter UX Architecture:
 
           <div class="card-footer-actions">
             @for (link of study.referenceLinks; track link.url) {
-              <a
-                class="btn btn-secondary"
-                [href]="link.url"
-                target="_blank"
-                rel="noopener"
-              >
-                <span>{{ link.label }}</span>
-              </a>
+              @if (link.url.startsWith('/')) {
+                <a
+                  class="btn btn-secondary"
+                  [href]="link.url"
+                  (click)="navigateInternal(link.url, $event)"
+                >
+                  <span>{{ link.label }}</span>
+                </a>
+              } @else {
+                <a
+                  class="btn btn-secondary"
+                  [href]="link.url"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span>{{ link.label }}</span>
+                </a>
+              }
             }
           </div>
         </article>
@@ -577,15 +588,15 @@ Accessibility & Recruiter UX Architecture:
   </section>
 
   <!-- =======================================================================
-       SECTION 3: "PERSONIFIED DEVOPS" CI/CD & MEDIA AUTOMATION FLEET
+       SECTION 3: CI/CD, MEDIA MASTERING & LINUX DEPLOYMENT AUTOMATION
        ======================================================================= -->
   <section id="devops-fleet" class="dossier-section" aria-labelledby="devops-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">Autonomous Build, Mastering &amp; CDN Orchestration • Real-Life Digital Employees &amp; In-Universe Sisters</p>
-        <h2 id="devops-heading">The Build Team &amp; DevOps Automation Pipeline</h2>
+        <p class="eyebrow-label">Build Verification, FFmpeg Media Pipelines &amp; Non-Root Linux Deployment</p>
+        <h2 id="devops-heading">CI/CD &amp; Media Automation Tooling</h2>
         <p class="section-lead">
-          Operating ten decoupled production properties as a solo Systems Architect requires ruthless automation. I engineered a suite of modular PHP, Bash, and Python CLI daemons ("Personified DevOps") that govern narrative compilation, build verification, EBU R128 audio mastering, Metal GPU upscaling, and S3 CDN synchronization.
+          Maintaining 11 web properties and downloadable media archives reliably requires repeatable automation. I built a modular suite of PHP 8.5, Bash, and FFmpeg command-line tools that handle Markdown route compilation, pre-push framework build checks, EBU R128 audio normalization, S3 CDN synchronization, and non-root Linux cron deployments.
         </p>
       </div>
       <div>
@@ -594,7 +605,7 @@ Accessibility & Recruiter UX Architecture:
           href="/build-team"
           (click)="navigateInternal('/build-team', $event)"
         >
-          <span>Meet The Full Build Team (/build-team)</span>
+          <span>Explore CI/CD Suite Docs (/build-team)</span>
         </a>
       </div>
     </div>
@@ -604,7 +615,7 @@ Accessibility & Recruiter UX Architecture:
         <article class="subgrid-card">
           <div>
             <div class="card-header-top">
-              <span class="eyebrow-label">Automation Daemon: {{ bot.codename }}</span>
+              <span class="eyebrow-label">CLI / Server Module</span>
               <code>{{ bot.scriptName }}</code>
             </div>
             <h3 style="margin-block-start: 0.4rem;">{{ bot.roleTitle }}</h3>
@@ -621,7 +632,7 @@ Accessibility & Recruiter UX Architecture:
 
           <div>
             <p class="mono" style="font-size: 0.78rem; color: var(--accent-primary); font-weight: 600;">
-              Toolchain: {{ bot.stack }}
+              Stack: {{ bot.stack }}
             </p>
           </div>
 
@@ -631,7 +642,7 @@ Accessibility & Recruiter UX Architecture:
               [href]="bot.profileUrl"
               (click)="navigateInternal(bot.profileUrl, $event)"
             >
-              <span>Inspect {{ bot.codename }} Dossier</span>
+              <span>View {{ bot.codename }} Specs</span>
             </a>
             <span class="tech-tag">NYC1 Pipeline</span>
           </div>
@@ -646,10 +657,10 @@ Accessibility & Recruiter UX Architecture:
   <section id="experience" class="dossier-section" aria-labelledby="experience-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">Functional Engineering Scope vs. Civil-Service HR Classifications</p>
+        <p class="eyebrow-label">Work History &amp; Official HR Classifications</p>
         <h2 id="experience-heading">Professional Experience &amp; Education</h2>
         <p class="section-lead">
-          In municipal government and public higher education, civil-service HR billet titles often lag behind actual technical responsibilities. Both functional engineering roles and official HR classifications are listed transparently below for background-check verification.
+          Chronological employment history across municipal public service, public higher education, software engineering internships, and independent full-stack development, with official HR classifications included for straightforward background verification.
         </p>
       </div>
     </div>
@@ -691,7 +702,7 @@ Accessibility & Recruiter UX Architecture:
 
     <!-- Academic Credentials -->
     <div style="margin-block-start: 2rem;">
-      <h3 style="margin-block-end: 1rem;">Academic Credentials &amp; Continuing Education</h3>
+      <h3 style="margin-block-end: 1rem;">Education &amp; Certification</h3>
       <div class="dual-column-grid">
         @for (edu of educationCredentials; track edu.degree) {
           <article class="timeline-card">
@@ -717,18 +728,18 @@ Accessibility & Recruiter UX Architecture:
   } @else if (activeView() === 'build-team-overview') {
 
   <!-- =======================================================================
-       VIEW 2: THE BUILD TEAM & DEVOPS FAMILY OVERVIEW (/build-team)
+       VIEW 2: CI/CD & MEDIA AUTOMATION SUITE OVERVIEW (/build-team)
        ======================================================================= -->
-  <nav class="build-team-subnav" aria-label="Build Team Breadcrumb and Member Switcher">
+  <nav class="build-team-subnav" aria-label="CI/CD Tooling Breadcrumb and Module Switcher">
     <ol class="build-team-breadcrumbs">
       <li>
-        <a href="/" (click)="navigateInternal('/', $event)">Executive Dossier</a>
+        <a href="/" (click)="navigateInternal('/', $event)">Portfolio</a>
       </li>
       <li aria-hidden="true">/</li>
-      <li aria-current="page">The Build Team &amp; DevOps Family</li>
+      <li aria-current="page">CI/CD &amp; Media Automation Suite</li>
     </ol>
 
-    <ul class="build-team-pills" aria-label="Build Team Members">
+    <ul class="build-team-pills" aria-label="CI/CD Automation Modules">
       <li>
         <a
           class="build-team-pill is-active"
@@ -736,7 +747,7 @@ Accessibility & Recruiter UX Architecture:
           aria-current="page"
           (click)="navigateInternal('/build-team', $event)"
         >
-          <span>👥 All Build Team</span>
+          <span>⚙️ Suite Overview</span>
         </a>
       </li>
       @for (m of buildTeamProfiles; track m.slug) {
@@ -756,20 +767,20 @@ Accessibility & Recruiter UX Architecture:
 
   <section id="top" class="hero-bento" aria-labelledby="build-team-heading">
     <div class="hero-panel-grid">
-      <!-- Left Panel: Build Team Overview & Dual-Layer Reality Note -->
+      <!-- Left Panel: Automation Suite Overview & Naming Convention Note -->
       <article class="executive-card">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div class="status-pill">
             <span class="status-dot" aria-hidden="true"></span>
-            <span>Personified DevOps • Digital Employees (Real Life) &amp; Sisters (In-Universe)</span>
+            <span>Automated Build, Media Mastering &amp; Non-Root Linux Deployment</span>
           </div>
 
           <div class="executive-profile-top">
-            <div class="portrait-frame" style="background-color: #ffffff; padding: 0.35rem;">
+            <div class="portrait-frame" style="background-color: #ffffff; padding: 0.45rem;">
               <img
                 class="portrait-img"
                 [src]="buildTeamOverview.logoUrl"
-                alt="The RaggieSoft Build Team &amp; DevOps Family Crest"
+                alt="Michael P. Ragsdale Engineering Emblem"
                 width="120"
                 height="120"
                 style="object-fit: contain;"
@@ -778,7 +789,7 @@ Accessibility & Recruiter UX Architecture:
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 0.45rem;">
-              <p class="eyebrow-label">/raggiesoft-deployment-tools/ &amp; NYC1 Infrastructure</p>
+              <p class="eyebrow-label">/raggiesoft-deployment-tools/ &amp; NYC1 Linux VPS</p>
               <h1 id="build-team-heading">{{ buildTeamOverview.title }}</h1>
               <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-secondary);">
                 {{ buildTeamOverview.subtitle }}
@@ -792,7 +803,7 @@ Accessibility & Recruiter UX Architecture:
               padding-inline-start: 0.9rem;
               color: var(--text-primary);
               font-weight: 600;
-              font-size: 0.96rem;
+              font-size: 0.95rem;
             "
           >
             {{ buildTeamOverview.quote }}
@@ -800,13 +811,13 @@ Accessibility & Recruiter UX Architecture:
 
           <div class="timeline-card" style="background-color: var(--bg-surface-elevated); margin-block-start: 0.25rem;">
             <p class="eyebrow-label" style="margin-block-end: 0.3rem;">
-              {{ buildTeamOverview.realityNoteTitle }}
+              {{ buildTeamOverview.namingNoteTitle }}
             </p>
             <p style="font-weight: 700; color: var(--text-primary); margin-block-end: 0.45rem;">
-              {{ buildTeamOverview.realityNoteLead }}
+              {{ buildTeamOverview.namingNoteLead }}
             </p>
             <p style="font-size: 0.93rem; color: var(--text-secondary);">
-              {{ buildTeamOverview.realityNoteBody }}
+              {{ buildTeamOverview.namingNoteBody }}
             </p>
           </div>
         </div>
@@ -814,62 +825,68 @@ Accessibility & Recruiter UX Architecture:
         <div class="cta-row">
           <a
             class="btn btn-primary"
-            href="/build-team/paige"
-            (click)="navigateInternal('/build-team/paige', $event)"
+            href="/build-team/jenna"
+            (click)="navigateInternal('/build-team/jenna', $event)"
           >
-            <span>👩‍🏫 Meet Paige (Safe Person &amp; Editor)</span>
+            <span>🚀 Inspect jenna-sync.sh (Release Gate)</span>
           </a>
           <a
             class="btn btn-secondary"
-            href="/build-team/michael"
-            (click)="navigateInternal('/build-team/michael', $event)"
+            href="/build-team/sarah"
+            (click)="navigateInternal('/build-team/sarah', $event)"
           >
-            <span>🧠 Meet Michael (The Architect)</span>
+            <span>🛡️ Inspect sarah-deploy.sh (Non-Root CD)</span>
           </a>
           <a
             class="btn btn-secondary"
             href="/"
             (click)="navigateInternal('/', $event)"
           >
-            <span>← Return to Executive Dossier</span>
+            <span>← Return to Main Portfolio</span>
           </a>
         </div>
       </article>
 
-      <!-- Right Panel: Safe Person & Deep Pressure Therapy Hero Scene -->
-      <aside class="logistics-card" aria-label="The Safe Person Grounding Scene">
-        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
-          <div class="card-header-top">
-            <span class="eyebrow-label">The Safe Person Protocol</span>
-            <span class="domain-badge">paige.php + Deep Pressure Therapy</span>
+      <!-- Right Panel: End-to-End 5-Stage Pipeline Architecture -->
+      <aside class="logistics-card" aria-labelledby="pipeline-flow-heading">
+        <div>
+          <div class="card-header-top" style="margin-block-end: 0.65rem;">
+            <span class="eyebrow-label">End-to-End Release Lifecycle</span>
+            <span class="domain-badge">Local Dev → GitHub → S3 CDN → NYC1</span>
           </div>
-          <div class="build-team-hero-portrait">
-            <img
-              [src]="buildTeamOverview.heroBannerUrl"
-              alt="Paige comforting and holding Michael in a grounding Deep Pressure Therapy hug"
-              width="800"
-              height="500"
-            />
-          </div>
-          <h2 style="font-size: 1.25rem;">
-            Why Paige Is the Most Important Member of the Family
+          <h2 id="pipeline-flow-heading" style="font-size: 1.3rem; margin-block-end: 0.4rem;">
+            Five-Stage Build &amp; Deployment Topology
           </h2>
-          <p style="font-size: 0.92rem; color: var(--text-secondary);">
-            Notice what most of the artwork of Paige depicts: comforting and holding Michael. In the build pipeline, <code>paige.php</code> compiles 3,185+ narrative scenes into structured route manifests and full-text search indices for <a href="https://books.raggiesoft.com" target="_blank" rel="noopener">Ocean View Archives</a>—while in-universe, she is Michael’s fraternal twin sister and designated autistic Safe Person.
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-end: 0.9rem;">
+            Every code, content, or media update passes through deterministic local verification before reaching public cloud storage or Nginx web roots.
           </p>
+
+          <dl class="logistics-dl">
+            @for (stage of buildTeamOverview.pipelineStages; track stage.step) {
+              <div class="logistics-item">
+                <dt class="logistics-dt">{{ stage.step }}</dt>
+                <dd class="logistics-dd">
+                  <code style="display: inline-block; margin-block: 0.15rem 0.25rem; font-size: 0.8rem;">{{ stage.command }}</code>
+                  <span style="display: block; font-size: 0.83rem; color: var(--text-secondary);">
+                    {{ stage.outcome }}
+                  </span>
+                </dd>
+              </div>
+            }
+          </dl>
         </div>
       </aside>
     </div>
   </section>
 
-  <!-- 7 Build Team Member Dossier Cards -->
+  <!-- 7 Automation Module Specification Cards -->
   <section class="dossier-section" aria-labelledby="roster-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">1 Biological Architect + 6 Digital Sisters &amp; Daemons</p>
-        <h2 id="roster-heading">Meet The RaggieSoft Build Team</h2>
+        <p class="eyebrow-label">7 Modular Pipeline Components</p>
+        <h2 id="roster-heading">Automation Modules &amp; Infrastructure Specs</h2>
         <p class="section-lead">
-          Select any member below to inspect their real-world CLI script / server architecture alongside their in-universe sisterhood profile and neurodivergent design philosophy.
+          Select any module below to inspect its command-line invocation, technical responsibilities, security guardrails, and terminal output.
         </p>
       </div>
     </div>
@@ -877,17 +894,8 @@ Accessibility & Recruiter UX Architecture:
     <div class="subgrid-card-matrix">
       @for (member of buildTeamProfiles; track member.slug) {
         <article class="subgrid-card">
-          <!-- Row 1: Portrait, Name & System Artifact -->
+          <!-- Row 1: Module Name & System Artifact -->
           <div>
-            <div class="build-team-card-portrait">
-              <img
-                [src]="member.portraitUrl"
-                [alt]="member.name + ' — ' + member.roleTitle"
-                loading="lazy"
-                width="600"
-                height="400"
-              />
-            </div>
             <div class="card-header-top">
               <span class="eyebrow-label">{{ member.icon }} {{ member.shortLabel }}</span>
               <code>{{ member.systemArtifact }}</code>
@@ -898,25 +906,25 @@ Accessibility & Recruiter UX Architecture:
             </p>
           </div>
 
-          <!-- Row 2: Quote & Summary -->
+          <!-- Row 2: Engineering Principle & Summary -->
           <div class="card-body-text">
             <blockquote
               style="
                 border-inline-start: 3px solid var(--accent-primary);
                 padding-inline-start: 0.75rem;
                 margin-block-end: 0.65rem;
-                font-style: italic;
                 color: var(--text-primary);
+                font-weight: 500;
               "
             >
-              "{{ member.quote }}"
+              {{ member.quote }}
             </blockquote>
             <p>{{ member.cardSummary }}</p>
           </div>
 
-          <!-- Row 3: Vital Stat Badges -->
+          <!-- Row 3: Stack & Security Badges -->
           <div>
-            <ul class="tag-list" [attr.aria-label]="member.name + ' vital profile attributes'">
+            <ul class="tag-list" [attr.aria-label]="member.name + ' technical attributes'">
               <li class="tech-tag tech-tag-highlight">{{ member.stackBadge }}</li>
               @for (stat of member.vitalStats; track stat.label) {
                 @if (stat.isBadge) {
@@ -926,7 +934,7 @@ Accessibility & Recruiter UX Architecture:
             </ul>
           </div>
 
-          <!-- Row 4: Full Profile CTA -->
+          <!-- Row 4: Module Spec Link -->
           <div class="card-footer-actions">
             <a
               class="btn btn-primary"
@@ -934,7 +942,7 @@ Accessibility & Recruiter UX Architecture:
               [href]="'/build-team/' + member.slug"
               (click)="navigateInternal('/build-team/' + member.slug, $event)"
             >
-              <span>Inspect {{ member.name }} Dossier →</span>
+              <span>Inspect {{ member.name }} Specs →</span>
             </a>
           </div>
         </article>
@@ -946,29 +954,29 @@ Accessibility & Recruiter UX Architecture:
     @if (activeMember(); as member) {
 
   <!-- =======================================================================
-       VIEW 3: INDIVIDUAL BUILD TEAM MEMBER DOSSIER (/build-team/:slug)
+       VIEW 3: INDIVIDUAL AUTOMATION MODULE SPECIFICATION (/build-team/:slug)
        ======================================================================= -->
-  <nav class="build-team-subnav" aria-label="Build Team Breadcrumb and Member Switcher">
+  <nav class="build-team-subnav" aria-label="CI/CD Module Breadcrumb and Switcher">
     <ol class="build-team-breadcrumbs">
       <li>
-        <a href="/" (click)="navigateInternal('/', $event)">Executive Dossier</a>
+        <a href="/" (click)="navigateInternal('/', $event)">Portfolio</a>
       </li>
       <li aria-hidden="true">/</li>
       <li>
-        <a href="/build-team" (click)="navigateInternal('/build-team', $event)">Build Team</a>
+        <a href="/build-team" (click)="navigateInternal('/build-team', $event)">CI/CD Suite</a>
       </li>
       <li aria-hidden="true">/</li>
       <li aria-current="page">{{ member.name }}</li>
     </ol>
 
-    <ul class="build-team-pills" aria-label="Switch Build Team Member">
+    <ul class="build-team-pills" aria-label="Switch CI/CD Module">
       <li>
         <a
           class="build-team-pill"
           href="/build-team"
           (click)="navigateInternal('/build-team', $event)"
         >
-          <span>👥 All</span>
+          <span>⚙️ All Modules</span>
         </a>
       </li>
       @for (m of buildTeamProfiles; track m.slug) {
@@ -988,10 +996,10 @@ Accessibility & Recruiter UX Architecture:
     </ul>
   </nav>
 
-  <!-- Member Hero & Vital Statistics Split Grid -->
+  <!-- Module Hero & Technical Telemetry Split Grid -->
   <section id="top" class="hero-bento" aria-labelledby="member-hero-heading">
     <div class="hero-panel-grid">
-      <!-- Left Panel: Atmospheric Portrait & Core Identity -->
+      <!-- Left Panel: Module Identity, Engineering Rationale & Terminal Preview -->
       <article class="executive-card">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div class="card-header-top">
@@ -1000,16 +1008,6 @@ Accessibility & Recruiter UX Architecture:
               <span>{{ member.stackBadge }}</span>
             </span>
             <code>{{ member.systemArtifact }}</code>
-          </div>
-
-          <div class="build-team-hero-portrait">
-            <img
-              [src]="member.portraitUrl"
-              [alt]="member.name + ' — ' + member.roleTitle"
-              width="800"
-              height="520"
-              fetchpriority="high"
-            />
           </div>
 
           <div>
@@ -1028,25 +1026,45 @@ Accessibility & Recruiter UX Architecture:
               font-size: 1rem;
             "
           >
-            "{{ member.quote }}"
+            {{ member.quote }}
           </blockquote>
 
           <p style="color: var(--text-secondary); font-size: 0.96rem;">
             {{ member.cardSummary }}
           </p>
+
+          <div class="terminal-window" role="region" aria-label="Command Line Invocation">
+            <div class="terminal-header">
+              <span class="terminal-dots" aria-hidden="true">
+                <span class="terminal-dot" style="background-color: #ef4444;"></span>
+                <span class="terminal-dot" style="background-color: #f59e0b;"></span>
+                <span class="terminal-dot" style="background-color: #10b981;"></span>
+              </span>
+              <span style="color: #94a3b8;">CLI / Config Reference</span>
+            </div>
+            <div class="terminal-body">
+              <div style="color: #94a3b8; margin-block-end: 0.35rem;">{{ member.cliSnippet.comment }}</div>
+              @for (cmd of member.cliSnippet.commands; track cmd) {
+                <div>
+                  <span class="terminal-prompt">$</span>
+                  <span class="terminal-cmd"> {{ cmd }}</span>
+                </div>
+              }
+            </div>
+          </div>
         </div>
       </article>
 
-      <!-- Right Panel: Vital Statistics & CLI Invocation Card -->
+      <!-- Right Panel: Module Specifications & Navigation -->
       <aside class="logistics-card" aria-labelledby="vital-stats-heading">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div>
             <div class="card-header-top" style="margin-block-end: 0.5rem;">
-              <span class="eyebrow-label">System &amp; Lore Telemetry</span>
+              <span class="eyebrow-label">Module Specifications</span>
               <span class="domain-badge">/build-team/{{ member.slug }}</span>
             </div>
             <h2 id="vital-stats-heading" style="font-size: 1.3rem; margin-block-end: 0.75rem;">
-              Vital Statistics &amp; Identity
+              Runtime &amp; Security Profile
             </h2>
 
             <dl class="logistics-dl">
@@ -1067,42 +1085,20 @@ Accessibility & Recruiter UX Architecture:
             </dl>
           </div>
 
-          @if (member.cliSnippet; as cli) {
-            <div class="terminal-window" role="region" aria-label="Command Line Invocation">
-              <div class="terminal-header">
-                <span class="terminal-dots" aria-hidden="true">
-                  <span class="terminal-dot" style="background-color: #ef4444;"></span>
-                  <span class="terminal-dot" style="background-color: #f59e0b;"></span>
-                  <span class="terminal-dot" style="background-color: #10b981;"></span>
-                </span>
-                <span style="color: #94a3b8;">Production CLI Invocation</span>
-              </div>
-              <div class="terminal-body">
-                <div style="color: #94a3b8; margin-block-end: 0.35rem;">{{ cli.comment }}</div>
-                @for (cmd of cli.commands; track cmd) {
-                  <div>
-                    <span class="terminal-prompt">$</span>
-                    <span class="terminal-cmd"> {{ cmd }}</span>
-                  </div>
-                }
-              </div>
-            </div>
-          }
-
           <div class="cta-row">
             <a
               class="btn btn-secondary"
               href="/build-team"
               (click)="navigateInternal('/build-team', $event)"
             >
-              <span>← All Build Team</span>
+              <span>← All CI/CD Modules</span>
             </a>
             <a
               class="btn btn-secondary"
               href="/"
               (click)="navigateInternal('/', $event)"
             >
-              <span>Executive Dossier</span>
+              <span>Main Portfolio</span>
             </a>
           </div>
         </div>
@@ -1110,13 +1106,13 @@ Accessibility & Recruiter UX Architecture:
     </div>
   </section>
 
-  <!-- Dual-Column Deep Dive: Real-World Engineering vs. In-Universe Sisterhood -->
-  <section class="dossier-section" aria-label="Technical and Human Architecture Deep Dive">
+  <!-- Dual-Column Deep Dive: Implementation Details & Operational Reliability -->
+  <section class="dossier-section" aria-label="Module Implementation and Operational Design">
     <div class="dual-column-grid">
-      <!-- Column 1: Real-World Digital Employee / CLI Architecture -->
+      <!-- Column 1: Core Responsibilities & Capabilities -->
       <article class="case-study-card">
         <div class="card-header-top">
-          <span class="eyebrow-label">Layer 1 • Real-World Digital Employee</span>
+          <span class="eyebrow-label">Implementation &amp; Responsibilities</span>
           <code>{{ member.systemArtifact }}</code>
         </div>
         <h2>{{ member.technicalHeading }}</h2>
@@ -1132,13 +1128,13 @@ Accessibility & Recruiter UX Architecture:
         </ul>
       </article>
 
-      <!-- Column 2: In-Universe Sister & Neurodivergent Reality -->
+      <!-- Column 2: Operational Design, Security & Reliability -->
       <article class="case-study-card">
         <div class="card-header-top">
-          <span class="eyebrow-label">Layer 2 • In-Universe Family &amp; Neurotype</span>
-          <span class="domain-badge">Personified DevOps</span>
+          <span class="eyebrow-label">Operational &amp; Security Rationale</span>
+          <span class="domain-badge">Production Engineering</span>
         </div>
-        <h2>{{ member.humanHeading }}</h2>
+        <h2>{{ member.operationsHeading }}</h2>
         <blockquote
           style="
             border-inline-start: 3px solid var(--accent-primary);
@@ -1147,11 +1143,11 @@ Accessibility & Recruiter UX Architecture:
             color: var(--text-primary);
           "
         >
-          {{ member.humanLeadQuote }}
+          {{ member.operationsLead }}
         </blockquote>
 
         <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.75rem;">
-          @for (para of member.humanParagraphs; track para) {
+          @for (para of member.operationsParagraphs; track para) {
             <p>{{ para }}</p>
           }
         </div>
@@ -1159,97 +1155,49 @@ Accessibility & Recruiter UX Architecture:
     </div>
   </section>
 
-  <!-- Optional Feature Banner (Safe Person Protocol / Deep Pressure Therapy) -->
-  @if (member.featureBanner; as banner) {
-    <section class="dossier-section" aria-labelledby="feature-banner-heading">
-      <article class="feature-banner-card">
-        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-          <span class="eyebrow-label">{{ banner.badge }}</span>
-          <h2 id="feature-banner-heading">{{ banner.title }}</h2>
-          <blockquote
-            style="
-              border-inline-start: 3px solid var(--accent-primary);
-              padding-inline-start: 0.85rem;
-              font-weight: 600;
-              color: var(--text-primary);
-            "
-          >
-            {{ banner.quote }}
-          </blockquote>
-          @for (p of banner.paragraphs; track p) {
-            <p class="card-body-text">{{ p }}</p>
-          }
-          @if (banner.ctaSlug && banner.ctaLabel) {
-            <div class="cta-row">
-              <a
-                class="btn btn-primary"
-                [href]="'/build-team/' + banner.ctaSlug"
-                (click)="navigateInternal('/build-team/' + banner.ctaSlug, $event)"
-              >
-                <span>{{ banner.ctaLabel }} →</span>
-              </a>
-            </div>
-          }
-        </div>
-
-        <div class="build-team-hero-portrait">
-          <img
-            [src]="banner.imageUrl"
-            [alt]="banner.imageAlt"
-            loading="lazy"
-            width="800"
-            height="520"
-          />
-        </div>
-      </article>
-    </section>
-  }
-
-  <!-- Optional Live Terminal Telemetry Block -->
-  @if (member.terminalBlock; as term) {
-    <section class="dossier-section" aria-label="Live Daemon Telemetry Simulation">
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div style="display: flex; align-items: center; gap: 0.65rem;">
-            <span class="terminal-dots" aria-hidden="true">
-              <span class="terminal-dot" style="background-color: #ef4444;"></span>
-              <span class="terminal-dot" style="background-color: #f59e0b;"></span>
-              <span class="terminal-dot" style="background-color: #10b981;"></span>
-            </span>
-            <strong style="color: #f8fafc;">{{ term.headerTitle }}</strong>
-          </div>
-          <span
-            style="
-              background-color: #052e16;
-              color: #bbf7d0;
-              border: 1px solid #166534;
-              padding: 0.15rem 0.55rem;
-              border-radius: 999px;
-              font-size: 0.72rem;
-              font-weight: 700;
-            "
-          >
-            {{ term.statusBadge }}
+  <!-- Live Terminal Output Sample -->
+  <section class="dossier-section" aria-label="Sample Execution Output">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <span class="terminal-dots" aria-hidden="true">
+            <span class="terminal-dot" style="background-color: #ef4444;"></span>
+            <span class="terminal-dot" style="background-color: #f59e0b;"></span>
+            <span class="terminal-dot" style="background-color: #10b981;"></span>
           </span>
+          <strong style="color: #f8fafc;">{{ member.terminalBlock.headerTitle }}</strong>
         </div>
-        <div class="terminal-body">
-          <div>
-            <span class="terminal-prompt">{{ term.promptUser }}</span>
-            <span class="terminal-cmd"> {{ term.command }}</span>
-          </div>
-          <div class="terminal-output">
-            @for (line of term.outputLines; track line) {
-              <div>{{ line }}</div>
-            }
-          </div>
+        <span
+          style="
+            background-color: #052e16;
+            color: #bbf7d0;
+            border: 1px solid #166534;
+            padding: 0.15rem 0.55rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+          "
+        >
+          {{ member.terminalBlock.statusBadge }}
+        </span>
+      </div>
+      <div class="terminal-body">
+        <div>
+          <span class="terminal-prompt">{{ member.terminalBlock.promptUser }}</span>
+          <span class="terminal-cmd"> {{ member.terminalBlock.command }}</span>
+        </div>
+        <div class="terminal-output">
+          @for (line of member.terminalBlock.outputLines; track line) {
+            <div>{{ line }}</div>
+          }
         </div>
       </div>
-    </section>
-  }
+    </div>
+  </section>
 
-  <!-- Sequential Build Team Pagination Footer -->
+  <!-- Sequential Module Pagination Footer -->
   @if (adjacentMembers(); as adj) {
-    <section class="dossier-section" aria-label="Build Team Member Pagination">
+    <section class="dossier-section" aria-label="CI/CD Module Pagination">
       <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
         <a
           class="btn btn-secondary"
@@ -1263,7 +1211,7 @@ Accessibility & Recruiter UX Architecture:
           href="/build-team"
           (click)="navigateInternal('/build-team', $event)"
         >
-          <span>👥 All Build Team (/build-team)</span>
+          <span>⚙️ All CI/CD Modules (/build-team)</span>
         </a>
         <a
           class="btn btn-primary"
@@ -1289,7 +1237,7 @@ Accessibility & Recruiter UX Architecture:
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
       <div>
         <strong style="color: var(--text-primary); font-size: 1rem;">
-          {{ profile.fullName }} — Executive Systems Architect Dossier (michaelpragsdale.com)
+          {{ profile.fullName }} — Engineering &amp; Section 508 Portfolio (michaelpragsdale.com)
         </strong>
         <p style="margin-block-start: 0.2rem;">
           Built with Angular 19 (Standalone + Zoneless Signals + TypeScript) &amp; Modern Native CSS (<code>&#64;layer</code>, <code>subgrid</code>, <code>&#64;container</code>, <code>light-dark()</code>). Hosted on NYC1 (142.93.244.239).
@@ -1301,7 +1249,7 @@ Accessibility & Recruiter UX Architecture:
           Download Resume (PDF)
         </a>
         <a class="btn btn-secondary" [href]="profile.assets.bookingsUrl" target="_blank" rel="noopener">
-          Schedule Screening
+          Schedule Intro Call
         </a>
       </div>
     </div>
@@ -1312,13 +1260,13 @@ Accessibility & Recruiter UX Architecture:
         <strong>Licensing Notice:</strong> All application source code powering <code>michaelpragsdale.com</code> and the RaggieSoft engineering ecosystem is licensed under the <strong>MIT License</strong>. Creative narrative and musical works referenced in RaggieSoft Media case studies are licensed under <strong>CC BY-SA 4.0</strong> (alongside applicable DSP consumer licenses or direct commercial licenses cleared via <a href="https://corporate.raggiesoft.com/licensing/commercial" target="_blank" rel="noopener">corporate.raggiesoft.com/licensing/commercial</a>).
       </p>
       <p>
-        <strong>Fictitious Persons &amp; Entities Disclaimer:</strong> While all professional employment records, academic credentials, municipal/university achievements, and software architecture specifications on this page represent the factual career of <strong>Michael P. Ragsdale</strong>, all narrative characters, bands, biographies, universities (including Commonwealth Polytechnic Institute / CPI, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (Blue Ridge Transit), in-universe legal filings, and events referenced within RaggieSoft properties (<code>raggiesoft.com</code>, <code>corporate.raggiesoft.com</code>, <code>engineroom.raggiesoft.com</code>, <code>music.raggiesoft.com</code>, <code>stardust.raggiesoft.com</code>, <code>books.raggiesoft.com</code>, <code>lore.raggiesoft.com</code>, <code>nebulae.raggiesoft.com</code>, <code>storetrainer.raggiesoft.com</code>) are works of fiction. Any resemblance to actual persons (living or dead), businesses, institutions, or events is purely coincidental.
+        <strong>Fictitious Persons &amp; Entities Disclaimer:</strong> While all professional employment records, academic credentials, municipal/university achievements, and software architecture specifications on this page represent the factual career of <strong>Michael P. Ragsdale</strong>, all narrative characters, bands, biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (Blue Ridge Transit, Commonwealth Valley Transit Authority), in-universe legal filings, and events referenced within RaggieSoft creative properties (<code>raggiesoft.com</code>, <code>corporate.raggiesoft.com</code>, <code>engineroom.raggiesoft.com</code>, <code>music.raggiesoft.com</code>, <code>stardust.raggiesoft.com</code>, <code>books.raggiesoft.com</code>, <code>backstage.raggiesoft.com</code>, <code>lore.raggiesoft.com</code>, <code>nebulae.raggiesoft.com</code>, <code>storetrainer.raggiesoft.com</code>) are works of fiction. Any resemblance to actual persons (living or dead), businesses, institutions, or events is purely coincidental.
       </p>
     </div>
 
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
       <span>&copy; 2008–2026 Michael P. Ragsdale / RaggieSoft Media. All rights reserved where applicable.</span>
-      <span>WCAG 2.1 AA/AAA &amp; Federal Section 508 Compliant • Zero External Trackers • Zero SQL Databases</span>
+      <span>WCAG 2.1 AA &amp; Federal Section 508 Compliant • Zero SQL Databases</span>
     </div>
   </div>
 </footer>

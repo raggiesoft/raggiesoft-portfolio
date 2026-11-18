@@ -1,12 +1,12 @@
 /**
  * =============================================================================
  * File: src/app/app.component.ts
- * Application: Michael P. Ragsdale — Systems Architect Executive Dossier
+ * Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
  * Domain: https://michaelpragsdale.com
  * License: MIT License (Code) | CC BY-SA 4.0 (Creative Narrative References)
  * =============================================================================
  * Architectural Overview:
- * Root Standalone Component for the Executive Systems Architect Dossier.
+ * Root Standalone Component for the Engineering & Section 508 Portfolio.
  *
  * Key Technical Highlights for Code Reviewers:
  * 1. Zoneless Angular Signals State Management:
@@ -361,7 +361,7 @@ export class AppComponent implements OnInit {
       this.activeView.set('build-team-overview');
       this.activeMemberSlug.set(null);
       this.document.title =
-        'The Build Team & DevOps Family | Michael P. Ragsdale';
+        'CI/CD & Build Automation Suite | Michael P. Ragsdale';
     } else if (cleanPath.startsWith('/build-team/')) {
       const slug = cleanPath.slice('/build-team/'.length).toLowerCase();
       const matched = this.buildTeamProfiles.find((m) => m.slug === slug);
@@ -373,13 +373,13 @@ export class AppComponent implements OnInit {
         this.activeView.set('build-team-overview');
         this.activeMemberSlug.set(null);
         this.document.title =
-          'The Build Team & DevOps Family | Michael P. Ragsdale';
+          'CI/CD & Build Automation Suite | Michael P. Ragsdale';
       }
     } else {
       this.activeView.set('dossier');
       this.activeMemberSlug.set(null);
       this.document.title =
-        'Michael P. Ragsdale | Systems & Section 508 Architect';
+        'Michael P. Ragsdale | Full-Stack & 508 Developer';
     }
 
     const win = this.document.defaultView as

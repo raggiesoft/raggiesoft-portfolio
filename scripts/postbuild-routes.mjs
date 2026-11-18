@@ -2,7 +2,7 @@
 /**
  * =============================================================================
  * File: scripts/postbuild-routes.mjs
- * Application: Michael P. Ragsdale — Systems Architect Executive Dossier
+ * Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
  * Domain: https://michaelpragsdale.com
  * License: MIT License
  * =============================================================================
@@ -41,6 +41,9 @@ if (!fs.existsSync(rootIndexHtmlPath)) {
 }
 
 const baseHtml = fs.readFileSync(rootIndexHtmlPath, 'utf8');
+const PORTFOLIO_OG_IMAGE = 'https://michaelpragsdale.com/og-image.jpg';
+const PORTFOLIO_OG_ALT =
+  'Michael P. Ragsdale — Full-Stack Web Developer & Section 508 Specialist (michaelpragsdale.com)';
 
 /**
  * Route metadata definitions strictly adhering to <= 60 char titles and <= 155 char descriptions.
@@ -48,67 +51,67 @@ const baseHtml = fs.readFileSync(rootIndexHtmlPath, 'utf8');
 const ROUTES = [
   {
     routePath: 'build-team',
-    title: 'The Build Team & DevOps Family | Michael P. Ragsdale',
+    title: 'CI/CD & Build Automation Suite | Michael P. Ragsdale',
     description:
-      'Explore the RaggieSoft Personified DevOps ecosystem: real-world CLI daemons (Paige, Jessica, Harper, Jenna, Sarah, Amanda & Elara) and in-universe sisters.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/scenes/paige-michael-hug.jpg',
-    imageAlt: 'Paige comforting Michael — The RaggieSoft Build Team & DevOps Family'
+      'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines powering build verification, CDN asset sync, and non-root deploys across 11 web properties.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   },
   {
     routePath: 'build-team/michael',
-    title: 'Michael P. Ragsdale — The Architect | Build Team',
+    title: 'Workstation & Bootstrap Tooling | Michael P. Ragsdale',
     description:
-      'Meet Michael P. Ragsdale, the biological core, Systems Architect, and author behind the RaggieSoft Personified DevOps ecosystem.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/michael.jpg',
-    imageAlt: 'Michael P. Ragsdale — The Architect & Biological Core'
+      'Cross-platform developer workstation provisioning and backup tooling (brooke.sh, backup.sh) across macOS, Windows 11, and Linux environments.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   },
   {
     routePath: 'build-team/paige',
-    title: 'Paige (paige.php) — Editor & Safe Person | Build Team',
+    title: 'paige.php — Manuscript & Search Compiler | CI/CD Suite',
     description:
-      'Meet Paige: the PHP 8.5 narrative compiler and full-text search indexer for Ocean View Archives, and Michael\'s designated autistic Safe Person.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/paige.jpg',
-    imageAlt: 'Paige (paige.php) — Literary Editor & Designated Safe Person'
+      'PHP 8.5 command-line compiler transforming Markdown manuscripts into JSON route manifests, full-text search indices, and accessible EPUB/PDF editions.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   },
   {
     routePath: 'build-team/jessica',
-    title: 'Jessica (jessica.raggiesoft.com) — VPS Infra | Build Team',
+    title: 'jessica.raggiesoft.com — Linux & Nginx Host | CI/CD',
     description:
-      'Meet Jessica: the NYC1 Ubuntu production server hosting all 10 RaggieSoft properties and the eldest sister of the DevOps family.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jessica.jpg',
-    imageAlt: 'Jessica (jessica.raggiesoft.com) — Production Linux Infrastructure'
+      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 11 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   },
   {
     routePath: 'build-team/harper',
-    title: 'Harper (harper.sh) — Studio Engineer | Build Team',
+    title: 'harper.sh — FFmpeg & Media Pipeline | CI/CD Suite',
     description:
-      'Meet Harper: the multi-threaded FFmpeg, Metal RealESRGAN, and Whisper WebVTT studio engineering pipeline for Engine Room Records.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/harper.jpg',
-    imageAlt: 'Harper (harper.sh) — Studio Engineer & Media Mastering Pipeline'
+      'Multi-core Bash media pipeline executing EBU R128 FFmpeg normalization, Metal RealESRGAN upscaling, and human-verified WebVTT caption validation.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   },
   {
     routePath: 'build-team/jenna',
-    title: 'Jenna (jenna-sync.sh) — Release & CDN Sync | Build Team',
+    title: 'jenna-sync.sh — Multi-Repo & CDN Release | CI/CD Suite',
     description:
-      'Meet Jenna: the single-command multi-repo build orchestrator and DigitalOcean Spaces CDN sync engine for RaggieSoft.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/jenna.jpg',
-    imageAlt: 'Jenna (jenna-sync.sh) — Release Orchestrator & CDN Sync Manager'
+      'Single-command release orchestrator running polyglot build gates across Angular, SvelteKit, Astro, Nuxt, and Next.js before syncing S3 CDN assets.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   },
   {
     routePath: 'build-team/sarah',
-    title: 'Sarah (sarah-deploy.sh) — Autonomous Deployer | Build Team',
+    title: 'sarah-deploy.sh — Non-Root Cron Deployer | CI/CD Suite',
     description:
-      'Meet Sarah: the non-root autonomous Linux cron deployment guardian managing all 10 RaggieSoft web roots on NYC1.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/sarah.jpg',
-    imageAlt: 'Sarah (sarah-deploy.sh) — The Guardian & Autonomous Deployer'
+      'Autonomous non-root Linux deployment daemon verifying GitHub commit SHAs on a 5-minute cron schedule and promoting static bundles via atomic rsync.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   },
   {
     routePath: 'build-team/amanda-elara',
-    title: 'Amanda & Elara (amanda/elara.php) — Router | Build Team',
+    title: 'amanda/elara.php — Front-Controller Router | CI/CD',
     description:
-      'Meet Amanda & Elara: the symbiotic web root and PHP 8.5 front-controller router powering raggiesoft.com and Stardust Engine CMS.',
-    image: 'https://assets.raggiesoft.com/raggiesoft-lore/family/images/atmospheric/amanda-elara.jpg',
-    imageAlt: 'Amanda & Elara (amanda/elara.php) — Protected Web Root & Router'
+      'Two-tier Stardust Engine CMS gateway isolating the static web root directory (/amanda) and routing requests through a single PHP 8.5 front controller.',
+    image: PORTFOLIO_OG_IMAGE,
+    imageAlt: PORTFOLIO_OG_ALT
   }
 ];
 
@@ -197,4 +200,3 @@ fs.writeFileSync(path.join(browserDistDir, 'sitemap.xml'), sitemapXml, 'utf8');
 console.log(
   `[postbuild-routes] Generated ${ROUTES.length} static OpenGraph route entry points + ${allCanonicalUrls.length}-URL sitemap.xml under dist/raggiesoft-portfolio/browser/.`
 );
-
