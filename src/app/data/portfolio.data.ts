@@ -106,11 +106,11 @@ export interface EducationEntry {
  */
 export const EXECUTIVE_PROFILE = {
   fullName: 'Michael P. Ragsdale',
-  headline: 'Systems Architect, Data Normalization Lead & Section 508 Engineer',
+  headline: 'Software Architect | Full-Stack Developer & Section 508 Engineer',
   location: 'Norfolk / Virginia Beach, VA (Hampton Roads)',
-  statusBadge: 'Active — Pursuing W2 Systems Architect & Accessibility Engineering Roles',
+  statusBadge: 'Active — Pursuing W2 Software Architect, Full-Stack & Section 508 Roles',
   executiveSummary:
-    'Pragmatic Systems Architect and Certified Section 508 / WCAG 2.1 AA Compliance Engineer with 15+ years of full-lifecycle software design, municipal CRM data normalization, and zero-database polyglot web architecture experience. Proven track record of bridging legacy municipal and higher-education infrastructure with resilient, accessible, sub-second modern web applications.',
+    'Software Architect and Full-Stack Developer specializing in custom web platforms, Federal Section 508 / WCAG 2.1 AA accessibility engineering, cloud infrastructure, and open-source software development. Creator of the Stardust Engine CMS and a 10-property zero-database polyglot web ecosystem, combining deep systems engineering with grounded, user-facing public-sector operational experience.',
   valueProposition:
     'I build systems that respect three non-negotiable constraints: strict Section 508 / WCAG accessibility for every citizen, zero-bloat sub-second performance, and self-documenting maintainability without fragile database dependencies.',
   assets: {
@@ -121,8 +121,8 @@ export const EXECUTIVE_PROFILE = {
       'https://assets.raggiesoft.com/raggiesoft-corporate/images/mragsdale-aero/mragsdale-dark-aero.jpg',
     resumePdfUrl:
       'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf',
-    directEmail: 'mailto:hireme@michaelpragsdale.com',
-    directEmailDisplay: 'hireme@michaelpragsdale.com',
+    directEmail: 'mailto:hello@michaelpragsdale.com',
+    directEmailDisplay: 'hello@michaelpragsdale.com',
     bookingsUrl:
       'https://outlook.office.com/book/MichaelRagsdaleArchitecturalScreening@raggiesoft.com/s/hsXO14SV2EuCeXFylteKTQ2?ismsaljsauthenabled',
     githubUrl: 'https://github.com/raggiesoft'
@@ -136,7 +136,7 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
   {
     id: 'all',
     label: 'Complete Dossier (All)',
-    shortDescription: 'Showing all 10 polyglot production properties, Section 508 proofs, ETL pipelines, and DevOps automation.'
+    shortDescription: 'Showing all 10 polyglot production properties, Section 508 proofs, structured data workflows, and DevOps automation.'
   },
   {
     id: 'architecture',
@@ -150,8 +150,8 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
   },
   {
     id: 'data-etl',
-    label: 'Data Normalization & Municipal ETL',
-    shortDescription: 'Focused on ActiveNet CRM administration, legacy municipal data scrubbing, JSON/Markdown schema pipelines, and automated validation.'
+    label: 'Structured Data & Information Workflows',
+    shortDescription: 'Focused on JSON/Markdown static data lakes, ActiveNet operational data transformation, accessible information design, and automated validation.'
   },
   {
     id: 'devops',
@@ -501,20 +501,20 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
     id: 'activenet-municipal-etl',
     code: 'CASE-01',
-    title: 'Municipal CRM Data Normalization & ActiveNet ETL Pipeline',
+    title: 'ActiveNet Operational Data Processing & Accessible Front Desk Reference Design',
     organization: 'City of Virginia Beach — Parks & Recreation',
     timeframe: 'May 2023 – Present',
-    lenses: ['data-etl', 'accessibility', 'architecture'],
+    lenses: ['data-etl', 'accessibility'],
     problemStatement:
-      'Legacy municipal reservation, membership, and financial records suffered from inconsistent schema formatting, unstandardized fee structures, and inaccessible public-facing document outputs during enterprise ActiveNet CRM operations.',
+      'ActiveNet stores comprehensive municipal room-rental and reservation records, yet its dense on-screen reporting is inefficient to parse quickly while Front Desk staff are simultaneously assisting walk-in patrons, answering phones, and checking in members.',
     architecturalSolution:
-      'Designed repeatable manual and semi-automated ETL (Extract, Transform, Load) normalization workflows to scrub, reconcile, and standardize legacy municipal datasets before ingestion. Authored Section 508-compliant operational documentation and led hands-on CRM workflows for 50+ municipal staff members.',
+      'Applied software-development and Section 508 accessible-document principles directly to Front Desk operations: extracted weekend room-rental records from ActiveNet, verified and reorganized reservation details, and transformed them into a concise, standardized Microsoft Word reference with clear heading hierarchy and readable layout.',
     quantifiedImpact: [
-      { label: 'Staff Trained', value: '50+ Municipal Personnel' },
-      { label: 'Accessibility Target', value: '100% Section 508 / WCAG 2.1 AA' },
-      { label: 'Data Integrity', value: 'Zero Schema Migration Faults' }
+      { label: 'Operational Format', value: 'At-a-Glance Weekend Reference' },
+      { label: 'Information Design', value: 'Section 508 Accessible Hierarchy' },
+      { label: 'Front Desk Impact', value: 'Faster Live Patron Triage' }
     ],
-    technologies: ['ActiveNet CRM', 'ETL Data Normalization', 'Section 508 Remediation', 'Technical Training', 'SOP Architecture'],
+    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Process Improvement'],
     referenceLinks: [
       { label: 'Download Full Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
     ]
@@ -607,20 +607,20 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     technologies: ['Angular 19', 'PHP 8.5', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'React 19', 'TypeScript', 'Linux/Nginx', 'Section 508', 'Bash/Python CI/CD']
   },
   {
-    functionalTitle: 'Technical Lead & Data Normalization Specialist',
-    hrClassification: 'Official Municipal HR Title: Clerk-Cashier',
+    functionalTitle: 'Clerk-Cashier',
+    hrClassification: 'City of Virginia Beach Parks & Recreation (Part-Time While Completing A.S. in IT)',
     organization: 'City of Virginia Beach — Parks & Recreation',
     location: 'Virginia Beach, VA',
     timeframe: 'May 2023 – Present',
-    lenses: ['data-etl', 'accessibility', 'architecture'],
+    lenses: ['data-etl', 'accessibility'],
     summary:
-      'Serve as the de facto technical subject-matter expert for enterprise ActiveNet CRM operations, municipal data scrubbing, and front-line staff systems training.',
+      'Support daily recreation center Front Desk operations while applying a software-development and Section 508 accessibility background to streamline staff reference materials and everyday technical workflows.',
     achievements: [
-      'Architected manual and semi-automated ETL data normalization workflows to reconcile legacy municipal facility, membership, and financial records into clean, auditable schemas.',
-      'Trained and mentored 50+ municipal staff members on complex ActiveNet CRM workflows, reducing transaction errors and accelerating citizen onboarding.',
-      'Translated complex municipal policy and fee matrices into accessible, Section 508-compliant operational guides and citizen-facing documentation.'
+      'Support daily recreation center operations by assisting patrons in person and by telephone, processing payments, issuing memberships, checking members into the facility, and resolving account and service questions.',
+      'Extract room-rental information from ActiveNet and convert complex reservation records into a concise, standardized Microsoft Word reference built with Section 508 accessible-document structure so Front Desk staff have an at-a-glance view of weekend facility use.',
+      'Serve as a practical technical resource for coworkers using ActiveNet, Microsoft Office, and related Front Desk systems, explaining technical processes in approachable terms and identifying opportunities for clearer information workflows.'
     ],
-    technologies: ['ActiveNet CRM', 'Data Normalization (ETL)', 'Section 508 Documentation', 'Enterprise Staff Training', 'Process Engineering']
+    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Technical Support', 'Process Improvement']
   },
   {
     functionalTitle: 'Section 508 Compliance Specialist & LMS Operations Engineer',
