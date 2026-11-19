@@ -146,7 +146,7 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
     id: 'accessibility',
     label: 'Section 508 & WCAG 2.1 AA',
     shortDescription:
-      'Focused on higher-education & government Section 508 compliance, Deque axe + manual JAWS/NVDA/VoiceOver testing, Forced-Colors High Contrast, and Dual-Layer Canvas ARIA.'
+      'Focused on higher-education & government Section 508 compliance, Deque axe + manual JAWS/NVDA/VoiceOver testing, Forced-Colors High Contrast, and Accessible HTML Canvas Interfaces (DOM/ARIA layer).'
   },
   {
     id: 'data-etl',
@@ -635,7 +635,7 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
  */
 export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
   {
-    functionalTitle: 'Independent Full-Stack Web Developer & Creator',
+    functionalTitle: 'Independent Full-Stack Web Developer & Open-Source Maintainer',
     hrClassification: 'Independent Software & Digital Publishing (raggiesoft.com — Est. Jul 2008)',
     organization: 'RaggieSoft Media',
     location: 'Norfolk, VA',
@@ -645,10 +645,10 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
       'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 11 live web properties, cross-platform C#/.NET and SwiftUI apps, and Linux cloud infrastructure.',
     achievements: [
       'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, Bootstrap 5.3.8, and Web Awesome.',
-      'Developed companion native desktop and mobile apps in C# / .NET 10 WPF (Windows) and SwiftUI (macOS, iOS, iPadOS) with offline archive support, cross-app IPC, and native UIAutomation / VoiceOver accessibility.',
-      'Automated multi-repo build verification, FFmpeg audio normalization, human-verified WebVTT caption checks, S3 CDN synchronization, and non-root Ubuntu/Nginx deployments via modular CLI scripts.'
+      'Developed companion native desktop and mobile apps in C# / .NET 10 WPF (Windows) and SwiftUI (macOS, iOS, iPadOS) that consume static REST/JSON APIs with offline archive support, cross-app IPC, and native UIAutomation / VoiceOver accessibility.',
+      'Automated multi-repo build verification, FFmpeg audio normalization, human-verified WebVTT caption checks, PDF/UA-1 & EPUB compilation, S3 CDN synchronization, and non-root Ubuntu/Nginx deployments via modular CLI scripts.'
     ],
-    technologies: ['TypeScript', 'PHP 8.5', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'C# / .NET 10 WPF', 'SwiftUI', 'Linux / Nginx', 'Section 508']
+    technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 WPF', 'SwiftUI', 'Linux / Nginx', 'Section 508']
   },
   {
     functionalTitle: 'Clerk-Cashier',
@@ -661,7 +661,7 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
       'Support daily recreation center Front Desk operations while applying a software-development and Section 508 accessibility background to improve staff reference materials and everyday technical workflows.',
     achievements: [
       'Support daily recreation center operations by assisting patrons in person and by telephone, processing payments, issuing memberships, checking members into the facility, and resolving account and service questions.',
-      'Extract room-rental information from ActiveNet and convert complex reservation records into a concise, standardized Microsoft Word reference built with Section 508 accessible-document principles so Front Desk staff have an at-a-glance view of weekend facility use.',
+      'Extract room-rental data from ActiveNet, transform complex reservation records into a standardized Microsoft Word reference built with Section 508 accessible-document principles, and organize the resulting information into an at-a-glance view of weekend facility use for Front Desk staff.',
       'Serve as an approachable technical resource for coworkers using ActiveNet, Microsoft Office, and related Front Desk systems, troubleshooting everyday issues and identifying opportunities for clearer operational workflows.'
     ],
     technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Customer Support', 'Process Improvement']
