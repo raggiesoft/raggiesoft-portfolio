@@ -122,8 +122,6 @@ export const EXECUTIVE_PROFILE = {
       'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf',
     directEmail: 'mailto:hello@michaelpragsdale.com',
     directEmailDisplay: 'hello@michaelpragsdale.com',
-    bookingsUrl:
-      'https://outlook.office.com/book/MichaelRagsdaleArchitecturalScreening@raggiesoft.com/s/hsXO14SV2EuCeXFylteKTQ2?ismsaljsauthenabled',
     githubUrl: 'https://github.com/raggiesoft'
   }
 } as const;
@@ -187,10 +185,10 @@ export const HIRING_PARAMETERS: readonly HiringParameter[] = [
       'Based in Norfolk / Virginia Beach, VA. Available for local Hampton Roads on-site/hybrid schedules or Virginia-based remote roles while completing my A.S. in IT at TCC.'
   },
   {
-    label: 'Clearance & State Eligibility',
-    value: 'U.S. Citizen • Prior Federal Public Trust • Virginia AHP Eligible',
+    label: 'Citizenship & State Eligibility',
+    value: 'U.S. Citizen • Virginia AHP Eligible • Prior Federal Public Trust (6C) Adjudication',
     detail:
-      'Clean background with prior federal Public Trust clearance (HHS contract); eligible for DoD security clearance sponsorship and Commonwealth of Virginia AHP hiring.'
+      'U.S. Citizen eligible for the Commonwealth of Virginia Alternative Hiring Process (AHP) and federal background vetting, with a prior favorable Federal Public Trust (6C) suitability adjudication.'
   },
   {
     label: 'Accessibility Toolchain',

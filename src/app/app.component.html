@@ -9,8 +9,8 @@ Accessibility & Recruiter UX Architecture:
 - Landmarks: `<header role="banner">`, `<nav aria-label="...">`, `<main id="main-content">`,
   and `<footer role="contentinfo">` for rapid screen-reader rotor navigation.
 - Above-the-Fold 5-Second Scan: Immediate visibility of professional identity,
-  Resume PDF download, Microsoft Bookings intro scheduler, direct email,
-  GitHub, and welcoming W-2 / Hampton Roads / Clearance alignment parameters.
+  Section 508 / PDF/UA-1 Resume PDF download, direct email, GitHub, and
+  welcoming W-2 / Hampton Roads / Virginia AHP alignment parameters.
 - LCP Optimization (`optimize-image-priority`): Primary portrait uses
   `fetchpriority="high"`, while the hidden opposite-theme portrait uses
   `fetchpriority="low"` so it never contends for initial bandwidth.
@@ -302,7 +302,7 @@ Accessibility & Recruiter UX Architecture:
         <!-- Immediate Recruiter Action Bar -->
         <div>
           <p class="eyebrow-label" style="margin-block-end: 0.4rem;">
-            Resume, Intro Call &amp; Direct Contact
+            Accessible Resume (PDF/UA-1) &amp; Direct Contact
           </p>
           <div class="cta-row">
             <a
@@ -312,15 +312,6 @@ Accessibility & Recruiter UX Architecture:
               rel="noopener"
             >
               <span>Download Resume (PDF)</span>
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              [href]="profile.assets.bookingsUrl"
-              target="_blank"
-              rel="noopener"
-            >
-              <span>Schedule Intro Call</span>
             </a>
 
             <a
@@ -351,13 +342,13 @@ Accessibility & Recruiter UX Architecture:
         <div>
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-block-end: 0.75rem;">
             <span class="eyebrow-label">Quick Overview for Hiring Teams</span>
-            <span class="domain-badge">W-2 • Hampton Roads / VA • Public Trust</span>
+            <span class="domain-badge">W-2 • Hampton Roads / VA • Virginia AHP</span>
           </div>
           <h2 id="logistics-heading" style="font-size: 1.35rem; margin-block-end: 0.35rem;">
             Role &amp; Availability Summary
           </h2>
           <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-end: 1rem;">
-            Key details on target roles, Virginia location availability, Section 508 experience, and clearance eligibility.
+            Key details on target roles, Virginia location availability, Section 508 experience, and state/federal eligibility.
           </p>
 
           <dl class="logistics-dl">
@@ -1248,8 +1239,8 @@ Accessibility & Recruiter UX Architecture:
         <a class="btn btn-primary" [href]="profile.assets.resumePdfUrl" target="_blank" rel="noopener">
           Download Resume (PDF)
         </a>
-        <a class="btn btn-secondary" [href]="profile.assets.bookingsUrl" target="_blank" rel="noopener">
-          Schedule Intro Call
+        <a class="btn btn-secondary" [href]="profile.assets.directEmail">
+          {{ profile.assets.directEmailDisplay }}
         </a>
       </div>
     </div>
