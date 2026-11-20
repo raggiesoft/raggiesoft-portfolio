@@ -5,20 +5,51 @@
  * Domain: https://michaelpragsdale.com
  * License: MIT License (Code) | CC BY-SA 4.0 (Creative Case Study References)
  * =============================================================================
- * Architectural Purpose:
- * Single source of truth for the technical portfolio of Michael P. Ragsdale.
- * Because RaggieSoft infrastructure enforces a Zero-Database server policy for
- * security and sub-second TTFB, all portfolio metadata, web & native ecosystem
- * specifications, hiring logistics, CI/CD tooling docs, and case studies are
- * strongly typed and compiled directly into the static Angular 19 bundle.
+ * READ-ALONG TEACHING OVERVIEW (100-Level JavaScript & TypeScript Guide):
+ *
+ * 1. What is this file, and why does it exist?
+ *    Think of `portfolio.data.ts` as our application's **built-in database**.
+ *    Instead of running a live SQL database server (which costs extra memory,
+ *    requires security patching, and slows down page loads with network queries),
+ *    RaggieSoft enforces a **Zero-Database Static-First** architecture: all
+ *    portfolio text, project cards, case studies, work history, and CI/CD tool
+ *    documentation live right here as clean, strongly typed TypeScript objects
+ *    and arrays!
+ *
+ * 2. What feeds into this file, and where does its data go?
+ *    - Input: Notice there are ZERO `import` statements at the top of this file!
+ *      It has no external dependencies—just pure TypeScript type definitions
+ *      at the top followed by exported data constants (`export const ...`).
+ *    - Output: `src/app/app.component.ts` imports these constants and feeds them
+ *      through Angular Signals (`filteredEcosystem`, `filteredCaseStudies`,
+ *      `activeMember`, etc.) into `src/app/app.component.html` to render every
+ *      card, badge, timeline item, and `/build-team` documentation page on screen.
+ *
+ * 3. Key TypeScript Concepts Demonstrated in This File:
+ *    - `type` Unions (`'all' | 'architecture' | ...`): Restricts string values
+ *      to an approved list so typos become instant compiler errors.
+ *    - `interface` Blueprints: Defines the exact shape (property names and value
+ *      types) every object in an array must follow. All `interface` blocks are
+ *      100% erased when TypeScript compiles to JavaScript, adding 0 bytes!
+ *    - `readonly` Properties & Arrays: Prevents any component code from
+ *      accidentally mutating (`obj.title = ...` or `arr.push(...)`) source data.
+ *    - Optional Properties (`?`): Marks fields like `isCurrentSite?: boolean`
+ *      that only apply to specific items without forcing `false` everywhere else.
+ *    - `as const` Assertions: Freezes entire object/array literals into deeply
+ *      read-only constants at compile time.
  * =============================================================================
  */
 
 /**
+ * SECTION 1: CORE PORTFOLIO TYPE UNIONS & INTERFACES
+ * -----------------------------------------------------------------------------
  * Recruiter & Hiring Manager Role-Lens Filter categories.
- * Allows hiring teams from Municipal/State Government, Higher Education,
- * Healthcare, Federal Contractors, or Commercial Engineering organizations to
- * filter production projects and case studies by immediate discipline need.
+ *
+ * How TypeScript Union Types (`|`) Work:
+ * In plain JavaScript, category IDs are just strings—so accidentally writing
+ * `'accesibility'` (missing an `'s'`) would silently fail to match anything.
+ * Here, `export type RoleLens` uses the `|` ("OR") operator so TypeScript ONLY
+ * permits these exact five string values anywhere a `RoleLens` is expected!
  */
 export type RoleLens =
   | 'all'
@@ -27,18 +58,38 @@ export type RoleLens =
   | 'data-etl'
   | 'devops';
 
+/**
+ * Blueprint (`interface`) for each clickable button in the Role-Lens Filter bar.
+ * - `readonly` means once an object is created, code cannot overwrite `option.id = ...`.
+ */
 export interface RoleLensOption {
   readonly id: RoleLens;
   readonly label: string;
   readonly shortDescription: string;
 }
 
+/**
+ * Blueprint for each row in the "Role & Availability Summary" card (`<dl>` list)
+ * in the top-right hero panel.
+ */
 export interface HiringParameter {
   readonly label: string;
   readonly value: string;
   readonly detail: string;
 }
 
+/**
+ * Blueprint for each of the 11 live web properties in `POLYGLOT_ECOSYSTEM`.
+ *
+ * Notice two special TypeScript syntax features here:
+ * 1. `readonly string[]` and `readonly RoleLens[]`: Read-only arrays! Standard
+ *    mutating array methods like `.push()`, `.pop()`, or `.splice()` are blocked
+ *    at compile time, while safe non-mutating methods like `.filter()` and `.includes()` work great.
+ * 2. Optional properties (`isCurrentSite?: boolean` and `ctaLabel?: string`):
+ *    The `?` before `:` means "optional" (`boolean | undefined` / `string | undefined`).
+ *    Only `michaelpragsdale.com` sets `isCurrentSite: true`, so the other 10 sites
+ *    can omit `isCurrentSite` cleanly!
+ */
 export interface EcosystemProperty {
   readonly id: string;
   readonly name: string;
@@ -55,6 +106,11 @@ export interface EcosystemProperty {
   readonly ctaLabel?: string;
 }
 
+/**
+ * Blueprint for the 6 CI/CD & Media Automation summary cards displayed in
+ * Section 3 (`#devops-fleet`) of the main portfolio view, each linking via
+ * `profileUrl` to its full specification page at `/build-team/:slug`.
+ */
 export interface DevOpsConstruct {
   readonly codename: string;
   readonly scriptName: string;
@@ -66,6 +122,14 @@ export interface DevOpsConstruct {
   readonly profileUrl: string;
 }
 
+/**
+ * Blueprint for the 5 deep-dive Engineering & Web Accessibility Case Studies.
+ *
+ * Notice `quantifiedImpact` and `referenceLinks` use **inline object array types**:
+ *   `readonly { readonly label: string; readonly value: string }[]`
+ * That means "a read-only array where every element is an object containing
+ * `label` and `value` strings."
+ */
 export interface ArchitecturalCaseStudy {
   readonly id: string;
   readonly code: string;
@@ -80,6 +144,11 @@ export interface ArchitecturalCaseStudy {
   readonly referenceLinks: readonly { readonly label: string; readonly url: string }[];
 }
 
+/**
+ * Blueprint for each job in our chronological work history (`EXPERIENCE_TIMELINE`).
+ * Pairs an engineering-clear `functionalTitle` with `hrClassification` so HR
+ * background-verification teams can match official university/municipal titles.
+ */
 export interface ExperienceEntry {
   readonly functionalTitle: string;
   readonly hrClassification: string;
@@ -92,6 +161,9 @@ export interface ExperienceEntry {
   readonly technologies: readonly string[];
 }
 
+/**
+ * Blueprint for each degree/certificate card in `EDUCATION_CREDENTIALS`.
+ */
 export interface EducationEntry {
   readonly degree: string;
   readonly institution: string;
@@ -101,7 +173,17 @@ export interface EducationEntry {
 }
 
 /**
+ * SECTION 2: EXPORTED PORTFOLIO DATASETS (`export const ... as const`)
+ * -----------------------------------------------------------------------------
  * Canonical identity, summary, and verified recruiter contact channels.
+ *
+ * What does `} as const;` at the end of this object do?
+ * In plain JavaScript, `const EXECUTIVE_PROFILE = { ... }` prevents reassigning
+ * `EXECUTIVE_PROFILE = somethingElse`, BUT JavaScript still allows changing inner
+ * properties like `EXECUTIVE_PROFILE.fullName = 'Oops'`!
+ * Adding TypeScript's `as const` ("const assertion") locks EVERY nested property
+ * (`fullName`, `assets.resumePdfUrl`, etc.) as `readonly` and preserves its exact
+ * string value type at compile time.
  */
 export const EXECUTIVE_PROFILE = {
   fullName: 'Michael P. Ragsdale',
@@ -129,6 +211,10 @@ export const EXECUTIVE_PROFILE = {
 
 /**
  * Interactive Role-Lens Filter definitions powered by Angular Signals.
+ *
+ * Notice we combine `: readonly RoleLensOption[]` on the left with `as const` on
+ * the right: TypeScript verifies that every button object matches `RoleLensOption`
+ * (no missing `id`, `label`, or `shortDescription`) while keeping the array immutable.
  */
 export const ROLE_LENSES: readonly RoleLensOption[] = [
   {
@@ -165,6 +251,8 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
 
 /**
  * Welcoming, practical Hiring & Role Alignment summary for recruiters and HR teams.
+ * Rendered inside a semantic HTML `<dl>` (Description List: `<dt>` term + `<dd>`
+ * description) in the top-right hero panel of `app.component.html`.
  */
 export const HIRING_PARAMETERS: readonly HiringParameter[] = [
   {
@@ -209,6 +297,12 @@ export const HIRING_PARAMETERS: readonly HiringParameter[] = [
  * Polyglot Production Web Ecosystem Matrix (11 Live Properties).
  * Demonstrates practical fluency across modern web frameworks and vanilla
  * web standards while maintaining zero server-side SQL database overhead.
+ *
+ * How `app.component.ts` and `app.component.html` consume each object below:
+ * - `id`: Unique tracking key passed to `@for (prop of filteredEcosystem(); track prop.id)`.
+ * - `lenses`: Checked by `item.lenses.includes(lens)` when filtering by discipline.
+ * - `isCurrentSite`: When `true` (on Property 01 below), renders a `"Current Site (You Are Here)"`
+ *   status pill instead of an outbound `"Visit Live Site"` link button!
  */
 export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   {
@@ -424,6 +518,9 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
 
 /**
  * Modular CI/CD, Content Compilation & Deployment Tooling Summary Cards.
+ * Rendered as a 6-card CSS Subgrid matrix in Section 3 (`#devops-fleet`) of the
+ * main portfolio view. Clicking any card's `profileUrl` (`'/build-team/...'`)
+ * invokes `navigateInternal(...)` to open that tool's full specification view.
  */
 export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
   {
@@ -519,7 +616,14 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
 ] as const;
 
 /**
- * Deep-Dive Engineering & Section 508 Case Studies.
+ * Deep-Dive Engineering & Section 508 Web Case Studies (CASE-01 through CASE-05).
+ *
+ * Notice how `referenceLinks` supports BOTH kinds of URLs seamlessly:
+ * - Internal SPA paths starting with `'/'` (e.g., `'/build-team'` in CASE-05):
+ *   `app.component.html` checks `@if (link.url.startsWith('/'))` and routes
+ *   in-place via the HTML5 History API (`navigateInternal`).
+ * - External `'https://...'` links (e.g., Resume PDF or live companion web apps):
+ *   Rendered with `target="_blank" rel="noopener"` to open safely in a new tab.
  */
 export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
@@ -633,6 +737,8 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
 
 /**
  * Chronological Professional Experience with Transparent HR Classification Mapping.
+ * Filtered reactively by `filteredExperience` in `app.component.ts` and rendered
+ * as an ordered list (`<ol class="timeline-list">`) in `app.component.html`.
  */
 export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
   {
@@ -703,6 +809,8 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
 
 /**
  * Academic Credentials & Continuing Education.
+ * Rendered as a two-column responsive card grid beneath the employment timeline
+ * in Section 4 (`#experience`) of `app.component.html`.
  */
 export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
   {
@@ -741,21 +849,37 @@ export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
 
 /**
  * =============================================================================
- * CI/CD & MEDIA AUTOMATION SUITE (/build-team & /build-team/:slug)
+ * SECTION 3: CI/CD & MEDIA AUTOMATION SUITE (`/build-team` & `/build-team/:slug`)
  * =============================================================================
  * Technical documentation for the modular command-line scripts, front-controller
  * router, and Linux server configuration powering RaggieSoft's 11 web properties.
- * Keeps all `/build-team` and `/build-team/:slug` routes active with pure
- * DevOps, security, and platform-engineering documentation.
+ *
+ * How these data structures power Views 2 and 3 of our Single-Page Application:
+ * - When `window.location.pathname` is `'/build-team'`, `app.component.html`
+ *   renders `BUILD_TEAM_OVERVIEW` alongside summary cards for all 7 entries in
+ *   `BUILD_TEAM_PROFILES`.
+ * - When `window.location.pathname` is `'/build-team/:slug'` (for example,
+ *   `'/build-team/jenna'`), `activeMember` in `app.component.ts` looks up the
+ *   matching `BuildTeamMember` by `slug`, updates `document.title` to `ogTitle`,
+ *   and renders its CLI invocation, security rationale, and terminal sample!
  * =============================================================================
  */
 
+/**
+ * Blueprint for a single specification row in the "Runtime & Security Profile"
+ * sidebar on `/build-team/:slug`. When optional `isBadge` is `true`, the template
+ * highlights `value` inside a styled `.domain-badge` pill instead of plain bold text.
+ */
 export interface BuildTeamVitalStat {
   readonly label: string;
   readonly value: string;
   readonly isBadge?: boolean;
 }
 
+/**
+ * Blueprint for the simulated dark terminal output window shown near the bottom
+ * of each `/build-team/:slug` specification page.
+ */
 export interface BuildTeamTerminalBlock {
   readonly headerTitle: string;
   readonly statusBadge: string;
@@ -764,6 +888,11 @@ export interface BuildTeamTerminalBlock {
   readonly outputLines: readonly string[];
 }
 
+/**
+ * Complete blueprint for each of the 7 CI/CD & Infrastructure modules in
+ * `BUILD_TEAM_PROFILES`. Notice how nested objects (`cliSnippet` and
+ * `terminalBlock`) group related UI fields cleanly without needing global variables.
+ */
 export interface BuildTeamMember {
   readonly slug: string;
   readonly name: string;
@@ -791,6 +920,10 @@ export interface BuildTeamMember {
   readonly terminalBlock: BuildTeamTerminalBlock;
 }
 
+/**
+ * Top-level hero copy and 5-stage end-to-end release lifecycle displayed on the
+ * `/build-team` overview route (`activeView() === 'build-team-overview'`).
+ */
 export const BUILD_TEAM_OVERVIEW = {
   title: 'CI/CD & Media Automation Suite',
   subtitle:
@@ -832,8 +965,26 @@ export const BUILD_TEAM_OVERVIEW = {
   ]
 } as const;
 
+/**
+ * Module-Private Constant (`const` WITHOUT `export`):
+ * Because `DEFAULT_OG_IMG` does not have `export` in front of it, it is private
+ * to `portfolio.data.ts`—avoiding repeated URL string literals across all 7
+ * `BUILD_TEAM_PROFILES` entries below!
+ */
 const DEFAULT_OG_IMG = 'https://michaelpragsdale.com/og-image.jpg';
 
+/**
+ * Full technical specification records for all 7 automation & server modules:
+ * 1. `michael`      -> Workstation & Bootstrap Tooling (`brooke.sh`, `backup.sh`)
+ * 2. `paige`        -> Markdown Manuscript & Search Compiler (`paige.php`)
+ * 3. `jessica`      -> Hardened Ubuntu Linux & Nginx Production Host (`jessica.raggiesoft.com`)
+ * 4. `harper`       -> Multi-Core FFmpeg Audio & WebVTT Pipeline (`harper.sh`)
+ * 5. `jenna`        -> Multi-Repo Pre-Push Build Gate & S3 CDN Sync (`jenna-sync.sh`)
+ * 6. `sarah`        -> Non-Root Cron Continuous Deployment Daemon (`sarah-deploy.sh`)
+ * 7. `amanda-elara` -> Protected Web Root & PHP 8.5 Front Controller (`amanda/elara.php`)
+ *
+ * Notice every `slug` here matches its pre-rendered directory in `scripts/postbuild-routes.mjs`!
+ */
 export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
   {
     slug: 'michael',

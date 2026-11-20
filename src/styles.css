@@ -5,37 +5,50 @@
  * Domain: https://michaelpragsdale.com
  * License: MIT License
  * =============================================================================
- * Architectural Overview:
- * Pure Modern Native CSS Architecture demonstrating post-Bootstrap enterprise
- * styling standards:
+ * READ-ALONG TEACHING OVERVIEW (100-Level CSS Layout, Theming & Accessibility):
  *
- * 1. CSS Cascade Layers (`@layer`):
- *    Eliminates specificity wars and `!important` overrides by establishing a
- *    deterministic cascade hierarchy:
- *    `reset -> tokens -> base -> layout -> components -> utilities -> a11y`
+ * 1. What is this file, and why do we write 100% Native CSS here?
+ *    `src/styles.css` is our application's global stylesheet (registered under
+ *    `"styles": ["src/styles.css"]` in `angular.json`). Rather than importing a
+ *    heavy third-party CSS framework, this file demonstrates how modern native
+ *    CSS handles theming, responsive grids, component alignment, and Section 508
+ *    Web accessibility right out of the box with zero extra dependencies!
  *
- * 2. Native Color-Scheme & `light-dark()` with `prefers-color-scheme` Fallbacks:
- *    Defaults to `color-scheme: light dark` on `:root` so native browser chrome
- *    (scrollbars, form controls, selection highlights) adapts automatically to
- *    the user's operating system preference. Maps `<meta name="color-scheme">`
- *    via `:has()` and `[data-theme]` so manual tri-state overrides ("System",
- *    "Light", "Dark") work seamlessly without Flash of Unstyled Content (FOUC).
+ * 2. Quick Vocabulary Tip — CSS Logical Properties (`inline` vs. `block`):
+ *    Throughout this file you will see modern **Logical Properties** instead of
+ *    older physical `left`/`right`/`top`/`bottom`/`width`/`height` names:
+ *      - `inline-size`        = `width` (horizontal text reading axis)
+ *      - `block-size`         = `height` (vertical paragraph stacking axis)
+ *      - `margin-inline`      = `margin-left` + `margin-right` together
+ *      - `padding-block`      = `padding-top` + `padding-bottom` together
+ *      - `inset-block-start`  = `top`
+ *      - `border-inline-start`= `border-left` (automatically flips in RTL languages!)
  *
- * 3. CSS Grid + `subgrid` & Container Queries (`@container`):
- *    - Multi-column bento grids use `grid-template-rows: subgrid` so card
- *      titles, body copy, metadata matrices, and CTA footers align across rows
- *      regardless of text length.
- *    - Component wrappers declare `container-type: inline-size` so cards adapt
- *      based on available container width rather than rigid viewport breakpoints.
- *
- * 4. Strict WCAG 2.1 AA/AAA & Section 508 Compliance:
- *    - Minimum 7:1 AAA contrast ratio for primary body copy in both Light and
- *      Dark modes; minimum 4.5:1 AA contrast for all interactive badges/controls.
- *    - Full support for `@media (prefers-reduced-motion: reduce)` and Windows
- *      High Contrast Mode (`@media (forced-colors: active)`).
+ * 3. Architectural Pillars in Reading Order (Top to Bottom):
+ *    - Pillar 1 — CSS Cascade Layers (`@layer`):
+ *      Eliminates specificity wars by locking in an explicit priority order:
+ *      `reset -> tokens -> base -> layout -> components -> utilities -> a11y`.
+ *    - Pillar 2 — Native Color-Scheme, Custom Properties (`--var`), & `light-dark()`:
+ *      Follows OS Light/Dark mode automatically via `color-scheme: light dark`,
+ *      while honoring manual `"Light"` / `"Dark"` overrides with zero flash.
+ *    - Pillar 3 — CSS Grid + `subgrid` & Container Queries (`@container`):
+ *      Aligns card headers, descriptions, tech tags, and footer buttons across
+ *      neighboring cards, and adapts layouts to container width.
+ *    - Pillar 4 — WCAG 2.1 AA/AAA, Reduced Motion & Forced-Colors Hardening:
+ *      Guarantees `>= 4.5:1` / `7:1` contrast, keyboard `:focus-visible` rings,
+ *      vestibular motion safety, and Windows High Contrast Mode support.
  * =============================================================================
  */
 
+/*
+ * CASCADE LAYER PRIORITY DECLARATION (`@layer ...;`)
+ * -----------------------------------------------------------------------------
+ * Normally in CSS, if two rules target the same element, whichever selector is
+ * "more specific" wins—forcing developers into messy `!important` battles.
+ * Declaring `@layer` order on Line 1 changes that rule for good: a later layer
+ * ALWAYS beats an earlier layer (`a11y` beats `utilities`, which beats
+ * `components`, all the way down to `reset`), keeping every selector clean!
+ */
 @layer reset, tokens, base, layout, components, utilities, a11y;
 
 /* ==========================================================================
@@ -43,16 +56,33 @@
    Modern minimal box-sizing and typographic reset without stripping semantics.
    ========================================================================== */
 @layer reset {
+  /*
+   * `box-sizing: border-box`:
+   * By default in 1990s CSS (`content-box`), adding `padding: 20px` to a `100%`-wide
+   * box made it `100% + 40px` wide—causing surprise horizontal scrollbars!
+   * Setting `border-box` on every element (`*`) and pseudo-element (`::before`,
+   * `::after`) keeps padding and borders INSIDE the element's declared width.
+   */
   *,
   *::before,
   *::after {
     box-sizing: border-box;
   }
 
+  /* Strip inconsistent default browser outer margins so spacing is intentional */
   * {
     margin: 0;
   }
 
+  /*
+   * Root `<html>` Baseline Behaviors:
+   * - `text-size-adjust: 100%`: Prevents mobile browsers from arbitrarily
+   *   inflating font sizes when rotating a phone to landscape orientation.
+   * - `scroll-behavior: smooth`: Animates in-page `#anchor` jumps smoothly
+   *   (automatically disabled in `@layer a11y` if the user prefers reduced motion!).
+   * - `scrollbar-gutter: stable`: Reserves space for the vertical scrollbar so
+   *   clicking a Role-Lens filter that shortens the page never shifts content sideways!
+   */
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -60,12 +90,23 @@
     scrollbar-gutter: stable;
   }
 
+  /*
+   * `min-block-size: 100dvh` ("Dynamic Viewport Height"):
+   * Ensures `<body>` fills at least the full screen height, adapting smoothly
+   * on mobile browsers as top/bottom URL toolbars slide in and out.
+   */
   body {
     min-block-size: 100dvh;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
+  /*
+   * Responsive Media Defaults:
+   * Making `<img>` and `<svg>` `display: block` eliminates tiny baseline descender
+   * gaps underneath images, and `max-inline-size: 100%` prevents images from
+   * overflowing narrow mobile screens.
+   */
   img,
   picture,
   svg {
@@ -74,6 +115,11 @@
     block-size: auto;
   }
 
+  /*
+   * Form & Button Typography Inheritance:
+   * Browsers historically assign `<button>` and `<input>` their own tiny default
+   * OS font instead of inheriting `<body>`'s font! `font: inherit` fixes that.
+   */
   input,
   button,
   textarea,
@@ -82,6 +128,7 @@
     color: inherit;
   }
 
+  /* Allow long technical words or URLs to wrap safely instead of overflowing */
   p,
   h1,
   h2,
@@ -94,9 +141,13 @@
 }
 
 /* ==========================================================================
-   2. LAYER: TOKENS
-   High-contrast executive dossier design tokens with `prefers-color-scheme`
-   baseline fallbacks and `light-dark()` progressive enhancement.
+   2. LAYER: TOKENS (DESIGN SYSTEM CUSTOM PROPERTIES & LIGHT/DARK ENGINE)
+   How CSS Custom Properties (`--var`) Work:
+   - `:root` selects the top-level `<html>` element so variables defined here
+     cascade down to every element on the page.
+   - Instead of hardcoding hex colors like `#0f172a` in 50 different rules,
+     components reference semantic token names like `var(--text-primary)` and
+     `var(--bg-surface)`. Switching themes then flips the entire page at once!
    ========================================================================== */
 @layer tokens {
   :root {
@@ -184,7 +235,14 @@
     accent-color: var(--accent-primary);
   }
 
-  /* Reflect <meta name="color-scheme"> override back into the CSS cascade */
+  /*
+   * Reflect Manual Theme Overrides Back Into `:root` `color-scheme`:
+   * - `:root:has(> head > meta[name="color-scheme"][content="dark"])` uses CSS's
+   *   modern relational `:has()` selector to inspect `<head>` directly!
+   * - Pairing `:has(...)` with `:root[data-theme="dark"]` forces native browser
+   *   scrollbars AND CSS `light-dark()` functions into `'dark'` or `'light'`
+   *   immediately whenever the user clicks a theme button in `app.component.html`.
+   */
   :root:has(> head > meta[name="color-scheme"][content="dark"]),
   :root[data-theme="dark"] {
     color-scheme: dark;
@@ -195,7 +253,12 @@
     color-scheme: light;
   }
 
-  /* Mandatory Fallback for browsers without light-dark() support */
+  /*
+   * Baseline Fallback (`@media (prefers-color-scheme: dark)`):
+   * For older browser engines that predate CSS `light-dark()`, this media query
+   * swaps the active token variables to Dark Mode whenever the OS prefers dark
+   * AND the user has NOT manually pinned Light Mode (`:not([data-theme="light"])`).
+   */
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg-canvas: var(--bg-canvas-dark);
@@ -244,7 +307,14 @@
     --shadow-card: var(--shadow-card-dark);
   }
 
-  /* Progressive Enhancement: Modern CSS light-dark() responds automatically to color-scheme */
+  /*
+   * Progressive Enhancement (`@supports (color: light-dark(white, black))`):
+   * `@supports` asks the browser: "Do you understand modern CSS `light-dark()`?"
+   * In all modern browsers (Chrome, Edge, Safari, Firefox), `light-dark(A, B)`
+   * automatically picks `A` when `color-scheme` resolves to `light` and `B`
+   * when `color-scheme` resolves to `dark`—handling both OS preferences AND
+   * manual button overrides in one declarative line per token!
+   */
   @supports (color: light-dark(white, black)) {
     :root {
       --bg-canvas: light-dark(var(--bg-canvas-light), var(--bg-canvas-dark));
@@ -273,7 +343,7 @@
 
 /* ==========================================================================
    3. LAYER: BASE
-   Foundational document typography and element semantics.
+   Foundational document typography, fluid `clamp()` headings, and link styles.
    ========================================================================== */
 @layer base {
   body {
@@ -293,6 +363,12 @@
     font-weight: 700;
   }
 
+  /*
+   * Fluid Responsive Typography (`clamp(minimum, preferred, maximum)`):
+   * Instead of writing 3 separate `@media` font-size jumps, `clamp()` scales
+   * headings smoothly with the viewport width (`vw` = 1% of viewport width)
+   * while respecting browser zoom (`+ 1rem`) and capping min/max bounds!
+   */
   h1 {
     font-size: clamp(1.85rem, 3.2vw + 1rem, 2.75rem);
   }
@@ -305,6 +381,11 @@
     font-size: clamp(1.125rem, 1.2vw + 0.8rem, 1.35rem);
   }
 
+  /*
+   * WCAG 1.4.1 (Use of Color):
+   * Links keep visible `text-decoration: underline` by default so color-blind
+   * and low-vision readers never have to rely on color alone to spot hyperlinks.
+   */
   a {
     color: var(--accent-primary);
     text-decoration: underline;
@@ -337,6 +418,13 @@
    Structural shell, responsive CSS Grid with Subgrid, and Container Queries.
    ========================================================================== */
 @layer layout {
+  /*
+   * Centered Fluid Page Container (`min(100% - 2rem, 78rem)`):
+   * CSS `min(A, B)` picks whichever width is smaller:
+   * - On a narrow phone, `100% - 2rem` wins (giving 1rem breathing room on left & right).
+   * - On a wide desktop monitor, `78rem` (`1248px`) wins, and `margin-inline: auto`
+   *   centers the container horizontally!
+   */
   .dossier-container {
     inline-size: min(100% - 2rem, var(--max-width-container));
     margin-inline: auto;
@@ -403,7 +491,15 @@
     scroll-margin-block-start: 5.5rem;
   }
 
-  /* Above-the-Fold 5-Second Recruiter Hero & Logistics Split Grid */
+  /*
+   * Above-the-Fold 5-Second Recruiter Hero & Logistics Split Grid
+   * How CSS Container Queries (`container-type` + `@container`) Work:
+   * Traditional `@media (min-width: ...)` only checks the whole browser window.
+   * Declaring `container-type: inline-size` turns `.hero-bento` (and `.dossier-section`
+   * below) into a self-measuring layout container! `@container hero-bento (min-width: 56rem)`
+   * switches `.hero-panel-grid` from 1 stacked column to a `1.35fr / 1fr` two-column
+   * split as soon as the container itself has `56rem` (`896px`) of horizontal space.
+   */
   .hero-bento {
     display: grid;
     grid-template-columns: 1fr;
@@ -448,12 +544,21 @@
     margin-block-start: 0.4rem;
   }
 
-  /* CSS Grid + Subgrid Card Matrix:
-     Ensures card titles, descriptions, metadata, and CTA links align horizontally
-     across adjacent cards in every row.
-     CRITICAL: `grid-template-columns: minmax(0, 1fr)` and `min-inline-size: 0` on
-     direct children prevent long unbreakable tokens or flex headers from expanding
-     the implicit subgrid column wider than the card's border box. */
+  /*
+   * CSS Grid + `subgrid` Card Matrix:
+   * 1. Auto-Responsive Columns (`repeat(auto-fill, minmax(min(100%, 22rem), 1fr))`):
+   *    Automatically fits as many `>= 22rem` (`352px`) columns per row as the
+   *    screen allows (1 column on phones, 2 on tablets, 3 on desktops)—with
+   *    ZERO media queries needed!
+   * 2. Horizontal Cross-Card Row Alignment (`grid-row: span 4; grid-template-rows: subgrid;`):
+   *    Each `.subgrid-card` spans 4 tracks of the parent grid and shares those
+   *    exact row tracks (`subgrid`) with neighboring cards in the same row—so
+   *    Row 1 (Title), Row 2 (Summary), Row 3 (Tech Chips), and Row 4 (Action Button)
+   *    line up along crisp horizontal baselines across every row!
+   * 3. Overflow Safety (`minmax(0, 1fr)` & `min-inline-size: 0`):
+   *    Prevents long code tokens or flex headers from stretching an implicit
+   *    column wider than the card's border box on narrow 320px screens.
+   */
   .subgrid-card-matrix {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
@@ -685,6 +790,13 @@
     color: var(--text-primary);
   }
 
+  /*
+   * State-Driven Attribute Selectors (`[aria-pressed="true"]`, `[aria-expanded="true"]`):
+   * Notice we style the active theme button using `[aria-pressed="true"]` rather
+   * than inventing a separate `.active` class! Tying visual styling directly to
+   * the WAI-ARIA state attribute guarantees that sighted users and screen-reader
+   * users ALWAYS experience the exact same selected state.
+   */
   .theme-btn[aria-pressed="true"] {
     background-color: var(--bg-surface);
     color: var(--accent-primary);
@@ -1360,6 +1472,14 @@
    Helper classes for layout spacing and screen-reader-only content.
    ========================================================================== */
 @layer utilities {
+  /*
+   * `.sr-only` ("Screen-Reader Only" / Visually Hidden Pattern):
+   * Why not just use `display: none` or `visibility: hidden` on `#filterAnnouncement`?
+   * Because `display: none` hides elements from screen readers TOO!
+   * Shrinking the box to `1px x 1px` with `clip-path: inset(50%)` makes it
+   * completely invisible on screen while keeping its text 100% accessible in the
+   * browser's Accessibility Tree for JAWS, NVDA, and VoiceOver announcements.
+   */
   .sr-only {
     position: absolute;
     inline-size: 1px;
@@ -1382,17 +1502,28 @@
 }
 
 /* ==========================================================================
-   7. LAYER: ACCESSIBILITY (WCAG 2.1 AA/AAA & SECTION 508 HARDENING)
-   Keyboard focus rings, Skip Link, Reduced Motion, Forced Colors, and Print.
+   7. LAYER: ACCESSIBILITY (WCAG 2.1 AA/AAA & SECTION 508 WEB HARDENING)
+   Placed in the final `@layer a11y` slot so keyboard focus rings, reduced-motion
+   overrides, forced-colors High Contrast rules, and print rules always win cleanly!
    ========================================================================== */
 @layer a11y {
-  /* High-contrast keyboard focus ring across all interactive controls */
+  /*
+   * WCAG 2.4.7 (Focus Visible) — `:focus-visible`:
+   * Draws a high-contrast 3px outline with 3px offset whenever a user navigates
+   * via `Tab` / keyboard or switch device, without leaving sticky outlines after
+   * ordinary mouse clicks.
+   */
   :focus-visible {
     outline: 3px solid var(--focus-ring);
     outline-offset: 3px;
   }
 
-  /* Skip to Main Content Link for Keyboard & Screen Reader Users */
+  /*
+   * WCAG 2.4.1 (Bypass Blocks) — Skip to Main Content Link:
+   * Positioned off-screen above the top edge (`transform: translateY(-200%)`)
+   * until focused with the `Tab` key (`translateY(0)`), allowing keyboard users
+   * to jump straight past global navigation to `<main id="main-content">`.
+   */
   .skip-link {
     position: fixed;
     inset-block-start: 0.75rem;
@@ -1414,7 +1545,12 @@
     transform: translateY(0);
   }
 
-  /* Respect OS Reduced Motion Preference */
+  /*
+   * WCAG 2.3.3 / OS Motion Sensitivity (`@media (prefers-reduced-motion: reduce)`):
+   * Users with vestibular disorders or motion sensitivity can enable "Reduce Motion"
+   * in macOS, iOS, Windows, Android, or Linux settings. When active, we disable
+   * smooth scrolling and collapse CSS animation/transition durations immediately.
+   */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -1430,7 +1566,15 @@
     }
   }
 
-  /* Windows High Contrast Mode (Section 508 / DoD Assistive Tech Compliance) */
+  /*
+   * Windows High Contrast / Contrast Themes (`@media (forced-colors: active)`):
+   * In Windows High Contrast Mode, the OS strips custom background colors and
+   * box-shadows so low-vision users see only their chosen high-contrast palette!
+   * - Because box-shadows disappear, cards and buttons explicitly declare `1px solid`
+   *   borders using CSS System Color keywords (`CanvasText` and `ButtonText`).
+   * - Active toggle buttons (`[aria-pressed="true"]`) map to `Highlight` and
+   *   `HighlightText` so selected states stay unmistakable in High Contrast Mode!
+   */
   @media (forced-colors: active) {
     .subgrid-card,
     .executive-card,

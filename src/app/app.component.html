@@ -5,22 +5,69 @@ Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
 Domain: https://michaelpragsdale.com
 License: MIT License (Code) | CC BY-SA 4.0 (Creative Case Study References)
 =============================================================================
-Accessibility & Recruiter UX Architecture:
-- Landmarks: `<header role="banner">`, `<nav aria-label="...">`, `<main id="main-content">`,
-  and `<footer role="contentinfo">` for rapid screen-reader rotor navigation.
-- Above-the-Fold 5-Second Scan: Immediate visibility of professional identity,
-  Resume PDF download, direct email, GitHub, and
-  welcoming W-2 / Hampton Roads / Virginia AHP alignment parameters.
-- LCP Optimization (`optimize-image-priority`): Primary portrait uses
-  `fetchpriority="high"`, while the hidden opposite-theme portrait uses
-  `fetchpriority="low"` so it never contends for initial bandwidth.
+READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility):
+
+1. What is this file, and how does it connect to `app.component.ts`?
+   `app.component.html` is our component's **Template**—the semantic HTML5
+   blueprint that renders the entire visible portfolio inside `<mpr-root>`.
+   Rather than manually calling `document.createElement(...)` or `innerHTML = ...`
+   in JavaScript, Angular lets us write clean HTML enhanced with declarative
+   bindings that react automatically whenever Signals in `app.component.ts` change!
+
+2. Quick-Reference Cheat Sheet for Angular 19 Template Syntax Used Below:
+   - `{{ expression }}` (Text Interpolation):
+     Reads a TypeScript property or Signal (e.g., `{{ profile.fullName }}`) and
+     inserts it safely as escaped plain text (preventing XSS script injection).
+   - `[property]="expression"` (Property / Class / Attribute Binding):
+     Square brackets bind a dynamic TypeScript expression to an element:
+       * `[src]="profile.assets.logoUrl"` sets the `<img>` DOM `src` property.
+       * `[class.is-open]="mobileMenuOpen()"` adds CSS class `.is-open` when `true`
+         and removes it when `false`.
+       * `[attr.aria-expanded]="mobileMenuOpen()"` sets an HTML/WAI-ARIA attribute.
+         (Why `attr.`? Standard ARIA attributes like `aria-expanded` and `aria-pressed`
+         are HTML attributes rather than classic DOM properties, so `[attr.aria-*]`
+         writes them directly onto the HTML tag for screen readers!)
+   - `(click)="methodName($event)"` (Event Binding):
+     Parentheses listen for browser DOM events (like `'click'`) and call our
+     component method, passing the browser's `MouseEvent` object via `$event`.
+   - `#mobileMenuToggle` (Template Reference Variable):
+     Gives an HTML element a local nickname so `@ViewChild('mobileMenuToggle')`
+     in `app.component.ts` can call `.focus()` on it when `Escape` is pressed.
+   - `@if (...) { ... } @else { ... }` & `@for (item of list; track item.id) { ... }`:
+     Angular 19's built-in control flow blocks! `@if` conditionally mounts/unmounts
+     sections (including our 3 SPA views!), and `@for` loops over data arrays.
+     (Note: Because `@` starts control-flow blocks in Angular templates, literal
+     `@` symbols in visible text—like `&#64;raggiesoft` or `&#64;layer`—are written
+     using the HTML numeric character entity `&#64;`!)
+
+3. Semantic Landmarks & LCP Performance Architecture:
+   - Landmarks: `<nav aria-label="...">`, `<header role="banner">`,
+     `<main id="main-content">`, `<section aria-labelledby="...">`, `<aside>`,
+     and `<footer role="contentinfo">` let screen-reader users jump between page
+     regions in a single keystroke.
+   - LCP Optimization: Primary Light portrait uses `fetchpriority="high"`, while
+     the hidden Dark portrait uses `fetchpriority="low"` so it never contends
+     for initial network bandwidth.
 =============================================================================
 -->
 
-<!-- Keyboard & Assistive Technology Skip Link -->
+<!--
+  WCAG 2.4.1 (Bypass Blocks) — Keyboard & Screen-Reader Skip Link:
+  Visually tucked off-screen (`transform: translateY(-200%)` in `src/styles.css`)
+  until a keyboard user presses `Tab` on page load. Pressing `Enter` jumps focus
+  straight to `<main id="main-content">`, skipping 20+ header/network links!
+-->
 <a class="skip-link" href="#main-content">Skip to main portfolio content</a>
 
-<!-- Omnidirectional RaggieSoft Ecosystem Network Bar -->
+<!--
+  Omnidirectional RaggieSoft Ecosystem Network Bar:
+  - Uses `<nav aria-label="RaggieSoft Ecosystem Network">` to distinguish this
+    cross-site bar from `<nav aria-label="Portfolio Sections">` below (whenever
+    a page has two or more `<nav>` elements, each MUST have a unique `aria-label`!).
+  - Decorative emoji icons are wrapped in `<span aria-hidden="true">` so screen
+    readers read clean link titles ("Engine Room Records Hub") instead of reading
+    verbose emoji descriptions ("Gear Engine Room Records Hub").
+-->
 <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
   <div class="rs-network-bar-inner">
     <span class="rs-network-label">✦ RaggieSoft Network:</span>
@@ -60,10 +107,14 @@ Accessibility & Recruiter UX Architecture:
 </nav>
 
 <!-- =========================================================================
-     STICKY PORTFOLIO HEADER BAR
-     Mobile (< 48rem / 768px): Compact two-level identity bar with wrapping
-     subtitle + 44x44px native Section 508 hamburger toggle button.
-     Desktop (>= 48rem / 768px): Full horizontal inline navigation & theme bar.
+     STICKY PORTFOLIO HEADER BAR (`<header role="banner">`)
+     - Mobile (< 48rem / 768px): Compact two-level identity bar with wrapping
+       subtitle + 44x44px native Section 508 Web hamburger toggle button.
+     - Desktop (>= 48rem / 768px): Full horizontal inline navigation & theme bar.
+     - Why `alt=""` on `.brand-logo` below? Because the link ALREADY has text
+       (`{{ profile.fullName }}`) and an explicit `aria-label`, setting `alt=""`
+       marks the small circular avatar as decorative so screen readers don't
+       stutter by announcing the name twice!
      ========================================================================= -->
 <header class="site-header" role="banner">
   <div class="dossier-container header-inner">
@@ -87,7 +138,20 @@ Accessibility & Recruiter UX Architecture:
         </span>
       </a>
 
-      <!-- Native Section 508 / WCAG 2.5.5 (44x44px) Mobile Menu Toggle Button -->
+      <!--
+        Native Section 508 Web / WCAG 2.5.5 (44x44px) Mobile Menu Toggle Button:
+        - `#mobileMenuToggle`: Template reference variable linked to `@ViewChild`
+          in `app.component.ts` so pressing `Escape` returns focus here.
+        - `type="button"`: Always specify `type="button"` on non-form buttons so
+          browsers never treat them as `type="submit"`!
+        - `[attr.aria-expanded]="mobileMenuOpen()"`: Tells screen readers whether
+          the controlled `#header-navigation-panel` drawer is `"true"` (expanded)
+          or `"false"` (collapsed).
+        - `@if (mobileMenuOpen()) { ... } @else { ... }`: Swaps the inline SVG
+          between an `X` close icon and a 3-line hamburger icon, both marked
+          `aria-hidden="true" focusable="false"` because `[attr.aria-label]`
+          already provides a clear accessible button label!
+      -->
       <button
         #mobileMenuToggle
         type="button"
@@ -142,6 +206,16 @@ Accessibility & Recruiter UX Architecture:
       </button>
     </div>
 
+    <!--
+      Collapsible Navigation & Theme Controls Panel:
+      - `[class.is-open]="mobileMenuOpen()"`: On mobile viewports, `styles.css`
+        sets `.header-controls { display: none; }` (removing closed menu links
+        from keyboard `Tab` order!) until `.is-open` switches it to `display: flex`.
+      - `[attr.aria-current]="activeView() === 'dossier' ? 'page' : null"`:
+        Uses JavaScript's ternary operator (`condition ? valueIfTrue : valueIfFalse`).
+        Returning `null` removes the `aria-current` attribute completely when
+        inactive, whereas `'page'` tells screen readers "Current page, Portfolio".
+    -->
     <div
       id="header-navigation-panel"
       class="header-controls"
@@ -199,7 +273,14 @@ Accessibility & Recruiter UX Architecture:
         </ul>
       </nav>
 
-      <!-- Tri-State Color Scheme Switcher (Respects prefers-color-scheme by default) -->
+      <!--
+        Tri-State Color Scheme Switcher (`System` | `Light` | `Dark`):
+        - `role="group"` + `aria-label="Color scheme preference"` groups the 3
+          toggle buttons into one labeled control cluster for assistive tech.
+        - `[attr.aria-pressed]="themeMode() === 'light'"` turns a standard
+          `<button>` into an accessible **Toggle Button** (announcing "pressed"
+          or "not pressed") AND drives the active CSS highlight `.theme-btn[aria-pressed="true"]`!
+      -->
       <div class="theme-switcher" role="group" aria-label="Color scheme preference">
         <button
           type="button"
@@ -232,14 +313,23 @@ Accessibility & Recruiter UX Architecture:
 </header>
 
 <!-- =========================================================================
-     MAIN PORTFOLIO & CI/CD TOOLING CONTENT
+     MAIN PORTFOLIO & CI/CD TOOLING CONTENT (`<main id="main-content">`)
+     - Every HTML page should have exactly ONE visible `<main>` landmark, and
+       its `id="main-content"` is the target of our keyboard Skip Link on Line 60.
+     - Notice the top-level `@if (activeView() === 'dossier')` block right below:
+       Angular switches the entire `<main>` interior cleanly between:
+         1. View 1 (`'dossier'`): Main Portfolio & Resume Dossier (`/`)
+         2. View 2 (`'build-team-overview'`): CI/CD Suite Overview (`/build-team`)
+         3. View 3 (`'build-team-member'`): Individual Module Spec (`/build-team/:slug`)
      ========================================================================= -->
 <main id="main-content" class="dossier-container">
 
   @if (activeView() === 'dossier') {
 
   <!-- =======================================================================
-       ABOVE THE FOLD: 5-SECOND RECRUITER OVERVIEW & ROLE ALIGNMENT
+       VIEW 1 — ABOVE THE FOLD: 5-SECOND RECRUITER OVERVIEW & ROLE ALIGNMENT
+       - `aria-labelledby="hero-heading"` binds this `<section>` landmark's
+         accessible name directly to the `<h1 id="hero-heading">` inside it.
        ======================================================================= -->
   <section id="top" class="hero-bento" aria-labelledby="hero-heading">
     <div class="hero-panel-grid">
@@ -253,7 +343,16 @@ Accessibility & Recruiter UX Architecture:
           </div>
 
           <div class="executive-profile-top">
-            <!-- Dual Theme Portrait: Frutiger Aero (Light) / Dark Aero (Dark) -->
+            <!--
+              Dual Theme Portrait: Frutiger Aero (Light) / Dark Aero (Dark)
+              Why render two `<img>` tags instead of `<picture><source media="...">`?
+              HTML `<picture>` media queries ONLY evaluate the operating system's
+              `prefers-color-scheme` and ignore manual website theme toggles!
+              Rendering both `<img>` tags with explicit `width="120" height="120"`
+              (zero layout shift / CLS) lets CSS toggle `display: none / block`
+              for BOTH OS preferences and manual Light/Dark button overrides—while
+              `fetchpriority="low"` on `.portrait-dark` avoids competing for bandwidth!
+            -->
             <div class="portrait-frame">
               <img
                 class="portrait-img portrait-light"
@@ -299,7 +398,14 @@ Accessibility & Recruiter UX Architecture:
           </blockquote>
         </div>
 
-        <!-- Immediate Recruiter Action Bar -->
+        <!--
+          Immediate Recruiter Action Bar:
+          - External links opening in a new tab (`target="_blank"`) include
+            `rel="noopener"` for browser security so the newly opened tab cannot
+            access `window.opener` on our portfolio tab.
+          - Notice `&#64;raggiesoft`: escapes the `@` character so Angular's
+            template parser prints `@raggiesoft` instead of expecting `@if`/`@for`!
+        -->
         <div>
           <p class="eyebrow-label" style="margin-block-end: 0.4rem;">
             Resume (PDF) &amp; Direct Contact
@@ -342,7 +448,17 @@ Accessibility & Recruiter UX Architecture:
         </div>
       </article>
 
-      <!-- Right Panel: Practical Role & Logistics Summary Card -->
+      <!--
+        Right Panel: Practical Role & Logistics Summary Card (`<aside>` + `<dl>`)
+        - Semantic HTML5 `<dl>` (Description List) pairs each `<dt>` (Description
+          Term, e.g., `"Target Roles"`) with its `<dd>` (Description Details) so
+          screen readers announce key-value relationships naturally.
+        - How `@for (param of hiringParameters; track param.label)` works:
+          Loops over `hIRING_PARAMETERS` from `portfolio.data.ts`. Angular 19
+          requires `track <uniqueKey>` on every `@for` loop so if an array ever
+          re-orders or filters, Angular moves/updates existing DOM nodes by key
+          rather than destroying and re-creating HTML elements from scratch!
+      -->
       <aside
         id="hiring-logistics"
         class="logistics-card"
@@ -381,6 +497,14 @@ Accessibility & Recruiter UX Architecture:
 
   <!-- =======================================================================
        INTERACTIVE ANGULAR SIGNALS ROLE-LENS FILTER BAR
+       - Clicking any button calls `selectLens(lens.id)`, updating `activeLens`
+         in `app.component.ts` and instantaneously re-evaluating `filteredEcosystem()`,
+         `filteredCaseStudies()`, `filteredExperience()`, and `filterAnnouncement()`.
+       - Notice `lensCounts()[lens.id]`: first calls the `lensCounts()` Computed
+         Signal to get the `{ all, architecture, ... }` count dictionary, then
+         uses JavaScript bracket notation `[lens.id]` to look up that button's count!
+       - `aria-hidden="true"` on `.lens-count-badge` keeps button announcements
+         concise while the polite live region below speaks the full filtered summary!
        ======================================================================= -->
   <section class="dossier-section" aria-labelledby="lens-heading" style="padding-block-end: 0.5rem;">
     <div class="lens-toolbar">
@@ -409,7 +533,15 @@ Accessibility & Recruiter UX Architecture:
       </div>
     </div>
 
-    <!-- Polite ARIA Live Region for Assistive Technology Filter Feedback -->
+    <!--
+      WCAG 4.1.3 (Status Messages) — Polite WAI-ARIA Live Region:
+      - `.sr-only` hides this `<div>` visually while keeping it readable to
+        screen readers (JAWS, NVDA, VoiceOver).
+      - `aria-live="polite"` tells the screen reader: "Wait until you finish
+        speaking the clicked button's name, then read this updated text aloud!"
+      - `aria-atomic="true"` ensures the entire sentence is read as a complete
+        update rather than just the numbers that changed.
+    -->
     <div class="sr-only" aria-live="polite" aria-atomic="true">
       {{ filterAnnouncement() }}
     </div>
@@ -455,6 +587,15 @@ Accessibility & Recruiter UX Architecture:
       </ul>
     </aside>
 
+    <!--
+      CSS Grid + `subgrid` Card Matrix (`.subgrid-card-matrix` > `.subgrid-card`):
+      Look closely at how every `<article class="subgrid-card">` below contains
+      EXACTLY 4 direct child `<div>` wrappers (Row 1 Header, Row 2 Body, Row 3
+      Tech Chips, Row 4 Footer CTA). Because `.subgrid-card` declares
+      `grid-row: span 4; grid-template-rows: subgrid;` in `src/styles.css`,
+      all 4 sections align horizontally across neighbor cards in the same row
+      even when one card has longer bullet points than its neighbor!
+    -->
     <div class="subgrid-card-matrix">
       @for (prop of filteredEcosystem(); track prop.id) {
         <article class="subgrid-card">
@@ -491,7 +632,14 @@ Accessibility & Recruiter UX Architecture:
             </ul>
           </div>
 
-          <!-- Row 4: Live Production Link -->
+          <!--
+            Row 4: Live Production Link
+            - Uses `@if (prop.isCurrentSite)` so `michaelpragsdale.com` shows a
+              `"Current Site (You Are Here)"` badge instead of linking to itself.
+            - `prop.ctaLabel ?? ('Visit Live Site (' + prop.domain + ')')` uses
+              the Nullish Coalescing operator (`??`) to display `ctaLabel` when
+              provided, or generate a fallback label automatically if omitted!
+          -->
           <div class="card-footer-actions">
             @if (prop.isCurrentSite) {
               <span class="status-pill">Current Site (You Are Here)</span>
@@ -560,6 +708,13 @@ Accessibility & Recruiter UX Architecture:
             }
           </ul>
 
+          <!--
+            Case Study Reference Links:
+            Checks `link.url.startsWith('/')` so internal SPA routes (like
+            `'/build-team'`) navigate instantaneously via `navigateInternal(...)`
+            in the same tab, whereas external URLs (`'https://...'`) open safely
+            in a new browser tab with `target="_blank" rel="noopener"`.
+          -->
           <div class="card-footer-actions">
             @for (link of study.referenceLinks; track link.url) {
               @if (link.url.startsWith('/')) {
@@ -610,6 +765,15 @@ Accessibility & Recruiter UX Architecture:
       </div>
     </div>
 
+    <!--
+      CSS Grid + `subgrid` Card Matrix (`.subgrid-card-matrix` > `.subgrid-card`):
+      Look closely at how every `<article class="subgrid-card">` below contains
+      EXACTLY 4 direct child `<div>` wrappers (Row 1 Header, Row 2 Body, Row 3
+      Tech Chips, Row 4 Footer CTA). Because `.subgrid-card` declares
+      `grid-row: span 4; grid-template-rows: subgrid;` in `src/styles.css`,
+      all 4 sections align horizontally across neighbor cards in the same row
+      even when one card has longer bullet points than its neighbor!
+    -->
     <div class="subgrid-card-matrix">
       @for (bot of devopsConstructs; track bot.codename) {
         <article class="subgrid-card">
@@ -665,6 +829,12 @@ Accessibility & Recruiter UX Architecture:
       </div>
     </div>
 
+    <!--
+      Chronological Work History (`<ol>` Ordered List):
+      Because employment history has a meaningful chronological order (newest to
+      oldest), we use `<ol>` (Ordered List) rather than `<ul>` (Unordered List),
+      and maintain strict heading hierarchy (`<h2>` section -> `<h3>` job title).
+    -->
     <ol class="timeline-list">
       @for (job of filteredExperience(); track job.functionalTitle) {
         <li class="timeline-card">
@@ -700,7 +870,12 @@ Accessibility & Recruiter UX Architecture:
       }
     </ol>
 
-    <!-- Academic Credentials -->
+    <!--
+      Academic Credentials (`<h3>` Sub-Section -> `<h4>` Degree Cards):
+      Notice WCAG heading discipline: `<h2>` ("Professional Experience & Education")
+      -> `<h3>` ("Education & Certification") -> `<h4>` (`{{ edu.degree }}`),
+      never skipping heading levels so screen-reader outline navigation stays linear!
+    -->
     <div style="margin-block-start: 2rem;">
       <h3 style="margin-block-end: 1rem;">Education &amp; Certification</h3>
       <div class="dual-column-grid">
@@ -728,7 +903,11 @@ Accessibility & Recruiter UX Architecture:
   } @else if (activeView() === 'build-team-overview') {
 
   <!-- =======================================================================
-       VIEW 2: CI/CD & MEDIA AUTOMATION SUITE OVERVIEW (/build-team)
+       VIEW 2: CI/CD & MEDIA AUTOMATION SUITE OVERVIEW (`/build-team`)
+       - Rendered when `activeView()` equals `'build-team-overview'`.
+       - Sub-navigation combines an accessible breadcrumb trail (`<ol>` with
+         decorative `/` separators hidden from screen readers via `aria-hidden="true"`)
+         and quick-jump module switcher pills (`build-team-pills`).
        ======================================================================= -->
   <nav class="build-team-subnav" aria-label="CI/CD Tooling Breadcrumb and Module Switcher">
     <ol class="build-team-breadcrumbs">
@@ -891,6 +1070,15 @@ Accessibility & Recruiter UX Architecture:
       </div>
     </div>
 
+    <!--
+      CSS Grid + `subgrid` Card Matrix (`.subgrid-card-matrix` > `.subgrid-card`):
+      Look closely at how every `<article class="subgrid-card">` below contains
+      EXACTLY 4 direct child `<div>` wrappers (Row 1 Header, Row 2 Body, Row 3
+      Tech Chips, Row 4 Footer CTA). Because `.subgrid-card` declares
+      `grid-row: span 4; grid-template-rows: subgrid;` in `src/styles.css`,
+      all 4 sections align horizontally across neighbor cards in the same row
+      even when one card has longer bullet points than its neighbor!
+    -->
     <div class="subgrid-card-matrix">
       @for (member of buildTeamProfiles; track member.slug) {
         <article class="subgrid-card">
@@ -951,10 +1139,18 @@ Accessibility & Recruiter UX Architecture:
   </section>
 
   } @else {
+    <!--
+      Angular `@if (...; as member)` Aliasing Pattern:
+      `activeMember()` has TypeScript type `BuildTeamMember | null`. By writing
+      `@if (activeMember(); as member)`, Angular checks that `activeMember()` is
+      truthy (not `null`) AND binds that non-null result to a convenient local
+      template variable `member`—so we can write `{{ member.name }}` cleanly
+      throughout View 3 without repeating `activeMember()?.name`!
+    -->
     @if (activeMember(); as member) {
 
   <!-- =======================================================================
-       VIEW 3: INDIVIDUAL AUTOMATION MODULE SPECIFICATION (/build-team/:slug)
+       VIEW 3: INDIVIDUAL AUTOMATION MODULE SPECIFICATION (`/build-team/:slug`)
        ======================================================================= -->
   <nav class="build-team-subnav" aria-label="CI/CD Module Breadcrumb and Switcher">
     <ol class="build-team-breadcrumbs">
@@ -1033,6 +1229,12 @@ Accessibility & Recruiter UX Architecture:
             {{ member.cardSummary }}
           </p>
 
+          <!--
+            Simulated CLI Reference Window:
+            `role="region" aria-label="Command Line Invocation"` exposes this
+            styled terminal card as a named region landmark while hiding purely
+            decorative macOS-style window dots with `aria-hidden="true"`.
+          -->
           <div class="terminal-window" role="region" aria-label="Command Line Invocation">
             <div class="terminal-header">
               <span class="terminal-dots" aria-hidden="true">
@@ -1195,7 +1397,12 @@ Accessibility & Recruiter UX Architecture:
     </div>
   </section>
 
-  <!-- Sequential Module Pagination Footer -->
+  <!--
+    Sequential Module Pagination Footer (`@if (adjacentMembers(); as adj)`):
+    Unwraps the `adjacentMembers()` Computed Signal (calculated using modulo `%`
+    wrap-around math in `app.component.ts`) so visitors can step backward/forward
+    through all 7 CI/CD modules in a continuous loop!
+  -->
   @if (adjacentMembers(); as adj) {
     <section class="dossier-section" aria-label="CI/CD Module Pagination">
       <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
@@ -1230,7 +1437,13 @@ Accessibility & Recruiter UX Architecture:
 </main>
 
 <!-- =========================================================================
-     GLOBAL FOOTER WITH MANDATORY LICENSING & FICTITIOUS ENTITIES DISCLAIMER
+     GLOBAL FOOTER (`<footer role="contentinfo">`) WITH MANDATORY LICENSING &
+     FICTITIOUS ENTITIES DISCLAIMER
+     - `role="contentinfo"` identifies the page's global footer landmark across
+       all screen readers.
+     - `.disclaimer-box` uses `role="note"` with an explicit `aria-label` to
+       separate MIT / CC BY-SA 4.0 licensing and creative-catalog disclaimers
+       from Michael P. Ragsdale's factual career history.
      ========================================================================= -->
 <footer class="site-footer" role="contentinfo">
   <div class="dossier-container">

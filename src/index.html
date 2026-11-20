@@ -1,27 +1,65 @@
 <!doctype html>
 <!--
 =============================================================================
-File: index.html
+File: src/index.html
 Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
 Domain: https://michaelpragsdale.com
 Tech Stack: Angular 19 Standalone + Signals | Modern Native CSS (@layer, Subgrid, Container Queries)
 License: MIT License (Code) | CC BY-SA 4.0 (Creative Narrative References)
 Author: Michael P. Ragsdale <hello@michaelpragsdale.com>
 =============================================================================
-Architectural Notes:
-- Designed for sub-second Largest Contentful Paint (LCP) and immediate 5-second
-  recruiter and hiring-manager comprehension.
-- Uses zero external webfont blocking requests: relies strictly on native OS
-  system UI and monospace font stacks.
-- Includes comprehensive Schema.org ProfilePage JSON-LD structured data so
-  Applicant Tracking Systems (ATS), technical recruiters, and search indexers
-  can parse full-stack web, C#/.NET, SwiftUI, and Section 508 credentials.
-- Pre-initializes color-scheme before first paint to prevent Flash of Incorrect
-  Theme (FOIT) while respecting prefers-color-scheme.
+READ-ALONG TEACHING OVERVIEW (100-Level JavaScript & HTML Guide):
+
+1. What is this file, and why is Line 1 `<!doctype html>`?
+   `src/index.html` is the outer HTML shell sent to the browser before any
+   Angular JavaScript runs.
+   - Line 1 MUST always be `<!doctype html>`: it instructs every web browser to
+     use modern HTML5 and CSS "Standards Mode" instead of 1990s "Quirks Mode".
+
+2. How does `src/index.html` fit into the build and runtime pipeline?
+   - During `npm run build`, Angular's compiler injects our compiled CSS
+     (`styles.css`) and compiled JavaScript (`main.ts` -> `main-<hash>.js`)
+     into `dist/raggiesoft-portfolio/browser/index.html`.
+   - Next, `scripts/postbuild-routes.mjs` reads that compiled `index.html` and
+     clones route-specific copies for `/build-team` and `/build-team/<slug>`
+     with customized page titles and social-preview metadata. (Note: Keep each
+     metadata tag in `<head>` on its own single line so `postbuild-routes.mjs`
+     can match and replace them cleanly!)
+   - Finally, in the visitor's browser, Angular boots up and mounts our entire
+     interactive portfolio inside `<mpr-root></mpr-root>` near the bottom of
+     this file.
+
+3. Architectural & Performance Highlights:
+   - Zero external webfont requests: relies strictly on native OS system UI and
+     monospace font stacks for sub-second Largest Contentful Paint (LCP).
+   - Synchronous pre-paint theme script in `<head>` prevents any white/dark
+     Flash of Unstyled Content (FOUC) when a visitor has pinned Light or Dark mode.
+   - Includes Schema.org `ProfilePage` JSON-LD structured data for search
+     engines and recruiter/ATS parsers.
 =============================================================================
+-->
+
+<!--
+  WCAG 3.1.1 (Language of Page):
+  Setting `lang="en"` on the root `<html>` element tells screen readers (JAWS,
+  NVDA, VoiceOver) to load English pronunciation rules before reading the page.
 -->
 <html lang="en">
 <head>
+  <!--
+    CORE DOCUMENT METADATA, VIEWPORT & CANONICAL URL:
+    - `charset="utf-8"`: Supports all international characters and symbols (`•`, `✦`, `→`).
+    -Document title: Shown in the browser tab, bookmarks, and announced first by screen readers.
+    - `<base href="/">`: Crucial for Single-Page Applications! Tells the browser
+      to resolve relative asset URLs from the domain root `/` even when visiting
+      nested URLs like `/build-team/paige`.
+    - `viewport`: Tells mobile phones to render at true device width (`1:1` CSS
+      pixels) instead of shrinking a 980px desktop page onto a tiny screen.
+    - `color-scheme`: Declares native Light + Dark mode support to the browser
+      before CSS even finishes loading (adapting scrollbars and form controls).
+    - Description, author, and canonical URL: Used by search engines to summarize
+      the page and consolidate indexing onto `https://michaelpragsdale.com/`.
+  -->
   <meta charset="utf-8">
   <title>Michael P. Ragsdale | Full-Stack &amp; Web Accessibility Engineer</title>
   <base href="/">
@@ -31,7 +69,14 @@ Architectural Notes:
   <meta name="author" content="Michael P. Ragsdale">
   <link rel="canonical" href="https://michaelpragsdale.com/">
 
-  <!-- Open Graph & Social Card Unfurling Metadata (1200x630 Standard) -->
+  <!--
+    OPEN GRAPH (`og:*`) SOCIAL CARD METADATA (1200x630 Standard):
+    When a recruiter or engineer pastes `https://michaelpragsdale.com` into
+    LinkedIn, Microsoft Teams, Slack, Discord, or iMessage, those apps do NOT
+    execute JavaScript—they read these static `og:*` tags from `<head>` to
+    build a rich visual link card with title, summary, and 1200x630 preview image
+    (including `og:image:alt` for screen-reader users in chat apps!).
+  -->
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Michael P. Ragsdale — Full-Stack &amp; Web Accessibility Portfolio">
   <meta property="og:locale" content="en_US">
@@ -47,14 +92,25 @@ Architectural Notes:
   <meta property="profile:first_name" content="Michael">
   <meta property="profile:last_name" content="Ragsdale">
 
-  <!-- Twitter / X / Slack / Teams Large Summary Card Metadata -->
+  <!--
+    TWITTER / X / SLACK / TEAMS LARGE SUMMARY CARD METADATA:
+    `summary_large_image` instructs messaging platforms that look for `twitter:*`
+    tags to render a full-width 1200x630 banner preview rather than a tiny thumbnail.
+  -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Michael P. Ragsdale | Full-Stack &amp; Web Accessibility Engineer">
   <meta name="twitter:description" content="Full-Stack Web Developer &amp; Web Accessibility Engineer in Norfolk, VA. Explore 11 live web apps, C#/.NET &amp; SwiftUI software, and engineering case studies.">
   <meta name="twitter:image" content="https://michaelpragsdale.com/og-image.jpg">
   <meta name="twitter:image:alt" content="Michael P. Ragsdale — Full-Stack Web Developer &amp; Web Accessibility Engineer (michaelpragsdale.com)">
 
-  <!-- Preconnect to CDN for zero-latency portrait and logo loading -->
+  <!--
+    CDN PRECONNECT, FAVICON & SHARED ECOSYSTEM NETWORK BAR ASSETS:
+    - `rel="preconnect"` performs DNS lookup + TLS handshake with `assets.raggiesoft.com`
+      early so the hero portrait and logo download with zero connection delay.
+    - Notice `defer` on `raggiesoft-network.js`: `defer` tells the browser to
+      download the script in the background WITHOUT pausing HTML parsing, and
+      run it only after the document structure is ready.
+  -->
   <link rel="preconnect" href="https://assets.raggiesoft.com" crossorigin>
   <link rel="icon" type="image/png" href="https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png">
   <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261118a">
@@ -65,8 +121,10 @@ Architectural Notes:
     Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6)
     =========================================================================
     Unified RaggieSoft ecosystem measurement property. Loaded asynchronously
-    via gtag.js so it never blocks Largest Contentful Paint (LCP) or INP
-    during portfolio evaluations.
+    (`async` attribute) via `gtag.js` so it never blocks Largest Contentful
+    Paint (LCP) or Interaction to Next Paint (INP) during portfolio reviews.
+    - `window.dataLayer = window.dataLayer || []` uses JavaScript's logical OR
+      fallback to reuse an existing array or initialize an empty one `[]`.
     =========================================================================
   -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
@@ -78,7 +136,24 @@ Architectural Notes:
     gtag('config', 'G-P9RG9JVYB6');
   </script>
 
-  <!-- Synchronous Theme Detection Script: Prevents FOUC by syncing <meta name="color-scheme"> before first paint -->
+  <!--
+    =========================================================================
+    SYNCHRONOUS PRE-PAINT THEME DETECTION SCRIPT (PREVENTING FOUC)
+    =========================================================================
+    Why is this tiny `<script>` NOT marked `async` or `defer`?
+    Suppose a user's operating system is set to Light Mode, but they previously
+    clicked "Dark" on our site (saving `'dark'` in `localStorage`). If we waited
+    until Angular finished booting to check `localStorage`, the browser would
+    paint a bright white screen for a split second before snapping to dark!
+
+    By running this 10-line Immediately Invoked Function Expression (`(function () { ... })()`)
+    synchronously inside `<head>` BEFORE `<body>` paints:
+    1. Wrapping in `(function () { ... })();` keeps `meta` and `saved` scoped
+       privately inside the function instead of polluting `window` globals.
+    2. If `'light'` or `'dark'` is stored in `localStorage`, it updates both
+       `meta[name="color-scheme"]` and `<html data-theme="...">` before Frame 1!
+    =========================================================================
+  -->
   <script>
     (function () {
       try {
@@ -94,7 +169,31 @@ Architectural Notes:
     })();
   </script>
 
-  <!-- Schema.org ProfilePage Structured Data for ATS & Search Ingestion -->
+  <!--
+    =========================================================================
+    SCHEMA.ORG `ProfilePage` JSON-LD STRUCTURED DATA
+    =========================================================================
+    What is JSON-LD (`application/ld+json`)?
+    Instead of executable JavaScript code, a script tag with `type='application/ld+json'`
+    holds **JSON-LD** ("JavaScript Object Notation for Linked Data")—a standardized
+    machine-readable vocabulary from https://schema.org used by search engines
+    and recruiting/indexing tools to understand *who* this portfolio belongs to:
+      - `@type: "ProfilePage"` + `mainEntity` (`@type: "Person"`): Identifies
+        Michael P. Ragsdale, job title, Norfolk, VA location, and contact email.
+      - `worksFor` & `alumniOf`: Connects current organizations and Virginia
+        higher-education institutions (TCC and ODU).
+      - `knowsAbout`: Explicitly enumerates full-stack web frameworks, C#/.NET,
+        SwiftUI, and code-level WCAG / Section 508 Web engineering skills.
+      - `sameAs`: Cross-verifies all 10 companion RaggieSoft web properties plus
+        GitHub and LinkedIn profiles.
+
+    IMPORTANT JSON SYNTAX RULE FOR 100-LEVEL JS STUDENTS:
+    Unlike JavaScript `.js` files, strict JSON data (`{ "key": "value" }`) does
+    NOT allow `//` or `/* */` comments inside the JSON block itself—putting a
+    comment inside the `application/ld+json` block would make the JSON invalid!
+    That is why we document it right here in HTML comments above the tag.
+    =========================================================================
+  -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -183,6 +282,12 @@ Architectural Notes:
   </script>
 </head>
 <body>
+  <!--
+    ANGULAR ROOT MOUNT POINT (`<mpr-root>`):
+    This custom HTML element matches `selector: 'mpr-root'` in `src/app/app.component.ts`.
+    When `src/main.ts` executes `bootstrapApplication(AppComponent, appConfig)`,
+    Angular mounts `src/app/app.component.html` right inside `<mpr-root></mpr-root>`.
+  -->
   <mpr-root></mpr-root>
 </body>
 </html>

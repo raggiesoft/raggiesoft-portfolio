@@ -1,13 +1,60 @@
 <!doctype html>
+<!--
+=============================================================================
+File: public/404.html
+Application: Michael P. Ragsdale — Engineering & Section 508 Portfolio
+Domain: https://michaelpragsdale.com
+License: MIT License
+=============================================================================
+READ-ALONG TEACHING OVERVIEW (100-Level JavaScript, HTML & CSS Guide):
+
+1. What is this file, and why does it live inside `public/`?
+   In HTTP (the protocol browsers and web servers use to talk to each other),
+   status code `404` means "Not Found"—the visitor requested a URL path or
+   static file that does not exist on the server.
+   - Because `angular.json` configures `"assets": [{ "glob": "**/*", "input": "public" }]`,
+     every file inside `public/` is copied verbatim into the root of our
+     production build folder (`dist/raggiesoft-portfolio/browser/404.html`).
+   - On the production Ubuntu/Nginx server (`jessica.raggiesoft.com`), Nginx
+     serves this static `404.html` page whenever an invalid asset or unmapped
+     path returns a 404 status.
+
+2. Why is CSS written inline inside `<style>` instead of linking an external file?
+   Error pages should be **100% self-contained** (zero external `.css`, `.js`,
+   or webfont dependencies). Even if a visitor typed a deeply nested broken path
+   like `/missing/folder/file.pdf` or experienced a partial network hiccup, this
+   single HTML response renders an accessible, high-contrast Light/Dark recovery
+   card in a single round trip!
+=============================================================================
+-->
 <html lang="en">
   <head>
+    <!-- Standard UTF-8 character encoding and responsive mobile viewport -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Declares native Light + Dark support for browser scrollbars & system UI -->
     <meta name="color-scheme" content="light dark" />
     <title>Page Not Found | Michael P. Ragsdale</title>
     <meta name="description" content="The requested page could not be found on michaelpragsdale.com." />
+
+    <!--
+      SEO Crawler Directive (`robots`):
+      - `noindex`: Tells search engines (Google, Bing) NOT to list this 404 error
+        page in search results.
+      - `follow`: Still allows search crawlers to follow the recovery links back
+        to `https://michaelpragsdale.com/` and `https://raggiesoft.com`.
+    -->
     <meta name="robots" content="noindex, follow" />
+
+    <!-- Self-contained, WCAG 2.1 AA high-contrast Light & Dark Mode stylesheet -->
     <style>
+      /*
+       * 1. CSS Custom Properties (Variables) on `:root` (`<html>`):
+       *    Any property starting with two hyphens (like `--bg` or `--text`) is a
+       *    reusable CSS variable we can read later with `var(--bg)`.
+       *    By default, we define crisp Light Mode colors exceeding 4.5:1 / 7:1 contrast.
+       */
       :root {
         color-scheme: light dark;
         --bg: #f8fafc;
@@ -18,6 +65,13 @@
         --accent: #0369a1;
         --accent-fg: #ffffff;
       }
+
+      /*
+       * 2. Automatic OS Dark Mode (`@media (prefers-color-scheme: dark)`):
+       *    When the visitor's computer or phone is set to Dark Mode, the browser
+       *    automatically swaps the exact same `--bg`, `--surface`, and `--text`
+       *    variables to deep slate Dark Mode colors—with zero JavaScript needed!
+       */
       @media (prefers-color-scheme: dark) {
         :root {
           --bg: #070b14;
@@ -29,6 +83,13 @@
           --accent-fg: #070b14;
         }
       }
+
+      /*
+       * 3. Full-Viewport Flexbox Centering on `<body>`:
+       *    `min-height: 100vh` (100% of the viewport height) combined with
+       *    `display: flex; align-items: center; justify-content: center;`
+       *    centers the `<main>` card both vertically and horizontally on any screen.
+       */
       body {
         margin: 0;
         min-height: 100vh;
@@ -40,6 +101,8 @@
         background: var(--bg);
         color: var(--text);
       }
+
+      /* Elevated surface card holding the 404 message and recovery links */
       main {
         max-width: 640px;
         width: 100%;
@@ -49,6 +112,8 @@
         padding: 2rem;
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
       }
+
+      /* Small uppercase status label above the main `<h1>` heading */
       .eyebrow {
         font-size: 0.78rem;
         font-weight: 700;
@@ -66,11 +131,15 @@
         line-height: 1.6;
         color: var(--muted);
       }
+
+      /* Wrapping flex row so action buttons sit side-by-side on desktop and stack cleanly on mobile */
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
       }
+
+      /* Styled `<a>` hyperlinks that look like tactile buttons while preserving native link behavior */
       a.btn {
         display: inline-flex;
         align-items: center;
@@ -89,6 +158,11 @@
     </style>
   </head>
   <body>
+    <!--
+      Semantic `<main>` Landmark:
+      Screen readers allow users to jump directly to `<main>`, and `<h1>` clearly
+      announces "Page Not Found" followed by two one-click recovery destinations.
+    -->
     <main id="content">
       <p class="eyebrow">Michael P. Ragsdale • 404 Not Found</p>
       <h1>Page Not Found</h1>
