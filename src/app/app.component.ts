@@ -379,7 +379,7 @@ export class AppComponent implements OnInit {
       this.activeView.set('dossier');
       this.activeMemberSlug.set(null);
       this.document.title =
-        'Michael P. Ragsdale | Full-Stack & 508 Developer';
+        'Michael P. Ragsdale | Full-Stack & Web Accessibility Engineer';
     }
 
     const win = this.document.defaultView as

@@ -105,13 +105,13 @@ export interface EducationEntry {
  */
 export const EXECUTIVE_PROFILE = {
   fullName: 'Michael P. Ragsdale',
-  headline: 'Full-Stack Web Developer & Section 508 Accessibility Specialist',
+  headline: 'Full-Stack Web Developer & Web Accessibility Engineer',
   location: 'Norfolk / Virginia Beach, VA (Hampton Roads)',
-  statusBadge: 'Available for W-2 Full-Stack Web, Software & Section 508 Roles',
+  statusBadge: 'Available for W-2 Full-Stack Web, Software & Web Accessibility Roles',
   executiveSummary:
-    'Full-Stack Web Developer and Section 508 Accessibility Specialist combining institutional accessibility remediation at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and hands-on software engineering. Creator of the open-source Stardust Engine CMS, an 11-property zero-database web ecosystem, and companion C#/.NET 10 WPF and SwiftUI desktop/mobile applications.',
+    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, an 11-property zero-database web ecosystem, and companion C#/.NET 10 WPF and SwiftUI desktop/mobile applications.',
   valueProposition:
-    'I focus on three practical engineering standards across every project: genuine Section 508 and WCAG 2.1 AA accessibility for real users, fast static-first performance, and clear, well-documented code that teams can maintain.',
+    'I focus on three practical engineering standards across every project: code-level WCAG 2.1/2.2 AA and Section 508 web accessibility in semantic HTML5 and WAI-ARIA, fast static-first performance, and clear, well-documented code that teams can maintain.',
   assets: {
     logoUrl: 'https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png',
     portraitLightUrl:
@@ -144,15 +144,15 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
   },
   {
     id: 'accessibility',
-    label: 'Section 508 & WCAG 2.1 AA',
+    label: 'WCAG & Section 508 Web',
     shortDescription:
-      'Focused on higher-education & government Section 508 compliance, Deque axe + manual JAWS/NVDA/VoiceOver testing, Forced-Colors High Contrast, and Accessible HTML Canvas Interfaces (DOM/ARIA layer).'
+      'Focused on code-level WCAG 2.1/2.2 AA & Revised Section 508 web compliance, semantic HTML5 (<th scope>, landmarks), WAI-ARIA, keyboard focus management, JAWS/NVDA/VoiceOver testing, and Accessible HTML Canvas Interfaces.'
   },
   {
     id: 'data-etl',
     label: 'Data & Information Workflows',
     shortDescription:
-      'Focused on ActiveNet operational data processing, Section 508 document design, JSON/Markdown static APIs, and full-text search indexing.'
+      'Focused on ActiveNet operational data processing, structured staff reference formatting, REST/JSON & Markdown static APIs, and full-text search indexing.'
   },
   {
     id: 'devops',
@@ -168,9 +168,9 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
 export const HIRING_PARAMETERS: readonly HiringParameter[] = [
   {
     label: 'Target Roles',
-    value: 'Full-Stack Web Developer • Section 508 Accessibility Specialist • Front-End / Software Developer',
+    value: 'Full-Stack Web Developer • Web Accessibility Engineer • Front-End / Software Developer',
     detail:
-      'Bringing higher-education Section 508 remediation experience, municipal customer-facing operations, and full-stack web & desktop development.'
+      'Bringing higher-education PLE & Canvas LMS web accessibility engineering, municipal customer-facing operations, and full-stack web & desktop development.'
   },
   {
     label: 'Employment Type',
@@ -191,10 +191,10 @@ export const HIRING_PARAMETERS: readonly HiringParameter[] = [
       'U.S. Citizen eligible for the Commonwealth of Virginia Alternative Hiring Process (AHP) and federal background vetting, with a prior favorable Federal Public Trust (6C) suitability adjudication.'
   },
   {
-    label: 'Accessibility Toolchain',
-    value: 'Section 508 • WCAG 2.1 AA • Deque axe, WAVE, JAWS, NVDA & VoiceOver',
+    label: 'Web Accessibility Stack',
+    value: 'Code-Level WCAG 2.1/2.2 AA & Section 508 Web • Semantic HTML5, ARIA, Deque axe, JAWS, NVDA & VoiceOver',
     detail:
-      'Combines manual assistive-technology testing with direct HTML5, CSS, TypeScript, ARIA, and Microsoft Office/PDF remediation.'
+      'Strictly source-code and UI architecture: semantic HTML5 (<th scope>, <fieldset>/<legend>), WAI-ARIA live regions, JS focus management, BCP 47 lang markup, synced WebVTT (.vtt), and manual screen-reader testing.'
   },
   {
     label: 'Live Work Samples',
@@ -212,20 +212,20 @@ export const HIRING_PARAMETERS: readonly HiringParameter[] = [
 export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   {
     id: 'raggiesoft-portfolio',
-    name: 'Engineering & Section 508 Portfolio (This Site)',
+    name: 'Full-Stack & Web Accessibility Portfolio (This Site)',
     domain: 'michaelpragsdale.com',
     url: 'https://michaelpragsdale.com',
-    categoryLabel: '01 • Engineering & Accessibility Portfolio',
-    primaryStack: 'Angular 19 (Standalone + Zoneless Signals + TypeScript 5.7) + Modern Native CSS',
+    categoryLabel: '01 • Engineering & Web Accessibility Portfolio',
+    primaryStack: 'Angular 19 (Standalone + Zoneless Signals + TypeScript 5.7) + Native CSS',
     architecturalPattern: 'Static Single-Page Application with Native CSS Cascade Layers (@layer), Subgrid & Container Queries',
     summary:
-      'Built on a dedicated domain to demonstrate clean TypeScript and Zoneless Angular Signals architecture alongside dependency-free modern CSS and strict Section 508 semantics.',
+      'Built on a dedicated domain to demonstrate clean TypeScript and Zoneless Angular Signals architecture alongside dependency-free CSS and code-level WCAG / Section 508 web semantics.',
     highlights: [
       'Zero zone.js runtime overhead via provideExperimentalZonelessChangeDetection() and reactive Angular Signals (signal, computed).',
-      '100% Native Modern CSS architecture (@layer, CSS Grid subgrid, @container queries, light-dark() with prefers-color-scheme and forced-colors fallbacks) with zero CSS framework bloat.',
+      '100% Native CSS architecture (@layer, CSS Grid subgrid, container queries, light-dark() with prefers-color-scheme and forced-colors fallbacks) with zero CSS framework bloat.',
       'Sub-second Largest Contentful Paint (LCP) using native system font stacks, pre-rendered OpenGraph route entry points, and Schema.org ProfilePage JSON-LD.'
     ],
-    tags: ['Angular 19', 'TypeScript 5.7', 'Zoneless Signals', 'CSS @layer', 'CSS Subgrid', 'Container Queries', 'Section 508'],
+    tags: ['Angular 19', 'TypeScript 5.7', 'Zoneless Signals', 'CSS @layer', 'CSS Subgrid', 'Container Queries', 'WCAG / Section 508 Web'],
     lenses: ['architecture', 'accessibility'],
     isCurrentSite: true
   },
@@ -282,7 +282,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
       'Generates static ISRC and commercial DSP verification ledgers from structured JSON manifests with 75% Cover Audio Influence production documentation.',
       'Deep-links audio playback cleanly to The Listening Room (music.raggiesoft.com) with accessible Light/Dark theming.'
     ],
-    tags: ['Astro 6', 'Static SSG', 'Multi-Tenant Routing', 'JSON Data Lake', 'ISRC Registry', 'Section 508'],
+    tags: ['Astro 6', 'Static SSG', 'Multi-Tenant Routing', 'JSON Data Lake', 'ISRC Registry', 'Section 508 Web'],
     lenses: ['architecture', 'accessibility', 'data-etl', 'devops'],
     ctaLabel: 'Visit Imprint Hub (engineroom.raggiesoft.com)'
   },
@@ -358,7 +358,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
       'Generates versioned static JSON endpoints (/api/v1/index.json and per-entry payloads) consumed by books.raggiesoft.com and native C#/.NET & SwiftUI apps.',
       'Includes an offline-capable Service Worker and Web App Manifest with zero server-side runtime dependencies.'
     ],
-    tags: ['Web Components', 'Web Awesome 3.13', 'Node.js SSG', 'Static JSON API', 'Progressive Web App', 'Section 508'],
+    tags: ['Web Components', 'Web Awesome 3.13', 'Node.js SSG', 'Static JSON API', 'Progressive Web App', 'Section 508 Web'],
     lenses: ['architecture', 'accessibility', 'data-etl'],
     ctaLabel: 'Visit Backstage PWA (backstage.raggiesoft.com)'
   },
@@ -368,16 +368,16 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     domain: 'lore.raggiesoft.com',
     url: 'https://lore.raggiesoft.com',
     categoryLabel: '09 • Knowledge Graph & Accessible HTML5 Canvas',
-    primaryStack: 'Next.js 16 + React 19 + Tailwind CSS v4 + HTML5 Canvas + Parallel ARIA Shadow DOM',
+    primaryStack: 'Next.js 16 + React 19 + Tailwind CSS v4 + HTML5 Canvas + Synchronized DOM/ARIA Layer',
     architecturalPattern: 'Dual-Layer Accessible Canvas Visualization & Interactive Knowledge Graph',
     summary:
-      'Demonstrates how interactive 60fps HTML5 <canvas> visualizations can achieve full Section 508 keyboard and screen-reader parity.',
+      'Demonstrates how interactive 60fps HTML5 <canvas> visualizations can achieve full WCAG 2.1 AA and Section 508 web keyboard and screen-reader parity.',
     highlights: [
-      'Implements a Dual-Layer Canvas Accessibility Pattern pairing a 2D graphical canvas with a synchronized, keyboard-navigable ARIA DOM layer.',
+      'Implements an Accessible HTML Canvas Pattern pairing a 2D graphical canvas with a synchronized, keyboard-navigable ARIA DOM layer.',
       'Delivers deterministic node relationship and state announcements to JAWS, NVDA, and VoiceOver via polite ARIA live regions.',
       'Compiled via Next.js 16, React 19, and Tailwind CSS v4 static export for fast edge delivery.'
     ],
-    tags: ['Next.js 16', 'React 19', 'Tailwind CSS v4', 'HTML5 Canvas', 'ARIA Live Regions', 'Section 508'],
+    tags: ['Next.js 16', 'React 19', 'Tailwind CSS v4', 'HTML5 Canvas', 'ARIA Live Regions', 'Section 508 Web'],
     lenses: ['architecture', 'accessibility'],
     ctaLabel: 'Visit Lore Graph (lore.raggiesoft.com)'
   },
@@ -413,7 +413,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     highlights: [
       'Hand-written in Visual Basic 6.0 (TStore.vbp) with a .NET port (TStore.NET), using dynamic Win32 API resolution (GetProcAddress for IsWow64Process) for safe 32/64-bit detection back to Windows 95.',
       'Packaged via an OS-aware NSIS installer (TSSetup.nsi) that conditionally deploys legacy runtimes and bundles the full source tree for code inspection.',
-      'Companion web portal built in Vanilla TypeScript + Vite meets modern Section 508 and Light/Dark mode contrast standards inside a classic Win32 aesthetic.'
+      'Companion web portal built in Vanilla TypeScript + Vite meets modern WCAG 2.1 AA and Section 508 web contrast standards inside a classic Win32 aesthetic.'
     ],
     tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Vanilla TypeScript', 'Hand-Written Pre-AI'],
     lenses: ['architecture', 'devops', 'data-etl'],
@@ -524,20 +524,20 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
     id: 'activenet-municipal-etl',
     code: 'CASE-01',
-    title: 'ActiveNet Operational Data Processing & Accessible Front Desk Reference Design',
+    title: 'ActiveNet Operational Data Processing & Structured Front Desk Reference Design',
     organization: 'City of Virginia Beach — Parks & Recreation',
     timeframe: 'May 2023 – Present',
-    lenses: ['data-etl', 'accessibility'],
+    lenses: ['data-etl'],
     problemStatement:
       'ActiveNet stores detailed recreation center room-rental and reservation records, yet parsing raw reservation screens mid-shift is slow when Front Desk staff are simultaneously assisting walk-in patrons, answering phones, and checking in members.',
     architecturalSolution:
-      'Applied software-development and Section 508 accessible-document practices to Front Desk operations: extracted weekend room-rental data from ActiveNet, verified and reorganized reservation records, and formatted them into a concise, standardized Microsoft Word reference with clear heading hierarchy and scannable layout.',
+      'Applied structured data-transformation habits to Front Desk operations: extracted weekend room-rental data from ActiveNet, verified and reorganized reservation records, and transformed them into a concise, standardized Microsoft Word reference with clear visual hierarchy and scannable tabular layout.',
     quantifiedImpact: [
       { label: 'Operational Output', value: 'Standardized Weekend Reference' },
-      { label: 'Document Structure', value: 'Section 508 Heading Hierarchy' },
+      { label: 'Information Structure', value: 'Consistent Tabular Hierarchy' },
       { label: 'Front Desk Benefit', value: 'At-a-Glance Staff Lookup' }
     ],
-    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Process Improvement'],
+    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Operational Data Processing', 'Structured Information Design', 'Process Improvement'],
     referenceLinks: [
       { label: 'Download Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
     ]
@@ -545,20 +545,20 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
     id: 'odu-section-508-gatekeeper',
     code: 'CASE-02',
-    title: 'Canvas LMS Migration & Section 508 Course Remediation',
+    title: 'PLE & Canvas LMS Migration: Source-Level HTML5 & WCAG / Section 508 Web Engineering',
     organization: 'Old Dominion University (ODU Online)',
     timeframe: 'Nov 2019 – Jul 2022',
     lenses: ['accessibility', 'architecture', 'data-etl'],
     problemStatement:
-      'During ODU Online’s transition to the Canvas Learning Management System (LMS), hundreds of asynchronous university course modules required structural HTML/CSS cleanup and Section 508 / WCAG 2.1 AA verification to ensure equitable access for students using assistive technologies.',
+      'Across ODU Online’s custom Personal Learning Environment (PLE) and transition to the Canvas Learning Management System (LMS), hundreds of university course modules contained legacy visual-only markup (such as <td style="font-weight: bold;"> cells and unlabeled interactive widgets) requiring source-code WCAG 2.1 AA and Revised Section 508 web compliance.',
     architecturalSolution:
-      'Audited and remediated course HTML/CSS pages and instructional documents using Deque axe, WAVE, manual keyboard testing, and JAWS/NVDA screen readers, while developing reusable Section 508-compliant HTML/CSS course templates for instructional designers and faculty.',
+      'Audited and refactored course source HTML and CSS using Deque axe, WAVE, manual keyboard focus testing, and JAWS/NVDA screen readers—converting visual layouts into semantic HTML5 (<th scope="col/row">, landmarks, explicit labels) and authoring zero-dependency HTML/CSS Canvas templates still used by instructional designers and faculty across university courses.',
     quantifiedImpact: [
-      { label: 'Compliance Standard', value: 'Section 508 & WCAG 2.1 AA' },
+      { label: 'Web Standards', value: 'WCAG 2.1 AA & Section 508 Web' },
       { label: 'Testing Workflow', value: 'Deque axe + JAWS / NVDA' },
-      { label: 'Reusable Output', value: 'Accessible HTML/CSS Templates' }
+      { label: 'Reusable Output', value: 'Semantic HTML5/CSS Templates' }
     ],
-    technologies: ['Section 508', 'WCAG 2.1 AA', 'Deque axe', 'WAVE', 'JAWS / NVDA', 'Semantic HTML5 & CSS', 'Canvas LMS'],
+    technologies: ['WCAG 2.1 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS'],
     referenceLinks: [
       { label: 'Download Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
     ]
@@ -646,9 +646,9 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     achievements: [
       'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, Bootstrap 5.3.8, and Web Awesome.',
       'Developed companion native desktop and mobile apps in C# / .NET 10 WPF (Windows) and SwiftUI (macOS, iOS, iPadOS) that consume static REST/JSON APIs with offline archive support, cross-app IPC, and native UIAutomation / VoiceOver accessibility.',
-      'Automated multi-repo build verification, FFmpeg audio normalization, human-verified WebVTT caption checks, PDF/UA-1 & EPUB compilation, S3 CDN synchronization, and non-root Ubuntu/Nginx deployments via modular CLI scripts.'
+      'Automated multi-repo build verification, FFmpeg audio normalization, human-verified WebVTT caption checks, digital edition compilation, S3 CDN synchronization, and non-root Ubuntu/Nginx deployments via modular CLI scripts.'
     ],
-    technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 WPF', 'SwiftUI', 'Linux / Nginx', 'Section 508']
+    technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 WPF', 'SwiftUI', 'Linux / Nginx', 'WCAG / Section 508 Web']
   },
   {
     functionalTitle: 'Clerk-Cashier',
@@ -656,31 +656,31 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     organization: 'City of Virginia Beach — Parks & Recreation',
     location: 'Virginia Beach, VA',
     timeframe: 'May 2023 – Present',
-    lenses: ['data-etl', 'accessibility'],
+    lenses: ['data-etl'],
     summary:
-      'Support daily recreation center Front Desk operations while applying a software-development and Section 508 accessibility background to improve staff reference materials and everyday technical workflows.',
+      'Support daily recreation center Front Desk operations while applying a software-development and web-engineering background to improve staff reference materials and everyday technical workflows.',
     achievements: [
       'Support daily recreation center operations by assisting patrons in person and by telephone, processing payments, issuing memberships, checking members into the facility, and resolving account and service questions.',
-      'Extract room-rental data from ActiveNet, transform complex reservation records into a standardized Microsoft Word reference built with Section 508 accessible-document principles, and organize the resulting information into an at-a-glance view of weekend facility use for Front Desk staff.',
+      'Extract room-rental data from ActiveNet, transform complex reservation records into a standardized Microsoft Word reference with clear tabular hierarchy, and organize the resulting information into an at-a-glance view of weekend facility use for Front Desk staff.',
       'Serve as an approachable technical resource for coworkers using ActiveNet, Microsoft Office, and related Front Desk systems, troubleshooting everyday issues and identifying opportunities for clearer operational workflows.'
     ],
-    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Section 508', 'Accessible Information Design', 'Customer Support', 'Process Improvement']
+    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Operational Data Processing', 'Structured Information Design', 'Customer Support', 'Process Improvement']
   },
   {
-    functionalTitle: 'Computer Operations (Web & Section 508 Accessibility)',
+    functionalTitle: 'Computer Operations (Code-Level Web & LMS Accessibility)',
     hrClassification: 'Official University HR Classification: Computer Operations Tech',
     organization: 'Old Dominion University (ODU Online)',
     location: 'Norfolk, VA',
     timeframe: 'Nov 2019 – Jul 2022',
     lenses: ['accessibility', 'architecture', 'data-etl'],
     summary:
-      'Supported ODU Online’s transition to the Canvas LMS by auditing and remediating university web content, course modules, and templates for Federal Section 508 and WCAG 2.1 AA compliance.',
+      'Supported ODU Online’s custom Personal Learning Environment (PLE) and transition to the Canvas LMS by auditing source HTML/CSS and authoring reusable WCAG 2.1 AA and Revised Section 508 web-compliant course templates.',
     achievements: [
-      'Audited and remediated university web pages, course modules, and instructional documents for accessibility and structural consistency during ODU Online’s Canvas LMS migration.',
-      'Conducted Section 508 and WCAG 2.1 AA reviews combining automated scanners (Deque axe, WAVE) with manual keyboard testing and JAWS / NVDA screen-reader verification.',
-      'Developed reusable, Section 508-compliant HTML and CSS course module templates that helped instructional designers and faculty publish accessible distance-learning materials.'
+      'Audited source HTML and CSS across ODU Online’s custom Personal Learning Environment (PLE) and Canvas LMS course modules during university-wide LMS migration, refactoring legacy visual-only markup into semantic HTML5 (<th scope="col/row">, landmarks, explicit form labels).',
+      'Conducted code-level WCAG 2.1 AA and Section 508 web reviews combining automated DOM scanners (Deque axe, WAVE) with manual keyboard focus testing and JAWS / NVDA / VoiceOver screen-reader verification.',
+      'Engineered zero-dependency, WCAG 2.1 AA and Section 508 web-compliant HTML5 and CSS course module templates still used by instructional designers and faculty across university distance-learning courses.'
     ],
-    technologies: ['Section 508', 'WCAG 2.1 AA', 'Deque axe', 'WAVE', 'JAWS / NVDA', 'Semantic HTML/CSS', 'Canvas LMS']
+    technologies: ['WCAG 2.1 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS']
   },
   {
     functionalTitle: 'Mobile Applications Developer Intern',
@@ -722,7 +722,7 @@ export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
     focusAreas: [
       'Organizational Leadership & Cross-Functional Team Collaboration',
       'Public-Sector & Higher-Education Information Systems',
-      'Accessible Technical Communication & Section 508 Principles'
+      'Accessible Web Systems & Section 508 Web Principles'
     ]
   },
   {

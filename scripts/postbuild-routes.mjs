@@ -43,7 +43,7 @@ if (!fs.existsSync(rootIndexHtmlPath)) {
 const baseHtml = fs.readFileSync(rootIndexHtmlPath, 'utf8');
 const PORTFOLIO_OG_IMAGE = 'https://michaelpragsdale.com/og-image.jpg';
 const PORTFOLIO_OG_ALT =
-  'Michael P. Ragsdale — Full-Stack Web Developer & Section 508 Specialist (michaelpragsdale.com)';
+  'Michael P. Ragsdale — Full-Stack Web Developer & Web Accessibility Engineer (michaelpragsdale.com)';
 
 /**
  * Route metadata definitions strictly adhering to <= 60 char titles and <= 155 char descriptions.
