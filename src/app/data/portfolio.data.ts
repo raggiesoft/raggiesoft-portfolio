@@ -122,7 +122,8 @@ export const EXECUTIVE_PROFILE = {
       'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf',
     directEmail: 'mailto:hello@michaelpragsdale.com',
     directEmailDisplay: 'hello@michaelpragsdale.com',
-    githubUrl: 'https://github.com/raggiesoft'
+    githubUrl: 'https://github.com/raggiesoft',
+    linkedinUrl: 'https://www.linkedin.com/in/michael-ragsdale-raggiesoft/'
   }
 } as const;
 

@@ -329,6 +329,15 @@ Accessibility & Recruiter UX Architecture:
             >
               <span>GitHub (&#64;raggiesoft)</span>
             </a>
+
+            <a
+              class="btn btn-secondary"
+              [href]="profile.assets.linkedinUrl"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>LinkedIn</span>
+            </a>
           </div>
         </div>
       </article>
@@ -1241,6 +1250,9 @@ Accessibility & Recruiter UX Architecture:
         </a>
         <a class="btn btn-secondary" [href]="profile.assets.directEmail">
           {{ profile.assets.directEmailDisplay }}
+        </a>
+        <a class="btn btn-secondary" [href]="profile.assets.linkedinUrl" target="_blank" rel="noopener">
+          LinkedIn
         </a>
       </div>
     </div>
