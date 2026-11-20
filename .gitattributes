@@ -1,0 +1,9 @@
+# ============================================================================
+# .gitattributes — raggiesoft-portfolio (michaelpragsdale.com)
+# ============================================================================
+# Marks compiled Angular static output (`dist/`) and `package-lock.json` as
+# generated artifacts so GitHub Linguist reports pure TypeScript + Native CSS
+# source code percentages.
+# ============================================================================
+dist/** linguist-generated=true
+package-lock.json linguist-generated=true
