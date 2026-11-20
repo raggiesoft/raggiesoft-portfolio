@@ -524,20 +524,20 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
     id: 'activenet-municipal-etl',
     code: 'CASE-01',
-    title: 'ActiveNet Operational Data Processing & Structured Front Desk Reference Design',
+    title: 'ActiveNet Operational Data Transformation & Structured Reference Architecture',
     organization: 'City of Virginia Beach — Parks & Recreation',
     timeframe: 'May 2023 – Present',
     lenses: ['data-etl'],
     problemStatement:
-      'ActiveNet stores detailed recreation center room-rental and reservation records, yet parsing raw reservation screens mid-shift is slow when Front Desk staff are simultaneously assisting walk-in patrons, answering phones, and checking in members.',
+      'ActiveNet stores detailed recreation center room-rental and reservation datasets, yet parsing raw multi-screen reservation views mid-shift is slow during high-volume weekend facility operations.',
     architecturalSolution:
-      'Applied structured data-transformation habits to Front Desk operations: extracted weekend room-rental data from ActiveNet, verified and reorganized reservation records, and transformed them into a concise, standardized Microsoft Word reference with clear visual hierarchy and scannable tabular layout.',
+      'Applied structured data-transformation habits to municipal facility operations: extracted weekend scheduling datasets from ActiveNet, normalized multi-room reservation records, and structured them into standardized, at-a-glance operational reference guides with clear tabular hierarchy.',
     quantifiedImpact: [
       { label: 'Operational Output', value: 'Standardized Weekend Reference' },
       { label: 'Information Structure', value: 'Consistent Tabular Hierarchy' },
-      { label: 'Front Desk Benefit', value: 'At-a-Glance Staff Lookup' }
+      { label: 'Operational Benefit', value: 'At-a-Glance Staff Lookup' }
     ],
-    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Operational Data Processing', 'Structured Information Design', 'Process Improvement'],
+    technologies: ['ActiveNet', 'Operational Data Transformation', 'Structured Information Architecture', 'Workflow Optimization'],
     referenceLinks: [
       { label: 'Download Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
     ]
@@ -651,20 +651,20 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 WPF', 'SwiftUI', 'Linux / Nginx', 'WCAG / Section 508 Web']
   },
   {
-    functionalTitle: 'Clerk-Cashier',
-    hrClassification: 'City of Virginia Beach Parks & Recreation (Current Municipal Role While Completing A.S. in IT)',
+    functionalTitle: 'Clerk-Cashier (Concurrent with Software Engineering & IT Studies)',
+    hrClassification: 'City of Virginia Beach Parks & Recreation (Municipal Role Concurrent with A.S. in IT at TCC)',
     organization: 'City of Virginia Beach — Parks & Recreation',
     location: 'Virginia Beach, VA',
     timeframe: 'May 2023 – Present',
     lenses: ['data-etl'],
     summary:
-      'Support daily recreation center Front Desk operations while applying a software-development and web-engineering background to improve staff reference materials and everyday technical workflows.',
+      'Manage daily municipal facility operations while applying software-engineering and data-structuring habits to streamline internal scheduling references and workstation workflows.',
     achievements: [
-      'Support daily recreation center operations by assisting patrons in person and by telephone, processing payments, issuing memberships, checking members into the facility, and resolving account and service questions.',
-      'Extract room-rental data from ActiveNet, transform complex reservation records into a standardized Microsoft Word reference with clear tabular hierarchy, and organize the resulting information into an at-a-glance view of weekend facility use for Front Desk staff.',
-      'Serve as an approachable technical resource for coworkers using ActiveNet, Microsoft Office, and related Front Desk systems, troubleshooting everyday issues and identifying opportunities for clearer operational workflows.'
+      'Extract facility scheduling datasets from ActiveNet, normalize complex multi-room reservation records, and structure them into standardized, at-a-glance weekend operational reference guides.',
+      'Act as an on-site technical resource for staff navigating ActiveNet software workflows and municipal workstation tools, resolving recurring usability bottlenecks and streamlining operational procedures.',
+      'Manage daily member access verification, account reconciliation, and point-of-sale transactions in a high-volume public recreation facility.'
     ],
-    technologies: ['ActiveNet', 'Microsoft Word / Office', 'Operational Data Processing', 'Structured Information Design', 'Customer Support', 'Process Improvement']
+    technologies: ['ActiveNet', 'Operational Data Transformation', 'Structured Information Architecture', 'Systems Troubleshooting', 'Municipal Operations']
   },
   {
     functionalTitle: 'Computer Operations (Code-Level Web & LMS Accessibility)',
