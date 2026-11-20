@@ -552,13 +552,13 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
     problemStatement:
       'Across ODU Online’s custom Personal Learning Environment (PLE) and transition to the Canvas Learning Management System (LMS), hundreds of university course modules contained legacy visual-only markup (such as <td style="font-weight: bold;"> cells and unlabeled interactive widgets) requiring source-code WCAG 2.1 AA and Revised Section 508 web compliance.',
     architecturalSolution:
-      'Audited and refactored course source HTML and CSS using Deque axe, WAVE, manual keyboard focus testing, and JAWS/NVDA screen readers—converting visual layouts into semantic HTML5 (<th scope="col/row">, landmarks, explicit labels) and authoring zero-dependency HTML/CSS Canvas templates still used by instructional designers and faculty across university courses.',
+      'Audited and refactored course source HTML and CSS using Deque axe, WAVE, manual keyboard focus testing, and JAWS/NVDA screen readers—converting visual layouts into semantic HTML5 (<th scope="col/row">, landmarks, explicit labels) and authoring zero-dependency HTML/CSS Canvas templates still used across university courses. Independently took initiative to build a Windows desktop batch utility (C# / .NET 5 and VB.NET, packaged via Inno Setup) that throttled CSV-queued PLE accessibility scans after browser SSO login and exported semantic HTML5 (<th scope="row">, aria-hidden) status logs.',
     quantifiedImpact: [
       { label: 'Web Standards', value: 'WCAG 2.1 AA & Section 508 Web' },
-      { label: 'Testing Workflow', value: 'Deque axe + JAWS / NVDA' },
+      { label: 'Testing & Tooling', value: 'Deque axe + JAWS/NVDA + C#/.NET' },
       { label: 'Reusable Output', value: 'Semantic HTML5/CSS Templates' }
     ],
-    technologies: ['WCAG 2.1 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS'],
+    technologies: ['WCAG 2.1 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS', 'C# / .NET 5', 'Inno Setup'],
     referenceLinks: [
       { label: 'Download Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
     ]
@@ -678,9 +678,10 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     achievements: [
       'Audited source HTML and CSS across ODU Online’s custom Personal Learning Environment (PLE) and Canvas LMS course modules during university-wide LMS migration, refactoring legacy visual-only markup into semantic HTML5 (<th scope="col/row">, landmarks, explicit form labels).',
       'Conducted code-level WCAG 2.1 AA and Section 508 web reviews combining automated DOM scanners (Deque axe, WAVE) with manual keyboard focus testing and JAWS / NVDA / VoiceOver screen-reader verification.',
-      'Engineered zero-dependency, WCAG 2.1 AA and Section 508 web-compliant HTML5 and CSS course module templates still used by instructional designers and faculty across university distance-learning courses.'
+      'Engineered zero-dependency, WCAG 2.1 AA and Section 508 web-compliant HTML5 and CSS course module templates still used by instructional designers and faculty across university distance-learning courses.',
+      'Independently developed a self-initiated Windows desktop batch utility (C# / .NET 5 and VB.NET, packaged with Inno Setup) to queue course accessibility scans from CSV schedules with rate-limited throttling and export semantic HTML5 (<th scope="row">) status logs.'
     ],
-    technologies: ['WCAG 2.1 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS']
+    technologies: ['WCAG 2.1 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS', 'C# / .NET 5']
   },
   {
     functionalTitle: 'Mobile Applications Developer Intern',
