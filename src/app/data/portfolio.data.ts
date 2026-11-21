@@ -1160,7 +1160,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     cliSnippet: {
       comment: '# Inspect Nginx Virtual Host Syntax & Service Health on NYC1',
-      commands: ['ssh michael@jessica.raggiesoft.com', 'sudo nginx -t && systemctl status nginx php8.5-fpm']
+      commands: ['ssh michael@142.93.244.239', 'sudo nginx -t && systemctl status nginx php8.5-fpm']
     },
     operationsHeading: 'Security Posture & Infrastructure Economics',
     operationsLead: 'Eliminating SQL injection vectors and database maintenance overhead by design.',
