@@ -34,7 +34,7 @@
  *    When this `main.ts` script runs, `bootstrapApplication` finds `<mpr-root>`
  *    in the browser's Document Object Model (DOM) and fills it with the entire
  *    interactive portfolio (header, dark/light theme switcher, role-lens filter,
- *    11 web app cards, case studies, CI/CD docs, and footer).
+ *    16 web app cards, case studies, CI/CD docs, and footer).
  *
  * 4. Architectural Note — Why Zoneless Angular + Signals?
  *    Traditional Angular relied on `zone.js` monkey-patching every browser async

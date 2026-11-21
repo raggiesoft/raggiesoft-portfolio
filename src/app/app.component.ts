@@ -18,7 +18,7 @@
  *
  * 2. What feeds into this file?
  *    - Structured, read-only data arrays and objects from `./data/portfolio.data.ts`
- *      (our profile details, 11 web apps, 5 case studies, CI/CD tool profiles,
+ *      (our profile details, 16 web apps, 5 case studies, CI/CD tool profiles,
  *      work history, and education).
  *    - Browser Web APIs (`window.location`, `window.history`, `localStorage`,
  *      and `window.matchMedia`) accessed safely through Angular's `DOCUMENT` token.
@@ -309,7 +309,7 @@ export class AppComponent implements OnInit {
   });
 
   /**
-   * Computed Signal: Returns the subset of our 11 live web properties matching
+   * Computed Signal: Returns the subset of our 16 live web properties matching
    * the active Role-Lens filter.
    *
    * How `.filter()` and `.includes()` work together:

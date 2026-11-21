@@ -111,7 +111,7 @@ const ROUTES = [
     routePath: 'build-team',
     title: 'CI/CD & Build Automation Suite | Michael P. Ragsdale',
     description:
-      'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines powering build verification, CDN asset sync, and non-root deploys across 11 web properties.',
+      'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines powering build verification, CDN asset sync, and non-root deploys across 16 web properties.',
     image: PORTFOLIO_OG_IMAGE,
     imageAlt: PORTFOLIO_OG_ALT
   },
@@ -135,7 +135,7 @@ const ROUTES = [
     routePath: 'build-team/jessica',
     title: 'jessica.raggiesoft.com — Linux & Nginx Host | CI/CD',
     description:
-      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 11 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
+      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 16 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
     image: PORTFOLIO_OG_IMAGE,
     imageAlt: PORTFOLIO_OG_ALT
   },

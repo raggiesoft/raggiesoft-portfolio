@@ -79,7 +79,7 @@ export interface HiringParameter {
 }
 
 /**
- * Blueprint for each of the 11 live web properties in `POLYGLOT_ECOSYSTEM`.
+ * Blueprint for each of the 16 live web properties in `POLYGLOT_ECOSYSTEM`.
  *
  * Notice two special TypeScript syntax features here:
  * 1. `readonly string[]` and `readonly RoleLens[]`: Read-only arrays! Standard
@@ -87,7 +87,7 @@ export interface HiringParameter {
  *    at compile time, while safe non-mutating methods like `.filter()` and `.includes()` work great.
  * 2. Optional properties (`isCurrentSite?: boolean` and `ctaLabel?: string`):
  *    The `?` before `:` means "optional" (`boolean | undefined` / `string | undefined`).
- *    Only `michaelpragsdale.com` sets `isCurrentSite: true`, so the other 10 sites
+ *    Only `michaelpragsdale.com` sets `isCurrentSite: true`, so the other 15 sites
  *    can omit `isCurrentSite` cleanly!
  */
 export interface EcosystemProperty {
@@ -191,7 +191,7 @@ export const EXECUTIVE_PROFILE = {
   location: 'Norfolk / Virginia Beach, VA (Hampton Roads)',
   statusBadge: 'Available for W-2 Full-Stack Web, Software & Web Accessibility Roles',
   executiveSummary:
-    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, an 11-property zero-database web ecosystem, and companion C#/.NET 10 WPF and SwiftUI desktop/mobile applications.',
+    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, a 16-property zero-database web ecosystem, and companion C#/.NET 10 WPF, native C++20, and SwiftUI desktop/mobile applications.',
   valueProposition:
     'I focus on three practical engineering standards across every project: code-level WCAG 2.1/2.2 AA and Section 508 web accessibility in semantic HTML5 and WAI-ARIA, fast static-first performance, and clear, well-documented code that teams can maintain.',
   assets: {
@@ -221,13 +221,13 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
     id: 'all',
     label: 'All Projects & Case Studies',
     shortDescription:
-      'Showing all 11 live production web properties, 5 engineering & accessibility case studies, and full work history.'
+      'Showing all 16 live production web properties, 5 engineering & accessibility case studies, and full work history.'
   },
   {
     id: 'architecture',
     label: 'Full-Stack & Native Apps',
     shortDescription:
-      'Focused on multi-framework web apps (TypeScript, Angular 19, PHP 8.5 MVC, React 19 / Next.js 16, Svelte 5, Astro 6, Nuxt 4) and native C#/.NET 10 WPF + SwiftUI software.'
+      'Focused on multi-framework web apps (TypeScript, Angular 19, PHP 8.5 MVC, React 19 / Next.js 16, Svelte 5, Astro 6, Nuxt 4, SolidJS, Preact, Mithril, Lit 3, Fluent UI Web Components) and native C#/.NET 10 WPF, C++20 & SwiftUI software.'
   },
   {
     id: 'accessibility',
@@ -287,14 +287,14 @@ export const HIRING_PARAMETERS: readonly HiringParameter[] = [
   },
   {
     label: 'Live Work Samples',
-    value: '11 Production Web Properties, C#/.NET & SwiftUI Apps, and GitHub',
+    value: '16 Production Web Properties, C#/.NET 10, C++20 & SwiftUI Apps, and GitHub',
     detail:
       'Happy to walk through live production codebases, accessibility audits, and standard technical interviews with your engineering team.'
   }
 ] as const;
 
 /**
- * Polyglot Production Web Ecosystem Matrix (11 Live Properties).
+ * Polyglot Production Web Ecosystem Matrix (16 Live Properties).
  * Demonstrates practical fluency across modern web frameworks and vanilla
  * web standards while maintaining zero server-side SQL database overhead.
  *
@@ -513,6 +513,101 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     tags: ['C++20 Win32 (/MT Zero-Runtime)', 'C# / .NET 10 WPF', 'Inno Setup 7 & Active Setup', 'Visual Basic 6.0', 'ANSI NSIS (Win95)', 'Pre-AI Archive'],
     lenses: ['architecture', 'devops', 'accessibility'],
     ctaLabel: 'Visit StoreTrainer Portal (storetrainer.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-crossroads',
+    name: 'RaggieSoft Story Crossroads Imprint & Branching Sandbox',
+    domain: 'crossroads.raggiesoft.com',
+    url: 'https://crossroads.raggiesoft.com',
+    categoryLabel: '12 • Interactive Fiction Imprint & Lit 3 Web Components',
+    primaryStack: 'Eleventy (11ty) v3 ESM + Lit 3 Custom Elements + TypeScript Static SSG',
+    architecturalPattern: 'Zero-Hydration Static Templates Paired with Progressive Lit 3 Shadow-DOM Interactive Islands',
+    summary:
+      'Dedicated interactive-fiction imprint portal combining Eleventy v3 build-time HTML generation with standards-based Lit 3 custom elements for live branching narrative previews.',
+    highlights: [
+      'Generates semantic HTML5 routes at build time via Eleventy v3 ESM while hydrating only interactive Crossroads choice widgets via lightweight Lit 3 Custom Elements.',
+      'Enforces keyboard-navigable radio/button decision trees, polite WAI-ARIA route announcements, and adaptive Light/Dark contrast tokens.',
+      'Integrates directly with Paige (paige.php) DAG graph validation so every branching path resolves cleanly on books.raggiesoft.com.'
+    ],
+    tags: ['Eleventy v3 (11ty)', 'Lit 3 Web Components', 'TypeScript', 'Progressive Islands', 'Static SSG', 'WCAG 2.1 AA'],
+    lenses: ['architecture', 'accessibility', 'data-etl'],
+    ctaLabel: 'Visit Story Crossroads (crossroads.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-cedarrun',
+    name: 'Cedar Run Wilderness Guide & Interactive Companion',
+    domain: 'cedarrun.raggiesoft.com',
+    url: 'https://cedarrun.raggiesoft.com',
+    categoryLabel: '13 • Fine-Grained Reactive SSG (SolidJS)',
+    primaryStack: 'SolidJS + Fine-Grained Signals + TypeScript + Vite Static SSG',
+    architecturalPattern: 'Virtual-DOM-Free Fine-Grained Reactive UI Pre-Rendered to Static HTML Routes',
+    summary:
+      'Interactive companion launchpad for the Cedar Run branching novel, using SolidJS fine-grained reactivity without Virtual DOM diffing overhead.',
+    highlights: [
+      'Compiles JSX templates into direct, pinpoint DOM updates via SolidJS signals while pre-rendering full static HTML, OpenGraph, and XML sitemap outputs at build time.',
+      'Pairs forest-daylight and Bortle-1 dark-sky themes via CSS light-dark() and prefers-color-scheme with >= 4.5:1 contrast.',
+      'Links interactive shelter stages and 1975 acoustic songbook entries directly into RaggieSoft Book Reader and The Listening Room.'
+    ],
+    tags: ['SolidJS', 'Fine-Grained Reactivity', 'TypeScript', 'Vite SSG', 'CSS light-dark()', 'Section 508 Web'],
+    lenses: ['architecture', 'accessibility'],
+    ctaLabel: 'Visit Cedar Run (cedarrun.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-waystation',
+    name: 'The Uncharted Waystation (Canonical Global Directory & Wildcard 404)',
+    domain: 'waystation.raggiesoft.com',
+    url: 'https://waystation.raggiesoft.com',
+    categoryLabel: '14 • DRY Global Directory & Nginx Default-Server 404 Router',
+    primaryStack: 'Mithril.js Hyperscript (m()) + TypeScript Static SSG + Nginx default_server Catch-All',
+    architecturalPattern: 'Dual-Role Canonical Ecosystem Directory & Intelligent Subdomain Typo / 404 Recovery Engine',
+    summary:
+      'Serves both as the single DRY global directory indexing all 16 RaggieSoft properties and as Nginx’s wildcard *.raggiesoft.com HTTP 404 handler—matching mistyped hostnames or paths to the intended destination.',
+    highlights: [
+      'Built with Mithril.js pure TypeScript hyperscript (m()) in < 10 KB of client JS, pre-rendered at build time into static routes and a genuine HTTP 404 fallback (/404.html).',
+      'Implements semantic <search>, visible <fieldset>/<legend> radio category filters, and aria-live="polite" result count announcements.',
+      'Eliminates duplicate directory maintenance across sibling sites by centralizing cross-domain discovery and typo recovery in one place.'
+    ],
+    tags: ['Mithril.js Hyperscript', 'TypeScript', 'DRY Architecture', 'Nginx default_server 404', 'Semantic <search>', 'WCAG 2.1 AA'],
+    lenses: ['architecture', 'accessibility', 'devops'],
+    ctaLabel: 'Visit Global Directory (waystation.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-jessica',
+    name: 'Jessica — Project Origins & QA Architecture Guide',
+    domain: 'jessica.raggiesoft.com',
+    url: 'https://jessica.raggiesoft.com',
+    categoryLabel: '15 • Compact Preact 10 + Signals Multi-Route SSG',
+    primaryStack: 'Preact 10 + @preact/signals + TypeScript + Vite Static SSG',
+    architecturalPattern: 'Ultra-Compact (~6 KB) Pre-Rendered Signals SPA Documenting Project Origins & QA Workflows',
+    summary:
+      'Consumer-friendly narrative companion explaining the origin story and human QA checklist behind every RaggieSoft property, built on Preact 10 and @preact/signals.',
+    highlights: [
+      'Combines build-time server rendering (preact-render-to-string) with ~6 KB client hydration and module-level @preact/signals state.',
+      'Implements accessible WAI-ARIA toggle groups (aria-pressed), keyboard-friendly milestone tabs, and tri-state Daylight / Evening Lamp theming.',
+      'Complements waystation.raggiesoft.com under a strict DRY split: Waystation owns the fast A–Z directory while Jessica owns project backstories.'
+    ],
+    tags: ['Preact 10', '@preact/signals', 'TypeScript', 'Vite SSR Pre-Render', 'WAI-ARIA Toggle Groups', 'WCAG 2.1 AA'],
+    lenses: ['architecture', 'accessibility'],
+    ctaLabel: 'Visit Jessica Portal (jessica.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-launcher',
+    name: 'RaggieSoft Launcher (Desktop Suite Hub & Fluent Web Components)',
+    domain: 'launcher.raggiesoft.com',
+    url: 'https://launcher.raggiesoft.com',
+    categoryLabel: '16 • Native Desktop Suite Portal & Fluent Design Web Components',
+    primaryStack: 'Microsoft Fluent UI Web Components (@fluentui/web-components / FAST Element) + TypeScript + Vite SSG',
+    architecturalPattern: 'Isomorphic Static Pre-Rendering Upgraded with W3C Custom Elements & Fluent Luminance Tokens',
+    summary:
+      'Dedicated companion portal for RaggieSoftLauncher.exe—documenting unified desktop management, offline archive safety, Express/Custom Inno Setup flows, and RaggieSoftUpdate.exe across all five Windows desktop apps.',
+    highlights: [
+      'Pairs zero-CLS build-time static HTML pre-rendering (/apps, /updates, /faq, /404.html) with Microsoft Fluent UI Web Components (<fluent-card>, <fluent-divider>) powered by FAST Element.',
+      'Synchronizes Fluent Design System baseLayerLuminance tokens dynamically with OS prefers-color-scheme and a two-state <meta name="color-scheme"> controller.',
+      'Presents complex desktop engineering (UAC ZIP elevation, C++20 WinHTTP/BCrypt SHA-256 updates, Active Setup cleanup) in clear, jargon-free language for everyday users.'
+    ],
+    tags: ['Fluent UI Web Components', 'Microsoft FAST Element', 'TypeScript 5.7', 'Vite Static SSG', 'C# / .NET 10 Companion', 'Section 508 Web'],
+    lenses: ['architecture', 'accessibility', 'devops'],
+    ctaLabel: 'Visit Launcher Portal (launcher.raggiesoft.com)'
   }
 ] as const;
 
@@ -544,10 +639,10 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
     roleTitle: 'Hardened Ubuntu Linux, Nginx & PHP 8.5-FPM Production Host',
     stack: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / Ed25519 SSH',
     summary:
-      'Consolidated DigitalOcean production Droplet in NYC1 serving all 11 web properties behind Cloudflare TLS 1.3, strict CSP headers, and isolated virtual host configurations.',
+      'Consolidated DigitalOcean production Droplet in NYC1 serving all 16 web properties behind Cloudflare TLS 1.3, strict CSP headers, and isolated virtual host configurations.',
     capabilities: [
       'Enforces Ed25519 SSH key-only authentication, UFW perimeter firewall rules, and zero open database ports.',
-      'Serves 11 Nginx virtual hosts (/var/www/*) with immutable static asset caching, clean 301 edge redirects, and PHP 8.5-FPM worker pools.',
+      'Serves 16 Nginx virtual hosts (/var/www/*) with immutable static asset caching, clean 301 edge redirects, and PHP 8.5-FPM worker pools.',
       'Version-controls all server virtual host definitions inside a dedicated nginx-config repository.'
     ],
     profileSlug: 'jessica',
@@ -714,17 +809,17 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
     id: 'cascade-protocol-decoupling',
     code: 'CASE-05',
-    title: '11-Property Static-First Web Decoupling & Single-Command CI/CD',
+    title: '16-Property DRY Web Decoupling & Single-Command CI/CD',
     organization: 'RaggieSoft Infrastructure (NYC1 Linux VPS + S3 CDN)',
     timeframe: '2024 – 2026',
     lenses: ['architecture', 'devops', 'data-etl'],
     problemStatement:
-      'Hosting corporate licensing, 40+ music albums, serialized books, interactive visualizations, and an engineering portfolio inside one monolithic repository created tight coupling—while adding SQL databases would increase patching overhead and attack surface.',
+      'Hosting corporate licensing, 40+ music albums, serialized books, interactive visualizations, desktop app portals, and an engineering portfolio inside one monolithic repository created tight coupling—while adding SQL databases would increase patching overhead and attack surface.',
     architecturalSolution:
-      'Decoupled the platform into 11 focused properties (`raggiesoft.com`, nine `*.raggiesoft.com` subdomains, and `michaelpragsdale.com`) backed by flat-file JSON and Markdown repositories plus DigitalOcean Spaces CDN (`assets.raggiesoft.com`). Unified cross-site navigation via a shared lightweight script (`raggiesoft-network.js`) and automated builds, validation, and non-root server deployments via `jenna-sync.sh` and `sarah-deploy.sh`.',
+      'Decoupled the platform into 16 focused properties (`raggiesoft.com`, fourteen `*.raggiesoft.com` subdomains, and `michaelpragsdale.com`) with strict DRY role separation (`waystation` as global directory & 404 router, `jessica` as project backstories, `launcher` as desktop suite hub) backed by flat-file JSON/Markdown repositories plus DigitalOcean Spaces CDN (`assets.raggiesoft.com`). Automated builds, validation, and non-root server deployments via `jenna-sync.sh` and `sarah-deploy.sh`.',
     quantifiedImpact: [
       { label: 'SQL Attack Surface', value: '0 Relational Databases' },
-      { label: 'Live Web Properties', value: '11 Decoupled Production Sites' },
+      { label: 'Live Web Properties', value: '16 Decoupled Production Sites' },
       { label: 'Release Workflow', value: 'Automated Pre-Push Build Gates' }
     ],
     technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'Next.js 16', 'Web Awesome', 'Nginx', 'DigitalOcean Spaces'],
@@ -749,7 +844,7 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     timeframe: '2008 – Present',
     lenses: ['architecture', 'accessibility', 'devops', 'data-etl'],
     summary:
-      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 11 live web properties, cross-platform C#/.NET and SwiftUI apps, and Linux cloud infrastructure.',
+      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 16 live web properties, cross-platform C#/.NET 10, C++20, and SwiftUI apps, and Linux cloud infrastructure.',
     achievements: [
       'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, Bootstrap 5.3.8, and Web Awesome.',
       'Developed companion native desktop and mobile apps in C# / .NET 10 WPF (Windows) and SwiftUI (macOS, iOS, iPadOS) that consume static REST/JSON APIs with offline archive support, cross-app IPC, and native UIAutomation / VoiceOver accessibility.',
@@ -852,7 +947,7 @@ export const EDUCATION_CREDENTIALS: readonly EducationEntry[] = [
  * SECTION 3: CI/CD & MEDIA AUTOMATION SUITE (`/build-team` & `/build-team/:slug`)
  * =============================================================================
  * Technical documentation for the modular command-line scripts, front-controller
- * router, and Linux server configuration powering RaggieSoft's 11 web properties.
+ * router, and Linux server configuration powering RaggieSoft's 16 web properties.
  *
  * How these data structures power Views 2 and 3 of our Single-Page Application:
  * - When `window.location.pathname` is `'/build-team'`, `app.component.html`
@@ -927,7 +1022,7 @@ export interface BuildTeamMember {
 export const BUILD_TEAM_OVERVIEW = {
   title: 'CI/CD & Media Automation Suite',
   subtitle:
-    'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines that build, validate, master, and deploy 11 decoupled web properties.',
+    'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines that build, validate, master, and deploy 16 decoupled web properties.',
   quote:
     'Deterministic pre-push build gates, vault-isolated media mastering, and non-root server deployments keep a multi-framework platform maintainable by one developer.',
   logoUrl: 'https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png',
@@ -960,7 +1055,7 @@ export const BUILD_TEAM_OVERVIEW = {
     {
       step: '05 • Hardened Edge & Gateway Serving',
       command: 'jessica.raggiesoft.com -> amanda/elara.php',
-      outcome: 'Serves all 11 Nginx virtual hosts behind Cloudflare TLS 1.3, CSP headers, and isolated PHP 8.5 front-controller routing.'
+      outcome: 'Serves all 16 Nginx virtual hosts behind Cloudflare TLS 1.3, CSP headers, and isolated PHP 8.5 front-controller routing.'
     }
   ]
 } as const;
@@ -1127,10 +1222,10 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     stackBadge: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / TLS 1.3',
     quote: 'Consolidating static and SSR virtual hosts onto a hardened, database-free Linux VPS keeps cloud costs low and security tight.',
     cardSummary:
-      'Production Ubuntu Linux server in DigitalOcean NYC1 hosting all 11 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS origin certificates, and UFW perimeter rules.',
+      'Production Ubuntu Linux server in DigitalOcean NYC1 hosting all 16 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS origin certificates, and UFW perimeter rules.',
     ogTitle: 'jessica.raggiesoft.com — Linux & Nginx Host | CI/CD',
     ogDescription:
-      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 11 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
+      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 16 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
     ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
       { label: 'Region & IPv4', value: 'DigitalOcean NYC1 (142.93.244.239)' },
@@ -1140,7 +1235,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     technicalHeading: 'Multi-Tenant Nginx Virtual Hosting & Edge Hardening',
     technicalIntro:
-      'Rather than paying per-seat SaaS hosting fees for 11 separate domains and subdomains, all web properties run on a single hardened Ubuntu VPS paired with Cloudflare CDN and DigitalOcean Spaces:',
+      'Rather than paying per-seat SaaS hosting fees for 16 separate domains and subdomains, all web properties run on a single hardened Ubuntu VPS paired with Cloudflare CDN and DigitalOcean Spaces:',
     technicalCapabilities: [
       {
         title: 'SSH & Firewall Hardening',
@@ -1170,12 +1265,12 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     terminalBlock: {
       headerTitle: 'michael@jessica.raggiesoft.com (NYC1)',
-      statusBadge: 'ONLINE • 11 VHOSTS ACTIVE',
+      statusBadge: 'ONLINE • 16 VHOSTS ACTIVE',
       promptUser: 'michael@jessica:~$',
       command: 'systemctl status nginx php8.5-fpm --no-pager',
       outputLines: [
         '● nginx.service - High performance web server and reverse proxy',
-        '   Active: active (running) — serving 11 RaggieSoft virtual hosts (/var/www/*)',
+        '   Active: active (running) — serving 16 RaggieSoft virtual hosts (/var/www/*)',
         '● php8.5-fpm.service - The PHP 8.5 FastCGI Process Manager',
         '   Active: active (running) — SSR worker pool healthy (0 SQL sockets)'
       ]
@@ -1293,7 +1388,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     operationsHeading: 'Preventing Partial Releases Across Micro-Properties',
     operationsLead: 'Coordinating shared assets, sitemaps, and frontend bundles in a single deterministic workflow.',
     operationsParagraphs: [
-      'Operating 11 distinct web properties gives each domain the right tool for its job, but manual per-repo deployments would quickly cause version drift or missing CDN assets.',
+      'Operating 16 distinct web properties gives each domain the right tool for its job, but manual per-repo deployments would quickly cause version drift or missing CDN assets.',
       'Centralizing pre-push checks in jenna-sync.sh guarantees that TypeScript compiler errors, broken OpenGraph tags, or invalid sitemaps halt the release locally before any commit reaches GitHub or the production server.'
     ],
     terminalBlock: {

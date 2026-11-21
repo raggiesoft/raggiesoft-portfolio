@@ -239,7 +239,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
               href="/#polyglot-ecosystem"
               (click)="navigateInternal('/#polyglot-ecosystem', $event)"
             >
-              Web Apps (11)
+              Web Apps (16)
             </a>
           </li>
           <li>
@@ -548,15 +548,15 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
   </section>
 
   <!-- =======================================================================
-       SECTION 1: LIVE WEB APPLICATION ECOSYSTEM (11 PRODUCTION PROPERTIES)
+       SECTION 1: LIVE WEB APPLICATION ECOSYSTEM (16 PRODUCTION PROPERTIES)
        ======================================================================= -->
   <section id="polyglot-ecosystem" class="dossier-section" aria-labelledby="ecosystem-heading">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">11 Live Web Properties • Multi-Framework &amp; Vanilla Web Standards • Zero SQL Databases</p>
+        <p class="eyebrow-label">16 Live Web Properties • Multi-Framework &amp; Standards-First Web Components • Zero SQL Databases</p>
         <h2 id="ecosystem-heading">Live Web Application Ecosystem</h2>
         <p class="section-lead">
-          Each web property in the RaggieSoft network is built with a purposeful stack—spanning <strong>TypeScript &amp; Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>React 19 &amp; Next.js 16</strong>, <strong>SvelteKit 2 &amp; Svelte 5</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 &amp; Vue 3</strong>, <strong>Web Awesome Custom Elements</strong>, and <strong>Bootstrap 5.3.8</strong>—all enforcing Section 508 / WCAG 2.1 AA accessibility in production.
+          Each web property in the RaggieSoft network is built with a purposeful stack—spanning <strong>TypeScript &amp; Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>React 19 &amp; Next.js 16</strong>, <strong>SvelteKit 2 &amp; Svelte 5</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 &amp; Vue 3</strong>, <strong>SolidJS</strong>, <strong>Preact 10 + Signals</strong>, <strong>Mithril.js</strong>, <strong>Eleventy v3 + Lit 3</strong>, <strong>Microsoft Fluent UI &amp; Web Awesome Web Components</strong>, and <strong>Bootstrap 5.3.8</strong>—all enforcing Section 508 / WCAG 2.1 AA accessibility in production.
         </p>
       </div>
     </div>
@@ -568,21 +568,21 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
       style="margin-block-end: 1.5rem; border-inline-start: 4px solid var(--accent-primary);"
     >
       <div class="card-header-top" style="margin-block-end: 0.4rem;">
-        <span class="eyebrow-label">Architecture &amp; Maintainability Overview</span>
+        <span class="eyebrow-label">DRY Information Architecture &amp; Subdomain Topology</span>
         <span class="domain-badge">*.raggiesoft.com + michaelpragsdale.com</span>
       </div>
       <h3 style="font-size: 1.08rem; margin-block-end: 0.5rem;">
-        How 11 Web Properties Stay Clean, Fast &amp; Maintainable
+        How 16 Web Properties Stay DRY, Fast &amp; Maintainable
       </h3>
       <ul class="bullet-list" style="font-size: 0.92rem;">
         <li>
-          <strong>Subdomain Topology &amp; Edge 301 Redirects:</strong> Properties live on first-level <code>*.raggiesoft.com</code> subdomains (alongside <code>michaelpragsdale.com</code>) under unified Cloudflare SSL/HSTS, while external domains (<code>raggiesoftmedia.com</code>, <code>engineroom-records.com</code>, <code>fracturedprisms.com</code>, <code>thestardustengine.com</code>) execute clean <code>301</code> redirects.
+          <strong>DRY Role Separation Across Hubs:</strong> Rather than duplicating 16-card lists across sites, <code>raggiesoft.com</code> acts as a focused front-door homepage, <code>waystation.raggiesoft.com</code> serves as both the single canonical Global Directory and the wildcard <code>*.raggiesoft.com</code> HTTP 404 safety net, <code>jessica.raggiesoft.com</code> documents the personal &amp; creative story behind each project, and <code>launcher.raggiesoft.com</code> unites the native desktop application suite.
         </li>
         <li>
-          <strong>Right-Sized Consolidation vs. Decoupling:</strong> Multi-artist catalogs share a single <strong>Astro 6</strong> codebase (<code>engineroom.raggiesoft.com/artists/&#123;slug&#125;</code>), while stateful audio playback &amp; WebVTT captioning run in <strong>Svelte 5</strong> (<code>music.raggiesoft.com</code>) and cross-origin static JSON APIs are served from <code>backstage.raggiesoft.com</code> to both web and native <strong>C#/.NET 10 WPF</strong> and <strong>SwiftUI</strong> apps.
+          <strong>Right-Sized Consolidation vs. Decoupling:</strong> Multi-artist catalogs share a single <strong>Astro 6</strong> codebase (<code>engineroom.raggiesoft.com/artists/&#123;slug&#125;</code>), while stateful audio playback &amp; WebVTT captioning run in <strong>Svelte 5</strong> (<code>music.raggiesoft.com</code>) and cross-origin static JSON APIs are served from <code>backstage.raggiesoft.com</code> to both web and native <strong>C#/.NET 10 WPF</strong>, <strong>C++20</strong>, and <strong>SwiftUI</strong> apps.
         </li>
         <li>
-          <strong>Shared WCAG 2.1 AA Navigation Layer:</strong> A lightweight shared script and stylesheet (<code>raggiesoft-network.js</code> / <code>.css</code>) provides keyboard-accessible navigation across all properties and integrates cleanly into mobile disclosure menus.
+          <strong>Shared WCAG 2.1 AA Navigation Layer:</strong> A lightweight shared script and stylesheet (<code>raggiesoft-network.js</code> / <code>.css</code>) provides keyboard-accessible navigation across all 16 properties and integrates cleanly into mobile disclosure menus.
         </li>
       </ul>
     </aside>
@@ -751,7 +751,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         <p class="eyebrow-label">Build Verification, FFmpeg Media Pipelines &amp; Non-Root Linux Deployment</p>
         <h2 id="devops-heading">CI/CD &amp; Media Automation Tooling</h2>
         <p class="section-lead">
-          Maintaining 11 web properties and downloadable media archives reliably requires repeatable automation. I built a modular suite of PHP 8.5, Bash, and FFmpeg command-line tools that handle Markdown route compilation, pre-push framework build checks, EBU R128 audio normalization, S3 CDN synchronization, and non-root Linux cron deployments.
+          Maintaining 16 web properties, native desktop suites, and downloadable media archives reliably requires repeatable automation. I built a modular suite of PHP 8.5, Bash, and FFmpeg command-line tools that handle Markdown route compilation, pre-push framework build checks, EBU R128 audio normalization, S3 CDN synchronization, and non-root Linux cron deployments.
         </p>
       </div>
       <div>
