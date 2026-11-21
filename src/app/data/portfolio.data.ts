@@ -497,21 +497,21 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'storetrainer',
-    name: 'RaggieSoft StoreTrainer',
+    name: 'RaggieSoft StoreTrainer (v1.0 Archive • VB6 v1.1 • .NET 10 v2.0)',
     domain: 'storetrainer.raggiesoft.com',
     url: 'https://storetrainer.raggiesoft.com',
-    categoryLabel: '11 • Pre-AI Win32 Desktop Utility & TypeScript Portal',
-    primaryStack: 'Visual Basic 6.0 (x86) + Win32 API + .NET Port + NSIS + Vanilla TypeScript / Vite',
-    architecturalPattern: 'Cross-Era Win32 Desktop Utility (Windows 95 through Windows 11) & Accessible Retro Web Portal',
+    categoryLabel: '11 • Cross-Generation Desktop Utility (VB6 -> .NET 10) & Portal',
+    primaryStack: 'C# 13 / .NET 10 WPF (x64 & ARM64) + Inno Setup 7 + Classic VB6 v1.1 / ANSI NSIS + TypeScript SSG',
+    architecturalPattern: 'Multi-Generation Desktop Architecture (Frozen Pre-AI VB6 -> Win95 ANSI NSIS v1.1 -> .NET 10 Surgical Installer Takeover)',
     summary:
-      '100% hand-written (pre-AI, 2018–2020) Win32 desktop utility built to index and launch PC games alongside trainer utilities and CLI flags across legacy and modern Windows OS releases.',
+      'Three-generation Windows desktop utility and open-source repository (github.com/raggiesoft/storetrainer) pairing a byte-for-byte frozen pre-AI VB6 archive (2018–2022), a Windows 95-compatible VB6 v1.1 edition, and a modern C# / .NET 10 WPF 2.0 desktop suite integrated with RaggieSoft Launcher.',
     highlights: [
-      'Hand-written in Visual Basic 6.0 (TStore.vbp) with a .NET port (TStore.NET), using dynamic Win32 API resolution (GetProcAddress for IsWow64Process) for safe 32/64-bit detection back to Windows 95.',
-      'Packaged via an OS-aware NSIS installer (TSSetup.nsi) that conditionally deploys legacy runtimes and bundles the full source tree for code inspection.',
-      'Companion web portal built in Vanilla TypeScript + Vite meets modern WCAG 2.1 AA and Section 508 web contrast standards inside a classic Win32 aesthetic.'
+      'Preserves the untouched pre-AI Visual Basic 6.0 codebase (built inside a Windows 2000 SP4 VM with dynamic GetProcAddress IsWow64Process probing) alongside the May 2022 VS .NET 2003 Upgrade Wizard artifact under tag v1.0.0-pre-ai.',
+      'Ships VB6 v1.1 with an explicit ANSI NSIS script (Unicode false) for Windows 95–11 support, /l & /e CLI switches, .stf Explorer file associations, and RaggieSoft Launcher Registry discovery.',
+      'Rebuilds StoreTrainer 2.0 in C# / .NET 10 WPF (x64 & ARM64) with SHA-256 trainer integrity pinning and WaitForInputIdle sequencing, backed by an Inno Setup 7 script (StoreTrainer.iss) that surgically upgrades legacy 32-bit NSIS installs while leaving shared SysWOW64 VB6 runtimes and user .stf files untouched.'
     ],
-    tags: ['Visual Basic 6.0', 'Win32 API', 'TStore.NET', 'NSIS Installer', 'Vanilla TypeScript', 'Hand-Written Pre-AI'],
-    lenses: ['architecture', 'devops', 'data-etl'],
+    tags: ['C# / .NET 10 WPF', 'Inno Setup 7 Migration', 'Visual Basic 6.0', 'ANSI NSIS (Win95)', 'Win32 API', 'Pre-AI Archive'],
+    lenses: ['architecture', 'devops', 'accessibility'],
     ctaLabel: 'Visit StoreTrainer Portal (storetrainer.raggiesoft.com)'
   }
 ] as const;
