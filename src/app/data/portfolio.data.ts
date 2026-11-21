@@ -497,20 +497,20 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'storetrainer',
-    name: 'RaggieSoft StoreTrainer (v1.0 Archive • VB6 v1.1 • .NET 10 v2.0)',
+    name: 'RaggieSoft StoreTrainer (v1.0 Archive • VB6 v1.1 • .NET 10 v2.0 + C++20 Updater)',
     domain: 'storetrainer.raggiesoft.com',
     url: 'https://storetrainer.raggiesoft.com',
-    categoryLabel: '11 • Cross-Generation Desktop Utility (VB6 -> .NET 10) & Portal',
-    primaryStack: 'C# 13 / .NET 10 WPF (x64 & ARM64) + Inno Setup 7 + Classic VB6 v1.1 / ANSI NSIS + TypeScript SSG',
-    architecturalPattern: 'Multi-Generation Desktop Architecture (Frozen Pre-AI VB6 -> Win95 ANSI NSIS v1.1 -> .NET 10 Surgical Installer Takeover)',
+    categoryLabel: '11 • Cross-Generation Desktop Utility (VB6 -> .NET 10 + C++20) & Portal',
+    primaryStack: 'C# 13 / .NET 10 WPF + Native C++20 (/MT Zero-Runtime Updater) + Inno Setup 7 + Classic VB6 v1.1 / ANSI NSIS',
+    architecturalPattern: 'Multi-Generation Desktop Architecture (Pre-AI VB6 -> Win95 ANSI NSIS v1.1 -> .NET 10 .stfx + C++20 Suite Updater)',
     summary:
-      'Three-generation Windows desktop utility and open-source repository (github.com/raggiesoft/storetrainer) pairing a byte-for-byte frozen pre-AI VB6 archive (2018–2022), a Windows 95-compatible VB6 v1.1 edition, and a modern C# / .NET 10 WPF 2.0 desktop suite integrated with RaggieSoft Launcher.',
+      'Three-generation Windows desktop utility and open-source repository (github.com/raggiesoft/storetrainer) pairing a frozen pre-AI VB6 archive (2018–2022), a Windows 95-compatible VB6 v1.1 edition, a modern C# / .NET 10 WPF 2.0 application (.stfx JSON), and a zero-runtime C++20 suite update client (RaggieSoftUpdate.exe).',
     highlights: [
-      'Preserves the untouched pre-AI Visual Basic 6.0 codebase (built inside a Windows 2000 SP4 VM with dynamic GetProcAddress IsWow64Process probing) alongside the May 2022 VS .NET 2003 Upgrade Wizard artifact under tag v1.0.0-pre-ai.',
-      'Ships VB6 v1.1 with an explicit ANSI NSIS script (Unicode false) for Windows 95–11 support, /l & /e CLI switches, .stf Explorer file associations, and RaggieSoft Launcher Registry discovery.',
-      'Rebuilds StoreTrainer 2.0 in C# / .NET 10 WPF (x64 & ARM64) with SHA-256 trainer integrity pinning and WaitForInputIdle sequencing, backed by an Inno Setup 7 script (StoreTrainer.iss) that surgically upgrades legacy 32-bit NSIS installs while leaving shared SysWOW64 VB6 runtimes and user .stf files untouched.'
+      'Preserves the untouched pre-AI Visual Basic 6.0 codebase (Windows 2000 SP4 VM, dynamic GetProcAddress IsWow64Process probing) alongside the May 2022 VS .NET 2003 Upgrade Wizard artifact under tag v1.0.0-pre-ai, while shipping VB6 v1.1 with ANSI NSIS (Unicode false), forward-compatible .stf files, and OS-gated update checks.',
+      'Rebuilds StoreTrainer 2.0 in C# / .NET 10 WPF (x64 & ARM64) with .stfx JSON profiles, a 3-step .stf -> .stfx Upgrade Wizard, UAC-elevated (Verb="runas") trainer .ZIP extraction into protected Program Files game folders, rolling save-game .ZIP backups, CP437 .NFO ASCII art decoding, CPU ProcessorAffinity limiting, and auto-closing trainers on game exit.',
+      'Pairs Express/Custom Inno Setup 7 scripts (with Windows Active Setup multi-user HKCU cleanup and surgical 32-bit NSIS takeover) with RaggieSoftUpdate.exe—a standalone zero-runtime C++20 (/MT) Win32/WinHTTP/BCrypt SHA-256 update utility supporting Interactive Wizard, /SILENT, and /VERYSILENT modes across the entire desktop suite.'
     ],
-    tags: ['C# / .NET 10 WPF', 'Inno Setup 7 Migration', 'Visual Basic 6.0', 'ANSI NSIS (Win95)', 'Win32 API', 'Pre-AI Archive'],
+    tags: ['C++20 Win32 (/MT Zero-Runtime)', 'C# / .NET 10 WPF', 'Inno Setup 7 & Active Setup', 'Visual Basic 6.0', 'ANSI NSIS (Win95)', 'Pre-AI Archive'],
     lenses: ['architecture', 'devops', 'accessibility'],
     ctaLabel: 'Visit StoreTrainer Portal (storetrainer.raggiesoft.com)'
   }
