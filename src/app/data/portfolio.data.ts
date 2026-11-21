@@ -191,7 +191,7 @@ export const EXECUTIVE_PROFILE = {
   location: 'Norfolk / Virginia Beach, VA (Hampton Roads)',
   statusBadge: 'Available for W-2 Full-Stack Web, Software & Web Accessibility Roles',
   executiveSummary:
-    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, a 16-property zero-database web ecosystem, and companion C#/.NET 10 WPF, native C++20, and SwiftUI desktop/mobile applications.',
+    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, a 17-property zero-database web ecosystem, and companion C#/.NET 10 WinForms/WPF, native C++20, and SwiftUI desktop/mobile applications.',
   valueProposition:
     'I focus on three practical engineering standards across every project: code-level WCAG 2.1/2.2 AA and Section 508 web accessibility in semantic HTML5 and WAI-ARIA, fast static-first performance, and clear, well-documented code that teams can maintain.',
   assets: {
@@ -221,13 +221,13 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
     id: 'all',
     label: 'All Projects & Case Studies',
     shortDescription:
-      'Showing all 16 live production web properties, 5 engineering & accessibility case studies, and full work history.'
+      'Showing all 17 live production web properties, 5 engineering & accessibility case studies, and full work history.'
   },
   {
     id: 'architecture',
     label: 'Full-Stack & Native Apps',
     shortDescription:
-      'Focused on multi-framework web apps (TypeScript, Angular 19, PHP 8.5 MVC, React 19 / Next.js 16, Svelte 5, Astro 6, Nuxt 4, SolidJS, Preact, Mithril, Lit 3, Fluent UI Web Components) and native C#/.NET 10 WPF, C++20 & SwiftUI software.'
+      'Focused on multi-framework web apps (TypeScript, Angular 19, PHP 8.5 MVC, React 19 / Next.js 16, Svelte 5, Astro 6, Nuxt 4, SolidJS, Preact, Mithril, Lit 3, Fluent UI, IBM Carbon) and native C#/.NET 10 WinForms/WPF, C++20 & SwiftUI software.'
   },
   {
     id: 'accessibility',
@@ -287,7 +287,7 @@ export const HIRING_PARAMETERS: readonly HiringParameter[] = [
   },
   {
     label: 'Live Work Samples',
-    value: '16 Production Web Properties, C#/.NET 10, C++20 & SwiftUI Apps, and GitHub',
+    value: '17 Production Web Properties, C#/.NET 10, C++20 & SwiftUI Apps, and GitHub',
     detail:
       'Happy to walk through live production codebases, accessibility audits, and standard technical interviews with your engineering team.'
   }
@@ -561,7 +561,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     primaryStack: 'Mithril.js Hyperscript (m()) + TypeScript Static SSG + Nginx default_server Catch-All',
     architecturalPattern: 'Dual-Role Canonical Ecosystem Directory & Intelligent Subdomain Typo / 404 Recovery Engine',
     summary:
-      'Serves both as the single DRY global directory indexing all 16 RaggieSoft properties and as Nginx’s wildcard *.raggiesoft.com HTTP 404 handler—matching mistyped hostnames or paths to the intended destination.',
+      'Serves both as the single DRY global directory indexing all 17 RaggieSoft properties and as Nginx’s wildcard *.raggiesoft.com HTTP 404 handler—matching mistyped hostnames or paths to the intended destination.',
     highlights: [
       'Built with Mithril.js pure TypeScript hyperscript (m()) in < 10 KB of client JS, pre-rendered at build time into static routes and a genuine HTTP 404 fallback (/404.html).',
       'Implements semantic <search>, visible <fieldset>/<legend> radio category filters, and aria-live="polite" result count announcements.',
@@ -608,6 +608,25 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     tags: ['Fluent UI Web Components', 'Microsoft FAST Element', 'TypeScript 5.7', 'Vite Static SSG', 'C# / .NET 10 Companion', 'Section 508 Web'],
     lenses: ['architecture', 'accessibility', 'devops'],
     ctaLabel: 'Visit Launcher Portal (launcher.raggiesoft.com)'
+  },
+  {
+    id: 'raggiesoft-a11y-studio',
+    name: 'RaggieSoft Accessibility Studio (Enterprise WCAG IDE & IBM Carbon Portal)',
+    domain: 'a11y.raggiesoft.com',
+    url: 'https://a11y.raggiesoft.com',
+    categoryLabel: '17 • Enterprise B2B Accessibility IDE Portal & IBM Carbon Design System',
+    primaryStack: 'IBM Carbon Design System (@carbon/web-components + @carbon/styles) + TypeScript + Vite SSG',
+    architecturalPattern: 'Commercial Enterprise Product Portal Documenting Our C# / .NET 10 WinForms + Monaco IDE & CLI',
+    summary:
+      'Enterprise software portal for RaggieSoft Accessibility Studio—an open-source C# / .NET 10 WinForms + Monaco WebView2 IDE and headless CLI evolving my ODU Online PLE batch accessibility utility into a full source-level WCAG 2.2 AA & Section 508 engineering workstation.',
+    highlights: [
+      'Built on IBM Carbon Design System (@carbon/web-components Lit custom elements + @carbon/styles White/Gray-100 Sass themes) pre-rendered to zero-database static HTML.',
+      'Documents the multi-pane C# / .NET 10 WinForms workstation IDE: Monaco syntax/diff refactoring, Live Chromium DOM emulation (Forced-Colors, 400% Reflow, Tab Badges), and authenticated SSO batch scanning.',
+      'Details silent Windows Installer (.MSI) Group Policy properties, OASIS SARIF 2.1.0 CI/CD gates, and SHA-256 tamper-evident remediation logs.'
+    ],
+    tags: ['IBM Carbon Design System', '@carbon/web-components', 'C# / .NET 10 WinForms', 'Monaco Editor (WebView2)', 'SARIF 2.1.0', 'WCAG 2.2 AA / Section 508 Web'],
+    lenses: ['accessibility', 'architecture', 'devops'],
+    ctaLabel: 'Visit Accessibility Studio (a11y.raggiesoft.com)'
   }
 ] as const;
 
@@ -639,10 +658,10 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
     roleTitle: 'Hardened Ubuntu Linux, Nginx & PHP 8.5-FPM Production Host',
     stack: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / Ed25519 SSH',
     summary:
-      'Consolidated DigitalOcean production Droplet in NYC1 serving all 16 web properties behind Cloudflare TLS 1.3, strict CSP headers, and isolated virtual host configurations.',
+      'Consolidated DigitalOcean production Droplet in NYC1 serving all 17 web properties behind Cloudflare TLS 1.3, strict CSP headers, and isolated virtual host configurations.',
     capabilities: [
       'Enforces Ed25519 SSH key-only authentication, UFW perimeter firewall rules, and zero open database ports.',
-      'Serves 16 Nginx virtual hosts (/var/www/*) with immutable static asset caching, clean 301 edge redirects, and PHP 8.5-FPM worker pools.',
+      'Serves 17 Nginx virtual hosts (/var/www/*) with immutable static asset caching, clean 301 edge redirects, and PHP 8.5-FPM worker pools.',
       'Version-controls all server virtual host definitions inside a dedicated nginx-config repository.'
     ],
     profileSlug: 'jessica',
@@ -752,14 +771,16 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
     problemStatement:
       'Across ODU Online’s custom Personal Learning Environment (PLE) and transition to the Canvas Learning Management System (LMS), hundreds of university course modules contained legacy visual-only markup (such as <td style="font-weight: bold;"> cells and unlabeled interactive widgets) requiring source-code WCAG 2.1 AA and Revised Section 508 web compliance.',
     architecturalSolution:
-      'Audited and refactored course source HTML and CSS using Deque axe, WAVE, manual keyboard focus testing, and JAWS/NVDA screen readers—converting visual layouts into semantic HTML5 (scoped table headers, landmarks, explicit labels) and authoring zero-dependency HTML/CSS Canvas templates adopted across university courses. Independently took initiative to build a Windows desktop batch utility (C# / .NET 5 and VB.NET, packaged via Inno Setup) that throttled CSV-queued PLE accessibility scans after browser SSO login and exported semantic HTML5 (<th scope="row">, aria-hidden) status logs.',
+      'Audited and refactored course source HTML and CSS using Deque axe, WAVE, manual keyboard focus testing, and JAWS/NVDA screen readers—converting visual layouts into semantic HTML5 (scoped table headers, landmarks, explicit labels) and authoring zero-dependency HTML/CSS Canvas templates adopted across university courses. Independently took initiative to build a Windows desktop batch utility (C# / .NET 5 and VB.NET, packaged via Inno Setup) that throttled CSV-queued PLE accessibility scans after browser SSO login and exported semantic HTML5 (<th scope="row">, aria-hidden) status logs—an architecture later expanded into the open-source RaggieSoft Accessibility Studio (.NET 10 WinForms + Monaco WebView2 IDE & SARIF 2.1.0 CLI).',
     quantifiedImpact: [
-      { label: 'Web Standards', value: 'WCAG 2.1 AA & Section 508 Web' },
+      { label: 'Web Standards', value: 'WCAG 2.1/2.2 AA & Section 508 Web' },
       { label: 'Testing & Tooling', value: 'Deque axe + JAWS/NVDA + C#/.NET' },
-      { label: 'Reusable Output', value: 'Semantic HTML5/CSS Templates' }
+      { label: 'Reusable Output', value: 'HTML5 Templates & Studio IDE' }
     ],
-    technologies: ['WCAG 2.1 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS', 'C# / .NET 5', 'Inno Setup'],
+    technologies: ['WCAG 2.1/2.2 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS', 'C# / .NET 5 & .NET 10 WinForms', 'Inno Setup / MSI'],
     referenceLinks: [
+      { label: 'Inspect RaggieSoft Accessibility Studio (a11y.raggiesoft.com)', url: 'https://a11y.raggiesoft.com' },
+      { label: 'View IDE Source on GitHub (MIT)', url: 'https://github.com/raggiesoft/accessibility-studio' },
       { label: 'Download Resume (PDF)', url: 'https://assets.raggiesoft.com/portfolio/documents/resume/mragsdale-resume.pdf' }
     ]
   },
@@ -809,17 +830,17 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   {
     id: 'cascade-protocol-decoupling',
     code: 'CASE-05',
-    title: '16-Property DRY Web Decoupling & Single-Command CI/CD',
+    title: '17-Property DRY Web Decoupling & Single-Command CI/CD',
     organization: 'RaggieSoft Infrastructure (NYC1 Linux VPS + S3 CDN)',
     timeframe: '2024 – 2026',
     lenses: ['architecture', 'devops', 'data-etl'],
     problemStatement:
       'Hosting corporate licensing, 40+ music albums, serialized books, interactive visualizations, desktop app portals, and an engineering portfolio inside one monolithic repository created tight coupling—while adding SQL databases would increase patching overhead and attack surface.',
     architecturalSolution:
-      'Decoupled the platform into 16 focused properties (`raggiesoft.com`, fourteen `*.raggiesoft.com` subdomains, and `michaelpragsdale.com`) with strict DRY role separation (`waystation` as global directory & 404 router, `jessica` as project backstories, `launcher` as desktop suite hub) backed by flat-file JSON/Markdown repositories plus DigitalOcean Spaces CDN (`assets.raggiesoft.com`). Automated builds, validation, and non-root server deployments via `jenna-sync.sh` and `sarah-deploy.sh`.',
+      'Decoupled the platform into 17 focused properties (`raggiesoft.com`, fifteen `*.raggiesoft.com` subdomains, and `michaelpragsdale.com`) with strict DRY role separation (`waystation` as global directory & 404 router, `jessica` as project backstories, `launcher` as desktop suite hub, `a11y` as enterprise IDE portal) backed by flat-file JSON/Markdown repositories plus DigitalOcean Spaces CDN (`assets.raggiesoft.com`). Automated builds, validation, and non-root server deployments via `jenna-sync.sh` and `sarah-deploy.sh`.',
     quantifiedImpact: [
       { label: 'SQL Attack Surface', value: '0 Relational Databases' },
-      { label: 'Live Web Properties', value: '16 Decoupled Production Sites' },
+      { label: 'Live Web Properties', value: '17 Decoupled Production Sites' },
       { label: 'Release Workflow', value: 'Automated Pre-Push Build Gates' }
     ],
     technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'Next.js 16', 'Web Awesome', 'Nginx', 'DigitalOcean Spaces'],
@@ -844,7 +865,7 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     timeframe: '2008 – Present',
     lenses: ['architecture', 'accessibility', 'devops', 'data-etl'],
     summary:
-      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 16 live web properties, cross-platform C#/.NET 10, C++20, and SwiftUI apps, and Linux cloud infrastructure.',
+      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 17 live web properties, cross-platform C#/.NET 10 WinForms/WPF, C++20, and SwiftUI apps, and Linux cloud infrastructure.',
     achievements: [
       'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, Bootstrap 5.3.8, and Web Awesome.',
       'Developed companion native desktop and mobile apps in C# / .NET 10 WPF (Windows) and SwiftUI (macOS, iOS, iPadOS) that consume static REST/JSON APIs with offline archive support, cross-app IPC, and native UIAutomation / VoiceOver accessibility.',
@@ -1022,7 +1043,7 @@ export interface BuildTeamMember {
 export const BUILD_TEAM_OVERVIEW = {
   title: 'CI/CD & Media Automation Suite',
   subtitle:
-    'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines that build, validate, master, and deploy 16 decoupled web properties.',
+    'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines that build, validate, master, and deploy 17 decoupled web properties.',
   quote:
     'Deterministic pre-push build gates, vault-isolated media mastering, and non-root server deployments keep a multi-framework platform maintainable by one developer.',
   logoUrl: 'https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png',
@@ -1055,7 +1076,7 @@ export const BUILD_TEAM_OVERVIEW = {
     {
       step: '05 • Hardened Edge & Gateway Serving',
       command: 'jessica.raggiesoft.com -> amanda/elara.php',
-      outcome: 'Serves all 16 Nginx virtual hosts behind Cloudflare TLS 1.3, CSP headers, and isolated PHP 8.5 front-controller routing.'
+      outcome: 'Serves all 17 Nginx virtual hosts behind Cloudflare TLS 1.3, CSP headers, and isolated PHP 8.5 front-controller routing.'
     }
   ]
 } as const;
@@ -1222,10 +1243,10 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     stackBadge: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / TLS 1.3',
     quote: 'Consolidating static and SSR virtual hosts onto a hardened, database-free Linux VPS keeps cloud costs low and security tight.',
     cardSummary:
-      'Production Ubuntu Linux server in DigitalOcean NYC1 hosting all 16 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS origin certificates, and UFW perimeter rules.',
+      'Production Ubuntu Linux server in DigitalOcean NYC1 hosting all 17 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS origin certificates, and UFW perimeter rules.',
     ogTitle: 'jessica.raggiesoft.com — Linux & Nginx Host | CI/CD',
     ogDescription:
-      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 16 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
+      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 17 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
     ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
       { label: 'Region & IPv4', value: 'DigitalOcean NYC1 (142.93.244.239)' },
@@ -1235,7 +1256,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     technicalHeading: 'Multi-Tenant Nginx Virtual Hosting & Edge Hardening',
     technicalIntro:
-      'Rather than paying per-seat SaaS hosting fees for 16 separate domains and subdomains, all web properties run on a single hardened Ubuntu VPS paired with Cloudflare CDN and DigitalOcean Spaces:',
+      'Rather than paying per-seat SaaS hosting fees for 17 separate domains and subdomains, all web properties run on a single hardened Ubuntu VPS paired with Cloudflare CDN and DigitalOcean Spaces:',
     technicalCapabilities: [
       {
         title: 'SSH & Firewall Hardening',
@@ -1265,12 +1286,12 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     terminalBlock: {
       headerTitle: 'michael@jessica.raggiesoft.com (NYC1)',
-      statusBadge: 'ONLINE • 16 VHOSTS ACTIVE',
+      statusBadge: 'ONLINE • 17 VHOSTS ACTIVE',
       promptUser: 'michael@jessica:~$',
       command: 'systemctl status nginx php8.5-fpm --no-pager',
       outputLines: [
         '● nginx.service - High performance web server and reverse proxy',
-        '   Active: active (running) — serving 16 RaggieSoft virtual hosts (/var/www/*)',
+        '   Active: active (running) — serving 17 RaggieSoft virtual hosts (/var/www/*)',
         '● php8.5-fpm.service - The PHP 8.5 FastCGI Process Manager',
         '   Active: active (running) — SSR worker pool healthy (0 SQL sockets)'
       ]
@@ -1388,7 +1409,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     operationsHeading: 'Preventing Partial Releases Across Micro-Properties',
     operationsLead: 'Coordinating shared assets, sitemaps, and frontend bundles in a single deterministic workflow.',
     operationsParagraphs: [
-      'Operating 16 distinct web properties gives each domain the right tool for its job, but manual per-repo deployments would quickly cause version drift or missing CDN assets.',
+      'Operating 17 distinct web properties gives each domain the right tool for its job, but manual per-repo deployments would quickly cause version drift or missing CDN assets.',
       'Centralizing pre-push checks in jenna-sync.sh guarantees that TypeScript compiler errors, broken OpenGraph tags, or invalid sitemaps halt the release locally before any commit reaches GitHub or the production server.'
     ],
     terminalBlock: {
