@@ -7,67 +7,37 @@ License: MIT License (Code) | CC BY-SA 4.0 (Creative Case Study References)
 =============================================================================
 READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility):
 
-1. What is this file, and how does it connect to `app.component.ts`?
-   `app.component.html` is our component's **Template**—the semantic HTML5
-   blueprint that renders the entire visible portfolio inside `<mpr-root>`.
-   Rather than manually calling `document.createElement(...)` or `innerHTML = ...`
-   in JavaScript, Angular lets us write clean HTML enhanced with declarative
-   bindings that react automatically whenever Signals in `app.component.ts` change!
+1. What is this file, and how does our 3-Tier "Listening Room" Routing work?
+   `app.component.html` renders all 43 routes of `https://michaelpragsdale.com`
+   inside a single `<main id="main-content">` landmark:
+     - **Tier 1 (`/` — `'dossier'`)**: Preserves EVERY card across all 5 sections
+       on the home page so recruiters and hiring managers can scan or press
+       `Cmd+F` / `Ctrl+F` to locate any framework, standard, or employer at once.
+     - **Tier 2 (`/<section>`)**: Five dedicated Section Landing Pages
+       (`/web-apps`, `/case-studies`, `/build-team`, `/experience`, `/education`)
+       with semantic breadcrumbs, quick-jump pills, and Role-Lens filtering.
+     - **Tier 3 (`/<section>/<slug>`)**: 37 Individual Card Deep-Dive Pages
+       (`17` web apps, `6` case studies, `7` CI/CD modules, `4` career roles,
+       and `3` credentials) with deeper architecture, accessibility, coursework,
+       and circular Previous/Next navigation!
 
-2. Quick-Reference Cheat Sheet for Angular 19 Template Syntax Used Below:
-   - `{{ expression }}` (Text Interpolation):
-     Reads a TypeScript property or Signal (e.g., `{{ profile.fullName }}`) and
-     inserts it safely as escaped plain text (preventing XSS script injection).
-   - `[property]="expression"` (Property / Class / Attribute Binding):
-     Square brackets bind a dynamic TypeScript expression to an element:
-       * `[src]="profile.assets.logoUrl"` sets the `<img>` DOM `src` property.
-       * `[class.is-open]="mobileMenuOpen()"` adds CSS class `.is-open` when `true`
-         and removes it when `false`.
-       * `[attr.aria-expanded]="mobileMenuOpen()"` sets an HTML/WAI-ARIA attribute.
-         (Why `attr.`? Standard ARIA attributes like `aria-expanded` and `aria-pressed`
-         are HTML attributes rather than classic DOM properties, so `[attr.aria-*]`
-         writes them directly onto the HTML tag for screen readers!)
-   - `(click)="methodName($event)"` (Event Binding):
-     Parentheses listen for browser DOM events (like `'click'`) and call our
-     component method, passing the browser's `MouseEvent` object via `$event`.
-   - `#mobileMenuToggle` (Template Reference Variable):
-     Gives an HTML element a local nickname so `@ViewChild('mobileMenuToggle')`
-     in `app.component.ts` can call `.focus()` on it when `Escape` is pressed.
-   - `@if (...) { ... } @else { ... }` & `@for (item of list; track item.id) { ... }`:
-     Angular 19's built-in control flow blocks! `@if` conditionally mounts/unmounts
-     sections (including our 3 SPA views!), and `@for` loops over data arrays.
-     (Note: Because `@` starts control-flow blocks in Angular templates, literal
-     `@` symbols in visible text—like `&#64;raggiesoft` or `&#64;layer`—are written
-     using the HTML numeric character entity `&#64;`!)
-
-3. Semantic Landmarks & LCP Performance Architecture:
-   - Landmarks: `<nav aria-label="...">`, `<header role="banner">`,
-     `<main id="main-content">`, `<section aria-labelledby="...">`, `<aside>`,
-     and `<footer role="contentinfo">` let screen-reader users jump between page
-     regions in a single keystroke.
-   - LCP Optimization: Primary Light portrait uses `fetchpriority="high"`, while
-     the hidden Dark portrait uses `fetchpriority="low"` so it never contends
-     for initial network bandwidth.
+2. Key WAI-ARIA & Modern Web Accessibility Details Used Below:
+   - Single primary heading per view (`id="page-main-heading" tabindex="-1"`),
+     focused programmatically after SPA route transitions so JAWS, NVDA, and
+     VoiceOver announce the new page immediately.
+   - Semantic `<nav class="breadcrumb" aria-label="Breadcrumbs">` ordered lists
+     where the current page remains an `<a>` link (`aria-current="page"`) and
+     visual `/` separators are generated purely in CSS (`content: "/" / ""`).
+   - `role="list"` on custom-styled `<ul>`/`<ol>` lists outside `<nav>` so Safari
+     VoiceOver preserves list announcements when `list-style: none` is applied.
+   - Disambiguated card links (`Deep Dive<span class="sr-only">: Title</span>`)
+     so screen-reader link lists never contain ambiguous duplicate labels.
 =============================================================================
 -->
 
-<!--
-  WCAG 2.4.1 (Bypass Blocks) — Keyboard & Screen-Reader Skip Link:
-  Visually tucked off-screen (`transform: translateY(-200%)` in `src/styles.css`)
-  until a keyboard user presses `Tab` on page load. Pressing `Enter` jumps focus
-  straight to `<main id="main-content">`, skipping 20+ header/network links!
--->
 <a class="skip-link" href="#main-content">Skip to main portfolio content</a>
 
-<!--
-  Omnidirectional RaggieSoft Ecosystem Network Bar:
-  - Uses `<nav aria-label="RaggieSoft Ecosystem Network">` to distinguish this
-    cross-site bar from `<nav aria-label="Portfolio Sections">` below (whenever
-    a page has two or more `<nav>` elements, each MUST have a unique `aria-label`!).
-  - Decorative emoji icons are wrapped in `<span aria-hidden="true">` so screen
-    readers read clean link titles ("Engine Room Records Hub") instead of reading
-    verbose emoji descriptions ("Gear Engine Room Records Hub").
--->
+<!-- Omnidirectional RaggieSoft Ecosystem Network Bar -->
 <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
   <div class="rs-network-bar-inner">
     <span class="rs-network-label">✦ RaggieSoft Network:</span>
@@ -106,23 +76,14 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
   </div>
 </nav>
 
-<!-- =========================================================================
-     STICKY PORTFOLIO HEADER BAR (`<header role="banner">`)
-     - Mobile (< 48rem / 768px): Compact two-level identity bar with wrapping
-       subtitle + 44x44px native Section 508 Web hamburger toggle button.
-     - Desktop (>= 48rem / 768px): Full horizontal inline navigation & theme bar.
-     - Why `alt=""` on `.brand-logo` below? Because the link ALREADY has text
-       (`{{ profile.fullName }}`) and an explicit `aria-label`, setting `alt=""`
-       marks the small circular avatar as decorative so screen readers don't
-       stutter by announcing the name twice!
-     ========================================================================= -->
+<!-- Sticky Portfolio Header Bar Linking `/` + All 5 Section Landing Hubs -->
 <header class="site-header" role="banner">
   <div class="dossier-container header-inner">
     <div class="header-top-bar">
       <a
         class="brand-identity"
         href="/"
-        aria-label="Michael P. Ragsdale — Return to top of portfolio"
+        aria-label="Michael P. Ragsdale — Return to main portfolio dossier"
         (click)="navigateInternal('/', $event)"
       >
         <img
@@ -138,20 +99,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         </span>
       </a>
 
-      <!--
-        Native Section 508 Web / WCAG 2.5.5 (44x44px) Mobile Menu Toggle Button:
-        - `#mobileMenuToggle`: Template reference variable linked to `@ViewChild`
-          in `app.component.ts` so pressing `Escape` returns focus here.
-        - `type="button"`: Always specify `type="button"` on non-form buttons so
-          browsers never treat them as `type="submit"`!
-        - `[attr.aria-expanded]="mobileMenuOpen()"`: Tells screen readers whether
-          the controlled `#header-navigation-panel` drawer is `"true"` (expanded)
-          or `"false"` (collapsed).
-        - `@if (mobileMenuOpen()) { ... } @else { ... }`: Swaps the inline SVG
-          between an `X` close icon and a 3-line hamburger icon, both marked
-          `aria-hidden="true" focusable="false"` because `[attr.aria-label]`
-          already provides a clear accessible button label!
-      -->
       <button
         #mobileMenuToggle
         type="button"
@@ -166,7 +113,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         (click)="toggleMobileMenu()"
       >
         @if (mobileMenuOpen()) {
-          <!-- Close (X) Icon -->
           <svg
             class="mobile-menu-icon"
             width="22"
@@ -184,7 +130,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         } @else {
-          <!-- Hamburger (3-Bar) Icon -->
           <svg
             class="mobile-menu-icon"
             width="22"
@@ -206,16 +151,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
       </button>
     </div>
 
-    <!--
-      Collapsible Navigation & Theme Controls Panel:
-      - `[class.is-open]="mobileMenuOpen()"`: On mobile viewports, `styles.css`
-        sets `.header-controls { display: none; }` (removing closed menu links
-        from keyboard `Tab` order!) until `.is-open` switches it to `display: flex`.
-      - `[attr.aria-current]="activeView() === 'dossier' ? 'page' : null"`:
-        Uses JavaScript's ternary operator (`condition ? valueIfTrue : valueIfFalse`).
-        Returning `null` removes the `aria-current` attribute completely when
-        inactive, whereas `'page'` tells screen readers "Current page, Portfolio".
-    -->
     <div
       id="header-navigation-panel"
       class="header-controls"
@@ -230,14 +165,15 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
               [attr.aria-current]="activeView() === 'dossier' ? 'page' : null"
               (click)="navigateInternal('/', $event)"
             >
-              Portfolio
+              All-in-One Dossier
             </a>
           </li>
           <li>
             <a
               class="nav-link"
-              href="/#polyglot-ecosystem"
-              (click)="navigateInternal('/#polyglot-ecosystem', $event)"
+              href="/web-apps"
+              [attr.aria-current]="isWebAppsSection() ? 'page' : null"
+              (click)="navigateInternal('/web-apps', $event)"
             >
               Web Apps (17)
             </a>
@@ -245,42 +181,46 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           <li>
             <a
               class="nav-link"
-              href="/#case-studies"
-              (click)="navigateInternal('/#case-studies', $event)"
+              href="/case-studies"
+              [attr.aria-current]="isCaseStudiesSection() ? 'page' : null"
+              (click)="navigateInternal('/case-studies', $event)"
             >
-              Case Studies
+              Case Studies (6)
             </a>
           </li>
           <li>
             <a
               class="nav-link"
               href="/build-team"
-              [attr.aria-current]="activeView() !== 'dossier' ? 'page' : null"
+              [attr.aria-current]="isBuildTeamSection() ? 'page' : null"
               (click)="navigateInternal('/build-team', $event)"
             >
-              CI/CD Tooling
+              CI/CD (7)
             </a>
           </li>
           <li>
             <a
               class="nav-link"
-              href="/#experience"
-              (click)="navigateInternal('/#experience', $event)"
+              href="/experience"
+              [attr.aria-current]="isExperienceSection() ? 'page' : null"
+              (click)="navigateInternal('/experience', $event)"
             >
-              Experience &amp; Education
+              Experience (4)
+            </a>
+          </li>
+          <li>
+            <a
+              class="nav-link"
+              href="/education"
+              [attr.aria-current]="isEducationSection() ? 'page' : null"
+              (click)="navigateInternal('/education', $event)"
+            >
+              Education (3)
             </a>
           </li>
         </ul>
       </nav>
 
-      <!--
-        Tri-State Color Scheme Switcher (`System` | `Light` | `Dark`):
-        - `role="group"` + `aria-label="Color scheme preference"` groups the 3
-          toggle buttons into one labeled control cluster for assistive tech.
-        - `[attr.aria-pressed]="themeMode() === 'light'"` turns a standard
-          `<button>` into an accessible **Toggle Button** (announcing "pressed"
-          or "not pressed") AND drives the active CSS highlight `.theme-btn[aria-pressed="true"]`!
-      -->
       <div class="theme-switcher" role="group" aria-label="Color scheme preference">
         <button
           type="button"
@@ -312,29 +252,23 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
   </div>
 </header>
 
-<!-- =========================================================================
-     MAIN PORTFOLIO & CI/CD TOOLING CONTENT (`<main id="main-content">`)
-     - Every HTML page should have exactly ONE visible `<main>` landmark, and
-       its `id="main-content"` is the target of our keyboard Skip Link on Line 60.
-     - Notice the top-level `@if (activeView() === 'dossier')` block right below:
-       Angular switches the entire `<main>` interior cleanly between:
-         1. View 1 (`'dossier'`): Main Portfolio & Resume Dossier (`/`)
-         2. View 2 (`'build-team-overview'`): CI/CD Suite Overview (`/build-team`)
-         3. View 3 (`'build-team-member'`): Individual Module Spec (`/build-team/:slug`)
-     ========================================================================= -->
 <main id="main-content" class="dossier-container">
 
-  @if (activeView() === 'dossier') {
+  <!-- Polite WAI-ARIA Live Region Centralized for Role-Lens Filter Updates -->
+  <div class="sr-only" aria-live="polite" aria-atomic="true">
+    {{ filterAnnouncement() }}
+  </div>
 
   <!-- =======================================================================
-       VIEW 1 — ABOVE THE FOLD: 5-SECOND RECRUITER OVERVIEW & ROLE ALIGNMENT
-       - `aria-labelledby="hero-heading"` binds this `<section>` landmark's
-         accessible name directly to the `<h1 id="hero-heading">` inside it.
+       TIER 1 — ROOT ALL-IN-ONE RECRUITER DOSSIER (`/`)
+       Keeps 100% of cards on the homepage for fast scanning & Cmd+F search,
+       while linking every section hub and every individual card to its own
+       dedicated deep-dive specification page!
        ======================================================================= -->
-  <section id="top" class="hero-bento" aria-labelledby="hero-heading">
-    <div class="hero-panel-grid">
+  @if (activeView() === 'dossier') {
 
-      <!-- Left Panel: Professional Identity, Summary & Primary Contact Actions -->
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
       <article class="executive-card">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div class="status-pill">
@@ -343,16 +277,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           </div>
 
           <div class="executive-profile-top">
-            <!--
-              Dual Theme Portrait: Frutiger Aero (Light) / Dark Aero (Dark)
-              Why render two `<img>` tags instead of `<picture><source media="...">`?
-              HTML `<picture>` media queries ONLY evaluate the operating system's
-              `prefers-color-scheme` and ignore manual website theme toggles!
-              Rendering both `<img>` tags with explicit `width="120" height="120"`
-              (zero layout shift / CLS) lets CSS toggle `display: none / block`
-              for BOTH OS preferences and manual Light/Dark button overrides—while
-              `fetchpriority="low"` on `.portrait-dark` avoids competing for bandwidth!
-            -->
             <div class="portrait-frame">
               <img
                 class="portrait-img portrait-light"
@@ -374,7 +298,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
 
             <div style="display: flex; flex-direction: column; gap: 0.45rem;">
               <p class="eyebrow-label">{{ profile.location }}</p>
-              <h1 id="hero-heading">{{ profile.fullName }}</h1>
+              <h1 id="page-main-heading" tabindex="-1">{{ profile.fullName }}</h1>
               <p style="font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);">
                 {{ profile.headline }}
               </p>
@@ -398,14 +322,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           </blockquote>
         </div>
 
-        <!--
-          Immediate Recruiter Action Bar:
-          - External links opening in a new tab (`target="_blank"`) include
-            `rel="noopener"` for browser security so the newly opened tab cannot
-            access `window.opener` on our portfolio tab.
-          - Notice `&#64;raggiesoft`: escapes the `@` character so Angular's
-            template parser prints `@raggiesoft` instead of expecting `@if`/`@for`!
-        -->
         <div>
           <p class="eyebrow-label" style="margin-block-end: 0.4rem;">
             Resume (PDF) &amp; Direct Contact
@@ -420,10 +336,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
               <span>Download Resume (PDF)</span>
             </a>
 
-            <a
-              class="btn btn-secondary"
-              [href]="profile.assets.directEmail"
-            >
+            <a class="btn btn-secondary" [href]="profile.assets.directEmail">
               <span>{{ profile.assets.directEmailDisplay }}</span>
             </a>
 
@@ -448,17 +361,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         </div>
       </article>
 
-      <!--
-        Right Panel: Practical Role & Logistics Summary Card (`<aside>` + `<dl>`)
-        - Semantic HTML5 `<dl>` (Description List) pairs each `<dt>` (Description
-          Term, e.g., `"Target Roles"`) with its `<dd>` (Description Details) so
-          screen readers announce key-value relationships naturally.
-        - How `@for (param of hiringParameters; track param.label)` works:
-          Loops over `hIRING_PARAMETERS` from `portfolio.data.ts`. Angular 19
-          requires `track <uniqueKey>` on every `@for` loop so if an array ever
-          re-orders or filters, Angular moves/updates existing DOM nodes by key
-          rather than destroying and re-creating HTML elements from scratch!
-      -->
       <aside
         id="hiring-logistics"
         class="logistics-card"
@@ -473,7 +375,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             Role &amp; Availability Summary
           </h2>
           <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-end: 1rem;">
-            Key details on target roles, Virginia location availability, Section 508 experience, and state/federal eligibility.
+            Scan everything on this page with <code>Cmd+F</code> / <code>Ctrl+F</code>, or open any card’s dedicated deep-dive page for full architectural specs.
           </p>
 
           <dl class="logistics-dl">
@@ -491,28 +393,15 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           </dl>
         </div>
       </aside>
-
     </div>
   </section>
 
-  <!-- =======================================================================
-       INTERACTIVE ANGULAR SIGNALS ROLE-LENS FILTER BAR
-       - Clicking any button calls `selectLens(lens.id)`, updating `activeLens`
-         in `app.component.ts` and instantaneously re-evaluating `filteredEcosystem()`,
-         `filteredCaseStudies()`, `filteredExperience()`, and `filterAnnouncement()`.
-       - Notice `lensCounts()[lens.id]`: first calls the `lensCounts()` Computed
-         Signal to get the `{ all, architecture, ... }` count dictionary, then
-         uses JavaScript bracket notation `[lens.id]` to look up that button's count!
-       - `aria-hidden="true"` on `.lens-count-badge` keeps button announcements
-         concise while the polite live region below speaks the full filtered summary!
-       ======================================================================= -->
-  <section class="dossier-section" aria-labelledby="lens-heading" style="padding-block-end: 0.5rem;">
+  <!-- Interactive Angular Signals Role-Lens Filter Bar -->
+  <section class="dossier-section" style="padding-block-end: 0.5rem;">
     <div class="lens-toolbar">
       <div>
         <span class="eyebrow-label">Interactive Angular Signals Filter</span>
-        <h2 id="lens-heading" style="font-size: 1.2rem;">
-          Filter Portfolio by Engineering Discipline
-        </h2>
+        <h2 style="font-size: 1.2rem;">Filter Portfolio by Engineering Discipline</h2>
         <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-start: 0.2rem;">
           {{ currentLensMeta().shortDescription }}
         </p>
@@ -532,36 +421,29 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         }
       </div>
     </div>
-
-    <!--
-      WCAG 4.1.3 (Status Messages) — Polite WAI-ARIA Live Region:
-      - `.sr-only` hides this `<div>` visually while keeping it readable to
-        screen readers (JAWS, NVDA, VoiceOver).
-      - `aria-live="polite"` tells the screen reader: "Wait until you finish
-        speaking the clicked button's name, then read this updated text aloud!"
-      - `aria-atomic="true"` ensures the entire sentence is read as a complete
-        update rather than just the numbers that changed.
-    -->
-    <div class="sr-only" aria-live="polite" aria-atomic="true">
-      {{ filterAnnouncement() }}
-    </div>
   </section>
 
-  <!-- =======================================================================
-       SECTION 1: LIVE WEB APPLICATION ECOSYSTEM (17 PRODUCTION PROPERTIES)
-       ======================================================================= -->
-  <section id="polyglot-ecosystem" class="dossier-section" aria-labelledby="ecosystem-heading">
+  <!-- SECTION 1 ON HOME: LIVE WEB APPLICATION ECOSYSTEM (17 CARDS) -->
+  <section id="polyglot-ecosystem" class="dossier-section">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">17 Live Web Properties • Multi-Framework &amp; Standards-First Web Components • Zero SQL Databases</p>
-        <h2 id="ecosystem-heading">Live Web Application Ecosystem</h2>
+        <p class="eyebrow-label">17 Live Web Properties • Multi-Framework &amp; Web Components • Zero SQL Databases</p>
+        <h2>Live Web Application Ecosystem</h2>
         <p class="section-lead">
-          Each web property in the RaggieSoft network is built with a purposeful stack—spanning <strong>TypeScript &amp; Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>React 19 &amp; Next.js 16</strong>, <strong>SvelteKit 2 &amp; Svelte 5</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 &amp; Vue 3</strong>, <strong>SolidJS</strong>, <strong>Preact 10 + Signals</strong>, <strong>Mithril.js</strong>, <strong>Eleventy v3 + Lit 3</strong>, <strong>IBM Carbon, Microsoft Fluent UI &amp; Web Awesome Web Components</strong>, and <strong>Bootstrap 5.3.8</strong>—all enforcing Section 508 / WCAG 2.1 AA accessibility in production.
+          Each web property in the RaggieSoft network is built with a purposeful stack—spanning <strong>TypeScript &amp; Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>React 19 &amp; Next.js 16</strong>, <strong>SvelteKit 2 &amp; Svelte 5</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 &amp; Vue 3</strong>, <strong>SolidJS</strong>, <strong>Preact 10 + Signals</strong>, <strong>Mithril.js</strong>, <strong>Eleventy v3 + Lit 3</strong>, <strong>IBM Carbon, Microsoft Fluent UI &amp; Web Awesome</strong>, and <strong>Bootstrap 5.3.8</strong>—all enforcing Section 508 / WCAG 2.1 AA accessibility in production.
         </p>
+      </div>
+      <div>
+        <a
+          class="btn btn-primary"
+          href="/web-apps"
+          (click)="navigateInternal('/web-apps', $event)"
+        >
+          <span>Open Web Apps Hub (/web-apps) →</span>
+        </a>
       </div>
     </div>
 
-    <!-- Architecture Note -->
     <aside
       class="timeline-card"
       aria-label="Subdomain Architecture and Maintainability Note"
@@ -587,31 +469,28 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
       </ul>
     </aside>
 
-    <!--
-      CSS Grid + `subgrid` Card Matrix (`.subgrid-card-matrix` > `.subgrid-card`):
-      Look closely at how every `<article class="subgrid-card">` below contains
-      EXACTLY 4 direct child `<div>` wrappers (Row 1 Header, Row 2 Body, Row 3
-      Tech Chips, Row 4 Footer CTA). Because `.subgrid-card` declares
-      `grid-row: span 4; grid-template-rows: subgrid;` in `src/styles.css`,
-      all 4 sections align horizontally across neighbor cards in the same row
-      even when one card has longer bullet points than its neighbor!
-    -->
     <div class="subgrid-card-matrix">
       @for (prop of filteredEcosystem(); track prop.id) {
         <article class="subgrid-card">
-          <!-- Row 1: Header & Domain Badge -->
           <div>
             <div class="card-header-top">
               <span class="eyebrow-label">{{ prop.categoryLabel }}</span>
               <span class="domain-badge">{{ prop.domain }}</span>
             </div>
-            <h3 style="margin-block-start: 0.4rem;">{{ prop.name }}</h3>
+            <h3 style="margin-block-start: 0.4rem;">
+              <a
+                class="card-title-link"
+                [href]="'/web-apps/' + prop.id"
+                (click)="navigateInternal('/web-apps/' + prop.id, $event)"
+              >
+                {{ prop.name }}
+              </a>
+            </h3>
             <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-primary); font-weight: 600; margin-block-start: 0.25rem;">
               {{ prop.primaryStack }}
             </p>
           </div>
 
-          <!-- Row 2: Architectural Summary & Engineering Highlights -->
           <div class="card-body-text">
             <p style="margin-block-end: 0.65rem;">
               <strong>Pattern:</strong> {{ prop.architecturalPattern }}. {{ prop.summary }}
@@ -623,26 +502,24 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             </ul>
           </div>
 
-          <!-- Row 3: Tech Stack Chips -->
           <div>
-            <ul class="tag-list" [attr.aria-label]="'Technologies used in ' + prop.name">
+            <ul class="tag-list" role="list" [attr.aria-label]="'Technologies used in ' + prop.name">
               @for (tag of prop.tags; track tag) {
                 <li class="tech-tag" [class.tech-tag-highlight]="prop.isCurrentSite">{{ tag }}</li>
               }
             </ul>
           </div>
 
-          <!--
-            Row 4: Live Production Link
-            - Uses `@if (prop.isCurrentSite)` so `michaelpragsdale.com` shows a
-              `"Current Site (You Are Here)"` badge instead of linking to itself.
-            - `prop.ctaLabel ?? ('Visit Live Site (' + prop.domain + ')')` uses
-              the Nullish Coalescing operator (`??`) to display `ctaLabel` when
-              provided, or generate a fallback label automatically if omitted!
-          -->
           <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              [href]="'/web-apps/' + prop.id"
+              (click)="navigateInternal('/web-apps/' + prop.id, $event)"
+            >
+              <span>Deep Dive<span class="sr-only">: {{ prop.name }}</span> →</span>
+            </a>
             @if (prop.isCurrentSite) {
-              <span class="status-pill">Current Site (You Are Here)</span>
+              <span class="status-pill">Current Site</span>
             } @else {
               <a
                 class="btn btn-secondary"
@@ -650,7 +527,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
                 target="_blank"
                 rel="noopener"
               >
-                <span>{{ prop.ctaLabel ?? ('Visit Live Site (' + prop.domain + ')') }}</span>
+                <span>{{ prop.ctaLabel ?? ('Visit ' + prop.domain) }}</span>
               </a>
             }
           </div>
@@ -659,17 +536,24 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  <!-- =======================================================================
-       SECTION 2: ENGINEERING, DESKTOP & SECTION 508 CASE STUDIES
-       ======================================================================= -->
-  <section id="case-studies" class="dossier-section" aria-labelledby="cases-heading">
+  <!-- SECTION 2 ON HOME: ENGINEERING & WEB ACCESSIBILITY CASE STUDIES (6 CARDS) -->
+  <section id="case-studies" class="dossier-section">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">Applied Problem Solving Across Municipal, University, Desktop &amp; Web Systems</p>
-        <h2 id="cases-heading">Engineering &amp; Web Accessibility Case Studies</h2>
+        <p class="eyebrow-label">Applied Problem Solving Across Municipal, University, Desktop, Compiler &amp; Web Systems</p>
+        <h2>Engineering &amp; Web Accessibility Case Studies</h2>
         <p class="section-lead">
-          Concrete examples of operational data workflows in municipal service, source-level PLE &amp; Canvas LMS web accessibility engineering at ODU, native C#/.NET &amp; SwiftUI application development, and semantic HTML5/ARIA architecture.
+          Concrete examples of operational data workflows in municipal service, source-level PLE &amp; Canvas LMS web accessibility engineering at ODU, native C#/.NET 10 &amp; SwiftUI apps, accessible HTML5 Canvas, and clean-room binary AST compiler tooling.
         </p>
+      </div>
+      <div>
+        <a
+          class="btn btn-primary"
+          href="/case-studies"
+          (click)="navigateInternal('/case-studies', $event)"
+        >
+          <span>Open Case Studies Hub (/case-studies) →</span>
+        </a>
       </div>
     </div>
 
@@ -681,9 +565,16 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             <span class="mono text-muted" style="font-size: 0.8rem;">{{ study.timeframe }}</span>
           </div>
 
-          <h3>{{ study.title }}</h3>
+          <h3>
+            <a
+              class="card-title-link"
+              [href]="'/case-studies/' + study.id"
+              (click)="navigateInternal('/case-studies/' + study.id, $event)"
+            >
+              {{ study.title }}
+            </a>
+          </h3>
 
-          <!-- Impact Summary Metrics Bar -->
           <div class="case-study-metrics" aria-label="Key project outcomes">
             @for (metric of study.quantifiedImpact; track metric.label) {
               <div class="metric-box">
@@ -694,28 +585,24 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           </div>
 
           <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.65rem;">
-            <p>
-              <strong>Challenge:</strong> {{ study.problemStatement }}
-            </p>
-            <p>
-              <strong>Approach &amp; Solution:</strong> {{ study.architecturalSolution }}
-            </p>
+            <p><strong>Challenge:</strong> {{ study.problemStatement }}</p>
+            <p><strong>Approach &amp; Solution:</strong> {{ study.architecturalSolution }}</p>
           </div>
 
-          <ul class="tag-list" aria-label="Case study technologies">
+          <ul class="tag-list" role="list" aria-label="Case study technologies">
             @for (tech of study.technologies; track tech) {
               <li class="tech-tag">{{ tech }}</li>
             }
           </ul>
 
-          <!--
-            Case Study Reference Links:
-            Checks `link.url.startsWith('/')` so internal SPA routes (like
-            `'/build-team'`) navigate instantaneously via `navigateInternal(...)`
-            in the same tab, whereas external URLs (`'https://...'`) open safely
-            in a new browser tab with `target="_blank" rel="noopener"`.
-          -->
           <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              [href]="'/case-studies/' + study.id"
+              (click)="navigateInternal('/case-studies/' + study.id, $event)"
+            >
+              <span>Deep Dive<span class="sr-only">: {{ study.code }} {{ study.title }}</span> →</span>
+            </a>
             @for (link of study.referenceLinks; track link.url) {
               @if (link.url.startsWith('/')) {
                 <a
@@ -742,16 +629,14 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  <!-- =======================================================================
-       SECTION 3: CI/CD, MEDIA MASTERING & LINUX DEPLOYMENT AUTOMATION
-       ======================================================================= -->
-  <section id="devops-fleet" class="dossier-section" aria-labelledby="devops-heading">
+  <!-- SECTION 3 ON HOME: CI/CD, MEDIA MASTERING & LINUX INFRASTRUCTURE (7 CARDS) -->
+  <section id="devops-fleet" class="dossier-section">
     <div class="section-header">
       <div>
         <p class="eyebrow-label">Build Verification, FFmpeg Media Pipelines &amp; Non-Root Linux Deployment</p>
-        <h2 id="devops-heading">CI/CD &amp; Media Automation Tooling</h2>
+        <h2>CI/CD &amp; Media Automation Tooling</h2>
         <p class="section-lead">
-          Maintaining 17 web properties, native desktop suites, and downloadable media archives reliably requires repeatable automation. I built a modular suite of PHP 8.5, Bash, and FFmpeg command-line tools that handle Markdown route compilation, pre-push framework build checks, EBU R128 audio normalization, S3 CDN synchronization, and non-root Linux cron deployments.
+          Maintaining 17 web properties, native desktop suites, and downloadable media archives reliably requires repeatable automation. I built 7 modular PHP 8.5, Bash, and Linux components handling workstation setup, Markdown compilation, EBU R128 audio mastering, S3 CDN sync, and non-root cron deployments.
         </p>
       </div>
       <div>
@@ -760,20 +645,11 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           href="/build-team"
           (click)="navigateInternal('/build-team', $event)"
         >
-          <span>Explore CI/CD Suite Docs (/build-team)</span>
+          <span>Open CI/CD Suite Hub (/build-team) →</span>
         </a>
       </div>
     </div>
 
-    <!--
-      CSS Grid + `subgrid` Card Matrix (`.subgrid-card-matrix` > `.subgrid-card`):
-      Look closely at how every `<article class="subgrid-card">` below contains
-      EXACTLY 4 direct child `<div>` wrappers (Row 1 Header, Row 2 Body, Row 3
-      Tech Chips, Row 4 Footer CTA). Because `.subgrid-card` declares
-      `grid-row: span 4; grid-template-rows: subgrid;` in `src/styles.css`,
-      all 4 sections align horizontally across neighbor cards in the same row
-      even when one card has longer bullet points than its neighbor!
-    -->
     <div class="subgrid-card-matrix">
       @for (bot of devopsConstructs; track bot.codename) {
         <article class="subgrid-card">
@@ -782,7 +658,15 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
               <span class="eyebrow-label">CLI / Server Module</span>
               <code>{{ bot.scriptName }}</code>
             </div>
-            <h3 style="margin-block-start: 0.4rem;">{{ bot.roleTitle }}</h3>
+            <h3 style="margin-block-start: 0.4rem;">
+              <a
+                class="card-title-link"
+                [href]="bot.profileUrl"
+                (click)="navigateInternal(bot.profileUrl, $event)"
+              >
+                {{ bot.roleTitle }}
+              </a>
+            </h3>
           </div>
 
           <div class="card-body-text">
@@ -802,45 +686,54 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
 
           <div class="card-footer-actions">
             <a
-              class="btn btn-secondary"
+              class="btn btn-primary"
               [href]="bot.profileUrl"
               (click)="navigateInternal(bot.profileUrl, $event)"
             >
-              <span>View {{ bot.codename }} Specs</span>
+              <span>Deep Dive<span class="sr-only">: {{ bot.codename }}</span> →</span>
             </a>
-            <span class="tech-tag">NYC1 Pipeline</span>
+            <span class="tech-tag">{{ bot.codename }}</span>
           </div>
         </article>
       }
     </div>
   </section>
 
-  <!-- =======================================================================
-       SECTION 4: PROFESSIONAL EXPERIENCE & ACADEMIC CREDENTIALS
-       ======================================================================= -->
-  <section id="experience" class="dossier-section" aria-labelledby="experience-heading">
+  <!-- SECTION 4 & 5 ON HOME: PROFESSIONAL EXPERIENCE (4) & EDUCATION (3) -->
+  <section id="experience" class="dossier-section">
     <div class="section-header">
       <div>
         <p class="eyebrow-label">Work History &amp; Official HR Classifications</p>
-        <h2 id="experience-heading">Professional Experience &amp; Education</h2>
+        <h2>Professional Experience</h2>
         <p class="section-lead">
           Chronological employment history across municipal public service, public higher education, software engineering internships, and independent full-stack development, with official HR classifications included for straightforward background verification.
         </p>
       </div>
+      <div>
+        <a
+          class="btn btn-primary"
+          href="/experience"
+          (click)="navigateInternal('/experience', $event)"
+        >
+          <span>Open Experience Hub (/experience) →</span>
+        </a>
+      </div>
     </div>
 
-    <!--
-      Chronological Work History (`<ol>` Ordered List):
-      Because employment history has a meaningful chronological order (newest to
-      oldest), we use `<ol>` (Ordered List) rather than `<ul>` (Unordered List),
-      and maintain strict heading hierarchy (`<h2>` section -> `<h3>` job title).
-    -->
-    <ol class="timeline-list">
-      @for (job of filteredExperience(); track job.functionalTitle) {
+    <ol class="timeline-list" role="list">
+      @for (job of filteredExperience(); track job.slug) {
         <li class="timeline-card">
           <div class="timeline-header">
             <div>
-              <h3>{{ job.functionalTitle }}</h3>
+              <h3>
+                <a
+                  class="card-title-link"
+                  [href]="'/experience/' + job.slug"
+                  (click)="navigateInternal('/experience/' + job.slug, $event)"
+                >
+                  {{ job.functionalTitle }}
+                </a>
+              </h3>
               <p style="font-weight: 600; color: var(--accent-primary);">
                 {{ job.organization }} • {{ job.location }}
               </p>
@@ -861,62 +754,740 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             }
           </ul>
 
-          <ul class="tag-list" [attr.aria-label]="'Technologies applied at ' + job.organization">
+          <ul class="tag-list" role="list" [attr.aria-label]="'Technologies applied at ' + job.organization" style="margin-block-end: 0.85rem;">
             @for (tech of job.technologies; track tech) {
               <li class="tech-tag">{{ tech }}</li>
             }
           </ul>
+
+          <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              [href]="'/experience/' + job.slug"
+              (click)="navigateInternal('/experience/' + job.slug, $event)"
+            >
+              <span>Deep Dive<span class="sr-only">: {{ job.functionalTitle }} at {{ job.organization }}</span> →</span>
+            </a>
+            <span class="domain-badge">{{ job.timeframe }}</span>
+          </div>
         </li>
       }
     </ol>
 
-    <!--
-      Academic Credentials (`<h3>` Sub-Section -> `<h4>` Degree Cards):
-      Notice WCAG heading discipline: `<h2>` ("Professional Experience & Education")
-      -> `<h3>` ("Education & Certification") -> `<h4>` (`{{ edu.degree }}`),
-      never skipping heading levels so screen-reader outline navigation stays linear!
-    -->
-    <div style="margin-block-start: 2rem;">
-      <h3 style="margin-block-end: 1rem;">Education &amp; Certification</h3>
+    <div id="education" style="margin-block-start: 2.5rem;">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow-label">Higher Education, Technical Credentials &amp; Virginia AHP Eligibility</p>
+          <h3 style="font-size: 1.45rem;">Education &amp; Certification</h3>
+        </div>
+        <div>
+          <a
+            class="btn btn-primary"
+            href="/education"
+            (click)="navigateInternal('/education', $event)"
+          >
+            <span>Open Education Hub (/education) →</span>
+          </a>
+        </div>
+      </div>
+
       <div class="dual-column-grid">
-        @for (edu of educationCredentials; track edu.degree) {
-          <article class="timeline-card">
-            <span class="eyebrow-label">{{ edu.timeframe }}</span>
-            <h4 style="font-size: 1.1rem; margin-block-start: 0.25rem;">{{ edu.degree }}</h4>
-            <p style="font-weight: 600; color: var(--text-secondary); margin-block: 0.25rem 0.5rem;">
-              {{ edu.institution }}
-            </p>
-            <p class="hr-classification" style="display: inline-block; margin-block-end: 0.75rem;">
-              {{ edu.statusNote }}
-            </p>
-            <ul class="bullet-list">
-              @for (focus of edu.focusAreas; track focus) {
-                <li>{{ focus }}</li>
-              }
-            </ul>
+        @for (edu of educationList; track edu.slug) {
+          <article class="timeline-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 0.9rem;">
+            <div>
+              <span class="eyebrow-label">{{ edu.timeframe }}</span>
+              <h4 style="font-size: 1.1rem; margin-block-start: 0.25rem;">
+                <a
+                  class="card-title-link"
+                  [href]="'/education/' + edu.slug"
+                  (click)="navigateInternal('/education/' + edu.slug, $event)"
+                >
+                  {{ edu.degree }}
+                </a>
+              </h4>
+              <p style="font-weight: 600; color: var(--text-secondary); margin-block: 0.25rem 0.5rem;">
+                {{ edu.institution }}
+              </p>
+              <p class="hr-classification" style="display: inline-block; margin-block-end: 0.75rem;">
+                {{ edu.statusNote }}
+              </p>
+              <ul class="bullet-list">
+                @for (focus of edu.focusAreas; track focus) {
+                  <li>{{ focus }}</li>
+                }
+              </ul>
+            </div>
+
+            <div class="card-footer-actions">
+              <a
+                class="btn btn-primary"
+                [href]="'/education/' + edu.slug"
+                (click)="navigateInternal('/education/' + edu.slug, $event)"
+              >
+                <span>Deep Dive<span class="sr-only">: {{ edu.shortName }}</span> →</span>
+              </a>
+              <span class="tech-tag">{{ edu.shortName }}</span>
+            </div>
           </article>
         }
       </div>
     </div>
   </section>
 
-  } @else if (activeView() === 'build-team-overview') {
+  <!-- =======================================================================
+       TIER 2A — WEB APPS SECTION LANDING PAGE (`/web-apps`)
+       ======================================================================= -->
+  } @else if (activeView() === 'web-apps-overview') {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/web-apps" aria-current="page" (click)="navigateInternal('/web-apps', $event)">Web Apps (17)</a></li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Jump to Web Application Spec">
+      @for (p of ecosystemList; track p.id) {
+        <li>
+          <a
+            class="build-team-pill"
+            [href]="'/web-apps/' + p.id"
+            (click)="navigateInternal('/web-apps/' + p.id, $event)"
+          >
+            <span>{{ p.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <span class="eyebrow-label">{{ sectionLandings.webApps.eyebrow }}</span>
+          <h1 id="page-main-heading" tabindex="-1">{{ sectionLandings.webApps.title }}</h1>
+          <p style="font-size: 1.02rem; color: var(--text-secondary);">
+            {{ sectionLandings.webApps.subtitle }}
+          </p>
+          <blockquote style="border-inline-start: 3px solid var(--accent-primary); padding-inline-start: 0.9rem; font-weight: 600;">
+            {{ sectionLandings.webApps.quote }}
+          </blockquote>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>← Return to All-in-One Dossier (/)</span>
+          </a>
+          <a class="btn btn-secondary" href="/case-studies" (click)="navigateInternal('/case-studies', $event)">
+            <span>Explore Case Studies (6) →</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="webapps-filter-heading">
+        <div>
+          <span class="eyebrow-label">Filter 17 Properties by Discipline</span>
+          <h2 id="webapps-filter-heading" style="font-size: 1.25rem; margin-block: 0.3rem 0.65rem;">
+            Interactive Stack &amp; Discipline Lens
+          </h2>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-end: 0.9rem;">
+            {{ currentLensMeta().shortDescription }}
+          </p>
+          <div class="lens-button-group" role="group" aria-label="Filter web applications by discipline">
+            @for (lens of roleLenses; track lens.id) {
+              <button
+                type="button"
+                class="lens-btn"
+                [attr.aria-pressed]="activeLens() === lens.id"
+                (click)="selectLens(lens.id)"
+              >
+                <span>{{ lens.label }}</span>
+              </button>
+            }
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <div class="subgrid-card-matrix">
+      @for (prop of filteredEcosystem(); track prop.id) {
+        <article class="subgrid-card">
+          <div>
+            <div class="card-header-top">
+              <span class="eyebrow-label">{{ prop.categoryLabel }}</span>
+              <span class="domain-badge">{{ prop.domain }}</span>
+            </div>
+            <h2 style="font-size: 1.2rem; margin-block-start: 0.4rem;">
+              <a
+                class="card-title-link"
+                [href]="'/web-apps/' + prop.id"
+                (click)="navigateInternal('/web-apps/' + prop.id, $event)"
+              >
+                {{ prop.name }}
+              </a>
+            </h2>
+            <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-primary); font-weight: 600; margin-block-start: 0.25rem;">
+              {{ prop.primaryStack }}
+            </p>
+          </div>
+
+          <div class="card-body-text">
+            <p style="margin-block-end: 0.65rem;">
+              <strong>Pattern:</strong> {{ prop.architecturalPattern }}. {{ prop.summary }}
+            </p>
+            <ul class="bullet-list">
+              @for (point of prop.highlights; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+
+          <div>
+            <ul class="tag-list" role="list" [attr.aria-label]="'Technologies used in ' + prop.name">
+              @for (tag of prop.tags; track tag) {
+                <li class="tech-tag" [class.tech-tag-highlight]="prop.isCurrentSite">{{ tag }}</li>
+              }
+            </ul>
+          </div>
+
+          <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              [href]="'/web-apps/' + prop.id"
+              (click)="navigateInternal('/web-apps/' + prop.id, $event)"
+            >
+              <span>Deep Dive<span class="sr-only">: {{ prop.name }}</span> →</span>
+            </a>
+            @if (!prop.isCurrentSite) {
+              <a class="btn btn-secondary" [href]="prop.url" target="_blank" rel="noopener">
+                <span>Visit {{ prop.domain }}</span>
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
 
   <!-- =======================================================================
-       VIEW 2: CI/CD & MEDIA AUTOMATION SUITE OVERVIEW (`/build-team`)
-       - Rendered when `activeView()` equals `'build-team-overview'`.
-       - Sub-navigation combines an accessible breadcrumb trail (`<ol>` with
-         decorative `/` separators hidden from screen readers via `aria-hidden="true"`)
-         and quick-jump module switcher pills (`build-team-pills`).
+       TIER 3A — INDIVIDUAL WEB APP DEEP DIVE (`/web-apps/:slug`)
        ======================================================================= -->
-  <nav class="build-team-subnav" aria-label="CI/CD Tooling Breadcrumb and Module Switcher">
-    <ol class="build-team-breadcrumbs">
+  } @else if (activeView() === 'web-app-detail') {
+    @if (activeWebApp(); as prop) {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/web-apps" (click)="navigateInternal('/web-apps', $event)">Web Apps (17)</a></li>
+        <li>
+          <a
+            [href]="'/web-apps/' + prop.id"
+            aria-current="page"
+            (click)="navigateInternal('/web-apps/' + prop.id, $event)"
+          >
+            {{ prop.shortName }}
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Switch Web Application Spec">
       <li>
-        <a href="/" (click)="navigateInternal('/', $event)">Portfolio</a>
+        <a class="build-team-pill" href="/web-apps" (click)="navigateInternal('/web-apps', $event)">
+          <span>🌐 All 17 Apps</span>
+        </a>
       </li>
-      <li aria-hidden="true">/</li>
-      <li aria-current="page">CI/CD &amp; Media Automation Suite</li>
-    </ol>
+      @for (p of ecosystemList; track p.id) {
+        <li>
+          <a
+            class="build-team-pill"
+            [class.is-active]="p.id === prop.id"
+            [attr.aria-current]="p.id === prop.id ? 'page' : null"
+            [href]="'/web-apps/' + p.id"
+            (click)="navigateInternal('/web-apps/' + p.id, $event)"
+          >
+            <span>{{ p.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+          <div class="card-header-top">
+            <span class="eyebrow-label">{{ prop.categoryLabel }}</span>
+            <span class="domain-badge">{{ prop.domain }}</span>
+          </div>
+
+          <h1 id="page-main-heading" tabindex="-1">{{ prop.name }}</h1>
+
+          <p class="mono" style="font-size: 0.88rem; color: var(--accent-primary); font-weight: 700;">
+            {{ prop.primaryStack }}
+          </p>
+
+          <blockquote style="border-inline-start: 3px solid var(--accent-primary); padding-inline-start: 0.9rem; font-weight: 600;">
+            <strong>Architectural Pattern:</strong> {{ prop.architecturalPattern }}
+          </blockquote>
+
+          <p style="color: var(--text-secondary);">{{ prop.summary }}</p>
+
+          <ul class="tag-list" role="list" [attr.aria-label]="'Technologies used in ' + prop.name">
+            @for (tag of prop.tags; track tag) {
+              <li class="tech-tag tech-tag-highlight">{{ tag }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="cta-row">
+          @if (!prop.isCurrentSite) {
+            <a class="btn btn-primary" [href]="prop.url" target="_blank" rel="noopener">
+              <span>{{ prop.ctaLabel ?? ('Visit Live Site (' + prop.domain + ')') }}</span>
+            </a>
+          }
+          @if (prop.repoUrl) {
+            <a class="btn btn-secondary" [href]="prop.repoUrl" target="_blank" rel="noopener">
+              <span>View Repository on GitHub (MIT)</span>
+            </a>
+          }
+          <a class="btn btn-secondary" href="/web-apps" (click)="navigateInternal('/web-apps', $event)">
+            <span>← All 17 Web Apps</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="webapp-vital-heading">
+        <div>
+          <div class="card-header-top" style="margin-block-end: 0.5rem;">
+            <span class="eyebrow-label">Production Telemetry</span>
+            <span class="domain-badge">/web-apps/{{ prop.id }}</span>
+          </div>
+          <h2 id="webapp-vital-heading" style="font-size: 1.3rem; margin-block-end: 0.75rem;">
+            Runtime &amp; Accessibility Profile
+          </h2>
+          <dl class="logistics-dl">
+            @for (stat of prop.vitalStats; track stat.label) {
+              <div class="logistics-item">
+                <dt class="logistics-dt">{{ stat.label }}</dt>
+                <dd class="logistics-dd">
+                  @if (stat.isBadge) {
+                    <span class="domain-badge" style="display: inline-block; margin-block-start: 0.15rem;">
+                      {{ stat.value }}
+                    </span>
+                  } @else {
+                    <strong>{{ stat.value }}</strong>
+                  }
+                </dd>
+              </div>
+            }
+          </dl>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>All-in-One Dossier (/)</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <div class="dual-column-grid">
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Frontend, SSR/SSG &amp; Data Routing</span>
+          <code>{{ prop.domain }}</code>
+        </div>
+        <h2>Systems &amp; Stack Architecture</h2>
+        <ul class="bullet-list">
+          @for (item of prop.deepDiveArchitecture; track item.title) {
+            <li>
+              <strong style="color: var(--text-primary);">{{ item.title }}:</strong>
+              {{ item.detail }}
+            </li>
+          }
+        </ul>
+      </article>
+
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">WCAG 2.1/2.2 AA &amp; Section 508 Web</span>
+          <span class="domain-badge">Code-Level Accessibility</span>
+        </div>
+        <h2>Accessibility &amp; Inclusive UI Engineering</h2>
+        <ul class="bullet-list">
+          @for (a11y of prop.accessibilityDeepDive; track a11y.title) {
+            <li>
+              <strong style="color: var(--text-primary);">{{ a11y.title }}:</strong>
+              {{ a11y.detail }}
+            </li>
+          }
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  @if (adjacentWebApps(); as adj) {
+    <section class="dossier-section" aria-label="Web Application Pagination">
+      <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
+        <a
+          class="btn btn-secondary"
+          [href]="'/web-apps/' + adj.prev.id"
+          (click)="navigateInternal('/web-apps/' + adj.prev.id, $event)"
+        >
+          <span>← Previous: {{ adj.prev.shortName }}</span>
+        </a>
+        <a class="btn btn-secondary" href="/web-apps" (click)="navigateInternal('/web-apps', $event)">
+          <span>🌐 All 17 Web Apps (/web-apps)</span>
+        </a>
+        <a
+          class="btn btn-primary"
+          [href]="'/web-apps/' + adj.next.id"
+          (click)="navigateInternal('/web-apps/' + adj.next.id, $event)"
+        >
+          <span>Next: {{ adj.next.shortName }} →</span>
+        </a>
+      </div>
+    </section>
+  }
+
+    }
+
+  <!-- =======================================================================
+       TIER 2B — CASE STUDIES SECTION LANDING PAGE (`/case-studies`)
+       ======================================================================= -->
+  } @else if (activeView() === 'case-studies-overview') {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/case-studies" aria-current="page" (click)="navigateInternal('/case-studies', $event)">Case Studies (6)</a></li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Jump to Case Study Spec">
+      @for (c of caseStudiesList; track c.id) {
+        <li>
+          <a
+            class="build-team-pill"
+            [href]="'/case-studies/' + c.id"
+            (click)="navigateInternal('/case-studies/' + c.id, $event)"
+          >
+            <span>{{ c.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <span class="eyebrow-label">{{ sectionLandings.caseStudies.eyebrow }}</span>
+          <h1 id="page-main-heading" tabindex="-1">{{ sectionLandings.caseStudies.title }}</h1>
+          <p style="font-size: 1.02rem; color: var(--text-secondary);">
+            {{ sectionLandings.caseStudies.subtitle }}
+          </p>
+          <blockquote style="border-inline-start: 3px solid var(--accent-primary); padding-inline-start: 0.9rem; font-weight: 600;">
+            {{ sectionLandings.caseStudies.quote }}
+          </blockquote>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>← Return to All-in-One Dossier (/)</span>
+          </a>
+          <a class="btn btn-secondary" href="/build-team" (click)="navigateInternal('/build-team', $event)">
+            <span>Explore CI/CD Tooling (7) →</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="cases-filter-heading">
+        <div>
+          <span class="eyebrow-label">Filter Case Studies by Discipline</span>
+          <h2 id="cases-filter-heading" style="font-size: 1.25rem; margin-block: 0.3rem 0.65rem;">
+            Engineering Focus Lens
+          </h2>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-block-end: 0.9rem;">
+            {{ currentLensMeta().shortDescription }}
+          </p>
+          <div class="lens-button-group" role="group" aria-label="Filter case studies by discipline">
+            @for (lens of roleLenses; track lens.id) {
+              <button
+                type="button"
+                class="lens-btn"
+                [attr.aria-pressed]="activeLens() === lens.id"
+                (click)="selectLens(lens.id)"
+              >
+                <span>{{ lens.label }}</span>
+              </button>
+            }
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <div class="dual-column-grid">
+      @for (study of filteredCaseStudies(); track study.id) {
+        <article class="case-study-card">
+          <div class="card-header-top">
+            <span class="domain-badge">{{ study.code }} • {{ study.organization }}</span>
+            <span class="mono text-muted" style="font-size: 0.8rem;">{{ study.timeframe }}</span>
+          </div>
+
+          <h2 style="font-size: 1.25rem;">
+            <a
+              class="card-title-link"
+              [href]="'/case-studies/' + study.id"
+              (click)="navigateInternal('/case-studies/' + study.id, $event)"
+            >
+              {{ study.title }}
+            </a>
+          </h2>
+
+          <div class="case-study-metrics" aria-label="Key project outcomes">
+            @for (metric of study.quantifiedImpact; track metric.label) {
+              <div class="metric-box">
+                <span class="metric-label">{{ metric.label }}</span>
+                <span class="metric-value">{{ metric.value }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.65rem;">
+            <p><strong>Challenge:</strong> {{ study.problemStatement }}</p>
+            <p><strong>Approach &amp; Solution:</strong> {{ study.architecturalSolution }}</p>
+          </div>
+
+          <ul class="tag-list" role="list" aria-label="Case study technologies">
+            @for (tech of study.technologies; track tech) {
+              <li class="tech-tag">{{ tech }}</li>
+            }
+          </ul>
+
+          <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              [href]="'/case-studies/' + study.id"
+              (click)="navigateInternal('/case-studies/' + study.id, $event)"
+            >
+              <span>Deep Dive<span class="sr-only">: {{ study.code }} {{ study.title }}</span> →</span>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       TIER 3B — INDIVIDUAL CASE STUDY DEEP DIVE (`/case-studies/:slug`)
+       ======================================================================= -->
+  } @else if (activeView() === 'case-study-detail') {
+    @if (activeCaseStudy(); as study) {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/case-studies" (click)="navigateInternal('/case-studies', $event)">Case Studies (6)</a></li>
+        <li>
+          <a
+            [href]="'/case-studies/' + study.id"
+            aria-current="page"
+            (click)="navigateInternal('/case-studies/' + study.id, $event)"
+          >
+            {{ study.shortName }}
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Switch Case Study">
+      <li>
+        <a class="build-team-pill" href="/case-studies" (click)="navigateInternal('/case-studies', $event)">
+          <span>📐 All 6 Studies</span>
+        </a>
+      </li>
+      @for (c of caseStudiesList; track c.id) {
+        <li>
+          <a
+            class="build-team-pill"
+            [class.is-active]="c.id === study.id"
+            [attr.aria-current]="c.id === study.id ? 'page' : null"
+            [href]="'/case-studies/' + c.id"
+            (click)="navigateInternal('/case-studies/' + c.id, $event)"
+          >
+            <span>{{ c.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div class="card-header-top">
+            <span class="domain-badge">{{ study.code }} • {{ study.organization }}</span>
+            <span class="mono text-muted" style="font-size: 0.82rem;">{{ study.timeframe }}</span>
+          </div>
+
+          <h1 id="page-main-heading" tabindex="-1">{{ study.title }}</h1>
+
+          <div class="case-study-metrics" aria-label="Quantified project outcomes">
+            @for (metric of study.quantifiedImpact; track metric.label) {
+              <div class="metric-box">
+                <span class="metric-label">{{ metric.label }}</span>
+                <span class="metric-value">{{ metric.value }}</span>
+              </div>
+            }
+          </div>
+
+          <p style="color: var(--text-secondary);"><strong>Problem Statement:</strong> {{ study.problemStatement }}</p>
+          <p style="color: var(--text-secondary);"><strong>Architectural Solution:</strong> {{ study.architecturalSolution }}</p>
+
+          <ul class="tag-list" role="list" aria-label="Case study technologies">
+            @for (tech of study.technologies; track tech) {
+              <li class="tech-tag tech-tag-highlight">{{ tech }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="cta-row">
+          @for (link of study.referenceLinks; track link.url) {
+            @if (link.url.startsWith('/')) {
+              <a class="btn btn-secondary" [href]="link.url" (click)="navigateInternal(link.url, $event)">
+                <span>{{ link.label }}</span>
+              </a>
+            } @else {
+              <a class="btn btn-primary" [href]="link.url" target="_blank" rel="noopener">
+                <span>{{ link.label }}</span>
+              </a>
+            }
+          }
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="case-vital-heading">
+        <div>
+          <div class="card-header-top" style="margin-block-end: 0.5rem;">
+            <span class="eyebrow-label">Case Study Telemetry</span>
+            <span class="domain-badge">/case-studies/{{ study.id }}</span>
+          </div>
+          <h2 id="case-vital-heading" style="font-size: 1.3rem; margin-block-end: 0.75rem;">
+            Scope &amp; Verification Summary
+          </h2>
+          <dl class="logistics-dl">
+            @for (stat of study.vitalStats; track stat.label) {
+              <div class="logistics-item">
+                <dt class="logistics-dt">{{ stat.label }}</dt>
+                <dd class="logistics-dd">
+                  @if (stat.isBadge) {
+                    <span class="domain-badge" style="display: inline-block; margin-block-start: 0.15rem;">
+                      {{ stat.value }}
+                    </span>
+                  } @else {
+                    <strong>{{ stat.value }}</strong>
+                  }
+                </dd>
+              </div>
+            }
+          </dl>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="/case-studies" (click)="navigateInternal('/case-studies', $event)">
+            <span>← All 6 Case Studies</span>
+          </a>
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>All-in-One Dossier (/)</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <div class="dual-column-grid">
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Step-by-Step Implementation</span>
+          <code>{{ study.code }}</code>
+        </div>
+        <h2>Engineering Breakdown</h2>
+        <ul class="bullet-list">
+          @for (step of study.implementationSteps; track step.title) {
+            <li>
+              <strong style="color: var(--text-primary);">{{ step.title }}:</strong>
+              {{ step.detail }}
+            </li>
+          }
+        </ul>
+      </article>
+
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Verification &amp; Design Rationale</span>
+          <span class="domain-badge">Quality Assurance</span>
+        </div>
+        <h2>Testing, Constraints &amp; Trade-Offs</h2>
+        <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.8rem;">
+          @for (para of study.verificationAndTradeoffs; track para) {
+            <p>{{ para }}</p>
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  @if (adjacentCaseStudies(); as adj) {
+    <section class="dossier-section" aria-label="Case Study Pagination">
+      <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
+        <a
+          class="btn btn-secondary"
+          [href]="'/case-studies/' + adj.prev.id"
+          (click)="navigateInternal('/case-studies/' + adj.prev.id, $event)"
+        >
+          <span>← Previous: {{ adj.prev.shortName }}</span>
+        </a>
+        <a class="btn btn-secondary" href="/case-studies" (click)="navigateInternal('/case-studies', $event)">
+          <span>📐 All 6 Case Studies (/case-studies)</span>
+        </a>
+        <a
+          class="btn btn-primary"
+          [href]="'/case-studies/' + adj.next.id"
+          (click)="navigateInternal('/case-studies/' + adj.next.id, $event)"
+        >
+          <span>Next: {{ adj.next.shortName }} →</span>
+        </a>
+      </div>
+    </section>
+  }
+
+    }
+
+  <!-- =======================================================================
+       TIER 2C — CI/CD & MEDIA AUTOMATION SUITE LANDING (`/build-team`)
+       ======================================================================= -->
+  } @else if (activeView() === 'build-team-overview') {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/build-team" aria-current="page" (click)="navigateInternal('/build-team', $event)">CI/CD &amp; Media Suite (7)</a></li>
+      </ol>
+    </nav>
 
     <ul class="build-team-pills" aria-label="CI/CD Automation Modules">
       <li>
@@ -942,11 +1513,10 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         </li>
       }
     </ul>
-  </nav>
+  </div>
 
-  <section id="top" class="hero-bento" aria-labelledby="build-team-heading">
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
     <div class="hero-panel-grid">
-      <!-- Left Panel: Automation Suite Overview & Naming Convention Note -->
       <article class="executive-card">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div class="status-pill">
@@ -969,7 +1539,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
 
             <div style="display: flex; flex-direction: column; gap: 0.45rem;">
               <p class="eyebrow-label">/raggiesoft-deployment-tools/ &amp; NYC1 Linux VPS</p>
-              <h1 id="build-team-heading">{{ buildTeamOverview.title }}</h1>
+              <h1 id="page-main-heading" tabindex="-1">{{ buildTeamOverview.title }}</h1>
               <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-secondary);">
                 {{ buildTeamOverview.subtitle }}
               </p>
@@ -1002,31 +1572,18 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         </div>
 
         <div class="cta-row">
-          <a
-            class="btn btn-primary"
-            href="/build-team/jenna"
-            (click)="navigateInternal('/build-team/jenna', $event)"
-          >
+          <a class="btn btn-primary" href="/build-team/jenna" (click)="navigateInternal('/build-team/jenna', $event)">
             <span>🚀 Inspect jenna-sync.sh (Release Gate)</span>
           </a>
-          <a
-            class="btn btn-secondary"
-            href="/build-team/sarah"
-            (click)="navigateInternal('/build-team/sarah', $event)"
-          >
+          <a class="btn btn-secondary" href="/build-team/sarah" (click)="navigateInternal('/build-team/sarah', $event)">
             <span>🛡️ Inspect sarah-deploy.sh (Non-Root CD)</span>
           </a>
-          <a
-            class="btn btn-secondary"
-            href="/"
-            (click)="navigateInternal('/', $event)"
-          >
-            <span>← Return to Main Portfolio</span>
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>← Return to All-in-One Dossier</span>
           </a>
         </div>
       </article>
 
-      <!-- Right Panel: End-to-End 5-Stage Pipeline Architecture -->
       <aside class="logistics-card" aria-labelledby="pipeline-flow-heading">
         <div>
           <div class="card-header-top" style="margin-block-end: 0.65rem;">
@@ -1058,43 +1615,39 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  <!-- 7 Automation Module Specification Cards -->
-  <section class="dossier-section" aria-labelledby="roster-heading">
+  <section class="dossier-section">
     <div class="section-header">
       <div>
         <p class="eyebrow-label">7 Modular Pipeline Components</p>
-        <h2 id="roster-heading">Automation Modules &amp; Infrastructure Specs</h2>
+        <h2>Automation Modules &amp; Infrastructure Specs</h2>
         <p class="section-lead">
           Select any module below to inspect its command-line invocation, technical responsibilities, security guardrails, and terminal output.
         </p>
       </div>
     </div>
 
-    <!--
-      CSS Grid + `subgrid` Card Matrix (`.subgrid-card-matrix` > `.subgrid-card`):
-      Look closely at how every `<article class="subgrid-card">` below contains
-      EXACTLY 4 direct child `<div>` wrappers (Row 1 Header, Row 2 Body, Row 3
-      Tech Chips, Row 4 Footer CTA). Because `.subgrid-card` declares
-      `grid-row: span 4; grid-template-rows: subgrid;` in `src/styles.css`,
-      all 4 sections align horizontally across neighbor cards in the same row
-      even when one card has longer bullet points than its neighbor!
-    -->
     <div class="subgrid-card-matrix">
       @for (member of buildTeamProfiles; track member.slug) {
         <article class="subgrid-card">
-          <!-- Row 1: Module Name & System Artifact -->
           <div>
             <div class="card-header-top">
               <span class="eyebrow-label">{{ member.icon }} {{ member.shortLabel }}</span>
               <code>{{ member.systemArtifact }}</code>
             </div>
-            <h3 style="margin-block-start: 0.45rem;">{{ member.name }}</h3>
+            <h3 style="margin-block-start: 0.45rem;">
+              <a
+                class="card-title-link"
+                [href]="'/build-team/' + member.slug"
+                (click)="navigateInternal('/build-team/' + member.slug, $event)"
+              >
+                {{ member.name }}
+              </a>
+            </h3>
             <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-primary); font-weight: 600; margin-block-start: 0.2rem;">
               {{ member.roleTitle }}
             </p>
           </div>
 
-          <!-- Row 2: Engineering Principle & Summary -->
           <div class="card-body-text">
             <blockquote
               style="
@@ -1110,9 +1663,8 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             <p>{{ member.cardSummary }}</p>
           </div>
 
-          <!-- Row 3: Stack & Security Badges -->
           <div>
-            <ul class="tag-list" [attr.aria-label]="member.name + ' technical attributes'">
+            <ul class="tag-list" role="list" [attr.aria-label]="member.name + ' technical attributes'">
               <li class="tech-tag tech-tag-highlight">{{ member.stackBadge }}</li>
               @for (stat of member.vitalStats; track stat.label) {
                 @if (stat.isBadge) {
@@ -1122,7 +1674,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             </ul>
           </div>
 
-          <!-- Row 4: Module Spec Link -->
           <div class="card-footer-actions">
             <a
               class="btn btn-primary"
@@ -1130,7 +1681,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
               [href]="'/build-team/' + member.slug"
               (click)="navigateInternal('/build-team/' + member.slug, $event)"
             >
-              <span>Inspect {{ member.name }} Specs →</span>
+              <span>Deep Dive<span class="sr-only">: {{ member.name }}</span> →</span>
             </a>
           </div>
         </article>
@@ -1138,40 +1689,32 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  } @else {
-    <!--
-      Angular `@if (...; as member)` Aliasing Pattern:
-      `activeMember()` has TypeScript type `BuildTeamMember | null`. By writing
-      `@if (activeMember(); as member)`, Angular checks that `activeMember()` is
-      truthy (not `null`) AND binds that non-null result to a convenient local
-      template variable `member`—so we can write `{{ member.name }}` cleanly
-      throughout View 3 without repeating `activeMember()?.name`!
-    -->
+  <!-- =======================================================================
+       TIER 3C — INDIVIDUAL CI/CD MODULE DEEP DIVE (`/build-team/:slug`)
+       ======================================================================= -->
+  } @else if (activeView() === 'build-team-member') {
     @if (activeMember(); as member) {
 
-  <!-- =======================================================================
-       VIEW 3: INDIVIDUAL AUTOMATION MODULE SPECIFICATION (`/build-team/:slug`)
-       ======================================================================= -->
-  <nav class="build-team-subnav" aria-label="CI/CD Module Breadcrumb and Switcher">
-    <ol class="build-team-breadcrumbs">
-      <li>
-        <a href="/" (click)="navigateInternal('/', $event)">Portfolio</a>
-      </li>
-      <li aria-hidden="true">/</li>
-      <li>
-        <a href="/build-team" (click)="navigateInternal('/build-team', $event)">CI/CD Suite</a>
-      </li>
-      <li aria-hidden="true">/</li>
-      <li aria-current="page">{{ member.name }}</li>
-    </ol>
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/build-team" (click)="navigateInternal('/build-team', $event)">CI/CD Suite (7)</a></li>
+        <li>
+          <a
+            [href]="'/build-team/' + member.slug"
+            aria-current="page"
+            (click)="navigateInternal('/build-team/' + member.slug, $event)"
+          >
+            {{ member.name }}
+          </a>
+        </li>
+      </ol>
+    </nav>
 
     <ul class="build-team-pills" aria-label="Switch CI/CD Module">
       <li>
-        <a
-          class="build-team-pill"
-          href="/build-team"
-          (click)="navigateInternal('/build-team', $event)"
-        >
+        <a class="build-team-pill" href="/build-team" (click)="navigateInternal('/build-team', $event)">
           <span>⚙️ All Modules</span>
         </a>
       </li>
@@ -1190,12 +1733,10 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         </li>
       }
     </ul>
-  </nav>
+  </div>
 
-  <!-- Module Hero & Technical Telemetry Split Grid -->
-  <section id="top" class="hero-bento" aria-labelledby="member-hero-heading">
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
     <div class="hero-panel-grid">
-      <!-- Left Panel: Module Identity, Engineering Rationale & Terminal Preview -->
       <article class="executive-card">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div class="card-header-top">
@@ -1208,7 +1749,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
 
           <div>
             <p class="eyebrow-label">{{ member.roleTitle }}</p>
-            <h1 id="member-hero-heading" style="margin-block-start: 0.2rem;">
+            <h1 id="page-main-heading" tabindex="-1" style="margin-block-start: 0.2rem;">
               <span aria-hidden="true">{{ member.icon }}</span> {{ member.name }}
             </h1>
           </div>
@@ -1229,12 +1770,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             {{ member.cardSummary }}
           </p>
 
-          <!--
-            Simulated CLI Reference Window:
-            `role="region" aria-label="Command Line Invocation"` exposes this
-            styled terminal card as a named region landmark while hiding purely
-            decorative macOS-style window dots with `aria-hidden="true"`.
-          -->
           <div class="terminal-window" role="region" aria-label="Command Line Invocation">
             <div class="terminal-header">
               <span class="terminal-dots" aria-hidden="true">
@@ -1257,7 +1792,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         </div>
       </article>
 
-      <!-- Right Panel: Module Specifications & Navigation -->
       <aside class="logistics-card" aria-labelledby="vital-stats-heading">
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div>
@@ -1288,19 +1822,11 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           </div>
 
           <div class="cta-row">
-            <a
-              class="btn btn-secondary"
-              href="/build-team"
-              (click)="navigateInternal('/build-team', $event)"
-            >
+            <a class="btn btn-secondary" href="/build-team" (click)="navigateInternal('/build-team', $event)">
               <span>← All CI/CD Modules</span>
             </a>
-            <a
-              class="btn btn-secondary"
-              href="/"
-              (click)="navigateInternal('/', $event)"
-            >
-              <span>Main Portfolio</span>
+            <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+              <span>All-in-One Dossier (/)</span>
             </a>
           </div>
         </div>
@@ -1308,10 +1834,8 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  <!-- Dual-Column Deep Dive: Implementation Details & Operational Reliability -->
-  <section class="dossier-section" aria-label="Module Implementation and Operational Design">
+  <section class="dossier-section">
     <div class="dual-column-grid">
-      <!-- Column 1: Core Responsibilities & Capabilities -->
       <article class="case-study-card">
         <div class="card-header-top">
           <span class="eyebrow-label">Implementation &amp; Responsibilities</span>
@@ -1330,7 +1854,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         </ul>
       </article>
 
-      <!-- Column 2: Operational Design, Security & Reliability -->
       <article class="case-study-card">
         <div class="card-header-top">
           <span class="eyebrow-label">Operational &amp; Security Rationale</span>
@@ -1357,8 +1880,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  <!-- Live Terminal Output Sample -->
-  <section class="dossier-section" aria-label="Sample Execution Output">
+  <section class="dossier-section">
     <div class="terminal-window">
       <div class="terminal-header">
         <div style="display: flex; align-items: center; gap: 0.65rem;">
@@ -1397,12 +1919,6 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  <!--
-    Sequential Module Pagination Footer (`@if (adjacentMembers(); as adj)`):
-    Unwraps the `adjacentMembers()` Computed Signal (calculated using modulo `%`
-    wrap-around math in `app.component.ts`) so visitors can step backward/forward
-    through all 7 CI/CD modules in a continuous loop!
-  -->
   @if (adjacentMembers(); as adj) {
     <section class="dossier-section" aria-label="CI/CD Module Pagination">
       <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
@@ -1413,11 +1929,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         >
           <span>← Previous: {{ adj.prev.icon }} {{ adj.prev.name }}</span>
         </a>
-        <a
-          class="btn btn-secondary"
-          href="/build-team"
-          (click)="navigateInternal('/build-team', $event)"
-        >
+        <a class="btn btn-secondary" href="/build-team" (click)="navigateInternal('/build-team', $event)">
           <span>⚙️ All CI/CD Modules (/build-team)</span>
         </a>
         <a
@@ -1432,19 +1944,604 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
   }
 
     }
+
+  <!-- =======================================================================
+       TIER 2D — PROFESSIONAL EXPERIENCE SECTION LANDING (`/experience`)
+       ======================================================================= -->
+  } @else if (activeView() === 'experience-overview') {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/experience" aria-current="page" (click)="navigateInternal('/experience', $event)">Experience (4)</a></li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Jump to Career Role">
+      @for (job of experienceList; track job.slug) {
+        <li>
+          <a
+            class="build-team-pill"
+            [href]="'/experience/' + job.slug"
+            (click)="navigateInternal('/experience/' + job.slug, $event)"
+          >
+            <span>{{ job.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <span class="eyebrow-label">{{ sectionLandings.experience.eyebrow }}</span>
+          <h1 id="page-main-heading" tabindex="-1">{{ sectionLandings.experience.title }}</h1>
+          <p style="font-size: 1.02rem; color: var(--text-secondary);">
+            {{ sectionLandings.experience.subtitle }}
+          </p>
+          <blockquote style="border-inline-start: 3px solid var(--accent-primary); padding-inline-start: 0.9rem; font-weight: 600;">
+            {{ sectionLandings.experience.quote }}
+          </blockquote>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" [href]="profile.assets.resumePdfUrl" target="_blank" rel="noopener">
+            <span>Download Resume (PDF)</span>
+          </a>
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>← Return to All-in-One Dossier (/)</span>
+          </a>
+          <a class="btn btn-secondary" href="/education" (click)="navigateInternal('/education', $event)">
+            <span>Explore Education (3) →</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="exp-logistics-heading">
+        <div>
+          <span class="eyebrow-label">Hiring &amp; Eligibility Overview</span>
+          <h2 id="exp-logistics-heading" style="font-size: 1.25rem; margin-block: 0.3rem 0.75rem;">
+            W-2 Availability &amp; Verification
+          </h2>
+          <dl class="logistics-dl">
+            @for (param of hiringParameters; track param.label) {
+              <div class="logistics-item">
+                <dt class="logistics-dt">{{ param.label }}</dt>
+                <dd class="logistics-dd"><strong>{{ param.value }}</strong></dd>
+              </div>
+            }
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <ol class="timeline-list" role="list">
+      @for (job of experienceList; track job.slug) {
+        <li class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <h2 style="font-size: 1.3rem;">
+                <a
+                  class="card-title-link"
+                  [href]="'/experience/' + job.slug"
+                  (click)="navigateInternal('/experience/' + job.slug, $event)"
+                >
+                  {{ job.functionalTitle }}
+                </a>
+              </h2>
+              <p style="font-weight: 600; color: var(--accent-primary);">
+                {{ job.organization }} • {{ job.location }}
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem;">
+              <span class="mono" style="font-weight: 700; font-size: 0.88rem;">{{ job.timeframe }}</span>
+              <span class="hr-classification">{{ job.hrClassification }}</span>
+            </div>
+          </div>
+
+          <p style="color: var(--text-secondary); margin-block-end: 0.75rem;">{{ job.summary }}</p>
+
+          <ul class="bullet-list" style="margin-block-end: 0.9rem;">
+            @for (item of job.achievements; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+
+          <ul class="tag-list" role="list" [attr.aria-label]="'Technologies applied at ' + job.organization" style="margin-block-end: 0.85rem;">
+            @for (tech of job.technologies; track tech) {
+              <li class="tech-tag">{{ tech }}</li>
+            }
+          </ul>
+
+          <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              [href]="'/experience/' + job.slug"
+              (click)="navigateInternal('/experience/' + job.slug, $event)"
+            >
+              <span>Deep Dive<span class="sr-only">: {{ job.functionalTitle }} at {{ job.organization }}</span> →</span>
+            </a>
+            <span class="domain-badge">{{ job.timeframe }}</span>
+          </div>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <!-- =======================================================================
+       TIER 3D — INDIVIDUAL EXPERIENCE ROLE DEEP DIVE (`/experience/:slug`)
+       ======================================================================= -->
+  } @else if (activeView() === 'experience-detail') {
+    @if (activeExperience(); as job) {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/experience" (click)="navigateInternal('/experience', $event)">Experience (4)</a></li>
+        <li>
+          <a
+            [href]="'/experience/' + job.slug"
+            aria-current="page"
+            (click)="navigateInternal('/experience/' + job.slug, $event)"
+          >
+            {{ job.shortName }}
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Switch Career Role">
+      <li>
+        <a class="build-team-pill" href="/experience" (click)="navigateInternal('/experience', $event)">
+          <span>💼 All 4 Roles</span>
+        </a>
+      </li>
+      @for (e of experienceList; track e.slug) {
+        <li>
+          <a
+            class="build-team-pill"
+            [class.is-active]="e.slug === job.slug"
+            [attr.aria-current]="e.slug === job.slug ? 'page' : null"
+            [href]="'/experience/' + e.slug"
+            (click)="navigateInternal('/experience/' + e.slug, $event)"
+          >
+            <span>{{ e.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+          <div class="card-header-top">
+            <span class="eyebrow-label">{{ job.organization }} • {{ job.location }}</span>
+            <span class="domain-badge">{{ job.timeframe }}</span>
+          </div>
+
+          <h1 id="page-main-heading" tabindex="-1">{{ job.functionalTitle }}</h1>
+
+          <p class="hr-classification" style="inline-size: fit-content;">{{ job.hrClassification }}</p>
+
+          <p style="color: var(--text-secondary);">{{ job.summary }}</p>
+
+          <ul class="tag-list" role="list" [attr.aria-label]="'Technologies applied at ' + job.organization">
+            @for (tech of job.technologies; track tech) {
+              <li class="tech-tag tech-tag-highlight">{{ tech }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="cta-row">
+          @for (link of job.relatedLinks; track link.url) {
+            @if (link.url.startsWith('/')) {
+              <a class="btn btn-secondary" [href]="link.url" (click)="navigateInternal(link.url, $event)">
+                <span>{{ link.label }}</span>
+              </a>
+            } @else {
+              <a class="btn btn-primary" [href]="link.url" target="_blank" rel="noopener">
+                <span>{{ link.label }}</span>
+              </a>
+            }
+          }
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="exp-vital-heading">
+        <div>
+          <div class="card-header-top" style="margin-block-end: 0.5rem;">
+            <span class="eyebrow-label">Employment Record</span>
+            <span class="domain-badge">/experience/{{ job.slug }}</span>
+          </div>
+          <h2 id="exp-vital-heading" style="font-size: 1.3rem; margin-block-end: 0.75rem;">
+            Role &amp; HR Verification Summary
+          </h2>
+          <dl class="logistics-dl">
+            @for (stat of job.vitalStats; track stat.label) {
+              <div class="logistics-item">
+                <dt class="logistics-dt">{{ stat.label }}</dt>
+                <dd class="logistics-dd">
+                  @if (stat.isBadge) {
+                    <span class="domain-badge" style="display: inline-block; margin-block-start: 0.15rem;">
+                      {{ stat.value }}
+                    </span>
+                  } @else {
+                    <strong>{{ stat.value }}</strong>
+                  }
+                </dd>
+              </div>
+            }
+          </dl>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="/experience" (click)="navigateInternal('/experience', $event)">
+            <span>← All 4 Experience Roles</span>
+          </a>
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>All-in-One Dossier (/)</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <div class="dual-column-grid">
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Shipped Systems &amp; Contributions</span>
+          <code>{{ job.timeframe }}</code>
+        </div>
+        <h2>Key Deliverables &amp; Impact</h2>
+        <ul class="bullet-list">
+          @for (item of job.deepDiveDeliverables; track item.title) {
+            <li>
+              <strong style="color: var(--text-primary);">{{ item.title }}:</strong>
+              {{ item.detail }}
+            </li>
+          }
+        </ul>
+      </article>
+
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Team Context &amp; Engineering Habits</span>
+          <span class="domain-badge">Operational Context</span>
+        </div>
+        <h2>Environment &amp; Practices</h2>
+        <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.8rem;">
+          @for (para of job.environmentAndPractices; track para) {
+            <p>{{ para }}</p>
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  @if (adjacentExperiences(); as adj) {
+    <section class="dossier-section" aria-label="Experience Pagination">
+      <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
+        <a
+          class="btn btn-secondary"
+          [href]="'/experience/' + adj.prev.slug"
+          (click)="navigateInternal('/experience/' + adj.prev.slug, $event)"
+        >
+          <span>← Previous: {{ adj.prev.shortName }}</span>
+        </a>
+        <a class="btn btn-secondary" href="/experience" (click)="navigateInternal('/experience', $event)">
+          <span>💼 All Experience (/experience)</span>
+        </a>
+        <a
+          class="btn btn-primary"
+          [href]="'/experience/' + adj.next.slug"
+          (click)="navigateInternal('/experience/' + adj.next.slug, $event)"
+        >
+          <span>Next: {{ adj.next.shortName }} →</span>
+        </a>
+      </div>
+    </section>
+  }
+
+    }
+
+  <!-- =======================================================================
+       TIER 2E — EDUCATION & CREDENTIALS SECTION LANDING (`/education`)
+       ======================================================================= -->
+  } @else if (activeView() === 'education-overview') {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/education" aria-current="page" (click)="navigateInternal('/education', $event)">Education (3)</a></li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Jump to Credential">
+      @for (ed of educationList; track ed.slug) {
+        <li>
+          <a
+            class="build-team-pill"
+            [href]="'/education/' + ed.slug"
+            (click)="navigateInternal('/education/' + ed.slug, $event)"
+          >
+            <span>{{ ed.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <span class="eyebrow-label">{{ sectionLandings.education.eyebrow }}</span>
+          <h1 id="page-main-heading" tabindex="-1">{{ sectionLandings.education.title }}</h1>
+          <p style="font-size: 1.02rem; color: var(--text-secondary);">
+            {{ sectionLandings.education.subtitle }}
+          </p>
+          <blockquote style="border-inline-start: 3px solid var(--accent-primary); padding-inline-start: 0.9rem; font-weight: 600;">
+            {{ sectionLandings.education.quote }}
+          </blockquote>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" [href]="profile.assets.resumePdfUrl" target="_blank" rel="noopener">
+            <span>Download Resume (PDF)</span>
+          </a>
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>← Return to All-in-One Dossier (/)</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="edu-elig-heading">
+        <div>
+          <span class="eyebrow-label">State &amp; Federal Hiring Eligibility</span>
+          <h2 id="edu-elig-heading" style="font-size: 1.25rem; margin-block: 0.3rem 0.65rem;">
+            Public-Sector &amp; Enterprise Credentials
+          </h2>
+          <ul class="bullet-list">
+            <li><strong>U.S. Citizen</strong> based in Norfolk / Virginia Beach, Virginia (Hampton Roads).</li>
+            <li><strong>Commonwealth of Virginia Alternative Hiring Process (AHP) Eligible</strong> under DHRM Policy 2.10 for state agencies and public universities.</li>
+            <li><strong>Prior Federal Public Trust (6C) Adjudication</strong> — favorable prior federal background suitability determination.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <div class="dual-column-grid">
+      @for (edu of educationList; track edu.slug) {
+        <article class="timeline-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 0.9rem;">
+          <div>
+            <span class="eyebrow-label">{{ edu.timeframe }}</span>
+            <h2 style="font-size: 1.2rem; margin-block-start: 0.25rem;">
+              <a
+                class="card-title-link"
+                [href]="'/education/' + edu.slug"
+                (click)="navigateInternal('/education/' + edu.slug, $event)"
+              >
+                {{ edu.degree }}
+              </a>
+            </h2>
+            <p style="font-weight: 600; color: var(--text-secondary); margin-block: 0.25rem 0.5rem;">
+              {{ edu.institution }}
+            </p>
+            <p class="hr-classification" style="display: inline-block; margin-block-end: 0.75rem;">
+              {{ edu.statusNote }}
+            </p>
+            <ul class="bullet-list">
+              @for (focus of edu.focusAreas; track focus) {
+                <li>{{ focus }}</li>
+              }
+            </ul>
+          </div>
+
+          <div class="card-footer-actions">
+            <a
+              class="btn btn-primary"
+              [href]="'/education/' + edu.slug"
+              (click)="navigateInternal('/education/' + edu.slug, $event)"
+            >
+              <span>Deep Dive<span class="sr-only">: {{ edu.shortName }}</span> →</span>
+            </a>
+            <span class="tech-tag">{{ edu.shortName }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       TIER 3E — INDIVIDUAL EDUCATION CREDENTIAL DEEP DIVE (`/education/:slug`)
+       ======================================================================= -->
+  } @else if (activeView() === 'education-detail') {
+    @if (activeEducation(); as edu) {
+
+  <div class="build-team-subnav">
+    <nav class="breadcrumb" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
+        <li><a href="/education" (click)="navigateInternal('/education', $event)">Education (3)</a></li>
+        <li>
+          <a
+            [href]="'/education/' + edu.slug"
+            aria-current="page"
+            (click)="navigateInternal('/education/' + edu.slug, $event)"
+          >
+            {{ edu.shortName }}
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <ul class="build-team-pills" aria-label="Switch Credential">
+      <li>
+        <a class="build-team-pill" href="/education" (click)="navigateInternal('/education', $event)">
+          <span>🎓 All 3 Credentials</span>
+        </a>
+      </li>
+      @for (ed of educationList; track ed.slug) {
+        <li>
+          <a
+            class="build-team-pill"
+            [class.is-active]="ed.slug === edu.slug"
+            [attr.aria-current]="ed.slug === edu.slug ? 'page' : null"
+            [href]="'/education/' + ed.slug"
+            (click)="navigateInternal('/education/' + ed.slug, $event)"
+          >
+            <span>{{ ed.shortName }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <section id="top" class="hero-bento" aria-labelledby="page-main-heading">
+    <div class="hero-panel-grid">
+      <article class="executive-card">
+        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+          <div class="card-header-top">
+            <span class="eyebrow-label">{{ edu.institution }}</span>
+            <span class="domain-badge">{{ edu.timeframe }}</span>
+          </div>
+
+          <h1 id="page-main-heading" tabindex="-1">{{ edu.degree }}</h1>
+
+          <p class="hr-classification" style="inline-size: fit-content;">{{ edu.statusNote }}</p>
+
+          <ul class="bullet-list">
+            @for (focus of edu.focusAreas; track focus) {
+              <li>{{ focus }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="cta-row">
+          @for (link of edu.relatedLinks; track link.url) {
+            @if (link.url.startsWith('/')) {
+              <a class="btn btn-secondary" [href]="link.url" (click)="navigateInternal(link.url, $event)">
+                <span>{{ link.label }}</span>
+              </a>
+            } @else {
+              <a class="btn btn-primary" [href]="link.url" target="_blank" rel="noopener">
+                <span>{{ link.label }}</span>
+              </a>
+            }
+          }
+        </div>
+      </article>
+
+      <aside class="logistics-card" aria-labelledby="edu-vital-heading">
+        <div>
+          <div class="card-header-top" style="margin-block-end: 0.5rem;">
+            <span class="eyebrow-label">Academic Profile</span>
+            <span class="domain-badge">/education/{{ edu.slug }}</span>
+          </div>
+          <h2 id="edu-vital-heading" style="font-size: 1.3rem; margin-block-end: 0.75rem;">
+            Institution &amp; Credential Summary
+          </h2>
+          <dl class="logistics-dl">
+            @for (stat of edu.vitalStats; track stat.label) {
+              <div class="logistics-item">
+                <dt class="logistics-dt">{{ stat.label }}</dt>
+                <dd class="logistics-dd">
+                  @if (stat.isBadge) {
+                    <span class="domain-badge" style="display: inline-block; margin-block-start: 0.15rem;">
+                      {{ stat.value }}
+                    </span>
+                  } @else {
+                    <strong>{{ stat.value }}</strong>
+                  }
+                </dd>
+              </div>
+            }
+          </dl>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="/education" (click)="navigateInternal('/education', $event)">
+            <span>← All 3 Credentials</span>
+          </a>
+          <a class="btn btn-secondary" href="/" (click)="navigateInternal('/', $event)">
+            <span>All-in-One Dossier (/)</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="dossier-section">
+    <div class="dual-column-grid">
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Curriculum &amp; Technical Focus</span>
+          <code>{{ edu.shortName }}</code>
+        </div>
+        <h2>Core Competencies</h2>
+        <ul class="bullet-list">
+          @for (comp of edu.courseworkCompetencies; track comp.title) {
+            <li>
+              <strong style="color: var(--text-primary);">{{ comp.title }}:</strong>
+              {{ comp.detail }}
+            </li>
+          }
+        </ul>
+      </article>
+
+      <article class="case-study-card">
+        <div class="card-header-top">
+          <span class="eyebrow-label">Applied Engineering Connection</span>
+          <span class="domain-badge">Production Tie-In</span>
+        </div>
+        <h2>How This Informs My Production Work</h2>
+        <div class="card-body-text" style="display: flex; flex-direction: column; gap: 0.8rem;">
+          @for (para of edu.productionApplication; track para) {
+            <p>{{ para }}</p>
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  @if (adjacentEducation(); as adj) {
+    <section class="dossier-section" aria-label="Education Pagination">
+      <div class="card-footer-actions" style="border-block-start: none; padding-block-start: 0;">
+        <a
+          class="btn btn-secondary"
+          [href]="'/education/' + adj.prev.slug"
+          (click)="navigateInternal('/education/' + adj.prev.slug, $event)"
+        >
+          <span>← Previous: {{ adj.prev.shortName }}</span>
+        </a>
+        <a class="btn btn-secondary" href="/education" (click)="navigateInternal('/education', $event)">
+          <span>🎓 All Credentials (/education)</span>
+        </a>
+        <a
+          class="btn btn-primary"
+          [href]="'/education/' + adj.next.slug"
+          (click)="navigateInternal('/education/' + adj.next.slug, $event)"
+        >
+          <span>Next: {{ adj.next.shortName }} →</span>
+        </a>
+      </div>
+    </section>
+  }
+
+    }
   }
 
 </main>
 
-<!-- =========================================================================
-     GLOBAL FOOTER (`<footer role="contentinfo">`) WITH MANDATORY LICENSING &
-     FICTITIOUS ENTITIES DISCLAIMER
-     - `role="contentinfo"` identifies the page's global footer landmark across
-       all screen readers.
-     - `.disclaimer-box` uses `role="note"` with an explicit `aria-label` to
-       separate MIT / CC BY-SA 4.0 licensing and creative-catalog disclaimers
-       from Michael P. Ragsdale's factual career history.
-     ========================================================================= -->
+<!-- Global Footer with Mandatory Licensing & Fictitious Entities Disclaimer -->
 <footer class="site-footer" role="contentinfo">
   <div class="dossier-container">
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
@@ -1453,7 +2550,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           {{ profile.fullName }} — Full-Stack &amp; Web Accessibility Portfolio (michaelpragsdale.com)
         </strong>
         <p style="margin-block-start: 0.2rem;">
-          Built with Angular 19 (Standalone + Zoneless Signals + TypeScript) &amp; Modern Native CSS (<code>&#64;layer</code>, <code>subgrid</code>, <code>&#64;container</code>, <code>light-dark()</code>). Hosted on NYC1 (142.93.244.239).
+          Built with Angular 19 (Standalone + Zoneless Signals + TypeScript) &amp; Modern Native CSS (<code>&#64;layer</code>, <code>subgrid</code>, <code>&#64;container</code>, <code>light-dark()</code>). 43 Pre-Rendered Static Routes Hosted on NYC1 (142.93.244.239).
         </p>
       </div>
 
@@ -1470,13 +2567,12 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
       </div>
     </div>
 
-    <!-- Mandatory Fictitious Persons & Entities Disclaimer per GEMINI.md -->
     <div class="disclaimer-box" role="note" aria-label="Fictitious Entities and Licensing Disclaimer">
       <p style="margin-block-end: 0.5rem;">
         <strong>Licensing Notice:</strong> All application source code powering <code>michaelpragsdale.com</code> and the RaggieSoft engineering ecosystem is licensed under the <strong>MIT License</strong>. Creative narrative and musical works referenced in RaggieSoft Media case studies are licensed under <strong>CC BY-SA 4.0</strong> (alongside applicable DSP consumer licenses or direct commercial licenses cleared via <a href="https://corporate.raggiesoft.com/licensing/commercial" target="_blank" rel="noopener">corporate.raggiesoft.com/licensing/commercial</a>).
       </p>
       <p>
-        <strong>Fictitious Persons &amp; Entities Disclaimer:</strong> While all professional employment records, academic credentials, municipal/university achievements, and software architecture specifications on this page represent the factual career of <strong>Michael P. Ragsdale</strong>, all narrative characters, bands, biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (Blue Ridge Transit, Commonwealth Valley Transit Authority), in-universe legal filings, and events referenced within RaggieSoft creative properties (<code>raggiesoft.com</code>, <code>corporate.raggiesoft.com</code>, <code>engineroom.raggiesoft.com</code>, <code>music.raggiesoft.com</code>, <code>stardust.raggiesoft.com</code>, <code>books.raggiesoft.com</code>, <code>backstage.raggiesoft.com</code>, <code>lore.raggiesoft.com</code>, <code>nebulae.raggiesoft.com</code>, <code>storetrainer.raggiesoft.com</code>) are works of fiction. Any resemblance to actual persons (living or dead), businesses, institutions, or events is purely coincidental.
+        <strong>Fictitious Persons &amp; Entities Disclaimer:</strong> While all professional employment records, academic credentials, municipal/university achievements, and software architecture specifications on this page represent the factual career of <strong>Michael P. Ragsdale</strong>, all narrative characters, bands, biographies, universities (including Commonwealth Polytechnic Institute / CPI, Virginia Dominion University / VDU, The Forgers, and The Crucible), corporations (including OmniCorp, Apex Records, Prairie Coachworks, and Sainte-Claire), transit agencies (Blue Ridge Transit, Commonwealth Valley Transit Authority), in-universe legal filings, and events referenced within RaggieSoft creative properties (<code>raggiesoft.com</code>, <code>*.raggiesoft.com</code> subdomains) are works of fiction. Any resemblance to actual persons (living or dead), businesses, institutions, or events is purely coincidental.
       </p>
     </div>
 

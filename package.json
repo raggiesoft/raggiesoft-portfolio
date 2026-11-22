@@ -1,6 +1,7 @@
 {
   "name": "raggiesoft-portfolio",
   "version": "1.0.0",
+  "type": "module",
   "description": "Michael P. Ragsdale — Systems Architect & Accessibility Engineer Executive Dossier (michaelpragsdale.com). Built with Modern Angular (Standalone Components + Signals + TypeScript) and Native CSS Cascade Layers (@layer, Container Queries, Subgrid).",
   "license": "MIT",
   "author": "Michael P. Ragsdale <hello@michaelpragsdale.com> (https://michaelpragsdale.com)",
