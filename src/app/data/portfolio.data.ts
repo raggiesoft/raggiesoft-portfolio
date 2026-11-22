@@ -191,7 +191,7 @@ export const EXECUTIVE_PROFILE = {
   location: 'Norfolk / Virginia Beach, VA (Hampton Roads)',
   statusBadge: 'Available for W-2 Full-Stack Web, Software & Web Accessibility Roles',
   executiveSummary:
-    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, a 17-property zero-database web ecosystem, and companion C#/.NET 10 WinForms/WPF, native C++20, and SwiftUI desktop/mobile applications.',
+    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, a 17-property zero-database web ecosystem, companion C#/.NET 10 WinForms/WPF, native C++20, and SwiftUI applications, and clean-room Windows Installer (MSIcode / Delphi TPF0) AST compiler tooling.',
   valueProposition:
     'I focus on three practical engineering standards across every project: code-level WCAG 2.1/2.2 AA and Section 508 web accessibility in semantic HTML5 and WAI-ARIA, fast static-first performance, and clear, well-documented code that teams can maintain.',
   assets: {
@@ -221,13 +221,13 @@ export const ROLE_LENSES: readonly RoleLensOption[] = [
     id: 'all',
     label: 'All Projects & Case Studies',
     shortDescription:
-      'Showing all 17 live production web properties, 5 engineering & accessibility case studies, and full work history.'
+      'Showing all 17 live production web properties, 6 engineering & accessibility case studies, and full work history.'
   },
   {
     id: 'architecture',
     label: 'Full-Stack & Native Apps',
     shortDescription:
-      'Focused on multi-framework web apps (TypeScript, Angular 19, PHP 8.5 MVC, React 19 / Next.js 16, Svelte 5, Astro 6, Nuxt 4, SolidJS, Preact, Mithril, Lit 3, Fluent UI, IBM Carbon) and native C#/.NET 10 WinForms/WPF, C++20 & SwiftUI software.'
+      'Focused on multi-framework web apps (TypeScript, Angular 19, PHP 8.5 MVC, React 19 / Next.js 16, Svelte 5, Astro 6, Nuxt 4, SolidJS, Preact, Mithril, Lit 3, Fluent UI, IBM Carbon), native C#/.NET 10 WinForms/WPF, C++20 & SwiftUI software, and Python binary AST compiler tooling.'
   },
   {
     id: 'accessibility',
@@ -848,6 +848,28 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
       { label: 'Inspect CI/CD Tooling (/build-team)', url: '/build-team' },
       { label: 'Visit Engine Room Imprint (Astro 6)', url: 'https://engineroom.raggiesoft.com' }
     ]
+  },
+  {
+    id: 'msicode-dfm-binary-ast-compiler',
+    code: 'CASE-06',
+    title: 'Clean-Room MSIcode & Binary Delphi TPF0 (.dfm) AST Compiler (msicode-dfm-ai-skill)',
+    organization: 'Open-Source Packaging & Compiler Tooling (MIT License)',
+    timeframe: '2026 – Present',
+    lenses: ['architecture', 'devops'],
+    problemStatement:
+      'Commercial Windows Installer authoring tools like InstallAware store build scripts in a specialized 5-section GUID-linked text grammar (.mia), 7-section project manifests (.mpr), and binary Embarcadero Delphi TPF0 dialog streams (.dfm)—creating a visual IDE bottleneck where binary forms resist Git code review and automated scripting.',
+    architecturalSolution:
+      'Reverse-engineered a 100% clean-room interoperability specification covering all 73 MSIcode opcodes and authored lossless Python serializers/deserializers (mia_codec.py and dfm_tpf0_codec.py). Parses and emits 20-byte Win32 TFRMDESIGN headers and all Embarcadero TPF0 value tags (Int8 through 10-byte Extended floats, Sets, Collections, UTF-8 strings, and PNG streams) with automated byte-for-byte round-trip assertions, syncs .mpr manifests while preserving Azure Artifact Signing (Authenticode) hooks, wires Windows 11 Task Dialog Command Links, and enforces x64 + ARM64 (Capability 111) and UAC-disabled elevation safety.',
+    quantifiedImpact: [
+      { label: 'Opcode Coverage', value: '73 / 73 MSIcode Schemas' },
+      { label: 'Binary Fidelity', value: 'Byte-Exact TPF0 Round-Trip' },
+      { label: 'Platform Targets', value: 'Win11 x64/ARM64 + Authenticode' }
+    ],
+    technologies: ['Python 3 (Binary AST)', 'Windows Installer (MSI)', 'InstallAware MSIcode', 'Delphi VCL TPF0 (.dfm)', 'Win32 TaskDialogIndirect', 'Azure Artifact Signing', 'llms.txt / Agent Skills'],
+    referenceLinks: [
+      { label: 'View Clean-Room Repo & Spec on GitHub (MIT)', url: 'https://github.com/raggiesoft/msicode-dfm-ai-skill' },
+      { label: 'Inspect Accessibility Studio MSI Target (a11y.raggiesoft.com)', url: 'https://a11y.raggiesoft.com' }
+    ]
   }
 ] as const;
 
@@ -865,13 +887,13 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     timeframe: '2008 – Present',
     lenses: ['architecture', 'accessibility', 'devops', 'data-etl'],
     summary:
-      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 17 live web properties, cross-platform C#/.NET 10 WinForms/WPF, C++20, and SwiftUI apps, and Linux cloud infrastructure.',
+      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 17 live web properties, cross-platform C#/.NET 10 WinForms/WPF, C++20, and SwiftUI apps, Windows Installer AST compiler tooling, and Linux cloud infrastructure.',
     achievements: [
-      'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, Bootstrap 5.3.8, and Web Awesome.',
-      'Developed companion native desktop and mobile apps in C# / .NET 10 WPF (Windows) and SwiftUI (macOS, iOS, iPadOS) that consume static REST/JSON APIs with offline archive support, cross-app IPC, and native UIAutomation / VoiceOver accessibility.',
+      'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, SolidJS, Preact 10, Mithril.js, Lit 3, Fluent UI, IBM Carbon, Bootstrap 5.3.8, and Web Awesome.',
+      'Engineered native desktop and mobile apps in C# / .NET 10 WinForms & WPF (including RaggieSoft Accessibility Studio IDE + Monaco WebView2), C++20, and SwiftUI with UIAutomation / VoiceOver parity, and authored msicode-dfm-ai-skill—an MIT-licensed clean-room specification and lossless Python binary AST compiler for Windows Installer (.mia/.mpr and Delphi TPF0 .dfm forms) paired with Inno Setup, NSIS, and Azure Artifact Signing.',
       'Automated multi-repo build verification, FFmpeg audio normalization, human-verified WebVTT caption checks, digital edition compilation, S3 CDN synchronization, and non-root Ubuntu/Nginx deployments via modular CLI scripts.'
     ],
-    technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 WPF', 'SwiftUI', 'Linux / Nginx', 'WCAG / Section 508 Web']
+    technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 (WinForms & WPF)', 'C++20 / SwiftUI', 'Python Binary AST / MSI Packaging', 'Linux / Nginx', 'WCAG / Section 508 Web']
   },
   {
     functionalTitle: 'Clerk-Cashier (Concurrent with Software Engineering & IT Studies)',
