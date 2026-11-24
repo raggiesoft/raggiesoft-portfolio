@@ -158,7 +158,7 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
     problemStatement:
       'Readers and listeners wanted native offline desktop and mobile applications on Windows and Apple devices capable of downloading compressed book/audio archives and synchronizing live chapter soundtracks across apps without bundling a local database server.',
     architecturalSolution:
-      'Engineered parallel native client suites in C# / .NET 10 WPF (Visual Studio 2026 + Inno Setup 7.1.1 & MSIcode installers for Windows x64/ARM64) and multiplatform SwiftUI (Xcode project targeting macOS, iOS, iPadOS, tvOS, and visionOS). Implemented shared core libraries consuming static CDN JSON APIs, bundled 7-Zip offline archive extraction, tri-directional cross-app IPC (Windows Named Pipes and Apple DistributedNotificationCenter / custom URL schemes), and full UIAutomation (Narrator/NVDA) and VoiceOver accessibility.',
+      'Engineered parallel native client suites in C# / .NET 10 WPF (Visual Studio 2026 + RaggieSoft Setup Wizard & Inno Setup 7.1.1 installers for Windows x64/ARM64) and multiplatform SwiftUI (Xcode project targeting macOS, iOS, iPadOS, tvOS, and visionOS). Implemented shared core libraries consuming static CDN JSON APIs, bundled 7-Zip offline archive extraction, tri-directional cross-app IPC (Windows Named Pipes and Apple DistributedNotificationCenter / custom URL schemes), and full UIAutomation (Narrator/NVDA) and VoiceOver accessibility.',
     quantifiedImpact: [
       { label: 'Windows Stack', value: 'C# / .NET 10 WPF + Named Pipes IPC' },
       { label: 'Apple Stack', value: 'Multiplatform SwiftUI + StoreKit 2' },
@@ -320,61 +320,61 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
     ]
   },
   {
-    id: 'msicode-dfm-binary-ast-compiler',
-    shortName: 'CASE-06 • MSIcode & TPF0 AST',
+    id: 'raggiesoft-installer-studio',
+    shortName: 'CASE-06 • Installer Studio (C++20)',
     code: 'CASE-06',
-    title: 'Clean-Room MSIcode & Binary Delphi TPF0 (.dfm) AST Compiler (msicode-dfm-ai-skill)',
-    organization: 'Open-Source Packaging & Compiler Tooling (MIT License)',
+    title: 'RaggieSoft Installer Studio — Native Win32 C++20 IDE, MSI/MSM/MST/MSP Compiler & MSI Prism',
+    organization: 'Open-Source Windows Packaging & Compliance Suite (MIT License)',
     timeframe: '2026 – Present',
-    lenses: ['architecture', 'devops'],
+    lenses: ['architecture', 'accessibility', 'devops'],
     problemStatement:
-      'Commercial Windows Installer authoring tools like InstallAware store build scripts in a specialized 5-section GUID-linked text grammar (.mia), 7-section project manifests (.mpr), and binary Embarcadero Delphi TPF0 dialog streams (.dfm)—creating a visual IDE bottleneck where binary forms resist Git code review and automated scripting.',
+      'Authoring enterprise Windows Installer packages traditionally forces teams to choose between multi-thousand-dollar per-seat proprietary suites, runtime-heavy bootstrapper stubs, or complex XML toolchains whose EULAs introduce revenue thresholds—while binary wizard definitions resist Git diffs, screen-reader accessibility, and AI-assisted maintenance.',
     architecturalSolution:
-      'Reverse-engineered a 100% clean-room interoperability specification covering all 73 MSIcode opcodes and authored lossless Python serializers/deserializers (mia_codec.py and dfm_tpf0_codec.py). Parses and emits 20-byte Win32 TFRMDESIGN headers and all Embarcadero TPF0 value tags (Int8 through 10-byte Extended floats, Sets, Collections, UTF-8 strings, and PNG streams) with automated byte-for-byte round-trip assertions, syncs .mpr manifests while preserving Azure Artifact Signing (Authenticode) hooks, wires Windows 11 Task Dialog Command Links, and enforces x64 + ARM64 (Capability 111) and UAC-disabled elevation safety.',
+      'Engineered RaggieSoft Installer Studio ("Install Without Limits"), a 100% first-party, zero-dependency Win32 C++20 packaging suite compiled with cl.exe and the stock Windows 11 SDK (/MT static binaries for x64 and ARM64). Combines a 7-view native Visual IDE (InstallerStudio.exe), a lossless comment-preserving .rsip/.rsis manifest AST compiler (instbuild.exe) driving msiquery.h and fci.h to output standalone Enterprise .msi databases, .msm Merge Modules, .mst Transforms, .msp Patches, and HTML5 VPAT 2.5 accessibility reports (--emit-vpat), a white-label WCAG 2.2 AA external UI bootstrapper (SetupWizard.exe via MsiSetExternalUIRecord), and a native 64-bit SQL database inspector (msiprism.exe).',
     quantifiedImpact: [
-      { label: 'Opcode Coverage', value: '73 / 73 MSIcode Schemas' },
-      { label: 'Binary Fidelity', value: 'Byte-Exact TPF0 Round-Trip' },
-      { label: 'Platform Targets', value: 'Win11 x64/ARM64 + Authenticode' }
+      { label: 'Native Binaries', value: 'InstallerStudio • instbuild • msiprism' },
+      { label: 'Output Formats', value: 'MSI • MSM • MST • MSP + Setup.exe' },
+      { label: 'Accessibility & AI', value: 'WCAG 2.2 AA VPAT 2.5 + llms.txt' }
     ],
-    technologies: ['Python 3 (Binary AST)', 'Windows Installer (MSI)', 'InstallAware MSIcode', 'Delphi VCL TPF0 (.dfm)', 'Win32 TaskDialogIndirect', 'Azure Artifact Signing', 'llms.txt / Agent Skills'],
+    technologies: ['Native Win32 C++20 (/MT)', 'Windows Installer SQL (msiquery.h)', 'Cabinet LZX/MSZIP (fci.h)', 'UIAutomation & Dark Mode Mica', 'VPAT 2.5 Luminance Audit', 'MSI / MSM / MST / MSP', 'constexpr llms.txt / SKILL.md'],
     referenceLinks: [
-      { label: 'View Clean-Room Repo & Spec on GitHub (MIT)', url: 'https://github.com/raggiesoft/msicode-dfm-ai-skill' },
-      { label: 'Inspect Accessibility Studio MSI Target (a11y.raggiesoft.com)', url: 'https://a11y.raggiesoft.com' }
+      { label: 'Visit RaggieSoft Installer Studio (raggiesoftstudio.com)', url: 'https://raggiesoftstudio.com' },
+      { label: 'View RaggieSoft Installer Studio on GitHub (MIT)', url: 'https://github.com/raggiesoft/installer-studio' }
     ],
-    ogTitle: 'CASE-06: MSIcode & Binary Delphi TPF0 AST Compiler',
+    ogTitle: 'CASE-06: RaggieSoft Installer Studio — C++20 MSI Suite',
     ogDescription:
-      'Clean-room specification (73 opcodes) and lossless Python AST compiler for Windows Installer (.mia/.mpr) and binary Embarcadero Delphi TPF0 (.dfm) dialogs.',
+      'Zero-dependency Win32 C++20 Visual IDE, MSI Prism inspector, and instbuild compiler outputting MSI, MSM, MST, MSP, Setup.exe, and VPAT 2.5 reports.',
     vitalStats: [
-      { label: 'Case Identifier', value: 'CASE-06 • Binary AST & MSI Tooling' },
-      { label: 'Open-Source Repo', value: 'github.com/raggiesoft/msicode-dfm-ai-skill' },
-      { label: 'Binary Stream', value: 'Win32 TFRMDESIGN + Delphi TPF0 AST', isBadge: true },
-      { label: 'Signing & CLI', value: 'miabuild.exe + Azure Artifact Signing', isBadge: true }
+      { label: 'Case Identifier', value: 'CASE-06 • Win32 C++20 MSI Tooling' },
+      { label: 'Open-Source Repo', value: 'github.com/raggiesoft/installer-studio' },
+      { label: 'Native Binaries', value: 'InstallerStudio • instbuild • SetupWizard • msiprism', isBadge: true },
+      { label: 'Project & Package Formats', value: '.rsip / .rsis -> MSI • MSM • MST • MSP', isBadge: true }
     ],
     implementationSteps: [
       {
-        title: '1. Four-File Ecosystem Decoding (.mia, .mpr, .dfm, .dfm.miaf)',
+        title: '1. Hybrid .rsip/.rsis Comment-Preserving AST, 7-View Visual IDE & constexpr AI Specs',
         detail:
-          'Mapped the exact CRLF wire formats across 5-section GUID-linked .mia scripts (73 opcodes), 7-section .mpr project manifests (including empty-line cardinality invariants and reserved slot [3] alignment), binary .dfm dialogs, and UTF-8-BOM .dfm.miaf reactive Pascal expressions.'
+          'Designed an INI-inspired plain-text project grammar supporting both standalone single-file projects (.rsip), multi-project suites (.rsis, akin to .slnx), and @include headers (.rsii). Backed by a lossless line-token AST so 7-view InstallerStudio.exe GUI edits preserve 100% of developer comments, while one constexpr schema table drives sub-millisecond JSON linting (--validate --diagnostics=json) and --emit-ai-spec generation (llms.txt, llms-full.txt, SKILL.md).'
       },
       {
-        title: '2. Lossless Binary TFRMDESIGN + Embarcadero TPF0 AST Compiler (dfm_tpf0_codec.py)',
+        title: '2. Direct Windows SDK Relational SQL & LZX Cabinet Engine (MSI, MSM, MST, MSP & msiprism.exe)',
         detail:
-          'Wrote a dependency-free Python binary parser/serializer supporting the 20-byte Win32 TFRMDESIGN resource header and every TPF0 value tag (Int8/16/32, Int64, 10-byte x87 Extended floats, Strings, UTF8String tag 20 auto-promotion, Identifiers, Sets, Collections, and embedded PNG streams) verified by byte-exact round-trip assertions.'
+          'Calls MsiOpenDatabaseW, MsiDatabaseOpenViewW, MsiDatabaseGenerateTransformW, and FCICreate directly from the Windows 11 SDK to build 64-bit x64/ARM64 Enterprise .msi installers, .msm Merge Modules, .mst GPO Transforms, and .msp Patches—paired with msiprism.exe (RaggieSoft MSI Prism), a native 64-bit Dark Mode SQL table and transform inspector.'
       },
       {
-        title: '3. Compiler Trap Guards & Windows 11 x64/ARM64 Hardening (mia_codec.py)',
+        title: '3. White-Label Accessible Setup Wizard (SetupWizard.exe) & --emit-vpat Conformance Reports',
         detail:
-          'Built compile-time guards preventing Wizard Loop macro-expansion bugs and Create File Type pipe-subtable crashes, while codifying native Windows 11 ARM64 detection (Capability 111 alongside 65), UAC-disabled (EnableLUA=0) exit-code 740 checks, $MYAH_UAC$ non-elevated Explorer drag-and-drop launch, and 15-parameter Win32 Task Dialog Command Links.'
+          'Built a zero-dependency Win32 C++ external UI bootstrapper driving MsiSetInternalUI(INSTALLUILEVEL_NONE) + MsiSetExternalUIRecord with Express/Compact/Custom and 16:9 Autorun modes, Per-Monitor V2 DPI, Windows Contrast Themes, Dark Mode Mica, and automated HTML5 VPAT 2.5 WCAG 2.2 AA / Revised Section 508 report generation.'
       },
       {
-        title: '4. Clean-Room Sanitization & Preserved Authenticode Hooks',
+        title: '4. Prism-Piercing Silicon Detection, Relational ICE Verification & Dual Authenticode Signing',
         detail:
-          'Designed sync_mpr() to slice and preserve Section 4 [20..] and Sections 5–6 so Azure Artifact Signing (signtool.exe + Azure.CodeSigning.Dlib.dll) configurations survive automated script rebuilds, and published the sanitized MIT toolkit with synthetic zero-blob examples and llms-full.txt.'
+          'Queries RtlGetVersion (Build >= 22000) and IsWow64Process2 to pierce Windows 11 ARM64 Prism emulation, runs automated post-build SQL/ICE80 verification, preserves 100% author-owned VERSIONINFO (recording instbuild strictly in PID_APPNAME), and signs inner .msi packages before embedding and signing outer Setup.exe binaries.'
       }
     ],
     verificationAndTradeoffs: [
-      'Validated mia_codec.py and dfm_tpf0_codec.py against both stock QuickStart templates (255 statements) and full 801-statement enterprise workstation installers, asserting zero byte diffs on round-trip binary serialization before compiling live .msi/.exe outputs in Studio + miabuild.exe.',
-      'Constructing synthetic TWizardForm ASTs in memory inside the public example scripts guarantees zero vendor binary .dfm blobs ever enter public Git history while still proving full binary serializer coverage.'
+      'Calling Microsoft’s built-in msi.dll and cabinet.dll APIs directly from static /MT C++20 eliminates .NET/VCL bootstrapper prerequisites, third-party stub watermarks, and commercial revenue caps while maintaining instant cold start across x64 and ARM64.',
+      'Embedding classic Windows 2000 Wizard 97 UI tables inside Product.msi alongside the modern SetupWizard.exe external UI shell guarantees one MSI artifact works interactively via msiexec, silently in Intune/GPO (/qn), or inside the branded Dark Mode bootstrapper.'
     ]
   }
 ] as const;

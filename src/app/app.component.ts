@@ -163,7 +163,7 @@ export class AppComponent implements OnInit {
 
   /**
    * Stores the URL slug of whichever individual item is currently being viewed
-   * (e.g., `'raggiesoft-music'`, `'msicode-dfm-binary-ast-compiler'`, `'jenna'`,
+   * (e.g., `'raggiesoft-music'`, `'raggiesoft-installer-studio'`, `'jenna'`,
    * `'old-dominion-university'`, or `'tidewater-community-college'`), or `null`
    * when viewing `/` or a section landing hub.
    */

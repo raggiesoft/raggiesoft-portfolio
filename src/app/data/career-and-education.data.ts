@@ -41,7 +41,7 @@ export const EXECUTIVE_PROFILE = {
   location: 'Norfolk / Virginia Beach, VA (Hampton Roads)',
   statusBadge: 'Available for W-2 Full-Stack Web, Software & Web Accessibility Roles',
   executiveSummary:
-    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, a 17-property zero-database web ecosystem, companion C#/.NET 10 WinForms/WPF, native C++20, and SwiftUI applications, and clean-room Windows Installer (MSIcode / Delphi TPF0) AST compiler tooling.',
+    'Full-Stack Web Developer and Web Accessibility Engineer combining source-level PLE and Canvas LMS web accessibility engineering at Old Dominion University, public-facing municipal operations with the City of Virginia Beach, and continuous hands-on software development. Author and maintainer of the open-source Stardust Engine CMS, a 17-property zero-database web ecosystem, companion C#/.NET 10 WinForms/WPF, native C++20, and SwiftUI applications, and RaggieSoft Installer Studio—a zero-dependency Win32 C++20 Windows Installer (MSI/MSM/MST/MSP) compiler, Visual IDE, MSI Prism SQL inspector, and accessible bootstrapper suite.',
   valueProposition:
     'I focus on three practical engineering standards across every project: code-level WCAG 2.1/2.2 AA and Section 508 web accessibility in semantic HTML5 and WAI-ARIA, fast static-first performance, and clear, well-documented code that teams can maintain.',
   assets: {
@@ -82,12 +82,12 @@ export const SECTION_LANDINGS: Readonly<Record<'webApps' | 'caseStudies' | 'expe
     eyebrow: '6 Applied Engineering, Accessibility, Desktop & Compiler Deep Dives',
     title: 'Engineering & Web Accessibility Case Studies',
     subtitle:
-      'Problem-to-solution architectural breakdowns across municipal ActiveNet data workflows, ODU Online PLE & Canvas LMS accessibility, .NET 10 / SwiftUI apps, accessible HTML5 Canvas, CI/CD, and binary AST tooling.',
+      'Problem-to-solution architectural breakdowns across municipal ActiveNet data workflows, ODU Online PLE & Canvas LMS accessibility, .NET 10 / SwiftUI apps, accessible HTML5 Canvas, CI/CD, and native Win32 C++20 MSI compiler tooling.',
     quote:
-      'Real engineering lives in the constraints: legacy LMS markup, zero-port desktop IPC, 60fps screen-reader parity, and byte-exact binary form streams.',
+      'Real engineering lives in the constraints: legacy LMS markup, zero-port desktop IPC, 60fps screen-reader parity, and zero-dependency OS installer APIs.',
     ogTitle: 'Engineering & Accessibility Case Studies | M. Ragsdale',
     ogDescription:
-      'Six production case studies covering ODU Section 508 web engineering, ActiveNet data workflows, .NET 10 & SwiftUI apps, Canvas ARIA, and MSIcode AST.'
+      'Six production case studies covering ODU Section 508 web engineering, ActiveNet data workflows, .NET 10 & SwiftUI apps, Canvas ARIA, and C++20 MSI.'
   },
   experience: {
     routePath: 'experience',
@@ -207,16 +207,16 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     timeframe: '2008 – Present',
     lenses: ['architecture', 'accessibility', 'devops', 'data-etl'],
     summary:
-      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 17 live web properties, cross-platform C#/.NET 10 WinForms/WPF, C++20, and SwiftUI apps, Windows Installer AST compiler tooling, and Linux cloud infrastructure.',
+      'Design, build, and maintain an independent software development and digital publishing ecosystem spanning open-source PHP/JS web frameworks, 17 live web properties, cross-platform C#/.NET 10 WinForms/WPF, C++20, and SwiftUI apps, native Win32 C++20 Windows Installer compiler tooling, and Linux cloud infrastructure.',
     achievements: [
       'Built and open-sourced Stardust Engine CMS (MIT License, PHP 8.5 MVC + JSON routing) alongside decoupled web applications in Angular 19, SvelteKit 2 + Svelte 5, React 19 + Next.js 16, Astro 6, Nuxt 4, SolidJS, Preact 10, Mithril.js, Lit 3, Fluent UI, IBM Carbon, Bootstrap 5.3.8, and Web Awesome.',
-      'Engineered native desktop and mobile apps in C# / .NET 10 WinForms & WPF (including RaggieSoft Accessibility Studio IDE + Monaco WebView2), C++20, and SwiftUI with UIAutomation / VoiceOver parity, and authored msicode-dfm-ai-skill—an MIT-licensed clean-room specification and lossless Python binary AST compiler for Windows Installer (.mia/.mpr and Delphi TPF0 .dfm forms) paired with Inno Setup, NSIS, and Azure Artifact Signing.',
+      'Engineered native desktop and mobile apps in C# / .NET 10 WinForms & WPF (including RaggieSoft Accessibility Studio IDE + Monaco WebView2), C++20, and SwiftUI with UIAutomation / VoiceOver parity, and authored RaggieSoft Installer Studio—an MIT-licensed, zero-dependency Win32 C++20 installer compiler (instbuild.exe), Visual IDE (InstallerStudio.exe), SQL inspector (msiprism.exe), and WCAG 2.2 AA bootstrapper (SetupWizard.exe) emitting MSI, MSM, MST, and MSP packages across x64 and ARM64.',
       'Automated multi-repo build verification, FFmpeg audio normalization, human-verified WebVTT caption checks, digital edition compilation, S3 CDN synchronization, and non-root Ubuntu/Nginx deployments via modular CLI scripts.'
     ],
-    technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 (WinForms & WPF)', 'C++20 / SwiftUI', 'Python Binary AST / MSI Packaging', 'Linux / Nginx', 'WCAG / Section 508 Web'],
+    technologies: ['TypeScript', 'PHP 8.5', 'CSS (Container Queries, Subgrid)', 'Angular 19', 'React 19 / Next.js', 'Svelte 5', 'REST/JSON APIs', 'C# / .NET 10 (WinForms & WPF)', 'Win32 C++20 / SwiftUI', 'Windows Installer (MSI/MSM/MST/MSP)', 'Linux / Nginx', 'WCAG / Section 508 Web'],
     ogTitle: 'RaggieSoft Media — Full-Stack & Open-Source Role',
     ogDescription:
-      'Independent Full-Stack Web Developer & Open-Source Maintainer (2008–Present): 17 live web apps, Stardust Engine CMS, .NET 10, SwiftUI, and MSIcode AST.',
+      'Independent Full-Stack Web Developer & Open-Source Maintainer (2008–Present): 17 live web apps, Stardust Engine CMS, .NET 10, SwiftUI, and C++20 MSI.',
     vitalStats: [
       { label: 'Organization', value: 'RaggieSoft Media (Unincorporated Imprint)' },
       { label: 'Tenure', value: 'July 2008 – Present (Norfolk, VA)' },
@@ -235,9 +235,9 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
           'Engineered dual-layer HTML5 <canvas> ARIA synchronization (lore.raggiesoft.com), automated BCP 47 multilingual lang parsing (books.raggiesoft.com), Hold-Spacebar WebVTT caption tooling (music.raggiesoft.com), and RaggieSoft Accessibility Studio (.NET 10 WinForms + Monaco IDE & SARIF 2.1.0 CLI).'
       },
       {
-        title: 'Native Windows (.NET 10 / C++20), Apple (SwiftUI) & Binary AST Installer Tooling',
+        title: 'Native Windows (.NET 10 / C++20), Apple (SwiftUI) & RaggieSoft Installer Studio',
         detail:
-          'Built companion desktop/mobile apps connected via Named Pipes IPC, a zero-runtime C++20 updater (RaggieSoftUpdate.exe), and msicode-dfm-ai-skill—a clean-room 73-opcode MSIcode & binary Delphi TPF0 (.dfm) AST compiler in Python supporting Windows 11 x64/ARM64 and Azure Artifact Signing.'
+          'Built companion desktop/mobile apps connected via Named Pipes IPC, a zero-runtime C++20 updater (RaggieSoftUpdate.exe), and RaggieSoft Installer Studio—a native Win32 C++20 compiler, Visual IDE, MSI Prism SQL inspector, and accessible Dark Mode Mica bootstrapper outputting real MSI, MSM, MST, and MSP packages across Windows 11 x64/ARM64.'
       },
       {
         title: 'Hardened Linux Hosting & Deterministic CI/CD Automation',
@@ -247,11 +247,11 @@ export const EXPERIENCE_TIMELINE: readonly ExperienceEntry[] = [
     ],
     environmentAndPractices: [
       'Every repository is maintained with production discipline: automated pre-push build and SEO assertions, genuine HTTP 404 guards, zero SQL database attack surface on static/catalog properties, and top-to-bottom inline documentation so unfamiliar engineers can read any file cold.',
-      'All public software tools—including Stardust Engine CMS, RaggieSoft Accessibility Studio, StoreTrainer, and msicode-dfm-ai-skill—are published under the MIT License on GitHub (@raggiesoft).'
+      'All public software tools—including Stardust Engine CMS, RaggieSoft Accessibility Studio, StoreTrainer, and RaggieSoft Installer Studio—are published under the MIT License on GitHub (@raggiesoft).'
     ],
     relatedLinks: [
       { label: 'Browse All 17 Web Properties (/web-apps)', url: '/web-apps' },
-      { label: 'Inspect MSIcode & TPF0 AST Case Study (/case-studies/msicode-dfm-binary-ast-compiler)', url: '/case-studies/msicode-dfm-binary-ast-compiler' },
+      { label: 'Inspect RaggieSoft Installer Studio Case Study (/case-studies/raggiesoft-installer-studio)', url: '/case-studies/raggiesoft-installer-studio' },
       { label: 'Explore CI/CD Suite Docs (/build-team)', url: '/build-team' },
       { label: 'Visit GitHub (@raggiesoft)', url: 'https://github.com/raggiesoft' }
     ]

@@ -1079,7 +1079,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
       { label: 'Live Domain', value: 'a11y.raggiesoft.com' },
       { label: 'Portal Stack', value: 'IBM Carbon (@carbon/web-components + Sass)' },
       { label: 'Workstation IDE', value: 'C# / .NET 10 WinForms + Monaco WebView2', isBadge: true },
-      { label: 'Enterprise Packaging', value: 'MSIcode .MSI/.EXE + SARIF 2.1.0 CLI', isBadge: true }
+      { label: 'Enterprise Packaging', value: 'Installer Studio C++20 .MSI/.EXE + SARIF CLI', isBadge: true }
     ],
     deepDiveArchitecture: [
       {
@@ -1095,7 +1095,7 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
       {
         title: 'Enterprise GPO/MSI Deployment & SARIF 2.1.0 CI/CD Integration',
         detail:
-          'Packaged via our deterministic Python MSIcode + binary Delphi TPF0 compiler (msicode-dfm-ai-skill) with silent MSI properties, x64/ARM64 prerequisite detection, and headless CLI SARIF 2.1.0 exit-code gates.'
+          'Packaged via RaggieSoft Installer Studio (zero-dependency Win32 C++20 instbuild.exe .rsip/.rsis compiler) with silent Enterprise MSI/MST Group Policy properties, Prism-piercing x64/ARM64 detection, and headless CLI SARIF 2.1.0 exit-code gates.'
       }
     ],
     accessibilityDeepDive: [

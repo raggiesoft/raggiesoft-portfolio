@@ -215,7 +215,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     technicalHeading: 'Cross-Platform Provisioning & Workspace Portability',
     technicalIntro:
-      'Because RaggieSoft includes web applications alongside native Windows (.NET 10 WinForms/WPF, C++20, MSIcode) and Apple (SwiftUI) desktop projects, local workstation scripts keep CLI dependencies and repositories aligned across operating systems:',
+      'Because RaggieSoft includes web applications alongside native Windows (.NET 10 WinForms/WPF, Win32 C++20, RaggieSoft Installer Studio MSI/EXE) and Apple (SwiftUI) desktop projects, local workstation scripts keep CLI dependencies and repositories aligned across operating systems:',
     technicalCapabilities: [
       {
         title: 'Automated Toolchain Provisioning (brooke.sh)',
@@ -225,12 +225,12 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
       {
         title: 'Differential Workspace Backup (backup.sh)',
         detail:
-          'Mirrors active repositories (including msicode-dfm-ai-skill, desktop-apps, and raggiesoft-servers) to external 4TB SSD/HDD storage and cloud backups while excluding transient build caches (node_modules/, .venv/, bin/, obj/, dist/).'
+          'Mirrors active repositories (including desktop-apps/installer-studio, desktop-apps, and raggiesoft-servers) to external 4TB SSD/HDD storage and cloud backups while excluding transient build caches (node_modules/, .venv/, bin/, obj/, dist/).'
       },
       {
         title: 'Fresh Windows 11 Pro Bootstrap (init-windows.ps1)',
         detail:
-          'Bootstraps Git, PowerShell 7, and developer directory layouts on clean Windows 11 Pro installations prior to running Visual Studio 2026, Inno Setup, and InstallAware miabuild.exe.'
+          'Bootstraps Git, PowerShell 7, and developer directory layouts on clean Windows 11 Pro installations prior to running Visual Studio 2026, Windows 11 SDK, RaggieSoft Installer Studio (instbuild.exe), and Inno Setup.'
       }
     ],
     cliSnippet: {
@@ -251,7 +251,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
       outputLines: [
         '[brooke] Verified git, php 8.5, node 26, python3, ffmpeg, pandoc, rclone, 7zz.',
         '[backup] External volume 4TBSSD detected. Running differential rsync (excluding node_modules, .venv)...',
-        '[backup] Synced raggiesoft-servers, raggiesoft-deployment-tools, desktop-apps, and msicode-dfm-ai-skill.',
+        '[backup] Synced raggiesoft-servers, raggiesoft-deployment-tools, and desktop-apps (including installer-studio).',
         '[backup] Workspace mirror complete (exit 0).'
       ]
     }
@@ -484,7 +484,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
       {
         title: 'Atomic Multi-Repository Git Workflow',
         detail:
-          'Stages, commits, and pushes changes across web roots, nginx-config, narratives, deployment-tools, desktop-apps, and msicode-dfm-ai-skill only after every build and SEO assertion exits 0.'
+          'Stages, commits, and pushes changes across web roots, nginx-config, narratives, deployment-tools, desktop-apps, and installer-studio only after every build and SEO assertion exits 0.'
       },
       {
         title: 'Differential S3 CDN Sync (rclone) & IndexNow Broadcast',
