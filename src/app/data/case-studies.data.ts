@@ -108,7 +108,7 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
     technologies: ['WCAG 2.1/2.2 AA', 'Section 508 Web', 'Semantic HTML5 & CSS', 'WAI-ARIA', 'Deque axe', 'JAWS / NVDA', 'Canvas LMS', 'C# / .NET 5 & .NET 10 WinForms', 'Inno Setup / MSI'],
     referenceLinks: [
       { label: 'Inspect ODU Online Experience Role (/experience/old-dominion-university)', url: '/experience/old-dominion-university' },
-      { label: 'Inspect RaggieSoft Accessibility Studio (a11y.raggiesoft.com)', url: 'https://a11y.raggiesoft.com' },
+      { label: 'Inspect RaggieSoft Accessibility Studio (raggiesoftstudio.com/accessibility-studio)', url: 'https://raggiesoftstudio.com/accessibility-studio' },
       { label: 'View IDE Source on GitHub (MIT)', url: 'https://github.com/raggiesoft/accessibility-studio' }
     ],
     ogTitle: 'CASE-02: ODU Online PLE & Canvas Section 508 Web',
@@ -262,30 +262,30 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
   },
   {
     id: 'cascade-protocol-decoupling',
-    shortName: 'CASE-05 • 17-Site CI/CD',
+    shortName: 'CASE-05 • 19-App CI/CD',
     code: 'CASE-05',
-    title: '17-Property DRY Web Decoupling & Single-Command CI/CD',
+    title: '19-Application DRY Web Decoupling & Single-Command CI/CD',
     organization: 'RaggieSoft Infrastructure (NYC1 Linux VPS + S3 CDN)',
     timeframe: '2024 – 2026',
     lenses: ['architecture', 'devops', 'data-etl'],
     problemStatement:
-      'Hosting corporate licensing, 40+ music albums, serialized books, interactive visualizations, desktop app portals, and an engineering portfolio inside one monolithic repository created tight coupling—while adding SQL databases would increase patching overhead and attack surface.',
+      'Hosting corporate licensing, 40+ music albums, serialized books, interactive visualizations, developer/accessibility Studio suites, and an engineering portfolio inside one monolithic repository created tight coupling—while adding SQL databases would increase patching overhead and attack surface.',
     architecturalSolution:
-      'Decoupled the platform into 17 focused properties (`raggiesoft.com`, fifteen `*.raggiesoft.com` subdomains, and `michaelpragsdale.com`) with strict DRY role separation (`waystation` as global directory & 404 router, `jessica` as project backstories, `launcher` as desktop suite hub, `a11y` as enterprise IDE portal) backed by flat-file JSON/Markdown repositories plus DigitalOcean Spaces CDN (`assets.raggiesoft.com`). Automated builds, validation, and non-root server deployments via `jenna-sync.sh` and `sarah-deploy.sh`.',
+      'Decoupled the platform into 19 focused web applications (`michaelpragsdale.com`, `raggiesoftstudio.com` + `/accessibility-studio`, `raggiesoft.dev`, `raggiesoft.com`, and fourteen `*.raggiesoft.com` subdomains) with strict DRY role separation (`waystation` as global directory & 404 router, `jessica` as project backstories, `launcher` as consumer desktop hub, `raggiesoftstudio.com` & `raggiesoft.dev` as B2B/engineering portals) backed by flat-file JSON/Markdown repositories plus DigitalOcean Spaces CDN (`assets.raggiesoft.com`). Automated builds, validation, and non-root server deployments via `jenna-sync.sh` and `sarah-deploy.sh`.',
     quantifiedImpact: [
       { label: 'SQL Attack Surface', value: '0 Relational Databases' },
-      { label: 'Live Web Properties', value: '17 Decoupled Production Sites' },
+      { label: 'Live Web Applications', value: '19 Decoupled Production Apps' },
       { label: 'Release Workflow', value: 'Automated Pre-Push Build Gates' }
     ],
-    technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'Next.js 16', 'Web Awesome', 'Nginx', 'DigitalOcean Spaces'],
+    technologies: ['Angular 19', 'PHP 8.5 MVC', 'Svelte 5', 'Astro 6', 'Nuxt 4', 'Alpine.js 3', 'Next.js 16', 'IBM Carbon / Web Awesome', 'Nginx', 'DigitalOcean Spaces'],
     referenceLinks: [
       { label: 'Inspect CI/CD Tooling Suite (/build-team)', url: '/build-team' },
-      { label: 'Browse All 17 Web Properties (/web-apps)', url: '/web-apps' },
+      { label: 'Browse All 19 Web Apps (/web-apps)', url: '/web-apps' },
       { label: 'Visit Global Waystation Directory (waystation.raggiesoft.com)', url: 'https://waystation.raggiesoft.com' }
     ],
-    ogTitle: 'CASE-05: 17-Site Zero-Database Web & CI/CD Topology',
+    ogTitle: 'CASE-05: 19-App Zero-Database Web & CI/CD Topology',
     ogDescription:
-      'How 17 decoupled web properties run on one hardened Ubuntu/Nginx VPS with zero SQL databases, S3 CDN sync, and automated pre-push build gates.',
+      'How 19 decoupled web applications run on one hardened Ubuntu/Nginx VPS with zero SQL databases, S3 CDN sync, and automated pre-push build gates.',
     vitalStats: [
       { label: 'Case Identifier', value: 'CASE-05 • Cloud & Release Engineering' },
       { label: 'Production Host', value: 'DigitalOcean NYC1 Ubuntu VPS + Nginx' },
@@ -296,7 +296,7 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
       {
         title: '1. Subdomain-per-Concern & DRY Role Boundaries',
         detail:
-          'Assigned each domain a clear responsibility—keeping consumer apps jargon-free on *.raggiesoft.com, centralizing the 17-site directory & wildcard 404 handler on waystation.raggiesoft.com, and dedicating michaelpragsdale.com to engineering architecture.'
+          'Assigned each domain a clear responsibility—keeping consumer apps jargon-free on *.raggiesoft.com, centralizing the global directory & wildcard 404 handler on waystation.raggiesoft.com, and dedicating michaelpragsdale.com, raggiesoftstudio.com, and raggiesoft.dev to developer and engineering architecture.'
       },
       {
         title: '2. Pre-Push Polyglot Build & SEO Gate (jenna-sync.sh + validate-network-seo.mjs)',
@@ -315,66 +315,67 @@ export const ARCHITECTURAL_CASE_STUDIES: readonly ArchitecturalCaseStudy[] = [
       }
     ],
     verificationAndTradeoffs: [
-      'Eliminating relational databases across content/catalog properties removes SQL injection vectors, credential rotation overhead, and RAM-hungry database daemons—allowing a single lean Ubuntu Droplet to serve all 17 Nginx virtual hosts effortlessly.',
+      'Eliminating relational databases across content/catalog properties removes SQL injection vectors, credential rotation overhead, and RAM-hungry database daemons—allowing a single lean Ubuntu Droplet to serve all 19 Nginx virtual hosts effortlessly.',
       'Pull-based deployments on NYC1 avoid storing production SSH private keys inside external CI providers while still promoting verified commits live within minutes.'
     ]
   },
   {
     id: 'raggiesoft-installer-studio',
-    shortName: 'CASE-06 • Installer Studio (C++20)',
+    shortName: 'CASE-06 • RaggieSoft Studio',
     code: 'CASE-06',
-    title: 'RaggieSoft Installer Studio — Native Win32 C++20 IDE, MSI/MSM/MST/MSP Compiler & MSI Prism',
-    organization: 'Open-Source Windows Packaging & Compliance Suite (MIT License)',
+    title: 'RaggieSoft Studio — Native Win32 C++20 Installer & Help Suites, MSI Prism & RaggieScript v1.0',
+    organization: 'Open-Source Packaging, Help & Accessibility Suite (raggiesoftstudio.com • MIT)',
     timeframe: '2026 – Present',
     lenses: ['architecture', 'accessibility', 'devops'],
     problemStatement:
-      'Authoring enterprise Windows Installer packages traditionally forces teams to choose between multi-thousand-dollar per-seat proprietary suites, runtime-heavy bootstrapper stubs, or complex XML toolchains whose EULAs introduce revenue thresholds—while binary wizard definitions resist Git diffs, screen-reader accessibility, and AI-assisted maintenance.',
+      'Authoring enterprise Windows Installer packages and offline F1 documentation traditionally forces teams to choose between multi-thousand-dollar per-seat proprietary suites, runtime-heavy bootstrapper stubs, or retired 1990s compilers (hhc.exe / hcw.exe)—while binary project formats resist Git diffs, screen-reader accessibility, and AI-assisted maintenance.',
     architecturalSolution:
-      'Engineered RaggieSoft Installer Studio ("Install Without Limits"), a 100% first-party, zero-dependency Win32 C++20 packaging suite compiled with cl.exe and the stock Windows 11 SDK (/MT static binaries for x64 and ARM64). Combines a 7-view native Visual IDE (InstallerStudio.exe), a lossless comment-preserving .rsip/.rsis manifest AST compiler (instbuild.exe) driving msiquery.h and fci.h to output standalone Enterprise .msi databases, .msm Merge Modules, .mst Transforms, .msp Patches, and HTML5 VPAT 2.5 accessibility reports (--emit-vpat), a white-label WCAG 2.2 AA external UI bootstrapper (SetupWizard.exe via MsiSetExternalUIRecord), and a native 64-bit SQL database inspector (msiprism.exe).',
+      'Engineered RaggieSoft Studio (raggiesoftstudio.com & raggiesoft.dev), anchored by zero-dependency static /MT Win32 C++20 and C#/.NET suites across x64 and ARM64: Installer Studio (12-view InstallerStudio.exe IDE, instbuild.exe .rsip/.rsis compiler, 11-style WCAG 2.2 AA SetupWizard.exe bootstrapper, MSI Prism 64-bit read/write SQL editor, rswsfx.exe LZMS self-extractor, and HTML5 VPAT 2.5 emitter), Help Studio (8-view HelpStudio.exe IDE, rshbuild.exe compiler, pure C++20 .CHM ITSF/LZX & WinHelp .HLP LZ77 decompilers + HTML5 sanitizer, and <5ms Named-Pipe RaggieSoftHelp.exe F1 viewer), Accessibility Studio (.NET + Monaco Guided Fix IDE & SARIF 2.1.0 CLI), and RaggieScript v1.0 (.rssc static type binder, RSWBC2 stack bytecode VM, JSON-RPC 2.0 LSP, .NET SDK & ES2022 transpiler).',
     quantifiedImpact: [
-      { label: 'Native Binaries', value: 'InstallerStudio • instbuild • msiprism' },
-      { label: 'Output Formats', value: 'MSI • MSM • MST • MSP + Setup.exe' },
+      { label: 'Shipped Studio Core', value: 'Installer • A11y • Help • RaggieScript' },
+      { label: 'Native Outputs', value: 'MSI/MSM/MST/MSP • F1 Help • SARIF' },
       { label: 'Accessibility & AI', value: 'WCAG 2.2 AA VPAT 2.5 + llms.txt' }
     ],
-    technologies: ['Native Win32 C++20 (/MT)', 'Windows Installer SQL (msiquery.h)', 'Cabinet LZX/MSZIP (fci.h)', 'UIAutomation & Dark Mode Mica', 'VPAT 2.5 Luminance Audit', 'MSI / MSM / MST / MSP', 'constexpr llms.txt / SKILL.md'],
+    technologies: ['Native Win32 C++20 (/MT)', 'C# / .NET (Monaco & SARIF 2.1.0)', 'RaggieScript v1.0 (Bytecode VM & LSP)', 'Windows Installer SQL (msiquery.h)', 'Cabinet LZMS/LZX & ITSF .CHM', 'UIAutomation & Dark Mode Mica', 'HTML5 VPAT 2.5 Report Generation'],
     referenceLinks: [
-      { label: 'Visit RaggieSoft Installer Studio (raggiesoftstudio.com)', url: 'https://raggiesoftstudio.com' },
-      { label: 'View RaggieSoft Installer Studio on GitHub (MIT)', url: 'https://github.com/raggiesoft/installer-studio' }
+      { label: 'Visit RaggieSoft Studio (raggiesoftstudio.com)', url: 'https://raggiesoftstudio.com' },
+      { label: 'Visit Developer Hub (raggiesoft.dev)', url: 'https://raggiesoft.dev' },
+      { label: 'View Installer Studio on GitHub (MIT)', url: 'https://github.com/raggiesoft/installer-studio' }
     ],
-    ogTitle: 'CASE-06: RaggieSoft Installer Studio — C++20 MSI Suite',
+    ogTitle: 'CASE-06: RaggieSoft Studio — C++20 MSI, Help & RaggieScript',
     ogDescription:
-      'Zero-dependency Win32 C++20 Visual IDE, MSI Prism inspector, and instbuild compiler outputting MSI, MSM, MST, MSP, Setup.exe, and VPAT 2.5 reports.',
+      'Zero-dependency Win32 C++20 Installer & Help Studios, MSI Prism SQL editor, RaggieScript v1.0 LSP/VM, and WCAG 2.2 AA VPAT 2.5 conformance tooling.',
     vitalStats: [
-      { label: 'Case Identifier', value: 'CASE-06 • Win32 C++20 MSI Tooling' },
-      { label: 'Open-Source Repo', value: 'github.com/raggiesoft/installer-studio' },
-      { label: 'Native Binaries', value: 'InstallerStudio • instbuild • SetupWizard • msiprism', isBadge: true },
-      { label: 'Project & Package Formats', value: '.rsip / .rsis -> MSI • MSM • MST • MSP', isBadge: true }
+      { label: 'Case Identifier', value: 'CASE-06 • RaggieSoft Studio Suite' },
+      { label: 'Suite Portals', value: 'raggiesoftstudio.com • raggiesoft.dev' },
+      { label: 'Native Toolchains', value: 'Installer • Accessibility • Help • RaggieScript', isBadge: true },
+      { label: 'Compliance Outputs', value: 'MSI/MSM/MST/MSP + VPAT 2.5 + SARIF 2.1', isBadge: true }
     ],
     implementationSteps: [
       {
-        title: '1. Hybrid .rsip/.rsis Comment-Preserving AST, 7-View Visual IDE & constexpr AI Specs',
+        title: '1. Comment-Preserving Plain-Text ASTs (.rsip, .rsis, .rshp) & constexpr AI Specs',
         detail:
-          'Designed an INI-inspired plain-text project grammar supporting both standalone single-file projects (.rsip), multi-project suites (.rsis, akin to .slnx), and @include headers (.rsii). Backed by a lossless line-token AST so 7-view InstallerStudio.exe GUI edits preserve 100% of developer comments, while one constexpr schema table drives sub-millisecond JSON linting (--validate --diagnostics=json) and --emit-ai-spec generation (llms.txt, llms-full.txt, SKILL.md).'
+          'Designed human-readable, Git-diffable project grammars backed by lossless line-token ASTs so GUI edits in InstallerStudio.exe (12 views) and HelpStudio.exe (8 views) preserve 100% of developer comments, while constexpr schema tables emit JSON diagnostics and llms.txt / SKILL.md agent specs (--emit-ai-spec).'
       },
       {
-        title: '2. Direct Windows SDK Relational SQL & LZX Cabinet Engine (MSI, MSM, MST, MSP & msiprism.exe)',
+        title: '2. Direct Windows SDK Relational SQL, LZMS/LZX Cabinets & MSI Prism (msiprism.exe)',
         detail:
-          'Calls MsiOpenDatabaseW, MsiDatabaseOpenViewW, MsiDatabaseGenerateTransformW, and FCICreate directly from the Windows 11 SDK to build 64-bit x64/ARM64 Enterprise .msi installers, .msm Merge Modules, .mst GPO Transforms, and .msp Patches—paired with msiprism.exe (RaggieSoft MSI Prism), a native 64-bit Dark Mode SQL table and transform inspector.'
+          'Calls MsiOpenDatabaseW, MsiDatabaseOpenViewW, MsiDatabaseGenerateTransformW, and FCICreate directly from static /MT C++20 to build x64/ARM64 .msi installers, .msm Merge Modules, .mst Transforms, and msdelta.dll .msp Patches—paired with MSI Prism, a full 64-bit read/write relational SQL DDL/DML editor.'
       },
       {
-        title: '3. White-Label Accessible Setup Wizard (SetupWizard.exe) & --emit-vpat Conformance Reports',
+        title: '3. Pure C++20 Legacy .CHM / WinHelp .HLP Decompilers & Sub-5ms Named-Pipe F1 Help',
         detail:
-          'Built a zero-dependency Win32 C++ external UI bootstrapper driving MsiSetInternalUI(INSTALLUILEVEL_NONE) + MsiSetExternalUIRecord with Express/Compact/Custom and 16:9 Autorun modes, Per-Monitor V2 DPI, Windows Contrast Themes, Dark Mode Mica, and automated HTML5 VPAT 2.5 WCAG 2.2 AA / Revised Section 508 report generation.'
+          'Implemented clean-room C++20 ITSF v3 + LZX Huffman (.chm) and WinHelp 3.1/4.0 B+ tree + LZ77 (.hlp/.cnt) decompilers with a Word/FrontPage HTML5 sanitizer in Help Studio, compiling modular help packs served across all Studio IDEs by a <650 KB RaggieSoftHelp.exe viewer over Named Pipe IPC.'
       },
       {
-        title: '4. Prism-Piercing Silicon Detection, Relational ICE Verification & Dual Authenticode Signing',
+        title: '4. RaggieScript v1.0 (.rssc) Multi-Target SDK, Accessible SetupWizard & Auto-VPAT 2.5',
         detail:
-          'Queries RtlGetVersion (Build >= 22000) and IsWow64Process2 to pierce Windows 11 ARM64 Prism emulation, runs automated post-build SQL/ICE80 verification, preserves 100% author-owned VERSIONINFO (recording instbuild strictly in PID_APPNAME), and signs inner .msi packages before embedding and signing outer Setup.exe binaries.'
+          'Built a gradually typed scripting & declarative Per-Monitor V2 DPI Wizard UI language featuring compile-time diagnostics (RSW701–RSW715), RSWBC2 linear stack bytecode, a JSON-RPC 2.0 Language Server (lsp), .NET Core SDK, zero-eval() ES2022 transpiler, and automated HTML5 VPAT 2.5 conformance generation (--emit-vpat).'
       }
     ],
     verificationAndTradeoffs: [
-      'Calling Microsoft’s built-in msi.dll and cabinet.dll APIs directly from static /MT C++20 eliminates .NET/VCL bootstrapper prerequisites, third-party stub watermarks, and commercial revenue caps while maintaining instant cold start across x64 and ARM64.',
-      'Embedding classic Windows 2000 Wizard 97 UI tables inside Product.msi alongside the modern SetupWizard.exe external UI shell guarantees one MSI artifact works interactively via msiexec, silently in Intune/GPO (/qn), or inside the branded Dark Mode bootstrapper.'
+      'Calling stock System32 APIs (msi.dll, cabinet.dll, Msftedit.dll, gdiplus.dll) from static /MT C++20 eliminates multi-hundred-megabyte runtime prerequisites on customer machines while guaranteeing instant cold start across x64 and ARM64.',
+      'Keeping Community Edition permanently at 100% technical parity with Architect Edition—and never paywalling WCAG 2.2 AA runtime accessibility or Authenticode signing—makes inclusive Windows packaging accessible to solo developers, universities, and enterprise teams alike.'
     ]
   }
 ] as const;

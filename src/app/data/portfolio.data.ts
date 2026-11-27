@@ -8,19 +8,19 @@
  * READ-ALONG TEACHING OVERVIEW (100-Level JavaScript & TypeScript Guide):
  *
  * 1. What is this file, and why is it structured as a "Barrel + Route Index"?
- *    Instead of cramming 43 routes of technical specifications into one giant
+ *    Instead of cramming 45 routes of technical specifications into one giant
  *    3,000-line file, we split our read-only datasets into focused modules inside
  *    `src/app/data/`:
  *      - `portfolio.types.ts`        -> TypeScript `type` & `interface` blueprints
  *      - `career-and-education.data.ts` -> Profile, Role Lenses, Experience & Education
- *      - `ecosystem.data.ts`         -> All 17 Live Web Properties (`/web-apps/:id`)
+ *      - `ecosystem.data.ts`         -> All 19 Live Web Applications (`/web-apps/:id`)
  *      - `case-studies.data.ts`      -> All 6 Case Studies (`/case-studies/:id`)
  *      - `build-team.data.ts`        -> All 7 CI/CD & Server Modules (`/build-team/:slug`)
  *
  *    This file (`portfolio.data.ts`) re-exports all of them from one clean import
  *    path AND derives `PORTFOLIO_STATIC_ROUTES`—consumed directly by Node.js in
- *    `scripts/postbuild-routes.mjs` to pre-render all **42 sub-route HTML files**
- *    (5 section landing pages + 37 individual card deep-dive pages) plus `/`!
+ *    `scripts/postbuild-routes.mjs` to pre-render all **44 sub-route HTML files**
+ *    (5 section landing pages + 39 individual card deep-dive pages) plus `/`!
  *
  * 2. Why share `PORTFOLIO_STATIC_ROUTES` between Angular and `postbuild-routes.mjs`?
  *    **DRY ("Don't Repeat Yourself") Guarantee**: Adding a new web app, case
@@ -81,9 +81,9 @@ const PORTFOLIO_OG_ALT =
   'Michael P. Ragsdale — Full-Stack Web Developer & Web Accessibility Engineer (michaelpragsdale.com)';
 
 /**
- * Complete array of all **42 pre-rendered sub-routes** (`/` is the 43rd root route):
+ * Complete array of all **44 pre-rendered sub-routes** (`/` is the 45th root route):
  * - 5 Section Landing Hubs (`/web-apps`, `/case-studies`, `/build-team`, `/experience`, `/education`)
- * - 17 Web Property Deep Dives (`/web-apps/:id`)
+ * - 19 Web Application Deep Dives (`/web-apps/:id`)
  * - 6 Case Study Deep Dives (`/case-studies/:id`)
  * - 7 CI/CD & Server Deep Dives (`/build-team/:slug`)
  * - 4 Professional Experience Deep Dives (`/experience/:slug`)
@@ -109,7 +109,7 @@ export const PORTFOLIO_STATIC_ROUTES: readonly StaticRouteMeta[] = [
     routePath: 'build-team',
     title: 'CI/CD & Build Automation Suite | Michael P. Ragsdale',
     description:
-      'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines powering build verification, CDN asset sync, and non-root deploys across 17 web properties.',
+      'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines powering build verification, CDN asset sync, and non-root deploys across 19 web applications.',
     image: PORTFOLIO_OG_IMAGE,
     imageAlt: PORTFOLIO_OG_ALT
   },

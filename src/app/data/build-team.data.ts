@@ -10,12 +10,12 @@
  * 1. What is this file, and what views does it power?
  *    `build-team.data.ts` documents the **7 modular CLI & server components**
  *    that provision workstations, compile Markdown routes, master audio/WebVTT
- *    captions, enforce pre-push build gates, and deploy 17 web properties:
+ *    captions, enforce pre-push build gates, and deploy 19 web applications:
  *      1. `michael`      -> `brooke.sh` & `backup.sh` (Workstation Bootstrap & Sync)
  *      2. `paige`        -> `paige.php` (Markdown Manuscript & Search Compiler)
- *      3. `jessica`      -> `NYC1 Ubuntu VPS` (Hardened Linux & 17 Nginx Vhosts)
+ *      3. `jessica`      -> `NYC1 Ubuntu VPS` (Hardened Linux & 19 Nginx Vhosts)
  *      4. `harper`       -> `harper.sh` (Multi-Core FFmpeg & WebVTT Mastering)
- *      5. `jenna`        -> `jenna-sync.sh` (13-Repo Build Gate & S3 CDN Sync)
+ *      5. `jenna`        -> `jenna-sync.sh` (Multi-Repo Build Gate & S3 CDN Sync)
  *      6. `sarah`        -> `sarah-deploy.sh` (Non-Root Cron CD & Minifier)
  *      7. `amanda-elara` -> `amanda/elara.php` (Protected Front-Controller Router)
  *
@@ -73,10 +73,10 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
     roleTitle: 'Hardened Ubuntu Linux, Nginx & PHP 8.5-FPM Production Host',
     stack: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / Ed25519 SSH',
     summary:
-      'Consolidated DigitalOcean production Droplet in NYC1 serving all 17 web properties behind Cloudflare TLS 1.3, strict CSP headers, and isolated virtual host configurations.',
+      'Consolidated DigitalOcean production Droplet in NYC1 serving all 19 web applications behind Cloudflare TLS 1.3, strict CSP headers, and isolated virtual host configurations.',
     capabilities: [
       'Enforces Ed25519 SSH key-only authentication, UFW perimeter firewall rules, and zero open database ports.',
-      'Serves 17 Nginx virtual hosts (/var/www/*) with immutable static asset caching, clean 301 edge redirects, and PHP 8.5-FPM worker pools.',
+      'Serves 19 Nginx virtual hosts (/var/www/*) with immutable static asset caching, clean 301 edge redirects, and PHP 8.5-FPM worker pools.',
       'Version-controls all server virtual host definitions inside a dedicated nginx-config repository.'
     ],
     profileSlug: 'jessica',
@@ -150,7 +150,7 @@ export const DEVOPS_CONSTRUCTS: readonly DevOpsConstruct[] = [
 export const BUILD_TEAM_OVERVIEW = {
   title: 'CI/CD & Media Automation Suite',
   subtitle:
-    'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines that build, validate, master, and deploy 17 decoupled web properties.',
+    'Modular PHP 8.5, Bash, FFmpeg, and Linux cron pipelines that build, validate, master, and deploy 19 decoupled web applications.',
   quote:
     'Deterministic pre-push build gates, vault-isolated media mastering, and non-root server deployments keep a multi-framework platform maintainable by one developer.',
   logoUrl: 'https://assets.raggiesoft.com/raggiesoft-corporate/images/logos/logo-michael.png',
@@ -183,7 +183,7 @@ export const BUILD_TEAM_OVERVIEW = {
     {
       step: '05 • Hardened Edge & Gateway Serving',
       command: 'NYC1 Nginx -> amanda/elara.php',
-      outcome: 'Serves all 17 Nginx virtual hosts behind Cloudflare TLS 1.3, CSP headers, and isolated PHP 8.5 front-controller routing.'
+      outcome: 'Serves all 19 Nginx virtual hosts behind Cloudflare TLS 1.3, CSP headers, and isolated PHP 8.5 front-controller routing.'
     }
   ]
 } as const;
@@ -333,10 +333,10 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     stackBadge: 'Ubuntu Linux • Nginx • PHP 8.5-FPM • UFW / TLS 1.3',
     quote: 'Consolidating static and SSR virtual hosts onto a hardened, database-free Linux VPS keeps cloud costs low and security tight.',
     cardSummary:
-      'Production Ubuntu Linux server in DigitalOcean NYC1 hosting all 17 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS origin certificates, and UFW perimeter rules.',
+      'Production Ubuntu Linux server in DigitalOcean NYC1 hosting all 19 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS origin certificates, and UFW perimeter rules.',
     ogTitle: 'NYC1 Linux & Nginx Production Host | CI/CD Suite',
     ogDescription:
-      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 17 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
+      'Hardened Ubuntu Linux VPS on DigitalOcean NYC1 serving 19 Nginx virtual hosts, PHP 8.5-FPM worker pools, TLS 1.3 origin certs, and CSP headers.',
     ogImageUrl: DEFAULT_OG_IMG,
     vitalStats: [
       { label: 'Region & IPv4', value: 'DigitalOcean NYC1 (142.93.244.239)' },
@@ -346,7 +346,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     technicalHeading: 'Multi-Tenant Nginx Virtual Hosting & Edge Hardening',
     technicalIntro:
-      'Rather than paying per-seat SaaS hosting fees for 17 separate domains and subdomains, all web properties run on a single hardened Ubuntu VPS paired with Cloudflare CDN and DigitalOcean Spaces:',
+      'Rather than paying per-seat SaaS hosting fees for 19 separate domains and subdomains, all web properties run on a single hardened Ubuntu VPS paired with Cloudflare CDN and DigitalOcean Spaces:',
     technicalCapabilities: [
       {
         title: 'SSH, VPC & Firewall Hardening',
@@ -361,7 +361,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
       {
         title: 'Low-Overhead Resource Profile',
         detail:
-          'Because fourteen properties compile to static HTML/JS/CSS and three run lightweight PHP 8.5-FPM without MySQL/PostgreSQL, CPU and memory utilization remain minimal under load.'
+          'Because sixteen applications compile to static HTML/JS/CSS and three run lightweight PHP 8.5-FPM without MySQL/PostgreSQL, CPU and memory utilization remain minimal under load.'
       }
     ],
     cliSnippet: {
@@ -376,12 +376,12 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     ],
     terminalBlock: {
       headerTitle: 'michael@raggiesoft-nebulae (NYC1)',
-      statusBadge: 'ONLINE • 17 VHOSTS ACTIVE',
+      statusBadge: 'ONLINE • 19 VHOSTS ACTIVE',
       promptUser: 'michael@nyc1:~$',
       command: 'systemctl status nginx php8.5-fpm --no-pager',
       outputLines: [
         '● nginx.service - High performance web server and reverse proxy',
-        '   Active: active (running) — serving 17 RaggieSoft virtual hosts (/var/www/*)',
+        '   Active: active (running) — serving 19 RaggieSoft virtual hosts (/var/www/*)',
         '● php8.5-fpm.service - The PHP 8.5 FastCGI Process Manager',
         '   Active: active (running) — SSR worker pool healthy (0 SQL sockets)'
       ]
@@ -499,7 +499,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
     operationsHeading: 'Preventing Partial Releases Across Micro-Properties',
     operationsLead: 'Coordinating shared assets, sitemaps, and frontend bundles in a single deterministic workflow.',
     operationsParagraphs: [
-      'Operating 17 distinct web properties gives each domain the right tool for its job, but manual per-repo deployments would quickly cause version drift or missing CDN assets.',
+      'Operating 19 distinct web applications gives each domain the right tool for its job, but manual per-repo deployments would quickly cause version drift or missing CDN assets.',
       'Centralizing pre-push checks in jenna-sync.sh guarantees that TypeScript compiler errors, broken OpenGraph tags, or invalid sitemaps halt the release locally before any commit reaches GitHub or the production server.'
     ],
     terminalBlock: {
@@ -509,7 +509,7 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
       command: './raggiesoft-deployment-tools/jenna-sync.sh --push -m "Release update"',
       outputLines: [
         '[jenna] Step 1: paige.php route & search compilation -> PASS',
-        '[jenna] Step 2: Angular 19 (43 routes), SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Carbon/Fluent SSG -> PASS',
+        '[jenna] Step 2: Angular 19 (45 routes), Alpine.js 3, SvelteKit 2, Astro 6, Nuxt 4, Next.js 16, Carbon/Fluent SSG -> PASS',
         '[jenna] Step 3: Pushed updated repositories to GitHub origin/main -> PASS',
         '[jenna] Step 4: rclone synced /raggiesoft-assets to do-spaces:assets.raggiesoft.com -> PASS'
       ]
@@ -575,9 +575,9 @@ export const BUILD_TEAM_PROFILES: readonly BuildTeamMember[] = [
       promptUser: 'michael@nyc1:~$',
       command: '/home/michael/raggiesoft-deployment-tools/sarah-deploy.sh',
       outputLines: [
-        '[18:45:01] [sarah] Non-root check passed (uid=1000). Polling origin/main across 17 web roots...',
+        '[18:45:01] [sarah] Non-root check passed (uid=1000). Polling origin/main across 19 web roots...',
         '[18:45:03] [sarah] New commit detected on michaelpragsdale.com (dist/raggiesoft-portfolio/browser).',
-        '[18:45:04] [sarah] Atomic rsync -> /var/www/michaelpragsdale.com/ complete (43 routes).',
+        '[18:45:04] [sarah] Atomic rsync -> /var/www/michaelpragsdale.com/ complete (45 routes).',
         '[18:45:04] [sarah] Normalized permissions (755 dirs / 644 files). Deployment healthy.'
       ]
     }

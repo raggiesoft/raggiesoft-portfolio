@@ -17,12 +17,12 @@
  *
  * 2. How does our 3-Tier "Listening Room" Information Architecture work?
  *    To give recruiters both instant `Cmd+F` scannability AND deep engineering
- *    documentation, `syncRouteFromPathname()` routes across **43 URLs**:
+ *    documentation, `syncRouteFromPathname()` routes across **45 URLs**:
  *      - **Tier 1 (`/` — `'dossier'`)**: Complete all-in-one homepage dossier
  *        showing every card across all 5 sections for fast `Cmd+F` search.
  *      - **Tier 2 (`/<section>`)**: Five dedicated section landing hubs
  *        (`/web-apps`, `/case-studies`, `/build-team`, `/experience`, `/education`).
- *      - **Tier 3 (`/<section>/<slug>`)**: 37 individual deep-dive pages (`17`
+ *      - **Tier 3 (`/<section>/<slug>`)**: 39 individual deep-dive pages (`19`
  *        web apps + `6` case studies + `7` CI/CD tools + `4` career roles + `3`
  *        credentials) with sibling switcher pills and circular Prev/Next links!
  *
@@ -482,7 +482,7 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Resolves all 43 portfolio URL paths (`/`, 5 section hubs, and 37 item slugs)
+   * Resolves all 45 portfolio URL paths (`/`, 5 section hubs, and 39 item slugs)
    * into `activeView`, `activeItemSlug`, and `document.title` (WCAG 2.4.2).
    */
   private syncRouteFromPathname(rawPathname: string): void {

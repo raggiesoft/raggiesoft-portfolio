@@ -8,7 +8,7 @@ License: MIT License (Code) | CC BY-SA 4.0 (Creative Case Study References)
 READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility):
 
 1. What is this file, and how does our 3-Tier "Listening Room" Routing work?
-   `app.component.html` renders all 43 routes of `https://michaelpragsdale.com`
+   `app.component.html` renders all 45 routes of `https://michaelpragsdale.com`
    inside a single `<main id="main-content">` landmark:
      - **Tier 1 (`/` — `'dossier'`)**: Preserves EVERY card across all 5 sections
        on the home page so recruiters and hiring managers can scan or press
@@ -16,8 +16,8 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
      - **Tier 2 (`/<section>`)**: Five dedicated Section Landing Pages
        (`/web-apps`, `/case-studies`, `/build-team`, `/experience`, `/education`)
        with semantic breadcrumbs, quick-jump pills, and Role-Lens filtering.
-     - **Tier 3 (`/<section>/<slug>`)**: 37 Individual Card Deep-Dive Pages
-       (`17` web apps, `6` case studies, `7` CI/CD modules, `4` career roles,
+     - **Tier 3 (`/<section>/<slug>`)**: 39 Individual Card Deep-Dive Pages
+       (`19` web apps, `6` case studies, `7` CI/CD modules, `4` career roles,
        and `3` credentials) with deeper architecture, accessibility, coursework,
        and circular Previous/Next navigation!
 
@@ -175,7 +175,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
               [attr.aria-current]="isWebAppsSection() ? 'page' : null"
               (click)="navigateInternal('/web-apps', $event)"
             >
-              Web Apps (17)
+              Web Apps ({{ ecosystemList.length }})
             </a>
           </li>
           <li>
@@ -342,6 +342,24 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
 
             <a
               class="btn btn-secondary"
+              href="https://raggiesoftstudio.com"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>RaggieSoft Studio</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="https://raggiesoft.dev"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>raggiesoft.dev</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
               [href]="profile.assets.githubUrl"
               target="_blank"
               rel="noopener"
@@ -423,14 +441,14 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     </div>
   </section>
 
-  <!-- SECTION 1 ON HOME: LIVE WEB APPLICATION ECOSYSTEM (17 CARDS) -->
+  <!-- SECTION 1 ON HOME: LIVE WEB APPLICATION ECOSYSTEM (19 CARDS) -->
   <section id="polyglot-ecosystem" class="dossier-section">
     <div class="section-header">
       <div>
-        <p class="eyebrow-label">17 Live Web Properties • Multi-Framework &amp; Web Components • Zero SQL Databases</p>
+        <p class="eyebrow-label">{{ ecosystemList.length }} Live Web Applications • Multi-Framework &amp; Web Components • Zero SQL Databases</p>
         <h2>Live Web Application Ecosystem</h2>
         <p class="section-lead">
-          Each web property in the RaggieSoft network is built with a purposeful stack—spanning <strong>TypeScript &amp; Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>React 19 &amp; Next.js 16</strong>, <strong>SvelteKit 2 &amp; Svelte 5</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 &amp; Vue 3</strong>, <strong>SolidJS</strong>, <strong>Preact 10 + Signals</strong>, <strong>Mithril.js</strong>, <strong>Eleventy v3 + Lit 3</strong>, <strong>IBM Carbon, Microsoft Fluent UI &amp; Web Awesome</strong>, and <strong>Bootstrap 5.3.8</strong>—all enforcing Section 508 / WCAG 2.1 AA accessibility in production.
+          Each web property in the RaggieSoft network is built with a purposeful stack—spanning <strong>TypeScript &amp; Angular 19</strong>, <strong>PHP 8.5 MVC</strong>, <strong>React 19 &amp; Next.js 16</strong>, <strong>SvelteKit 2 &amp; Svelte 5</strong>, <strong>Astro 6</strong>, <strong>Nuxt 4 &amp; Vue 3</strong>, <strong>Alpine.js 3</strong>, <strong>SolidJS</strong>, <strong>Preact 10 + Signals</strong>, <strong>Mithril.js</strong>, <strong>Eleventy v3 + Lit 3</strong>, <strong>IBM Carbon, Microsoft Fluent UI &amp; Web Awesome</strong>, and <strong>Bootstrap 5.3.8</strong>—all enforcing Section 508 / WCAG 2.1–2.2 AA accessibility in production.
         </p>
       </div>
       <div>
@@ -451,20 +469,20 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     >
       <div class="card-header-top" style="margin-block-end: 0.4rem;">
         <span class="eyebrow-label">DRY Information Architecture &amp; Subdomain Topology</span>
-        <span class="domain-badge">*.raggiesoft.com + michaelpragsdale.com</span>
+        <span class="domain-badge">*.raggiesoft.com + raggiesoftstudio.com + raggiesoft.dev + michaelpragsdale.com</span>
       </div>
       <h3 style="font-size: 1.08rem; margin-block-end: 0.5rem;">
-        How 17 Web Properties Stay DRY, Fast &amp; Maintainable
+        How {{ ecosystemList.length }} Web Applications Stay DRY, Fast &amp; Maintainable
       </h3>
       <ul class="bullet-list" style="font-size: 0.92rem;">
         <li>
-          <strong>DRY Role Separation Across Hubs:</strong> Rather than duplicating 17-card lists across sites, <code>raggiesoft.com</code> acts as a focused front-door homepage, <code>waystation.raggiesoft.com</code> serves as both the single canonical Global Directory and the wildcard <code>*.raggiesoft.com</code> HTTP 404 safety net, <code>jessica.raggiesoft.com</code> documents the personal &amp; creative story behind each project, <code>launcher.raggiesoft.com</code> unites the consumer desktop suite, and <code>a11y.raggiesoft.com</code> presents our enterprise WCAG &amp; Section 508 IDE.
+          <strong>DRY Role Separation Across Hubs:</strong> Rather than duplicating directories across sites, <code>raggiesoftstudio.com</code> (including <code>/accessibility-studio</code>) and <code>raggiesoft.dev</code> serve developer/B2B engineering suites and open-source compilers, <code>raggiesoft.com</code> acts as the everyday consumer front door, <code>waystation.raggiesoft.com</code> serves as both the Global Directory and wildcard <code>*.raggiesoft.com</code> HTTP 404 safety net, <code>jessica.raggiesoft.com</code> documents project backstories, and <code>launcher.raggiesoft.com</code> unites the consumer desktop apps.
         </li>
         <li>
-          <strong>Right-Sized Consolidation vs. Decoupling:</strong> Multi-artist catalogs share a single <strong>Astro 6</strong> codebase (<code>engineroom.raggiesoft.com/artists/&#123;slug&#125;</code>), while stateful audio playback &amp; WebVTT captioning run in <strong>Svelte 5</strong> (<code>music.raggiesoft.com</code>) and cross-origin static JSON APIs are served from <code>backstage.raggiesoft.com</code> to both web and native <strong>C#/.NET 10 WinForms/WPF</strong>, <strong>C++20</strong>, and <strong>SwiftUI</strong> apps.
+          <strong>Right-Sized Consolidation vs. Decoupling:</strong> Multi-artist catalogs share a single <strong>Astro 6</strong> codebase (<code>engineroom.raggiesoft.com/artists/&#123;slug&#125;</code>), while stateful audio playback &amp; WebVTT captioning run in <strong>Svelte 5</strong> (<code>music.raggiesoft.com</code>) and cross-origin static JSON APIs are served from <code>backstage.raggiesoft.com</code> to both web and native <strong>C#/.NET WinForms/WPF</strong>, <strong>Win32 C++20</strong>, and <strong>SwiftUI</strong> apps.
         </li>
         <li>
-          <strong>Shared WCAG 2.1 AA Navigation Layer:</strong> A lightweight shared script and stylesheet (<code>raggiesoft-network.js</code> / <code>.css</code>) provides keyboard-accessible navigation across all 17 properties and integrates cleanly into mobile disclosure menus.
+          <strong>Shared WCAG 2.1/2.2 AA Navigation Layer:</strong> A lightweight shared script and stylesheet (<code>raggiesoft-network.js</code> / <code>.css</code>) provides keyboard-accessible navigation across all properties and integrates cleanly into single-button mobile disclosure menus.
         </li>
       </ul>
     </aside>
@@ -543,7 +561,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         <p class="eyebrow-label">Applied Problem Solving Across Municipal, University, Desktop, Compiler &amp; Web Systems</p>
         <h2>Engineering &amp; Web Accessibility Case Studies</h2>
         <p class="section-lead">
-          Concrete examples of operational data workflows in municipal service, source-level PLE &amp; Canvas LMS web accessibility engineering at ODU, native C#/.NET 10 &amp; SwiftUI apps, accessible HTML5 Canvas, and clean-room binary AST compiler tooling.
+          Concrete examples of operational data workflows in municipal service, source-level PLE &amp; Canvas LMS web accessibility engineering at ODU, native C#/.NET &amp; SwiftUI apps, accessible HTML5 Canvas, and RaggieSoft Studio C++20/LSP compiler tooling.
         </p>
       </div>
       <div>
@@ -636,7 +654,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
         <p class="eyebrow-label">Build Verification, FFmpeg Media Pipelines &amp; Non-Root Linux Deployment</p>
         <h2>CI/CD &amp; Media Automation Tooling</h2>
         <p class="section-lead">
-          Maintaining 17 web properties, native desktop suites, and downloadable media archives reliably requires repeatable automation. I built 7 modular PHP 8.5, Bash, and Linux components handling workstation setup, Markdown compilation, EBU R128 audio mastering, S3 CDN sync, and non-root cron deployments.
+          Maintaining {{ ecosystemList.length }} web applications, native desktop suites, and downloadable media archives reliably requires repeatable automation. I built 7 modular PHP 8.5, Bash, and Linux components handling workstation setup, Markdown compilation, EBU R128 audio mastering, S3 CDN sync, and non-root cron deployments.
         </p>
       </div>
       <div>
@@ -843,7 +861,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     <nav class="breadcrumb" aria-label="Breadcrumbs">
       <ol>
         <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
-        <li><a href="/web-apps" aria-current="page" (click)="navigateInternal('/web-apps', $event)">Web Apps (17)</a></li>
+        <li><a href="/web-apps" aria-current="page" (click)="navigateInternal('/web-apps', $event)">Web Apps ({{ ecosystemList.length }})</a></li>
       </ol>
     </nav>
 
@@ -887,7 +905,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
 
       <aside class="logistics-card" aria-labelledby="webapps-filter-heading">
         <div>
-          <span class="eyebrow-label">Filter 17 Properties by Discipline</span>
+          <span class="eyebrow-label">Filter {{ ecosystemList.length }} Applications by Discipline</span>
           <h2 id="webapps-filter-heading" style="font-size: 1.25rem; margin-block: 0.3rem 0.65rem;">
             Interactive Stack &amp; Discipline Lens
           </h2>
@@ -982,7 +1000,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     <nav class="breadcrumb" aria-label="Breadcrumbs">
       <ol>
         <li><a href="/" (click)="navigateInternal('/', $event)">Portfolio</a></li>
-        <li><a href="/web-apps" (click)="navigateInternal('/web-apps', $event)">Web Apps (17)</a></li>
+        <li><a href="/web-apps" (click)="navigateInternal('/web-apps', $event)">Web Apps ({{ ecosystemList.length }})</a></li>
         <li>
           <a
             [href]="'/web-apps/' + prop.id"
@@ -998,7 +1016,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
     <ul class="build-team-pills" aria-label="Switch Web Application Spec">
       <li>
         <a class="build-team-pill" href="/web-apps" (click)="navigateInternal('/web-apps', $event)">
-          <span>🌐 All 17 Apps</span>
+          <span>🌐 All {{ ecosystemList.length }} Apps</span>
         </a>
       </li>
       @for (p of ecosystemList; track p.id) {
@@ -1057,7 +1075,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
             </a>
           }
           <a class="btn btn-secondary" href="/web-apps" (click)="navigateInternal('/web-apps', $event)">
-            <span>← All 17 Web Apps</span>
+            <span>← All {{ ecosystemList.length }} Web Apps</span>
           </a>
         </div>
       </article>
@@ -1144,7 +1162,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           <span>← Previous: {{ adj.prev.shortName }}</span>
         </a>
         <a class="btn btn-secondary" href="/web-apps" (click)="navigateInternal('/web-apps', $event)">
-          <span>🌐 All 17 Web Apps (/web-apps)</span>
+          <span>🌐 All {{ ecosystemList.length }} Web Apps (/web-apps)</span>
         </a>
         <a
           class="btn btn-primary"
@@ -2550,7 +2568,7 @@ READ-ALONG TEACHING OVERVIEW (100-Level HTML, Angular Templates & Accessibility)
           {{ profile.fullName }} — Full-Stack &amp; Web Accessibility Portfolio (michaelpragsdale.com)
         </strong>
         <p style="margin-block-start: 0.2rem;">
-          Built with Angular 19 (Standalone + Zoneless Signals + TypeScript) &amp; Modern Native CSS (<code>&#64;layer</code>, <code>subgrid</code>, <code>&#64;container</code>, <code>light-dark()</code>). 43 Pre-Rendered Static Routes Hosted on NYC1 (142.93.244.239).
+          Built with Angular 19 (Standalone + Zoneless Signals + TypeScript) &amp; Modern Native CSS (<code>&#64;layer</code>, <code>subgrid</code>, <code>&#64;container</code>, <code>light-dark()</code>). 45 Pre-Rendered Static Routes Hosted on NYC1 (142.93.244.239).
         </p>
       </div>
 

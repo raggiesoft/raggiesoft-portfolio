@@ -15,14 +15,14 @@
  *    directly from `../src/app/data/portfolio.data.ts`—zero duplicated strings!
  *
  * 2. What files does it generate?
- *    - **42 Static Sub-Route HTML Entry Points (`<routePath>/index.html`)**:
+ *    - **44 Static Sub-Route HTML Entry Points (`<routePath>/index.html`)**:
  *      5 Section Landing Hubs (`/web-apps`, `/case-studies`, `/build-team`,
- *      `/experience`, `/education`) + 37 Individual Card Deep-Dive Pages
- *      (`17` web apps, `6` case studies, `7` CI/CD tools, `4` experience roles,
+ *      `/experience`, `/education`) + 39 Individual Card Deep-Dive Pages
+ *      (`19` web apps, `6` case studies, `7` CI/CD tools, `4` experience roles,
  *      and `3` academic credentials)—each stamped with its own `<title>` (`<= 60`
  *      chars), `<meta name="description">` (`<= 155` chars), canonical URL, and
  *      OpenGraph / Twitter social preview tags!
- *    - **Automated 43-URL `sitemap.xml`**: Includes `/` plus all 42 sub-routes.
+ *    - **Automated 45-URL `sitemap.xml`**: Includes `/` plus all 44 sub-routes.
  * =============================================================================
  */
 

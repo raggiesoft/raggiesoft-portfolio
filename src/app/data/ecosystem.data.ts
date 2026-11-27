@@ -9,19 +9,21 @@
  *
  * 1. What is this file, and what UI views does it power?
  *    `ecosystem.data.ts` holds `POLYGLOT_ECOSYSTEM`—our strongly typed catalog
- *    of all **17 live production web properties** across `michaelpragsdale.com`,
- *    `raggiesoft.com`, and fifteen `*.raggiesoft.com` subdomains.
+ *    of all **19 live production web applications** across `michaelpragsdale.com`,
+ *    `raggiesoftstudio.com` (+ `/accessibility-studio`), `raggiesoft.dev`,
+ *    `raggiesoft.com`, and fourteen `*.raggiesoft.com` subdomains.
  *    This single array powers THREE views without duplicating a single string:
  *      - **Home Dossier (`/`)**: Compact scannable cards for recruiter `Cmd+F`.
- *      - **Section Landing Page (`/web-apps`)**: Dedicated 17-property directory
+ *      - **Section Landing Page (`/web-apps`)**: Dedicated 19-application directory
  *        with interactive Role-Lens filtering.
  *      - **Individual Deep-Dive Pages (`/web-apps/:id`)**: Full technical specs
  *        explaining frontend/SSR architecture, static data routing, and exact
  *        code-level WCAG 2.1/2.2 AA & Section 508 web implementations!
  *
- * 2. Why build 17 properties with distinct frameworks instead of one monolith?
- *    Each subdomain pairs the right tool with its job—Angular 19 Zoneless Signals
- *    for this portfolio, PHP 8.5 MVC for SSR hubs, Svelte 5 Runes for live audio
+ * 2. Why build 19 applications with distinct frameworks instead of one monolith?
+ *    Each property pairs the right tool with its job—Angular 19 Zoneless Signals
+ *    for this portfolio, Alpine.js 3 + TypeScript SSG for RaggieSoft Studio and
+ *    raggiesoft.dev, PHP 8.5 MVC for SSR hubs, Svelte 5 Runes for live audio
  *    & WebVTT captioning, Next.js 16 + React 19 for accessible `<canvas>` graphs,
  *    Astro 6 & Nuxt 4 for content catalogs, SolidJS/Preact/Mithril/Lit 3 for
  *    fine-grained reactive & Web Component islands, and Fluent UI / IBM Carbon
@@ -32,7 +34,7 @@
 import type { EcosystemProperty } from './portfolio.types.ts';
 
 /**
- * Complete dataset for all 17 live production web properties.
+ * Complete dataset for all 19 live production web applications.
  * Notice `import type` above: in modern TypeScript and Node.js 22+/26 native TS
  * execution, `import type` explicitly marks type-only imports so Node erases
  * them cleanly at load time with zero runtime overhead!
@@ -74,9 +76,9 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
           'Eliminates legacy Zone.js monkey-patching across browser events and timers. Writable signal() state and memoized computed() selectors drive instantaneous filtering and hierarchical route transitions (/ -> /<section> -> /<section>/<slug>).'
       },
       {
-        title: 'Dual-Mode Information Architecture (Cmd+F Dossier + 42 Sub-Routes)',
+        title: 'Dual-Mode Information Architecture (Cmd+F Dossier + 44 Sub-Routes)',
         detail:
-          'Preserves all cards on / so recruiters can scan or Cmd+F any keyword in seconds, while scripts/postbuild-routes.mjs imports this TypeScript dataset directly in Node.js to pre-render 42 sub-route index.html files and a 43-URL sitemap.xml.'
+          'Preserves all cards on / so recruiters can scan or Cmd+F any keyword in seconds, while scripts/postbuild-routes.mjs imports this TypeScript dataset directly in Node.js to pre-render 44 sub-route index.html files and a 45-URL sitemap.xml.'
       },
       {
         title: 'Dependency-Free CSS Cascade Layers & Subgrid Alignment',
@@ -103,13 +105,141 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
     ]
   },
   {
+    id: 'raggiesoft-studio',
+    shortName: '02 • Studio Suite',
+    name: 'RaggieSoft Studio (Developer, Packaging & VPAT 2.5 Suite Portal)',
+    domain: 'raggiesoftstudio.com',
+    url: 'https://raggiesoftstudio.com',
+    repoUrl: 'https://github.com/raggiesoft/installer-studio',
+    categoryLabel: '02 • B2B Developer, Packaging & Accessibility Suite Portal',
+    primaryStack: 'Alpine.js 3 + TypeScript + Vite Static SSG + Native <dialog> Lightboxes',
+    architecturalPattern: 'Two-Tier Contextual Navigation Static SSG Hosting Product Hubs, VPAT 2.5 Reports & /llms.txt Specs',
+    summary:
+      'Dedicated B2B software portal (301 target of installwithoutlimits.com and a11y.raggiesoft.com) uniting RaggieSoft Installer Studio, Accessibility Studio, Help Studio, and the RaggieScript v1.0 language hub.',
+    highlights: [
+      'Pre-renders 16+ static TypeScript routes with strict build-time <= 60-char <title> and <= 155-char <meta name="description"> verification gates.',
+      'Implements two-tier contextual desktop navigation that folds cleanly into a single >= 44x44px mobile disclosure drawer (< 768px) with zero double hamburger bars.',
+      'Hosts compiler-emitted HTML5 VPAT 2.5 WCAG 2.2 AA conformance matrices, interactive RaggieScript (.rssc) documentation, and machine-readable /llms.txt specs.'
+    ],
+    tags: ['Alpine.js 3', 'TypeScript', 'Vite Static SSG', 'Win32 C++20 Companion', 'VPAT 2.5 Center', 'WCAG 2.2 AA / Section 508 Web'],
+    lenses: ['architecture', 'accessibility', 'devops'],
+    ctaLabel: 'Visit RaggieSoft Studio (raggiesoftstudio.com)',
+    ogTitle: 'raggiesoftstudio.com — Developer & WCAG Suite Portal',
+    ogDescription:
+      'Architecture of raggiesoftstudio.com: Alpine.js 3 + TypeScript SSG portal for RaggieSoft Studio, VPAT 2.5 Center, RaggieScript, and llms.txt specs.',
+    vitalStats: [
+      { label: 'Live Domain', value: 'raggiesoftstudio.com' },
+      { label: 'Frontend Engine', value: 'Alpine.js 3 + TypeScript + Vite SSG' },
+      { label: 'Mounted Sub-App', value: '/accessibility-studio (IBM Carbon SSG)', isBadge: true },
+      { label: '301 Consolidation', value: 'installwithoutlimits.com & a11y -> 301', isBadge: true }
+    ],
+    deepDiveArchitecture: [
+      {
+        title: 'Type-Safe Route Pre-Rendering & Sub-App Composition',
+        detail:
+          'Compiles suite-wide routes, /installer-studio/* sub-pages, /help-studio, and /raggiescript in TypeScript + Vite SSG while mounting the IBM Carbon SSG sub-application cleanly at /accessibility-studio.'
+      },
+      {
+        title: 'Two-Tier Contextual Navigation with Single-Drawer Mobile Collapse',
+        detail:
+          'Displays a secondary contextual sub-bar on desktop (>= 768px) under /installer-studio/* while folding both tiers into one unified #header-navigation-panel on mobile viewports.'
+      },
+      {
+        title: 'Compiler-Emitted Documentation & SHA-256 Release Integrity',
+        detail:
+          'Publishes live HTML5 VPAT 2.5 conformance reports (--emit-vpat) and /llms-full.txt specifications generated directly from the C++20 compiler schema tables.'
+      }
+    ],
+    accessibilityDeepDive: [
+      {
+        title: 'Native HTML <dialog> Screenshot & Architecture Galleries',
+        detail:
+          'Uses native showModal() <dialog> elements with automatic focus trapping, Escape dismissal, and explicit trigger focus restoration across all 14+ native Win32 C++20 UI captures.'
+      },
+      {
+        title: 'Theme-Adaptive <picture> Captures & Forced-Colors Parity',
+        detail:
+          'Pairs prefers-color-scheme Light and Dark UI previews with >= 4.5:1 AA / >= 7:1 AAA surface tokens and @media (forced-colors: active) system borders.'
+      },
+      {
+        title: 'Semantic Conformance Matrices (<th scope="col/row">)',
+        detail:
+          'Presents Revised Section 508, WCAG 2.2 Level AA, and 4-edition capability comparisons in accessible, keyboard-scrollable HTML5 data tables.'
+      }
+    ]
+  },
+  {
+    id: 'raggiesoft-dev',
+    shortName: '03 • Developer Hub',
+    name: 'RaggieSoft.dev (Open-Source, Compilers & AI Agent Specs Hub)',
+    domain: 'raggiesoft.dev',
+    url: 'https://raggiesoft.dev',
+    repoUrl: 'https://github.com/raggiesoft',
+    categoryLabel: '03 • Open-Source Engineering, RaggieScript & Labs Portal',
+    primaryStack: 'Alpine.js 3 + TypeScript + Vite Static SSG + ARIA Live Filters',
+    architecturalPattern: 'Static Developer Documentation & Open-Source Index Synchronized in 1:1 Lockstep with Studio Toolchains',
+    summary:
+      'Dedicated engineering umbrella portal indexing RaggieSoft’s MIT-licensed repositories, RaggieScript v1.0 bytecode/LSP architecture, compiler R&D labs, and machine-readable AI SKILL.md specifications.',
+    highlights: [
+      'Provides interactive Alpine.js discipline filters backed by semantic <button> groups and aria-live="polite" announcements.',
+      'Documents multi-target compiler engineering across static /MT Win32 C++20, C# / .NET (10/11), JSON-RPC 2.0 Language Servers, and zero-eval() ES2022 runtimes.',
+      'Serves deterministic llms.txt and SKILL.md endpoints for developer tooling and automated build verification.'
+    ],
+    tags: ['Alpine.js 3', 'TypeScript', 'Vite Static SSG', 'RaggieScript LSP / VM', 'Open-Source MIT', 'llms.txt / SKILL.md'],
+    lenses: ['architecture', 'accessibility', 'devops'],
+    ctaLabel: 'Visit Developer Hub (raggiesoft.dev)',
+    ogTitle: 'raggiesoft.dev — Open-Source & Compiler Engineering Hub',
+    ogDescription:
+      'Architecture of raggiesoft.dev: Alpine.js 3 + TypeScript SSG indexing open-source compilers, RaggieScript VM, GitHub repos, and AI SKILL.md specs.',
+    vitalStats: [
+      { label: 'Live Domain', value: 'raggiesoft.dev' },
+      { label: 'Frontend Engine', value: 'Alpine.js 3 + TypeScript + Vite SSG' },
+      { label: 'Indexed Scope', value: 'MIT Repos • Compilers • llms.txt Specs', isBadge: true },
+      { label: 'Database Footprint', value: '0 SQL Servers (Pre-Rendered HTML)', isBadge: true }
+    ],
+    deepDiveArchitecture: [
+      {
+        title: '1:1 Lockstep Engineering Index Across Web & Native Repos',
+        detail:
+          'Acts as the technical engineering counterpart to raggiesoftstudio.com—indexing source repositories, RaggieScript v1.0 bytecode/LSP internals, compiler labs, and architectural notes in one fast static site.'
+      },
+      {
+        title: 'Build-Time SEO & Metadata Length Assertions',
+        detail:
+          'Runs a Node.js pre-rendering pipeline emitting per-route canonical HTML, sitemap.xml, robots.txt, IndexNow verification, and a genuine noindex 404.html fallback.'
+      },
+      {
+        title: 'First-Class Machine-Readable Documentation (/ai-skills)',
+        detail:
+          'Exposes plain-text llms.txt and SKILL.md specifications emitted deterministically by instbuild.exe and rshbuild.exe so documentation never drifts from compiler flags.'
+      }
+    ],
+    accessibilityDeepDive: [
+      {
+        title: 'Accessible Discipline Filter Controls & Live Status Regions',
+        detail:
+          'Uses native <button type="button"> filter controls inside role="group" landmarks paired with aria-live="polite" output updates for screen-reader parity.'
+      },
+      {
+        title: 'High-Contrast Code & Diagnostic Blocks',
+        detail:
+          'Styles compiler diagnostics, CLI flags, and bytecode listings with >= 7:1 contrast in both Light and Dark OS color schemes.'
+      },
+      {
+        title: 'Single-Row Responsive Header & Forced-Colors Support',
+        detail:
+          'Collapses navigation cleanly below 768px into a single >= 44x44px disclosure button and honors @media (forced-colors: active) across all cards and buttons.'
+      }
+    ]
+  },
+  {
     id: 'raggiesoft-hub',
-    shortName: '02 • Root Hub',
+    shortName: '04 • Root Hub',
     name: 'RaggieSoft Hub & Stardust Engine CMS',
     domain: 'raggiesoft.com',
     url: 'https://raggiesoft.com',
     repoUrl: 'https://github.com/raggiesoft/stardust-engine-cms',
-    categoryLabel: '02 • Root Portal & PHP 8.5 MVC Framework',
+    categoryLabel: '04 • Root Portal & PHP 8.5 MVC Framework',
     primaryStack: 'PHP 8.5 MVC (Stardust Engine CMS) + DaisyUI 5 + Phosphor Icons SSR',
     architecturalPattern: 'Zero-Database Server-Side Rendered (SSR) Front-Controller MVC with Edge 301 Routing & CSP Hardening',
     summary:
@@ -168,11 +298,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-corporate',
-    shortName: '03 • Corporate',
+    shortName: '05 • Corporate',
     name: 'RaggieSoft Media (Corporate & Open-Source Hub)',
     domain: 'corporate.raggiesoft.com',
     url: 'https://corporate.raggiesoft.com',
-    categoryLabel: '03 • Licensing & Open-Source Portal',
+    categoryLabel: '05 • Licensing & Open-Source Portal',
     primaryStack: 'Node.js ESM Static Site Generator + Bootstrap 5.3.8',
     architecturalPattern: 'Build-Time Static SSG Separating Licensing & Open-Source Software from Creative Catalogs',
     summary:
@@ -231,11 +361,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-engineroom',
-    shortName: '04 • Engine Room',
+    shortName: '06 • Engine Room',
     name: 'Engine Room Records Imprint & Artist Catalog',
     domain: 'engineroom.raggiesoft.com',
     url: 'https://engineroom.raggiesoft.com',
-    categoryLabel: '04 • Multi-Tenant Imprint & Catalog Registry',
+    categoryLabel: '06 • Multi-Tenant Imprint & Catalog Registry',
     primaryStack: 'Astro 6 Static SSG + Multi-Tenant Path Hierarchy (/artists/{slug})',
     architecturalPattern: 'Consolidated Multi-Artist Static Publishing Engine with ISRC & DSP Verification Registries',
     summary:
@@ -294,12 +424,12 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-music',
-    shortName: '05 • Listening Room',
+    shortName: '07 • Listening Room',
     name: 'The Listening Room & WebVTT Lyric Sync Studio',
     domain: 'music.raggiesoft.com',
     url: 'https://music.raggiesoft.com',
     repoUrl: 'https://github.com/raggiesoft/raggiesoft-music',
-    categoryLabel: '05 • Audio Streaming PWA & Captioning Tool',
+    categoryLabel: '07 • Audio Streaming PWA & Captioning Tool',
     primaryStack: 'SvelteKit 2 + Svelte 5 Runes ($state, $derived, $effect) + Tailwind CSS v4 + Web Audio PWA',
     architecturalPattern: 'Static-First Progressive Web App (PWA) & Browser-Based WebVTT Caption Synchronizer',
     summary:
@@ -358,11 +488,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-stardust',
-    shortName: '06 • Stardust',
+    shortName: '08 • Stardust',
     name: 'The Stardust Engine Portal',
     domain: 'stardust.raggiesoft.com',
     url: 'https://stardust.raggiesoft.com',
-    categoryLabel: '06 • Nuxt 4 Static Portal & Reduced-Motion Lab',
+    categoryLabel: '08 • Nuxt 4 Static Portal & Reduced-Motion Lab',
     primaryStack: 'Nuxt 4 + Vue 3 Static SSG + Adaptive Theme & Motion Engine',
     architecturalPattern: 'Static Content Portal with Strict Motion & Color-Scheme Accessibility Controls',
     summary:
@@ -421,12 +551,12 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-book-library',
-    shortName: '07 • Book Reader',
+    shortName: '09 • Book Reader',
     name: 'RaggieSoft Book Reader (Ocean View Archives)',
     domain: 'books.raggiesoft.com',
     url: 'https://books.raggiesoft.com',
     repoUrl: 'https://github.com/raggiesoft/raggiesoft-book-library',
-    categoryLabel: '07 • Accessible Digital Reading PWA',
+    categoryLabel: '09 • Accessible Digital Reading PWA',
     primaryStack: 'PHP 8.5 + Stardust Engine Library SPA (Vanilla ES2024 JavaScript + Offline Service Worker)',
     architecturalPattern: 'Framework-Free Long-Form Reading Application with Persistent Audio & EPUB/PDF Downloads',
     summary:
@@ -485,11 +615,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-backstage',
-    shortName: '08 • Backstage',
+    shortName: '10 • Backstage',
     name: 'RaggieSoft Backstage (Web Components & Static API)',
     domain: 'backstage.raggiesoft.com',
     url: 'https://backstage.raggiesoft.com',
-    categoryLabel: '08 • Web Components SSG & Cross-Origin JSON API',
+    categoryLabel: '10 • Web Components SSG & Cross-Origin JSON API',
     primaryStack: 'Web Awesome Pro 3.13 (Custom Elements) + Font Awesome Pro+ + Node.js ESM SSG & PWA',
     architecturalPattern: 'Standards-Based Web Components Portal & Static CORS JSON API (/api/v1/*.json)',
     summary:
@@ -548,12 +678,12 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-lore',
-    shortName: '09 • Lore Graph',
+    shortName: '11 • Lore Graph',
     name: 'RaggieSoft Lore Graph & Accessible Canvas Engine',
     domain: 'lore.raggiesoft.com',
     url: 'https://lore.raggiesoft.com',
     repoUrl: 'https://github.com/raggiesoft/raggiesoft-lore',
-    categoryLabel: '09 • Knowledge Graph & Accessible HTML5 Canvas',
+    categoryLabel: '11 • Knowledge Graph & Accessible HTML5 Canvas',
     primaryStack: 'Next.js 16 + React 19 + Tailwind CSS v4 + HTML5 Canvas + Synchronized DOM/ARIA Layer',
     architecturalPattern: 'Dual-Layer Accessible Canvas Visualization & Interactive Knowledge Graph',
     summary:
@@ -612,11 +742,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-nebulae',
-    shortName: '10 • Nebulae',
+    shortName: '12 • Nebulae',
     name: 'Nebulae Cosmic Observatory & Contrast Lab',
     domain: 'nebulae.raggiesoft.com',
     url: 'https://nebulae.raggiesoft.com',
-    categoryLabel: '10 • Interactive Visualization & Contrast Lab',
+    categoryLabel: '12 • Interactive Visualization & Contrast Lab',
     primaryStack: 'PHP 8.5 + Vanilla ES2024 Canvas + High-Contrast Translucent CSS Tokens',
     architecturalPattern: 'Interactive Astronomical Visualization & Accessible Translucent Surface Lab',
     summary:
@@ -675,12 +805,12 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'storetrainer',
-    shortName: '11 • StoreTrainer',
+    shortName: '13 • StoreTrainer',
     name: 'RaggieSoft StoreTrainer (v1.0 Archive • VB6 v1.1 • .NET 10 v2.0 + C++20 Updater)',
     domain: 'storetrainer.raggiesoft.com',
     url: 'https://storetrainer.raggiesoft.com',
     repoUrl: 'https://github.com/raggiesoft/storetrainer',
-    categoryLabel: '11 • Cross-Generation Desktop Utility (VB6 -> .NET 10 + C++20) & Portal',
+    categoryLabel: '13 • Cross-Generation Desktop Utility (VB6 -> .NET 10 + C++20) & Portal',
     primaryStack: 'C# 13 / .NET 10 WPF + Native C++20 (/MT Zero-Runtime Updater) + Inno Setup 7 + Classic VB6 v1.1 / ANSI NSIS',
     architecturalPattern: 'Multi-Generation Desktop Architecture (Pre-AI VB6 -> Win95 ANSI NSIS v1.1 -> .NET 10 .stfx + C++20 Suite Updater)',
     summary:
@@ -739,11 +869,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-crossroads',
-    shortName: '12 • Crossroads',
+    shortName: '14 • Crossroads',
     name: 'RaggieSoft Story Crossroads Imprint & Branching Sandbox',
     domain: 'crossroads.raggiesoft.com',
     url: 'https://crossroads.raggiesoft.com',
-    categoryLabel: '12 • Interactive Fiction Imprint & Lit 3 Web Components',
+    categoryLabel: '14 • Interactive Fiction Imprint & Lit 3 Web Components',
     primaryStack: 'Eleventy (11ty) v3 ESM + Lit 3 Custom Elements + TypeScript Static SSG',
     architecturalPattern: 'Zero-Hydration Static Templates Paired with Progressive Lit 3 Shadow-DOM Interactive Islands',
     summary:
@@ -802,11 +932,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-cedarrun',
-    shortName: '13 • Cedar Run',
+    shortName: '15 • Cedar Run',
     name: 'Cedar Run Wilderness Guide & Interactive Companion',
     domain: 'cedarrun.raggiesoft.com',
     url: 'https://cedarrun.raggiesoft.com',
-    categoryLabel: '13 • Fine-Grained Reactive SSG (SolidJS)',
+    categoryLabel: '15 • Fine-Grained Reactive SSG (SolidJS)',
     primaryStack: 'SolidJS + Fine-Grained Signals + TypeScript + Vite Static SSG',
     architecturalPattern: 'Virtual-DOM-Free Fine-Grained Reactive UI Pre-Rendered to Static HTML Routes',
     summary:
@@ -865,11 +995,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-waystation',
-    shortName: '14 • Waystation',
+    shortName: '16 • Waystation',
     name: 'The Uncharted Waystation (Canonical Global Directory & Wildcard 404)',
     domain: 'waystation.raggiesoft.com',
     url: 'https://waystation.raggiesoft.com',
-    categoryLabel: '14 • DRY Global Directory & Nginx Default-Server 404 Router',
+    categoryLabel: '16 • DRY Global Directory & Nginx Default-Server 404 Router',
     primaryStack: 'Mithril.js Hyperscript (m()) + TypeScript Static SSG + Nginx default_server Catch-All',
     architecturalPattern: 'Dual-Role Canonical Ecosystem Directory & Intelligent Subdomain Typo / 404 Recovery Engine',
     summary:
@@ -928,11 +1058,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-jessica',
-    shortName: '15 • Jessica',
+    shortName: '17 • Jessica',
     name: 'Jessica — Project Origins & QA Architecture Guide',
     domain: 'jessica.raggiesoft.com',
     url: 'https://jessica.raggiesoft.com',
-    categoryLabel: '15 • Compact Preact 10 + Signals Multi-Route SSG',
+    categoryLabel: '17 • Compact Preact 10 + Signals Multi-Route SSG',
     primaryStack: 'Preact 10 + @preact/signals + TypeScript + Vite Static SSG',
     architecturalPattern: 'Ultra-Compact (~6 KB) Pre-Rendered Signals SPA Documenting Project Origins & QA Workflows',
     summary:
@@ -991,11 +1121,11 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-launcher',
-    shortName: '16 • Launcher',
+    shortName: '18 • Launcher',
     name: 'RaggieSoft Launcher (Desktop Suite Hub & Fluent Web Components)',
     domain: 'launcher.raggiesoft.com',
     url: 'https://launcher.raggiesoft.com',
-    categoryLabel: '16 • Native Desktop Suite Portal & Fluent Design Web Components',
+    categoryLabel: '18 • Native Desktop Suite Portal & Fluent Design Web Components',
     primaryStack: 'Microsoft Fluent UI Web Components (@fluentui/web-components / FAST Element) + TypeScript + Vite SSG',
     architecturalPattern: 'Isomorphic Static Pre-Rendering Upgraded with W3C Custom Elements & Fluent Luminance Tokens',
     summary:
@@ -1054,32 +1184,32 @@ export const POLYGLOT_ECOSYSTEM: readonly EcosystemProperty[] = [
   },
   {
     id: 'raggiesoft-a11y-studio',
-    shortName: '17 • A11y Studio',
+    shortName: '19 • A11y Studio',
     name: 'RaggieSoft Accessibility Studio (Enterprise WCAG IDE & IBM Carbon Portal)',
-    domain: 'a11y.raggiesoft.com',
-    url: 'https://a11y.raggiesoft.com',
+    domain: 'raggiesoftstudio.com/accessibility-studio',
+    url: 'https://raggiesoftstudio.com/accessibility-studio',
     repoUrl: 'https://github.com/raggiesoft/accessibility-studio',
-    categoryLabel: '17 • Enterprise B2B Accessibility IDE Portal & IBM Carbon Design System',
+    categoryLabel: '19 • Enterprise B2B Accessibility IDE Portal & IBM Carbon Design System',
     primaryStack: 'IBM Carbon Design System (@carbon/web-components + @carbon/styles) + TypeScript + Vite SSG',
-    architecturalPattern: 'Commercial Enterprise Product Portal Documenting Our C# / .NET 10 WinForms + Monaco IDE & CLI',
+    architecturalPattern: 'Commercial Enterprise Product Sub-Portal Documenting Our C# / .NET WinForms + Monaco IDE & SARIF CLI',
     summary:
-      'Enterprise software portal for RaggieSoft Accessibility Studio—an open-source C# / .NET 10 WinForms + Monaco WebView2 IDE and headless CLI evolving my ODU Online PLE batch accessibility utility into a full source-level WCAG 2.2 AA & Section 508 engineering workstation.',
+      'Enterprise software portal (mounted under raggiesoftstudio.com and 301 target of a11y.raggiesoft.com) for RaggieSoft Accessibility Studio—an open-source C# / .NET WinForms + Monaco WebView2 IDE and headless CLI evolving my ODU Online PLE batch accessibility utility into a full source-level WCAG 2.2 AA & Section 508 web workstation.',
     highlights: [
       'Built on IBM Carbon Design System (@carbon/web-components Lit custom elements + @carbon/styles White/Gray-100 Sass themes) pre-rendered to zero-database static HTML.',
-      'Documents the multi-pane C# / .NET 10 WinForms workstation IDE: Monaco syntax/diff refactoring, Live Chromium DOM emulation (Forced-Colors, 400% Reflow, Tab Badges), and authenticated SSO batch scanning.',
+      'Documents the multi-pane C# / .NET WinForms workstation IDE: Monaco Guided Fix side-by-side diffs, Live Chromium DOM emulation (Forced-Colors, 400% Reflow, Tab Badges), and authenticated SSO batch scanning.',
       'Details silent Windows Installer (.MSI) Group Policy properties, OASIS SARIF 2.1.0 CI/CD gates, and SHA-256 tamper-evident remediation logs.'
     ],
-    tags: ['IBM Carbon Design System', '@carbon/web-components', 'C# / .NET 10 WinForms', 'Monaco Editor (WebView2)', 'SARIF 2.1.0', 'WCAG 2.2 AA / Section 508 Web'],
+    tags: ['IBM Carbon Design System', '@carbon/web-components', 'C# / .NET WinForms', 'Monaco Editor (WebView2)', 'SARIF 2.1.0', 'WCAG 2.2 AA / Section 508 Web'],
     lenses: ['accessibility', 'architecture', 'devops'],
-    ctaLabel: 'Visit Accessibility Studio (a11y.raggiesoft.com)',
-    ogTitle: 'a11y.raggiesoft.com — IBM Carbon & WCAG 2.2 IDE Portal',
+    ctaLabel: 'Visit Accessibility Studio',
+    ogTitle: 'Accessibility Studio — IBM Carbon & WCAG 2.2 IDE Portal',
     ogDescription:
-      'Architecture of a11y.raggiesoft.com and Accessibility Studio: IBM Carbon Web Components SSG + C#/.NET 10 WinForms, Monaco IDE, and SARIF 2.1.0 CLI.',
+      'Architecture of raggiesoftstudio.com/accessibility-studio: IBM Carbon Web Components SSG + C#/.NET WinForms, Monaco IDE, and SARIF 2.1.0 CLI.',
     vitalStats: [
-      { label: 'Live Domain', value: 'a11y.raggiesoft.com' },
+      { label: 'Canonical URL', value: 'raggiesoftstudio.com/accessibility-studio' },
       { label: 'Portal Stack', value: 'IBM Carbon (@carbon/web-components + Sass)' },
-      { label: 'Workstation IDE', value: 'C# / .NET 10 WinForms + Monaco WebView2', isBadge: true },
-      { label: 'Enterprise Packaging', value: 'Installer Studio C++20 .MSI/.EXE + SARIF CLI', isBadge: true }
+      { label: 'Workstation IDE', value: 'C# / .NET WinForms + Monaco WebView2', isBadge: true },
+      { label: 'Legacy 301 Alias', value: 'a11y.raggiesoft.com -> 1-Hop 301', isBadge: true }
     ],
     deepDiveArchitecture: [
       {
