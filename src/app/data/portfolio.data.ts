@@ -76,7 +76,7 @@ import { ARCHITECTURAL_CASE_STUDIES } from './case-studies.data.ts';
 import { BUILD_TEAM_PROFILES } from './build-team.data.ts';
 import type { StaticRouteMeta } from './portfolio.types.ts';
 
-const PORTFOLIO_OG_IMAGE = 'https://michaelpragsdale.com/og-image.jpg';
+const PORTFOLIO_OG_IMAGE = 'https://assets.raggiesoft.com/common/images/mragsdale-social.jpg';
 const PORTFOLIO_OG_ALT =
   'Michael P. Ragsdale — Full-Stack Web Developer & Web Accessibility Engineer (michaelpragsdale.com)';
 
